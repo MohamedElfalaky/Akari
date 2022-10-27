@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="176" height="237.237" viewBox="0 0 176 237.237">
+  <g id="logo" transform="translate(-1267.73 -300.084)">
+    <g id="Group_60525" data-name="Group 60525" transform="translate(1305.133 300.084)">
+      <path id="Path_163955" data-name="Path 163955" d="M1394.789,591.944v12.143l-11.4,4.146V596.091Z" transform="translate(-1366.273 -455.719)" fill="#dc8035"/>
+      <path id="Path_163956" data-name="Path 163956" d="M1358.132,605.266v12.143l-11.409,4.146V609.417Z" transform="translate(-1346.723 -462.823)" fill="#dc8035"/>
+      <path id="Path_163957" data-name="Path 163957" d="M1527.613,482.149v24.28l0,12.138-11.409,4.151-11.409,4.146-11.409,4.151v-24.28l0-12.143,11.409-4.146,11.409-4.151Z" transform="translate(-1424.928 -397.17)" fill="#dc8035"/>
+      <path id="Path_163958" data-name="Path 163958" d="M1449.417,300.084l0,12.138v48.565l0,12.138L1438,377.071l-11.409,4.151-11.409,4.146-11.4,4.146,0,12.138v36.423l-11.409,4.151-11.414,4.146,0-12.138,11.409-4.151V393.665l-11.409,4.146-11.409,4.151V389.825l0-12.143-11.409,4.146v48.56l-11.414,4.151,0-12.143V385.975l0-12.138,11.409-4.146,11.4-4.146V341.26l0-12.138,11.409-4.146,0,12.138v48.56l11.409-4.146v-24.28l11.409-4.151v24.28l11.4-4.146,11.409-4.146L1438,364.933l0-12.143V316.373l0-12.138v0Z" transform="translate(-1346.723 -300.084)" fill="#116a92"/>
+      <path id="Path_163959" data-name="Path 163959" d="M1455.931,335.638v12.138l-11.409,4.146V339.784Z" transform="translate(-1398.874 -319.043)" fill="#dc8035"/>
+      <path id="Path_163960" data-name="Path 163960" d="M1455.926,372.553v12.138l-11.414,4.151,0-12.143Z" transform="translate(-1398.869 -338.728)" fill="#dc8035"/>
+    </g>
+    <text id="المبنى_الذكي" data-name="المبنى الذكي" transform="translate(1355.73 499.321)" fill="#116a92" font-size="30" font-family="BahijTheSansArabic-Bold, Bahij TheSansArabic" font-weight="700"><tspan x="-87" y="0">المبنى الذكي</tspan></text>
+    <text id="للخدمات_العقارية" data-name="للخدمات العقارية" transform="translate(1352.541 530.321)" fill="#dc8035" font-size="14" font-family="BahijTheSansArabic-Bold, Bahij TheSansArabic" font-weight="700"><tspan x="-50" y="0">للخدمات العقارية</tspan></text>
+  </g>
+</svg>

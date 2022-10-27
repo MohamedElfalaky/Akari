@@ -23,8 +23,10 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget svg = SvgPicture.asset('TalabatLogo'.tr(context),
-        color: Color(0xffEDEDF4), semanticsLabel: 'Acme Logo');
+    final Widget svg = SvgPicture.asset(
+      'logo'.tr(context),
+      color: Color(0xffEDEDF4),
+    );
     return Scaffold(
         backgroundColor: Color(0xFFF5504C),
         body: Center(child: Center(child: svg)));
