@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="filter" transform="translate(8 8)">
+    <rect id="Rectangle_24930" data-name="Rectangle 24930" width="40" height="40" rx="4" transform="translate(-8 -8)" fill="#fff"/>
+    <g id="setting-5">
+      <path id="Vector" d="M.965,0A.961.961,0,0,0,0,.965V5.95a.965.965,0,1,0,1.93,0V.965A.961.961,0,0,0,.965,0Z" transform="translate(17.507 1.93)" fill="rgba(17,106,146,0.6)"/>
+      <path id="Vector-2" data-name="Vector" d="M.965,0A.961.961,0,0,0,0,.965V5.95a.965.965,0,1,0,1.93,0V.965A.968.968,0,0,0,.965,0Z" transform="translate(11.035 15.155)" fill="#116a92"/>
+      <path id="Vector-3" data-name="Vector" d="M.965,0A.961.961,0,0,0,0,.965V5.95a.965.965,0,1,0,1.93,0V.965A.968.968,0,0,0,.965,0Z" transform="translate(4.563 1.93)" fill="rgba(17,106,146,0.6)"/>
+      <path id="Vector-4" data-name="Vector" d="M4.953,0H.965a.965.965,0,1,0,0,1.93H1.994v10a.965.965,0,1,0,1.93,0v-10H4.953a.965.965,0,0,0,0-1.93Z" transform="translate(2.927 9.173)" fill="rgba(17,106,146,0.6)"/>
+      <path id="Vector-5" data-name="Vector" d="M4.953,0H.965a.965.965,0,0,0,0,1.93H1.994v10a.965.965,0,1,0,1.93,0v-10H4.953a.965.965,0,0,0,0-1.93Z" transform="translate(15.155 9.173)" fill="rgba(17,106,146,0.6)"/>
+      <path id="Vector-6" data-name="Vector" d="M4.953,10.968H3.924v-10a.965.965,0,1,0-1.93,0v10H.965a.965.965,0,1,0,0,1.93H4.953a.965.965,0,1,0,0-1.93Z" transform="translate(9.041 1.93)" fill="#116a92"/>
+      <path id="Vector-7" data-name="Vector" d="M0,0H24V24H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

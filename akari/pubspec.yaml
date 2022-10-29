@@ -44,6 +44,7 @@ dependencies:
   flutter_svg: ^1.1.5
   flutter_native_splash: ^2.2.11
   smooth_page_indicator: ^1.0.0+2
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -90,10 +91,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: fonts/Tajawal/Tajawal-Medium.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

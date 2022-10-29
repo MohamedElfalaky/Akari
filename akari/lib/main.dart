@@ -1,6 +1,8 @@
 import 'package:akari/business_logic/cubits/Local/local_cubit.dart';
 import 'package:akari/data/Shared/AppLocalizations.dart';
 import 'package:akari/data/Shared/CacheHelper.dart';
+import 'package:akari/presentation/screens/AppMain.dart';
+import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,13 +60,19 @@ class MyApp extends StatelessWidget {
             // }),
             title: 'Flutter Demo',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primaryColor: Color(0xFFDC8035),
+              colorScheme: ThemeData().colorScheme.copyWith(
+                  primary: Color(0xFFDC8035),
+                  secondary: Color(0xFF116A92),
+                  tertiary: Color(0xFFF4F4F4)),
+              scaffoldBackgroundColor: Color(0xFFF4F4F4),
+              // primarySwatch: Colors.blue,
             ),
             routes: {
               // '/': (context) => const LogIn(),
               '/splash': (context) => Splash(),
             },
-            home: Splash(),
+            home: Filter(),
           );
         },
       ),
