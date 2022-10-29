@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_24943" data-name="Rectangle 24943" width="24" height="24" transform="translate(-3750 9239)" fill="#116a92"/>
+    </clipPath>
+  </defs>
+  <g id="Duplex" transform="translate(3750 -9239)" clip-path="url(#clip-path)">
+    <g id="duplex-2" data-name="duplex" transform="translate(-3748 9241)">
+      <g id="Group_60645" data-name="Group 60645">
+        <path id="Path_164290" data-name="Path 164290" d="M19.414,16.445h-.586V.586A.586.586,0,0,0,18.242,0H5.313a.585.585,0,0,0-.586.586V2.93h0a.586.586,0,0,0,.586.586H5.9V8.242H1.758a.586.586,0,0,0-.586.586v7.617H.586A.586.586,0,0,0,0,17.031v2.383A.586.586,0,0,0,.586,20H19.414A.586.586,0,0,0,20,19.414V17.031A.586.586,0,0,0,19.414,16.445ZM5.9,1.172H17.656v7.07H7.07V7.07H15.9a.586.586,0,0,0,.586-.586V2.93a.586.586,0,0,0-.586-.586H5.9ZM7.07,5.9V3.516H11.8V5.9Zm5.9,0V3.516h2.344V5.9ZM2.344,9.414H17.656v1.172H4.1a.586.586,0,0,0-.586.586v3.516a.586.586,0,0,0,.586.586h7.7v1.172H2.344Zm15.313,2.344v4.688H15.313V11.758Zm-3.516,0v4.688H12.969V11.758Zm-2.344,0V14.1H4.688V11.758Zm7.031,7.07H1.172V17.617H18.828Z" fill="#116a92" stroke="#fff" stroke-width="0.4"/>
+      </g>
+    </g>
+  </g>
+</svg>

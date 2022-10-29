@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_24951" data-name="Rectangle 24951" width="24" height="24" transform="translate(-3510 9226)" fill="#116a92"/>
+    </clipPath>
+  </defs>
+  <g id="Room" transform="translate(3510 -9226)" clip-path="url(#clip-path)">
+    <g id="hotel" transform="translate(-3508 9228)">
+      <g id="Group_60661" data-name="Group 60661" transform="translate(0 8.592)">
+        <g id="Group_60660" data-name="Group 60660">
+          <path id="Path_164306" data-name="Path 164306" d="M12.75,212.06v-3.054A1.008,1.008,0,0,0,11.744,208H2.349a1.008,1.008,0,0,0-1.007,1.007v3.054A1.681,1.681,0,0,0,0,213.7v5.368a.336.336,0,0,0,.336.336H1.678a.336.336,0,0,0,.336-.336v-1.007H12.079v1.007a.336.336,0,0,0,.336.336h1.342a.336.336,0,0,0,.336-.336V213.7A1.681,1.681,0,0,0,12.75,212.06ZM2.013,209.007a.336.336,0,0,1,.336-.336h9.395a.336.336,0,0,1,.336.336v3.02h-.671v-1.342a1.008,1.008,0,0,0-1.007-1.007H8.388a1.008,1.008,0,0,0-1.007,1.007v1.342H6.711v-1.342A1.008,1.008,0,0,0,5.7,209.678H3.691a1.008,1.008,0,0,0-1.007,1.007v1.342H2.013Zm8.724,1.678v1.342H8.053v-1.342a.336.336,0,0,1,.336-.336H10.4A.336.336,0,0,1,10.737,210.684Zm-4.7,0v1.342H3.355v-1.342a.336.336,0,0,1,.336-.336H5.7A.336.336,0,0,1,6.04,210.684Zm7.382,8.053H12.75V217.73a.336.336,0,0,0-.336-.336H1.678a.336.336,0,0,0-.336.336v1.007H.671v-2.684h12.75Zm0-3.355H.671V213.7A1.008,1.008,0,0,1,1.678,212.7H12.415a1.008,1.008,0,0,1,1.007,1.007Z" transform="translate(0 -208)" fill="#116a92"/>
+        </g>
+      </g>
+      <g id="Group_60663" data-name="Group 60663" transform="translate(14.632 12.618)">
+        <g id="Group_60662" data-name="Group 60662">
+          <path id="Path_164307" data-name="Path 164307" d="M357.033,304h-4.7a.336.336,0,0,0-.336.336v5.033h.671v-2.013H356.7v2.013h.671v-5.033A.336.336,0,0,0,357.033,304Zm-.336,2.684h-4.026v-2.013H356.7Z" transform="translate(-352 -304)" fill="#116a92"/>
+        </g>
+      </g>
+      <g id="Group_60665" data-name="Group 60665" transform="translate(16.868 14.039)">
+        <g id="Group_60664" data-name="Group 60664" transform="translate(0 0)">
+          <rect id="Rectangle_24937" data-name="Rectangle 24937" width="1" fill="#116a92"/>
+        </g>
+      </g>
+      <g id="Group_60667" data-name="Group 60667" transform="translate(15.638 7.653)">
+        <g id="Group_60666" data-name="Group 60666">
+          <path id="Path_164308" data-name="Path 164308" d="M379.336,186.242l-.671-2.013a.336.336,0,0,0-.318-.229H377a.336.336,0,0,0-.318.229l-.671,2.013a.336.336,0,0,0,.318.442h1.007v1.007h-.671v.671h2.013v-.671h-.671v-1.007h1.007a.336.336,0,0,0,.318-.442Zm-2.537-.229.448-1.342h.859l.447,1.342Z" transform="translate(-375.997 -184)" fill="#116a92"/>
+        </g>
+      </g>
+      <g id="Group_60669" data-name="Group 60669" transform="translate(0 0)">
+        <g id="Group_60668" data-name="Group 60668">
+          <path id="Path_164309" data-name="Path 164309" d="M19.8,4.391,10.136.029a.333.333,0,0,0-.273,0L.2,4.391A.336.336,0,0,0,0,4.7V8.724H.667V4.915L10,.7l9.333,4.212V8.724H20V4.7A.336.336,0,0,0,19.8,4.391Z" transform="translate(0 0)" fill="#116a92"/>
+        </g>
+      </g>
+      <g id="Group_60671" data-name="Group 60671" transform="translate(7.651 2.684)">
+        <g id="Group_60670" data-name="Group 60670">
+          <path id="Path_164310" data-name="Path 164310" d="M188.665,65.957l-.662.111a1.653,1.653,0,0,1,.023.28,1.676,1.676,0,1,1-1.118-1.582l.223-.633a2.349,2.349,0,1,0,1.566,2.215A2.374,2.374,0,0,0,188.665,65.957Z" transform="translate(-184 -64)" fill="#116a92"/>
+        </g>
+      </g>
+      <g id="Group_60673" data-name="Group 60673" transform="translate(9.085 2.783)">
+        <g id="Group_60672" data-name="Group 60672">
+          <path id="Path_164311" data-name="Path 164311" d="M221.364,66.344l-2.111,2.111-.434-.434-.474.474.671.671a.335.335,0,0,0,.474,0l2.349-2.349Z" transform="translate(-218.344 -66.344)" fill="#116a92"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

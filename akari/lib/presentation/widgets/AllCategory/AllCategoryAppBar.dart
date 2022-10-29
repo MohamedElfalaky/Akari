@@ -3,8 +3,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class FilterAppBar extends StatelessWidget {
-  const FilterAppBar({super.key});
+class AllCategoryAppBar extends StatelessWidget {
+  const AllCategoryAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class FilterAppBar extends StatelessWidget {
           Row(
             children: [
               AutoSizeText(
-                "Filters",
+                "All Categories",
                 style: TextStyle(
                     fontSize: 24,
                     fontFamily: "Tajawal,Medium",
@@ -33,17 +33,7 @@ class FilterAppBar extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: Simplify.hightClc(context, 20),
-          ),
-          AutoSizeText(
-            "State",
-            style: TextStyle(
-                fontSize: 16,
-                fontFamily: "Tajawal",
-                color: Color(0xFF363A3D).withOpacity(0.8)),
-          ),
-          SizedBox(
-            height: Simplify.hightClc(context, 4),
+            height: Simplify.hightClc(context, 36),
           ),
           SizedBox(
             child: Row(

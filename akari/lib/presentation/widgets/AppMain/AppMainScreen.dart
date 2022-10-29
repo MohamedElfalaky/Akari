@@ -1,6 +1,7 @@
 import 'package:akari/data/Shared/Simplify.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
+import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -27,29 +28,45 @@ class AppMainScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                   ),
                   Spacer(),
-                  AutoSizeText(
-                    "View All",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Tajawal,Regular",
-                        color: Theme.of(context).colorScheme.secondary),
+                  InkWell(
+                    onTap: () => Navigator.pushNamed(context, "/allcategory"),
+                    child: AutoSizeText(
+                      "View All",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: "Tajawal,Regular",
+                          color: Theme.of(context).colorScheme.secondary),
+                    ),
                   )
                 ],
               ),
               Container(
+                  width: double.infinity,
                   margin: EdgeInsets.only(top: Simplify.hightClc(context, 8)),
-                  height: Simplify.hightClc(context, 40),
-                  child: new ListView(
+                  child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      TabBarItem(),
-                      TabBarItem(),
-                      TabBarItem(),
-                      TabBarItem(),
-                      TabBarItem(),
-                      TabBarItem(),
-                      TabBarItem(),
-                    ],
+                    child: Row(
+                      // scrollDirection: Axis.horizontal,
+                      children: [
+                        TabBarItem("Flat", "assets/flat.svg"),
+                        TabBarItem("Bulding", "assets/building.svg"),
+                        TabBarItem("Land", "assets/land.svg"),
+                        TabBarItem("Office", "assets/Office.svg"),
+                        TabBarItem("Duplex", "assets/Duplex.svg"),
+                        TabBarItem("Tent", "assets/Tent.svg"),
+                        TabBarItem("Farm", "assets/Farm.svg"),
+                        TabBarItem("Room", "assets/Room.svg"),
+                        TabBarItem("Villa", "assets/Villa.svg"),
+                        TabBarItem("Chalet", "assets/Chalet.svg"),
+                        TabBarItem("Hut", "assets/Hut.svg"),
+                        TabBarItem("Lounge", "assets/Lounge.svg"),
+                        TabBarItem("Store", "assets/Store.svg"),
+                        TabBarItem("Ware house", "assets/Ware house.svg"),
+                        TabBarItem("Appartment", "assets/Appartment.svg"),
+                        TabBarItem(
+                            "furnished apartments", "furnished apartments"),
+                      ],
+                    ),
                   )),
               Container(
                   margin: EdgeInsets.only(top: Simplify.hightClc(context, 24)),

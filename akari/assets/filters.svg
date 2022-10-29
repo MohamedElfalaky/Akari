@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="58" viewBox="0 0 58 58">
+  <defs>
+    <filter id="Path_164259" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#748185" flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="filters" transform="translate(17 14)">
+    <g transform="matrix(1, 0, 0, 1, -17, -14)" filter="url(#Path_164259)">
+      <path id="Path_164259-2" data-name="Path 164259" d="M4,0H36a4,4,0,0,1,4,4V36a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" transform="translate(9 6)" fill="#116a92"/>
+    </g>
+    <g id="setting-5">
+      <path id="Vector" d="M.965,0A.961.961,0,0,0,0,.965V5.95a.965.965,0,1,0,1.93,0V.965A.961.961,0,0,0,.965,0Z" transform="translate(17.507 1.93)" fill="rgba(255,255,255,0.6)"/>
+      <path id="Vector-2" data-name="Vector" d="M.965,0A.961.961,0,0,0,0,.965V5.95a.965.965,0,1,0,1.93,0V.965A.968.968,0,0,0,.965,0Z" transform="translate(11.035 15.155)" fill="#fff"/>
+      <path id="Vector-3" data-name="Vector" d="M.965,0A.961.961,0,0,0,0,.965V5.95a.965.965,0,1,0,1.93,0V.965A.968.968,0,0,0,.965,0Z" transform="translate(4.563 1.93)" fill="rgba(255,255,255,0.6)"/>
+      <path id="Vector-4" data-name="Vector" d="M4.953,0H.965a.965.965,0,1,0,0,1.93H1.994v10a.965.965,0,1,0,1.93,0v-10H4.953a.965.965,0,0,0,0-1.93Z" transform="translate(2.927 9.173)" fill="rgba(255,255,255,0.6)"/>
+      <path id="Vector-5" data-name="Vector" d="M4.953,0H.965a.965.965,0,0,0,0,1.93H1.994v10a.965.965,0,1,0,1.93,0v-10H4.953a.965.965,0,0,0,0-1.93Z" transform="translate(15.155 9.173)" fill="rgba(255,255,255,0.6)"/>
+      <path id="Vector-6" data-name="Vector" d="M4.953,10.968H3.924v-10a.965.965,0,1,0-1.93,0v10H.965a.965.965,0,1,0,0,1.93H4.953a.965.965,0,1,0,0-1.93Z" transform="translate(9.041 1.93)" fill="#fff"/>
+      <path id="Vector-7" data-name="Vector" d="M0,0H24V24H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

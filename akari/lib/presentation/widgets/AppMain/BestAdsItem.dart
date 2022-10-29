@@ -20,7 +20,11 @@ class BestAdsItem extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+                      fit: BoxFit.fill),
+                  // color: Colors.green,
                 ),
                 height: Simplify.hightClc(context, 176),
               ),
@@ -68,37 +72,51 @@ class BestAdsItem extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: Simplify.widthClc(context, 6)),
-                        height: Simplify.hightClc(context, 14),
-                        width: Simplify.widthClc(context, 14),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: Simplify.widthClc(context, 125),
-                            bottom: Simplify.hightClc(context, 8)),
-                        child: AutoSizeText(
-                          "200 m",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
+                      Flexible(
+                        flex: 2,
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: Simplify.widthClc(context, 6)),
+                              height: Simplify.hightClc(context, 14),
+                              width: Simplify.widthClc(context, 14),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: Simplify.widthClc(context, 125),
+                                  bottom: Simplify.hightClc(context, 8)),
+                              child: AutoSizeText(
+                                "200 m",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: Simplify.widthClc(context, 6)),
-                        height: Simplify.hightClc(context, 14),
-                        width: Simplify.widthClc(context, 14),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 8)),
-                        child: AutoSizeText(
-                          "3 floors",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
+                      Flexible(
+                        flex: 1,
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: Simplify.widthClc(context, 6)),
+                              height: Simplify.hightClc(context, 14),
+                              width: Simplify.widthClc(context, 14),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: Simplify.hightClc(context, 8)),
+                              child: AutoSizeText(
+                                "3 floors",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       )
                     ],
@@ -106,38 +124,48 @@ class BestAdsItem extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: Simplify.widthClc(context, 6)),
-                        height: Simplify.hightClc(context, 14),
-                        width: Simplify.widthClc(context, 14),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: Simplify.widthClc(context, 125),
-                            bottom: Simplify.hightClc(context, 12)),
-                        child: AutoSizeText(
-                          "200 m",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 20),
-                            right: Simplify.widthClc(context, 6)),
-                        height: Simplify.hightClc(context, 14),
-                        width: Simplify.widthClc(context, 14),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 12)),
-                        child: AutoSizeText(
-                          "3 floors",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
+                      Flexible(
+                          flex: 2,
+                          child: Row(children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: Simplify.widthClc(context, 6)),
+                              height: Simplify.hightClc(context, 14),
+                              width: Simplify.widthClc(context, 14),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: Simplify.hightClc(context, 12)),
+                              child: AutoSizeText(
+                                "Nasr City, Alkhartom",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ])),
+                      Flexible(
+                        flex: 1,
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: Simplify.hightClc(context, 20),
+                                  right: Simplify.widthClc(context, 6)),
+                              height: Simplify.hightClc(context, 14),
+                              width: Simplify.widthClc(context, 14),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: Simplify.hightClc(context, 12)),
+                              child: AutoSizeText(
+                                "19 OCT",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

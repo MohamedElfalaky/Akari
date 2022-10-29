@@ -297,7 +297,9 @@ class _OnBoardingState extends State<OnBoarding> {
                           textStyle: TextStyle(fontWeight: FontWeight.normal),
                           elevation: 0,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, "/appmain");
+                        },
                         child: Center(
                             child: AutoSizeText(
                           "Continue as aguest",

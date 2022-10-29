@@ -1,8 +1,11 @@
 import 'package:akari/business_logic/cubits/Local/local_cubit.dart';
 import 'package:akari/data/Shared/AppLocalizations.dart';
 import 'package:akari/data/Shared/CacheHelper.dart';
+import 'package:akari/presentation/screens/AfterFilter.dart';
+import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
+import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:akari/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,10 +72,14 @@ class MyApp extends StatelessWidget {
               // primarySwatch: Colors.blue,
             ),
             routes: {
-              // '/': (context) => const LogIn(),
               '/splash': (context) => Splash(),
+              '/onboarding': (context) => OnBoarding(),
+              '/appmain': (context) => AppMain(),
+              '/filter': (context) => Filter(),
+              '/afterfilter': (context) => AfterFilter(),
+              '/allcategory': (context) => AllCategory(),
             },
-            home: Filter(),
+            home: Splash(),
           );
         },
       ),
