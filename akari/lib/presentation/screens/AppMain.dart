@@ -51,25 +51,25 @@ class _AppMainState extends State<AppMain> {
         body: IndexedStack(index: currentIndex, children: screens),
         floatingActionButton: ViewOnMap(),
         // floatingActionButtonLocation: FloatingActionButtonLocation,
-        bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.white70,
-          selectedItemColor: Colors.white,
-          // showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          currentIndex: currentIndex,
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border), label: "favorite"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.chat_bubble_outline), label: "chat"),
-            BottomNavigationBarItem(icon: Icon(Icons.more), label: "more"),
-          ],
-        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   unselectedItemColor: Colors.white70,
+        //   selectedItemColor: Colors.white,
+        //   // showUnselectedLabels: false,
+        //   type: BottomNavigationBarType.fixed,
+        //   backgroundColor: Theme.of(context).colorScheme.secondary,
+        //   currentIndex: currentIndex,
+        //   onTap: (index) => setState(() {
+        //     currentIndex = index;
+        //   }),
+        //   items: [
+        //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.favorite_border), label: "favorite"),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.chat_bubble_outline), label: "chat"),
+        //     BottomNavigationBarItem(icon: Icon(Icons.more), label: "more"),
+        //   ],
+        // ),
       ),
     );
   }

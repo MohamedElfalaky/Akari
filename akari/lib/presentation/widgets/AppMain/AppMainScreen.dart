@@ -75,7 +75,7 @@ class AppMainScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                   )),
               Container(
-                height: Simplify.hightClc(context, 455),
+                height: Simplify.hightClc(context, 447),
                 margin: EdgeInsets.only(top: Simplify.hightClc(context, 8)),
                 child: ListView(
                   children: [
