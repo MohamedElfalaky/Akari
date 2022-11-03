@@ -1,11 +1,13 @@
 import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AfterFilterAppBar extends StatelessWidget {
-  const AfterFilterAppBar({super.key});
+  final String title;
+  const AfterFilterAppBar(this.title);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class AfterFilterAppBar extends StatelessWidget {
           Row(
             children: [
               AutoSizeText(
-                "Filters result",
+                title,
                 style: TextStyle(
                     fontSize: 24,
                     fontFamily: "Tajawal,Medium",
@@ -37,7 +39,12 @@ class AfterFilterAppBar extends StatelessWidget {
           SizedBox(
             height: Simplify.hightClc(context, 20),
           ),
-          SearchFilter()
+          SearchFilter(() => Navigator.pushReplacement(
+              //
+              context,
+              MaterialPageRoute<void>(
+                  builder: (BuildContext context) =>
+                      AfterFilterAndSearch("Search relust"))))
         ],
       ),
     );

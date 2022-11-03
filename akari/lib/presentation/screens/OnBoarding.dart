@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
+import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -260,28 +262,8 @@ class _OnBoardingState extends State<OnBoarding> {
                   right: MediaQuery.of(context).size.width * 32 / 375),
               child: Column(
                 children: [
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 45 / 812,
-                      width: MediaQuery.of(context).size.width * 311 / 375,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(23))),
-                          textStyle: TextStyle(fontWeight: FontWeight.normal),
-                          elevation: 0,
-                          backgroundColor: Color(0XFFDC8035),
-                        ),
-                        onPressed: () {},
-                        child: Center(
-                            child: AutoSizeText(
-                          "Create account",
-                          style: TextStyle(
-                              fontFamily: "Tajawal",
-                              fontSize: 16,
-                              color: Colors.white),
-                        )),
-                      )),
+                  myButton(() => Navigator.pushNamed(context, "/register"),
+                      "Create Account"),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 16 / 812,
                   ),
@@ -312,28 +294,8 @@ class _OnBoardingState extends State<OnBoarding> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 32 / 812,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      AutoSizeText(
-                        "already have an account!",
-                        style: TextStyle(
-                          fontFamily: "Tajawal",
-                          color: Color(0XFF116A92),
-                          fontSize: 16,
-                        ),
-                      ),
-                      InkWell(
-                          onTap: () {},
-                          child: AutoSizeText("sign in",
-                              style: TextStyle(
-                                  fontFamily: "Tajawal",
-                                  color: Color(
-                                    0XFFDC8035,
-                                  ),
-                                  fontSize: 16)))
-                    ],
-                  )
+                  AlreadyHaveAccount(
+                      () => Navigator.pushNamed(context, "/login"))
                 ],
               ),
             ),

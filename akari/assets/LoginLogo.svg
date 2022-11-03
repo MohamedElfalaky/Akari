@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="268.149" height="128.478" viewBox="0 0 268.149 128.478">
+  <g id="logo" transform="translate(-317.254 -360.745)">
+    <g id="Group_60527" data-name="Group 60527" transform="translate(502.281 360.745)">
+      <path id="Path_163961" data-name="Path 163961" d="M855.591,648.708v9.828l-9.231,3.356v-9.828Z" transform="translate(-832.51 -538.447)" fill="#dc8035"/>
+      <path id="Path_163962" data-name="Path 163962" d="M819.423,661.852v9.828l-9.235,3.356v-9.824Z" transform="translate(-810.188 -546.558)" fill="#dc8035"/>
+      <path id="Path_163963" data-name="Path 163963" d="M982.595,540.379v19.653l0,9.824-9.235,3.36-9.235,3.356-9.235,3.36V560.279l0-9.828,9.235-3.356,9.235-3.36Z" transform="translate(-899.481 -471.597)" fill="#dc8035"/>
+      <path id="Path_163964" data-name="Path 163964" d="M893.31,360.745l0,9.824v39.309l0,9.824-9.235,3.356-9.235,3.36-9.235,3.356-9.231,3.356,0,9.824v29.481l-9.235,3.36-9.239,3.356,0-9.824,9.235-3.36V436.491l-9.235,3.356-9.235,3.36v-9.824l0-9.828-9.235,3.356v39.305l-9.239,3.36,0-9.828V430.266l0-9.824,9.235-3.356,9.231-3.356V394.073l0-9.824,9.235-3.356,0,9.824v39.305l9.235-3.356V407.014l9.235-3.36v19.653l9.231-3.356,9.235-3.356,9.235-3.36,0-9.828V373.93l0-9.824v0Z" transform="translate(-810.188 -360.745)" fill="#116a92"/>
+      <path id="Path_163965" data-name="Path 163965" d="M915.916,395.824v9.824L906.681,409V399.18Z" transform="translate(-869.734 -382.393)" fill="#dc8035"/>
+      <path id="Path_163966" data-name="Path 163966" d="M915.91,432.247v9.824l-9.239,3.36,0-9.828Z" transform="translate(-869.727 -404.869)" fill="#dc8035"/>
+    </g>
+    <text id="المبنى_الذكي" data-name="المبنى الذكي" transform="translate(317.254 456.174)" fill="#116a92" font-size="30" font-family="BahijTheSansArabic-Bold, Bahij TheSansArabic" font-weight="700"><tspan x="0" y="0">المبنى الذكي</tspan></text>
+    <text id="للخدمات_العقارية" data-name="للخدمات العقارية" transform="translate(387.624 478.569)" fill="#dc8035" font-size="14" font-family="BahijTheSansArabic-Bold, Bahij TheSansArabic" font-weight="700"><tspan x="0" y="0">للخدمات العقارية</tspan></text>
+  </g>
+</svg>

@@ -21,8 +21,8 @@ class TabBarItem extends StatelessWidget {
         elevation: 2,
         child: Container(
           padding: EdgeInsets.symmetric(
-              horizontal: Simplify.widthClc(context, 8),
-              vertical: Simplify.hightClc(context, 8)),
+              horizontal: Simplify.widthClc(context, 2),
+              vertical: Simplify.hightClc(context, 2)),
           margin:
               EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 4)),
           height: Simplify.hightClc(context, 40),

@@ -137,7 +137,7 @@ class BestAdsItem extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: Simplify.hightClc(context, 12)),
                               child: AutoSizeText(
-                                "Nasr City, Alkhartom",
+                                "Sudan, Alkhartom ",
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),

@@ -1,4 +1,5 @@
 import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,12 @@ class myAppBar extends StatelessWidget {
           SizedBox(
             height: Simplify.hightClc(context, 16),
           ),
-          SearchFilter()
+          SearchFilter(() => Navigator.push(
+              //
+              context,
+              MaterialPageRoute<void>(
+                  builder: (BuildContext context) =>
+                      AfterFilterAndSearch("Search relust"))))
         ],
       ),
     );

@@ -10,22 +10,29 @@ class FilterTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      // style: ElevatedButton.styleFrom( // if i decided to make elevated button
+      //   padding: EdgeInsets.all(1),
+      //   elevation: 0,
+      //   backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+      // ),
       onTap: () {},
       child: Card(
         child: Container(
           height: Simplify.hightClc(context, 24),
           padding: EdgeInsets.symmetric(
-            horizontal: Simplify.widthClc(context, 8),
+            horizontal: Simplify.widthClc(context, 4),
           ),
           margin:
-              EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 4)),
+              EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 2)),
           decoration: BoxDecoration(
               color: Color(0xFFFFFFFF), borderRadius: BorderRadius.circular(3)),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 Icons.add,
                 size: 13,
+                color: Colors.black,
               ),
               AutoSizeText(
                 valuee,

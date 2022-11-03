@@ -1,12 +1,9 @@
 import 'package:akari/data/Shared/Simplify.dart';
 import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
-import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
+
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class AppMain extends StatefulWidget {
   const AppMain({super.key});
@@ -50,26 +47,25 @@ class _AppMainState extends State<AppMain> {
         ),
         body: IndexedStack(index: currentIndex, children: screens),
         floatingActionButton: ViewOnMap(),
-        // floatingActionButtonLocation: FloatingActionButtonLocation,
-        // bottomNavigationBar: BottomNavigationBar(
-        //   unselectedItemColor: Colors.white70,
-        //   selectedItemColor: Colors.white,
-        //   // showUnselectedLabels: false,
-        //   type: BottomNavigationBarType.fixed,
-        //   backgroundColor: Theme.of(context).colorScheme.secondary,
-        //   currentIndex: currentIndex,
-        //   onTap: (index) => setState(() {
-        //     currentIndex = index;
-        //   }),
-        //   items: [
-        //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
-        //     BottomNavigationBarItem(
-        //         icon: Icon(Icons.favorite_border), label: "favorite"),
-        //     BottomNavigationBarItem(
-        //         icon: Icon(Icons.chat_bubble_outline), label: "chat"),
-        //     BottomNavigationBarItem(icon: Icon(Icons.more), label: "more"),
-        //   ],
-        // ),
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.white70,
+          selectedItemColor: Colors.white,
+          // showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() {
+            currentIndex = index;
+          }),
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_border), label: "favorite"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.chat_bubble_outline), label: "chat"),
+            BottomNavigationBarItem(icon: Icon(Icons.more), label: "more"),
+          ],
+        ),
       ),
     );
   }

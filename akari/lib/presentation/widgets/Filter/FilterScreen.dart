@@ -1,4 +1,5 @@
 import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
@@ -52,6 +53,7 @@ class FilterScreen extends StatelessWidget {
                 height: Simplify.hightClc(context, 8),
               ),
               Container(
+                width: double.infinity,
                 padding: EdgeInsets.symmetric(
                   horizontal: Simplify.widthClc(context, 16),
                   vertical: Simplify.hightClc(context, 16),
@@ -70,12 +72,25 @@ class FilterScreen extends StatelessWidget {
                     Container(
                         margin: EdgeInsets.only(
                             top: Simplify.hightClc(context, 19)),
-                        child: Row(
+                        child: Wrap(
                           // scrollDirection: Axis.horizontal,
-                          children: <Widget>[
+                          children: [
                             FilterTab("Flat"),
                             FilterTab("Building"),
                             FilterTab("Land"),
+                            FilterTab("Office"),
+                            FilterTab("Duplex"),
+                            FilterTab("Wedding halls"),
+                            FilterTab("Farm"),
+                            FilterTab("Room"),
+                            FilterTab("Villa"),
+                            FilterTab("Chalet"),
+                            FilterTab("Sports clubs"),
+                            FilterTab("Lounge"),
+                            FilterTab("Store"),
+                            FilterTab("Appartment"),
+                            FilterTab("Ware house"),
+                            FilterTab("furnished apartments"),
                           ],
                         )),
                   ],
@@ -164,7 +179,7 @@ class FilterScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: Simplify.hightClc(context, 70),
+                height: Simplify.hightClc(context, 50),
               ),
               Container(
                 height: Simplify.hightClc(context, 45),
@@ -180,7 +195,11 @@ class FilterScreen extends StatelessWidget {
                     backgroundColor: Color(0XFFDC8035),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "/afterfilter");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                AfterFilterAndSearch("Filter relust")));
                   },
                   child: Center(
                       child: AutoSizeText(

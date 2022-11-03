@@ -1,9 +1,11 @@
 import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SearchFilter extends StatelessWidget {
-  const SearchFilter({super.key});
+  final searchHandler;
+  const SearchFilter(this.searchHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,14 @@ class SearchFilter extends StatelessWidget {
                 contentPadding: EdgeInsets.only(
                     left: Simplify.widthClc(context, 10),
                     bottom: Simplify.hightClc(context, 10)),
-                prefixIcon: Container(
-                  margin: EdgeInsets.all(
-                    5,
+                prefixIcon: InkWell(
+                  onTap: () => searchHandler(),
+                  child: Container(
+                    margin: EdgeInsets.all(
+                      5,
+                    ),
+                    child: SvgPicture.asset("assets/search-normal-twotone.svg"),
                   ),
-                  child: SvgPicture.asset("assets/search-normal-twotone.svg"),
                 )),
           ),
         ),

@@ -47,6 +47,7 @@ dependencies:
   auto_size_text: ^3.0.0
   custom_radio_grouped_button: any
   flutter_staggered_grid_view: ^0.6.2
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,7 @@ flutter:
   assets:
     - assets/
     - assets/Lang/
+    - assets/registerPics/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -97,6 +99,9 @@ flutter:
     - family: Tajawal
       fonts:
         - asset: fonts/Tajawal/Tajawal-Medium.ttf
+    - family: Tajawal,Regular
+      fonts:
+        - asset: fonts/Tajawal/Tajawal-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

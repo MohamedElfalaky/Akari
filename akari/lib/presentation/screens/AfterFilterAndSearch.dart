@@ -11,14 +11,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class AfterFilter extends StatefulWidget {
-  const AfterFilter({super.key});
+class AfterFilterAndSearch extends StatefulWidget {
+  final title;
+  const AfterFilterAndSearch(this.title);
 
   @override
-  State<AfterFilter> createState() => _AfterFilterState();
+  State<AfterFilterAndSearch> createState() => _AfterFilterAndSearchState();
 }
 
-class _AfterFilterState extends State<AfterFilter> {
+class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,7 +35,7 @@ class _AfterFilterState extends State<AfterFilter> {
           backgroundColor: Color(0xFFFFFFFF),
           toolbarHeight: Simplify.hightClc(context, 140),
           elevation: 0,
-          title: AfterFilterAppBar(),
+          title: AfterFilterAppBar(widget.title),
         ),
         body: Container(
           height: Simplify.hightClc(context, 640),
