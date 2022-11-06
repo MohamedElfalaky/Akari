@@ -96,13 +96,16 @@ class LogIn extends StatelessWidget {
                         ),
 
                         InkWell(
+                            onTap: () =>
+                                Navigator.pushNamed(context, "/forgetpassword"),
                             child: AutoSizeText(
-                          "Forget password ?",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "Tajawal,Regular",
-                              color: Theme.of(context).colorScheme.secondary),
-                        )),
+                              "Forget password ?",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Tajawal,Regular",
+                                  color:
+                                      Theme.of(context).colorScheme.secondary),
+                            )),
 
                         //forgetpass
 

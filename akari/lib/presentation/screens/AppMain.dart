@@ -4,6 +4,7 @@ import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppMain extends StatefulWidget {
   const AppMain({super.key});
@@ -58,12 +59,20 @@ class _AppMainState extends State<AppMain> {
             currentIndex = index;
           }),
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border), label: "favorite"),
+                activeIcon: SvgPicture.asset(
+                    "assets/BottomActive/home-hashtag-bold.svg"),
+                icon: SvgPicture.asset("assets/bottomNav/home-hashtag.svg"),
+                label: "home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.chat_bubble_outline), label: "chat"),
-            BottomNavigationBarItem(icon: Icon(Icons.more), label: "more"),
+                icon: SvgPicture.asset("assets/bottomNav/heart.svg"),
+                label: "favorite"),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset("assets/bottomNav/message-text.svg"),
+                label: "chat"),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset("assets/bottomNav/category.svg"),
+                label: "more"),
           ],
         ),
       ),

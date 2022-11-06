@@ -5,7 +5,9 @@ import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
+import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
+import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:akari/presentation/screens/Register.dart';
 import 'package:akari/presentation/screens/Splash.dart';
@@ -87,8 +89,10 @@ class MyApp extends StatelessWidget {
                 '/allcategory': (context) => AllCategory(),
                 '/register': (context) => Register(),
                 '/login': (context) => LogIn(),
+                '/forgetpassword': (context) => ForgetPassword(),
+                '/otp': (context) => OTP(),
               },
-              home: Splash(),
+              home: OTP(),
             );
           });
         },

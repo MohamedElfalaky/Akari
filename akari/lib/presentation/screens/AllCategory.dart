@@ -41,11 +41,12 @@ class _AllCategoryState extends State<AllCategory> {
         ),
         body: Container(
             margin: EdgeInsets.only(
-              left: Simplify.widthClc(context, 10),
+              left: Simplify.widthClc(context, 30),
               right: Simplify.widthClc(context, 10),
               top: Simplify.hightClc(context, 24),
             ),
             child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
               children: categoryTaps,
             )),
       ),

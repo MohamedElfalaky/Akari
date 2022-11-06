@@ -1,6 +1,7 @@
 import 'package:akari/data/Shared/Simplify.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class BestAdsItem extends StatelessWidget {
   const BestAdsItem({super.key});
@@ -78,9 +79,12 @@ class BestAdsItem extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  right: Simplify.widthClc(context, 6)),
+                                  right: Simplify.widthClc(context, 6),
+                                  bottom: Simplify.hightClc(context, 8)),
                               height: Simplify.hightClc(context, 14),
                               width: Simplify.widthClc(context, 14),
+                              child:
+                                  SvgPicture.asset("assets/AdsPics/area.svg"),
                             ),
                             Container(
                               margin: EdgeInsets.only(
@@ -102,9 +106,12 @@ class BestAdsItem extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  right: Simplify.widthClc(context, 6)),
+                                  right: Simplify.widthClc(context, 6),
+                                  bottom: Simplify.hightClc(context, 8)),
                               height: Simplify.hightClc(context, 14),
                               width: Simplify.widthClc(context, 14),
+                              child: SvgPicture.asset(
+                                  "assets/AdsPics/floor no..svg"),
                             ),
                             Container(
                               margin: EdgeInsets.only(
@@ -128,11 +135,13 @@ class BestAdsItem extends StatelessWidget {
                           flex: 2,
                           child: Row(children: [
                             Container(
-                              margin: EdgeInsets.only(
-                                  right: Simplify.widthClc(context, 6)),
-                              height: Simplify.hightClc(context, 14),
-                              width: Simplify.widthClc(context, 14),
-                            ),
+                                margin: EdgeInsets.only(
+                                    right: Simplify.widthClc(context, 6),
+                                    bottom: Simplify.hightClc(context, 8)),
+                                height: Simplify.hightClc(context, 14),
+                                width: Simplify.widthClc(context, 14),
+                                child: SvgPicture.asset(
+                                    "assets/AdsPics/location.svg")),
                             Container(
                               margin: EdgeInsets.only(
                                   bottom: Simplify.hightClc(context, 12)),
@@ -149,12 +158,14 @@ class BestAdsItem extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(
-                                  bottom: Simplify.hightClc(context, 20),
-                                  right: Simplify.widthClc(context, 6)),
-                              height: Simplify.hightClc(context, 14),
-                              width: Simplify.widthClc(context, 14),
-                            ),
+                                margin: EdgeInsets.only(
+                                  bottom: Simplify.hightClc(context, 12),
+                                  right: Simplify.widthClc(context, 6),
+                                ),
+                                height: Simplify.hightClc(context, 14),
+                                width: Simplify.widthClc(context, 14),
+                                child: SvgPicture.asset(
+                                    "assets/AdsPics/post date.svg")),
                             Container(
                               margin: EdgeInsets.only(
                                   bottom: Simplify.hightClc(context, 12)),
