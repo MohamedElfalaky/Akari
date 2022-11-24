@@ -2,6 +2,7 @@ import 'package:akari/data/Shared/Simplify.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sizer/sizer.dart';
 
 class BestAdsItem extends StatelessWidget {
   const BestAdsItem({super.key});
@@ -188,7 +189,7 @@ class BestAdsItem extends StatelessWidget {
                         child: AutoSizeText(
                           "150 SD / month",
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               fontFamily: "Tajawal",
                               color: Theme.of(context).colorScheme.secondary),
                         ),
@@ -197,6 +198,7 @@ class BestAdsItem extends StatelessWidget {
                       Icon(
                         Icons.share,
                         color: Theme.of(context).colorScheme.secondary,
+                        size: 12.sp,
                       )
                     ],
                   )

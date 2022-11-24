@@ -92,7 +92,7 @@ class MyApp extends StatelessWidget {
                 '/forgetpassword': (context) => ForgetPassword(),
                 '/otp': (context) => OTP(),
               },
-              home: OTP(),
+              home: Splash(),
             );
           });
         },
