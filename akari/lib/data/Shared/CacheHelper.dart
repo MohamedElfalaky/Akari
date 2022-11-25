@@ -11,6 +11,18 @@ class CacheHelper {
     await prefs!.setString(key, value);
   }
 
+  static Future saveIntToShared(String key, int value) async {
+    await prefs!.setInt(key, value);
+  }
+
+  static saveBoolToShared(String key, bool value) async {
+    await prefs!.setBool(key, value);
+  }
+
+  static getBoolFromShared(String key) {
+    return prefs!.getBool(key);
+  }
+
   static getFromShared(String key) {
     return prefs!.get(key);
   }
@@ -24,7 +36,7 @@ class CacheHelper {
     }
   }
 
-  static Future<bool?> removeToken(String key) async {
+  static Future<bool?> removeFromShared(String key) async {
     return await prefs?.remove(key);
   }
 }
