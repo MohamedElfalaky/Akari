@@ -40,6 +40,7 @@ class _OnBoardingState extends State<OnBoarding> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(

@@ -5,44 +5,38 @@ import 'package:flutter_svg/svg.dart';
 
 class FilterTab extends StatelessWidget {
   final String valuee;
-  FilterTab(this.valuee);
+  final bool booll;
+  FilterTab(this.valuee, this.booll);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      // style: ElevatedButton.styleFrom( // if i decided to make elevated button
-      //   padding: EdgeInsets.all(1),
-      //   elevation: 0,
-      //   backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
-      // ),
-      onTap: () {},
-      child: Card(
-        child: Container(
-          height: Simplify.hightClc(context, 24),
-          padding: EdgeInsets.symmetric(
-            horizontal: Simplify.widthClc(context, 4),
-          ),
-          margin:
-              EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 2)),
-          decoration: BoxDecoration(
-              color: Color(0xFFFFFFFF), borderRadius: BorderRadius.circular(3)),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.add,
-                size: 13,
-                color: Colors.black,
-              ),
-              AutoSizeText(
-                valuee,
-                style: TextStyle(
-                    fontSize: 13,
-                    fontFamily: "Tajawal,Regular",
-                    color: Color(0xFF363A3D)),
-              )
-            ],
-          ),
+    return Card(
+      child: Container(
+        height: Simplify.hightClc(context, 24),
+        padding: EdgeInsets.symmetric(
+          horizontal: Simplify.widthClc(context, 4),
+        ),
+        margin: EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 2)),
+        decoration: BoxDecoration(
+            color:
+                booll ? Color.fromARGB(255, 100, 179, 244) : Color(0xFFFFFFFF),
+            borderRadius: BorderRadius.circular(3)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              booll ? Icons.minimize : Icons.add,
+              size: 13,
+              color: Colors.black,
+            ),
+            AutoSizeText(
+              valuee,
+              style: TextStyle(
+                  fontSize: 13,
+                  fontFamily: "Tajawal,Regular",
+                  color: Color(0xFF363A3D)),
+            )
+          ],
         ),
       ),
     );

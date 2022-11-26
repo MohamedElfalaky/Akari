@@ -3,11 +3,21 @@ import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
+import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class FilterScreen extends StatelessWidget {
-  const FilterScreen({super.key});
+class FilterScreen extends StatefulWidget {
+  FilterScreen({super.key});
+
+  @override
+  State<FilterScreen> createState() => _FilterScreenState();
+}
+
+class _FilterScreenState extends State<FilterScreen> {
+  final List<String> contractTapsList = [];
+  final List<String> filterTapsList = [];
+  final List<String> unitLawsTapsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +50,35 @@ class FilterScreen extends StatelessWidget {
                             top: Simplify.hightClc(context, 19)),
                         child: Row(
                           // scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            FilterTab("Rent"),
-                            FilterTab("Investment"),
-                            FilterTab("Selling"),
-                          ],
+                          children:
+                              contractTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
+                                  .map((e) => InkWell(
+                                        child: FilterTab(e["name"], e["bool"]),
+                                        onTap: () {
+                                          if (contractTapsList
+                                                  .where((element) =>
+                                                      element == e["name"])
+                                                  .isNotEmpty &&
+                                              contractTapsList
+                                                      .where((element) =>
+                                                          element == e["name"])
+                                                      .first ==
+                                                  e["name"]) {
+                                            setState(() {
+                                              contractTapsList
+                                                  .remove(e["name"]);
+                                              e["bool"] = false;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              contractTapsList.add(e["name"]);
+                                              e["bool"] = true;
+                                            });
+                                          }
+                                          print(contractTapsList);
+                                        },
+                                      ))
+                                  .toList(),
                         )),
                   ],
                 ),
@@ -73,26 +107,35 @@ class FilterScreen extends StatelessWidget {
                         margin: EdgeInsets.only(
                             top: Simplify.hightClc(context, 19)),
                         child: Wrap(
-                          // scrollDirection: Axis.horizontal,
-                          children: [
-                            FilterTab("Flat"),
-                            FilterTab("Building"),
-                            FilterTab("Land"),
-                            FilterTab("Office"),
-                            FilterTab("Duplex"),
-                            FilterTab("Wedding halls"),
-                            FilterTab("Farm"),
-                            FilterTab("Room"),
-                            FilterTab("Villa"),
-                            FilterTab("Chalet"),
-                            FilterTab("Sports clubs"),
-                            FilterTab("Lounge"),
-                            FilterTab("Store"),
-                            FilterTab("Appartment"),
-                            FilterTab("Ware house"),
-                            FilterTab("furnished apartments"),
-                          ],
-                        )),
+                            children: myTaps
+                                .map((e) => InkWell(
+                                      child: FilterTab(e["name"], e["bool"]),
+                                      onTap: () {
+                                        // filterTapsList.removeWhere(
+                                        //     (element) => element == e["name"]);
+
+                                        if (filterTapsList
+                                                .where((element) =>
+                                                    element == e["name"])
+                                                .isNotEmpty &&
+                                            filterTapsList
+                                                    .where((element) =>
+                                                        element == e["name"])
+                                                    .first ==
+                                                e["name"]) {
+                                          setState(() {
+                                            filterTapsList.remove(e["name"]);
+                                            e["bool"] = false;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            filterTapsList.add(e["name"]);
+                                            e["bool"] = true;
+                                          });
+                                        }
+                                      },
+                                    ))
+                                .toList())),
                   ],
                 ),
               ),
@@ -170,10 +213,35 @@ class FilterScreen extends StatelessWidget {
                             top: Simplify.hightClc(context, 19)),
                         child: Row(
                           // scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            FilterTab("allow animals"),
-                            FilterTab("allow Smoking"),
-                          ],
+                          children:
+                              unitLawsTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
+                                  .map((e) => InkWell(
+                                        child: FilterTab(e["name"], e["bool"]),
+                                        onTap: () {
+                                          if (unitLawsTapsList
+                                                  .where((element) =>
+                                                      element == e["name"])
+                                                  .isNotEmpty &&
+                                              unitLawsTapsList
+                                                      .where((element) =>
+                                                          element == e["name"])
+                                                      .first ==
+                                                  e["name"]) {
+                                            setState(() {
+                                              unitLawsTapsList
+                                                  .remove(e["name"]);
+                                              e["bool"] = false;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              unitLawsTapsList.add(e["name"]);
+                                              e["bool"] = true;
+                                            });
+                                          }
+                                          print(unitLawsTapsList);
+                                        },
+                                      ))
+                                  .toList(),
                         )),
                   ],
                 ),
