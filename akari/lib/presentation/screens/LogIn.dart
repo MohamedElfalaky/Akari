@@ -1,4 +1,5 @@
 import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
@@ -80,7 +81,7 @@ class LogIn extends StatelessWidget {
                         myTextField(
                           hint: "Email",
                           prefix: "assets/registerPics/vuesax-bulk-sms.svg",
-                          suffix: "",
+                          // suffix: LoginCubit.get(context).securityIcon,
                         ),
                         SizedBox(
                           height: Simplify.hightClc(context, 16),
@@ -89,7 +90,7 @@ class LogIn extends StatelessWidget {
                         myTextField(
                           hint: "Password",
                           prefix: "assets/registerPics/vuesax-bulk-lock.svg",
-                          suffix: "",
+                          suffix: LoginCubit.get(context).securityIcon,
                         ),
                         SizedBox(
                           height: Simplify.hightClc(context, 8),
@@ -114,7 +115,10 @@ class LogIn extends StatelessWidget {
                         SizedBox(
                           height: Simplify.hightClc(context, 32),
                         ),
-                        myButton(null, "Log in"),
+                        myButton(
+                          null,
+                          "Log in",
+                        ),
                         SizedBox(
                           height: Simplify.hightClc(context, 24),
                         ),

@@ -7,7 +7,7 @@ import 'package:sizer/sizer.dart';
 class myTextField extends StatelessWidget {
   final String? hint;
   final String? prefix;
-  final String? suffix;
+  final suffix;
   const myTextField({this.hint, this.prefix, this.suffix});
 
   @override
@@ -49,8 +49,9 @@ class myTextField extends StatelessWidget {
             child: SvgPicture.asset(prefix!),
           ),
           suffixIcon: Container(
-            margin: EdgeInsets.all(12.sp),
-            child: SvgPicture.asset(suffix!),
+            width: 10,
+            margin: EdgeInsets.all(12),
+            child: suffix,
           ),
         ),
       ),

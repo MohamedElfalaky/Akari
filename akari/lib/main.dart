@@ -1,7 +1,8 @@
-import 'package:akari/business_logic/cubits/Local/local_cubit.dart';
 import 'package:akari/data/Shared/AppLocalizations.dart';
 import 'package:akari/data/Shared/CacheHelper.dart';
-import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
+import 'package:akari/data/Shared/dio_helper.dart';
+import 'package:akari/data/cubits/Local/local_cubit.dart';
+import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
@@ -20,7 +21,7 @@ import 'package:sizer/sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  DioHelper.init();
   await CacheHelper.init();
   runApp(const MyApp());
 }
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LocalCubit()..getSavedLanguage()),
+        BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

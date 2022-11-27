@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-const LOGIN = "/api/market/login";
+const LOGIN = "/auth/login";
 const LOGOUT = "/api/market/logout";
 const SENDMAIL = "/api/market/forget_password";
 const UPDATEPASS = "/api/market/changePassword";
