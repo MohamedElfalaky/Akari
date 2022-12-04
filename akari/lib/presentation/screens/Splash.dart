@@ -1,5 +1,5 @@
 import 'dart:async';
-import '../../data/Shared/AppLocalizations.dart';
+import '../../helpers/AppLocalizations.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

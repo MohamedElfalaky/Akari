@@ -1,4 +1,6 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
+import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../../../../data/Shared/AppLocalizations.dart';
+import '../../../helpers/AppLocalizations.dart';
 import 'package:sizer/sizer.dart';
 
 class ResetMail extends StatefulWidget {
@@ -38,8 +40,8 @@ class _ResetMailState extends State<ResetMail> {
             SvgPicture.asset("assets/Enter OTP-bro.svg"),
             Container(
               margin: EdgeInsets.only(
-                  top: Simplify.hightClc(context, 24),
-                  bottom: Simplify.hightClc(context, 8)),
+                  top: myApplication.hightClc(context, 24),
+                  bottom: myApplication.hightClc(context, 8)),
               child: Center(
                 child: Text(
                   "Recover mail successfully sent",
@@ -52,7 +54,8 @@ class _ResetMailState extends State<ResetMail> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: Simplify.hightClc(context, 16)),
+              margin:
+                  EdgeInsets.only(bottom: myApplication.hightClc(context, 16)),
               child: Center(
                 child: Text(
                   "password recovery mail has been successfully sent to your email: name@example.test",
@@ -64,7 +67,10 @@ class _ResetMailState extends State<ResetMail> {
                 ),
               ),
             ),
-            myButton(() => Navigator.pop(context), "Done"),
+            myButton(() {
+              Navigator.pop(context);
+              myApplication.navigateTo(LogIn(), context);
+            }, "Done"),
           ])),
     );
     ;

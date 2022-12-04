@@ -1,6 +1,7 @@
-import 'package:akari/data/Shared/AppLocalizations.dart';
-import 'package:akari/data/Shared/CacheHelper.dart';
-import 'package:akari/data/Shared/dio_helper.dart';
+import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
+import 'package:akari/helpers/AppLocalizations.dart';
+import 'package:akari/helpers/CacheHelper.dart';
+import 'package:akari/helpers/dio_helper.dart';
 import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
@@ -8,6 +9,7 @@ import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
+import 'package:akari/presentation/screens/MarketProfile/MarketProfile.dart';
 import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:akari/presentation/screens/Register.dart';
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LocalCubit()..getSavedLanguage()),
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
+        BlocProvider<RegistrationCubit>(
+            create: (context) => RegistrationCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -108,7 +112,7 @@ class MyApp extends StatelessWidget {
                 '/forgetpassword': (context) => ForgetPassword(),
                 '/otp': (context) => OTP(),
               },
-              home: Splash(),
+              home: MarketProfile(),
             );
           });
         },

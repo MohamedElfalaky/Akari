@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
@@ -31,7 +31,7 @@ class _FilterState extends State<Filter> {
           automaticallyImplyLeading: false, // remove back button in appbar.
 
           backgroundColor: Color(0xFFFFFFFF),
-          toolbarHeight: Simplify.hightClc(context, 155),
+          toolbarHeight: myApplication.hightClc(context, 155),
           elevation: 0,
           title: FilterAppBar(),
         ),

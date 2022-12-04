@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,12 +21,12 @@ class TabBarItem extends StatelessWidget {
         elevation: 2,
         child: Container(
           padding: EdgeInsets.symmetric(
-              horizontal: Simplify.widthClc(context, 2),
-              vertical: Simplify.hightClc(context, 2)),
-          margin:
-              EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 4)),
-          height: Simplify.hightClc(context, 40),
-          // width: Simplify.widthClc(context, 66),
+              horizontal: myApplication.widthClc(context, 2),
+              vertical: myApplication.hightClc(context, 2)),
+          margin: EdgeInsets.symmetric(
+              horizontal: myApplication.widthClc(context, 4)),
+          height: myApplication.hightClc(context, 40),
+          // width: myApplication.widthClc(context, 66),
           decoration: BoxDecoration(
               color: Color(0xFFFFFFFF), borderRadius: BorderRadius.circular(3)),
           child: Row(
@@ -34,7 +34,7 @@ class TabBarItem extends StatelessWidget {
             children: [
               SvgPicture.asset(svg),
               SizedBox(
-                width: Simplify.widthClc(context, 8),
+                width: myApplication.widthClc(context, 8),
               ),
               AutoSizeText(
                 name,

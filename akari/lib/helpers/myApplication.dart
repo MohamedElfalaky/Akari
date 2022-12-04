@@ -1,7 +1,20 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class Simplify {
+class myApplication {
+  static Future<bool> checkInternet() async {
+    var result = await Connectivity().checkConnectivity();
+    if (result == ConnectivityResult.mobile ||
+        result == ConnectivityResult.wifi) {
+      final flag = true;
+      return flag;
+    } else {
+      final flag = false;
+      return flag;
+    }
+  }
+
   static double hightClc(BuildContext context, int myHeight) {
     return MediaQuery.of(context).size.height * myHeight / 812;
   }

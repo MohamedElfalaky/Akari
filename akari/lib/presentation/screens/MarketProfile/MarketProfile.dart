@@ -1,62 +1,53 @@
-// import 'package:badges/badges.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-// import 'package:client_app/helpers/LocationService.dart';
-// import 'package:client_app/helpers/myApplication.dart';
-// import 'package:client_app/presentation/screens/Home/components/HomeScreen.dart';
-// import 'package:client_app/presentation/screens/Home/components/MyFloating.dart';
-// import 'package:client_app/presentation/screens/Home/components/HomeAppBar.dart';
-// import 'package:client_app/presentation/screens/MarketProfile/components/MarketProfileAppBar.dart';
-// import 'package:client_app/presentation/screens/MarketProfile/components/MarketProfileScreen.dart';
+import '../../../app/global.dart';
 
-// import 'package:client_app/presentation/screens/MarketProfile/controller/MarketProfileController.dart';
-// import 'package:client_app/style/icons.dart';
-// import 'package:flutter/material.dart';
-// import 'package:location/location.dart';
+class MarketProfile extends StatefulWidget {
+  @override
+  State<MarketProfile> createState() => _MarketProfileState();
+}
 
-// import '../../../app/global.dart';
+class _MarketProfileState extends State<MarketProfile> {
+  // final MarketProfileController _marketProfileControllerController =
+  //     MarketProfileController();
 
-// class MarketProfile extends StatefulWidget {
-//   final int id;
-//   const MarketProfile(this.id);
+  @override
+  void initState() {
+    super.initState();
+  }
 
-//   @override
-//   State<MarketProfile> createState() => _MarketProfileState();
-// }
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
-// class _MarketProfileState extends State<MarketProfile> {
-//   final MarketProfileController _marketProfileControllerController =
-//       MarketProfileController();
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        }, // hide keyboard on tap anywhere
 
-//   @override
-//   void initState() {
-//     super.initState();
-//   }
-
-//   @override
-//   void dispose() {
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: () {
-//         FocusScopeNode currentFocus = FocusScope.of(context);
-//         if (!currentFocus.hasPrimaryFocus) {
-//           currentFocus.unfocus();
-//         }
-//       }, // hide keyboard on tap anywhere
-
-//       child: Scaffold(
-//           appBar: AppBar(
-//             automaticallyImplyLeading: false,
-//             centerTitle: true,
-//             backgroundColor: Theme.of(context).colorScheme.secondary,
-//             toolbarHeight: MyApplication.hightClc(context, 90),
-//             elevation: 0,
-//             title: MarketProfileAppBar(),
-//           ),
-//           body: MarketProfileScreen(widget.id)),
-//     );
-//   }
-// }
+        child: Scaffold(
+            // appBar: AppBar(
+            //   automaticallyImplyLeading: false,
+            //   centerTitle: true,
+            //   backgroundColor: Theme.of(context).colorScheme.secondary,
+            //   toolbarHeight: MyApplication.hightClc(context, 90),
+            //   elevation: 0,
+            //   title: MarketProfileAppBar(),
+            // ),
+            body: Container(
+          height: 300,
+          width: 300,
+          child: GoogleMap(
+            initialCameraPosition:
+                CameraPosition(target: LatLng(30, 30), zoom: 11),
+          ),
+        )));
+  }
+}

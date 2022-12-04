@@ -2,9 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class myButton extends StatelessWidget {
-  final String buttonName;
   final myHandler;
-  const myButton(this.myHandler, this.buttonName);
+  final String buttonName;
+
+  const myButton(
+    this.myHandler,
+    this.buttonName,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +23,7 @@ class myButton extends StatelessWidget {
             elevation: 0,
             backgroundColor: Color(0XFFDC8035),
           ),
-          onPressed: () {
-            myHandler();
-          },
+          onPressed: myHandler,
           child: Center(
               child: AutoSizeText(
             buttonName,

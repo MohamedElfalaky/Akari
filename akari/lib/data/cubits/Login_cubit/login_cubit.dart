@@ -1,6 +1,10 @@
+import 'dart:math';
+
 import 'package:akari/data/Models/log_in_model/log_in_model.dart';
-import 'package:akari/data/Shared/dio_helper.dart';
-import 'package:akari/data/Shared/end_points.dart';
+import 'package:akari/data/Repositries/LoginRepo.dart';
+import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/helpers/dio_helper.dart';
+import 'package:akari/App/constants.dart';
 import 'package:akari/style/Icons.dart';
 
 import 'package:flutter/material.dart';
@@ -13,24 +17,24 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
   static LoginCubit get(context) => BlocProvider.of(context);
+  LoginRepo logInRepo = LoginRepo();
 
   bool isHiddenPass = true;
   Widget? securityIcon = SvgPicture.asset(passOff);
 
-  void userLogin({required email, required password}) {
-    emit(LoginLoading());
-    DioHelper.postData(url: LOGIN, data: {
-      "email": email,
-      "password": password,
-    }).then((value) {
-      // print(value.data);
-      var myLoginModel = LogInModel.fromJson(value.data);
-      // print(myLoginModel.success);
-      emit(LoginSuccess(myLoginModel));
-    }).catchError((error) {
-      print(error.toString());
-      emit(LoginError(error.toString()));
-    });
+  void userLogin({required String mail, required String password}) {
+    try {
+      emit(LoginLoading());
+      logInRepo.logIn(mail, password).then((value) {
+        if (value != null) {
+          emit(LoginSuccess(value));
+        } else {
+          LoginError(value.toString());
+        }
+      });
+    } catch (e) {
+      emit(LoginError(e.toString()));
+    }
   }
 
   void showPassWord() {

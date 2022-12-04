@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
@@ -33,16 +33,16 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
         appBar: AppBar(
           automaticallyImplyLeading: false, // remove back button in appbar.
           backgroundColor: Color(0xFFFFFFFF),
-          toolbarHeight: Simplify.hightClc(context, 140),
+          toolbarHeight: myApplication.hightClc(context, 140),
           elevation: 0,
           title: AfterFilterAppBar(widget.title),
         ),
         body: Container(
-          height: Simplify.hightClc(context, 640),
+          height: myApplication.hightClc(context, 640),
           margin: EdgeInsets.only(
-            top: Simplify.hightClc(context, 8),
-            right: Simplify.widthClc(context, 24),
-            left: Simplify.widthClc(context, 24),
+            top: myApplication.hightClc(context, 8),
+            right: myApplication.widthClc(context, 24),
+            left: myApplication.widthClc(context, 24),
           ),
           child: ListView(
             children: [

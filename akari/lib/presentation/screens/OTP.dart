@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
@@ -54,17 +54,17 @@ class OTP extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                    height: Simplify.hightClc(context, 340),
+                    height: myApplication.hightClc(context, 340),
                     color: Theme.of(context).colorScheme.tertiary,
                     child: Center(
                         child: SvgPicture.asset(
                       "assets/logo1.svg",
                     ))),
                 Container(
-                  height: Simplify.hightClc(context, 460),
+                  height: myApplication.hightClc(context, 460),
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(
-                      horizontal: Simplify.widthClc(context, 24)),
+                      horizontal: myApplication.widthClc(context, 24)),
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -81,8 +81,8 @@ class OTP extends StatelessWidget {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                            top: Simplify.hightClc(context, 24),
-                            bottom: Simplify.hightClc(context, 16)),
+                            top: myApplication.hightClc(context, 24),
+                            bottom: myApplication.hightClc(context, 16)),
                         child: Center(
                           child: AutoSizeText(
                             "Confirm Your Account",
@@ -94,9 +94,9 @@ class OTP extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: Simplify.widthClc(context, 272),
+                        width: myApplication.widthClc(context, 272),
                         margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 6)),
+                            bottom: myApplication.hightClc(context, 6)),
                         child: Center(
                           child: AutoSizeText(
                             "Enter Confirmation Code that has been sent to your email:",
@@ -110,7 +110,7 @@ class OTP extends StatelessWidget {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 40)),
+                            bottom: myApplication.hightClc(context, 40)),
                         child: Center(
                           child: AutoSizeText(
                             " alimohamed@example.test",
@@ -130,7 +130,7 @@ class OTP extends StatelessWidget {
                         controller: pinController,
                       ),
                       SizedBox(
-                        height: Simplify.hightClc(context, 48),
+                        height: myApplication.hightClc(context, 48),
                       ),
                       myButton(
                           () => showDialog(
@@ -141,7 +141,7 @@ class OTP extends StatelessWidget {
                               ),
                           "Confirm"),
                       SizedBox(
-                        height: Simplify.hightClc(context, 16),
+                        height: myApplication.hightClc(context, 16),
                       ),
                       AutoSizeText(
                         "04:49",
@@ -151,7 +151,7 @@ class OTP extends StatelessWidget {
                             fontSize: 16),
                       ),
                       SizedBox(
-                        height: Simplify.hightClc(context, 26),
+                        height: myApplication.hightClc(context, 26),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

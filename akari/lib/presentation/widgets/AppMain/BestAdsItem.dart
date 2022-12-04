@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,11 +11,11 @@ class BestAdsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-          top: Simplify.hightClc(context, 8),
-          bottom: Simplify.hightClc(context, 16)),
+          top: myApplication.hightClc(context, 8),
+          bottom: myApplication.hightClc(context, 16)),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-      height: Simplify.hightClc(context, 314),
-      width: Simplify.widthClc(context, 327),
+      height: myApplication.hightClc(context, 314),
+      width: myApplication.widthClc(context, 327),
       child: Column(
         children: [
           Stack(
@@ -28,14 +28,14 @@ class BestAdsItem extends StatelessWidget {
                       fit: BoxFit.fill),
                   // color: Colors.green,
                 ),
-                height: Simplify.hightClc(context, 176),
+                height: myApplication.hightClc(context, 176),
               ),
               Container(
                 margin: EdgeInsets.only(
-                    top: Simplify.hightClc(context, 8),
-                    left: Simplify.widthClc(context, 8)),
-                height: Simplify.widthClc(context, 32),
-                width: Simplify.widthClc(context, 32),
+                    top: myApplication.hightClc(context, 8),
+                    left: myApplication.widthClc(context, 8)),
+                height: myApplication.widthClc(context, 32),
+                width: myApplication.widthClc(context, 32),
                 decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(50)),
@@ -57,14 +57,14 @@ class BestAdsItem extends StatelessWidget {
                       bottomRight: Radius.circular(10))),
               width: double.infinity,
               padding: EdgeInsets.symmetric(
-                  horizontal: Simplify.widthClc(context, 12),
-                  vertical: Simplify.hightClc(context, 8)),
+                  horizontal: myApplication.widthClc(context, 12),
+                  vertical: myApplication.hightClc(context, 8)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(bottom: Simplify.hightClc(context, 12)),
+                    margin: EdgeInsets.only(
+                        bottom: myApplication.hightClc(context, 12)),
                     child: AutoSizeText(
                       "Villa five stars",
                       style:
@@ -80,17 +80,17 @@ class BestAdsItem extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  right: Simplify.widthClc(context, 6),
-                                  bottom: Simplify.hightClc(context, 8)),
-                              height: Simplify.hightClc(context, 14),
-                              width: Simplify.widthClc(context, 14),
+                                  right: myApplication.widthClc(context, 6),
+                                  bottom: myApplication.hightClc(context, 8)),
+                              height: myApplication.hightClc(context, 14),
+                              width: myApplication.widthClc(context, 14),
                               child:
                                   SvgPicture.asset("assets/AdsPics/area.svg"),
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  right: Simplify.widthClc(context, 125),
-                                  bottom: Simplify.hightClc(context, 8)),
+                                  right: myApplication.widthClc(context, 125),
+                                  bottom: myApplication.hightClc(context, 8)),
                               child: AutoSizeText(
                                 "200 m",
                                 style: TextStyle(
@@ -107,16 +107,16 @@ class BestAdsItem extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  right: Simplify.widthClc(context, 6),
-                                  bottom: Simplify.hightClc(context, 8)),
-                              height: Simplify.hightClc(context, 14),
-                              width: Simplify.widthClc(context, 14),
+                                  right: myApplication.widthClc(context, 6),
+                                  bottom: myApplication.hightClc(context, 8)),
+                              height: myApplication.hightClc(context, 14),
+                              width: myApplication.widthClc(context, 14),
                               child: SvgPicture.asset(
                                   "assets/AdsPics/floor no..svg"),
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: Simplify.hightClc(context, 8)),
+                                  bottom: myApplication.hightClc(context, 8)),
                               child: AutoSizeText(
                                 "3 floors",
                                 style: TextStyle(
@@ -137,15 +137,15 @@ class BestAdsItem extends StatelessWidget {
                           child: Row(children: [
                             Container(
                                 margin: EdgeInsets.only(
-                                    right: Simplify.widthClc(context, 6),
-                                    bottom: Simplify.hightClc(context, 8)),
-                                height: Simplify.hightClc(context, 14),
-                                width: Simplify.widthClc(context, 14),
+                                    right: myApplication.widthClc(context, 6),
+                                    bottom: myApplication.hightClc(context, 8)),
+                                height: myApplication.hightClc(context, 14),
+                                width: myApplication.widthClc(context, 14),
                                 child: SvgPicture.asset(
                                     "assets/AdsPics/location.svg")),
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: Simplify.hightClc(context, 12)),
+                                  bottom: myApplication.hightClc(context, 12)),
                               child: AutoSizeText(
                                 "Sudan, Alkhartom ",
                                 style: TextStyle(
@@ -160,16 +160,16 @@ class BestAdsItem extends StatelessWidget {
                           children: [
                             Container(
                                 margin: EdgeInsets.only(
-                                  bottom: Simplify.hightClc(context, 12),
-                                  right: Simplify.widthClc(context, 6),
+                                  bottom: myApplication.hightClc(context, 12),
+                                  right: myApplication.widthClc(context, 6),
                                 ),
-                                height: Simplify.hightClc(context, 14),
-                                width: Simplify.widthClc(context, 14),
+                                height: myApplication.hightClc(context, 14),
+                                width: myApplication.widthClc(context, 14),
                                 child: SvgPicture.asset(
                                     "assets/AdsPics/post date.svg")),
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: Simplify.hightClc(context, 12)),
+                                  bottom: myApplication.hightClc(context, 12)),
                               child: AutoSizeText(
                                 "19 OCT",
                                 style: TextStyle(

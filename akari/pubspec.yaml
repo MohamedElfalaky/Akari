@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^8.1.1
   dio: ^4.0.6
+  http: ^0.13.5
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.15
   flutter_localizations:
@@ -50,6 +51,9 @@ dependencies:
   sizer: ^2.0.15
   pinput: ^2.2.16
   responsive_framework: ^0.2.0
+  connectivity_plus: ^3.0.2
+  flutter_typeahead: ^4.1.1
+  google_maps_flutter: ^2.2.1
 
 dev_dependencies:
   flutter_test:

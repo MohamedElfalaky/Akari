@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/widgets/AllCategory/AllCategoryAppBar.dart';
 import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
@@ -35,15 +35,15 @@ class _AllCategoryState extends State<AllCategory> {
           automaticallyImplyLeading: false, // remove back button in appbar.
 
           backgroundColor: Color(0xFFFFFFFF),
-          toolbarHeight: Simplify.hightClc(context, 145),
+          toolbarHeight: myApplication.hightClc(context, 145),
           elevation: 0,
           title: AllCategoryAppBar(),
         ),
         body: Container(
             margin: EdgeInsets.only(
-              left: Simplify.widthClc(context, 10),
-              right: Simplify.widthClc(context, 10),
-              top: Simplify.hightClc(context, 24),
+              left: myApplication.widthClc(context, 10),
+              right: myApplication.widthClc(context, 10),
+              top: myApplication.hightClc(context, 24),
             ),
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,

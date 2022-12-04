@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,7 +9,8 @@ class AllCategoryAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 12)),
+      margin:
+          EdgeInsets.symmetric(horizontal: myApplication.widthClc(context, 12)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +34,7 @@ class AllCategoryAppBar extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: Simplify.hightClc(context, 36),
+            height: myApplication.hightClc(context, 36),
           ),
           SizedBox(
             child: Row(
@@ -41,8 +42,8 @@ class AllCategoryAppBar extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  width: Simplify.widthClc(context, 320),
-                  height: Simplify.hightClc(context, 40),
+                  width: myApplication.widthClc(context, 320),
+                  height: myApplication.hightClc(context, 40),
                   child: TextField(
                     textAlignVertical: TextAlignVertical.center,
                     cursorHeight: 25,
@@ -58,8 +59,8 @@ class AllCategoryAppBar extends StatelessWidget {
                             borderSide:
                                 BorderSide(width: 1, color: Color(70707033))),
                         contentPadding: EdgeInsets.only(
-                            left: Simplify.widthClc(context, 10),
-                            bottom: Simplify.hightClc(context, 10)),
+                            left: myApplication.widthClc(context, 10),
+                            bottom: myApplication.hightClc(context, 10)),
                         prefixIcon: Container(
                           margin: EdgeInsets.all(
                             5,

@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
@@ -28,7 +28,7 @@ class _FilterScreenState extends State<FilterScreen> {
       children: [
         Container(
           margin: EdgeInsets.only(
-            top: Simplify.widthClc(context, 8),
+            top: myApplication.widthClc(context, 8),
           ),
           child: Form(
             key: _formKey,
@@ -36,8 +36,8 @@ class _FilterScreenState extends State<FilterScreen> {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: Simplify.widthClc(context, 16),
-                    vertical: Simplify.hightClc(context, 16),
+                    horizontal: myApplication.widthClc(context, 16),
+                    vertical: myApplication.hightClc(context, 16),
                   ),
                   color: Color(0xFFFFFFFF),
                   child: Column(
@@ -52,7 +52,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       ),
                       Container(
                           margin: EdgeInsets.only(
-                              top: Simplify.hightClc(context, 19)),
+                              top: myApplication.hightClc(context, 19)),
                           child: Row(
                             // scrollDirection: Axis.horizontal,
                             children:
@@ -91,13 +91,13 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: Simplify.hightClc(context, 8),
+                  height: myApplication.hightClc(context, 8),
                 ),
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(
-                    horizontal: Simplify.widthClc(context, 16),
-                    vertical: Simplify.hightClc(context, 16),
+                    horizontal: myApplication.widthClc(context, 16),
+                    vertical: myApplication.hightClc(context, 16),
                   ),
                   color: Color(0xFFFFFFFF),
                   child: Column(
@@ -112,7 +112,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       ),
                       Container(
                           margin: EdgeInsets.only(
-                              top: Simplify.hightClc(context, 19)),
+                              top: myApplication.hightClc(context, 19)),
                           child: Wrap(
                               children: myTaps
                                   .map((e) => InkWell(
@@ -147,12 +147,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: Simplify.hightClc(context, 8),
+                  height: myApplication.hightClc(context, 8),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: Simplify.widthClc(context, 16),
-                    vertical: Simplify.hightClc(context, 16),
+                    horizontal: myApplication.widthClc(context, 16),
+                    vertical: myApplication.hightClc(context, 16),
                   ),
                   color: Color(0xFFFFFFFF),
                   child: Column(
@@ -167,8 +167,8 @@ class _FilterScreenState extends State<FilterScreen> {
                       ),
                       Container(
                           margin: EdgeInsets.only(
-                              top: Simplify.hightClc(context, 16)),
-                          height: Simplify.hightClc(context, 40),
+                              top: myApplication.hightClc(context, 16)),
+                          height: myApplication.hightClc(context, 40),
                           child: Row(
                             // scrollDirection: Axis.horizontal,
                             children: [
@@ -194,7 +194,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                 keyboardType: TextInputType.number,
                               )),
                               SizedBox(
-                                width: Simplify.widthClc(context, 8),
+                                width: myApplication.widthClc(context, 8),
                               ),
                               Expanded(
                                   child: TextFormField(
@@ -226,12 +226,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: Simplify.hightClc(context, 8),
+                  height: myApplication.hightClc(context, 8),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: Simplify.widthClc(context, 16),
-                    vertical: Simplify.hightClc(context, 16),
+                    horizontal: myApplication.widthClc(context, 16),
+                    vertical: myApplication.hightClc(context, 16),
                   ),
                   color: Color(0xFFFFFFFF),
                   child: Column(
@@ -246,7 +246,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       ),
                       Container(
                           margin: EdgeInsets.only(
-                              top: Simplify.hightClc(context, 19)),
+                              top: myApplication.hightClc(context, 19)),
                           child: Row(
                             // scrollDirection: Axis.horizontal,
                             children:
@@ -285,13 +285,13 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: Simplify.hightClc(context, 50),
+                  height: myApplication.hightClc(context, 50),
                 ),
                 Container(
-                  height: Simplify.hightClc(context, 45),
+                  height: myApplication.hightClc(context, 45),
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(
-                      horizontal: Simplify.widthClc(context, 32)),
+                      horizontal: myApplication.widthClc(context, 32)),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -325,11 +325,11 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: Simplify.hightClc(context, 8),
+                  height: myApplication.hightClc(context, 8),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(
-                      horizontal: Simplify.widthClc(context, 32)),
+                      horizontal: myApplication.widthClc(context, 32)),
                   child: TextButton(
                     onPressed: () {},
                     child: AutoSizeText(

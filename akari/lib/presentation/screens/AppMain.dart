@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
 
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
@@ -40,7 +40,7 @@ class _AppMainState extends State<AppMain> {
 
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: Simplify.hightClc(context, 181),
+          toolbarHeight: myApplication.hightClc(context, 181),
           elevation: 0,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(16))),

@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
@@ -28,21 +28,21 @@ class ForgetPassword extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                    height: Simplify.hightClc(context, 90),
+                    height: myApplication.hightClc(context, 90),
                     color: Theme.of(context).colorScheme.tertiary,
                     child: Center(
                         child: SvgPicture.asset("assets/forgetpass/logo.svg"))),
                 Container(
-                    height: Simplify.hightClc(context, 300),
+                    height: myApplication.hightClc(context, 300),
                     color: Theme.of(context).colorScheme.tertiary,
                     child: Center(
                         child: SvgPicture.asset(
                             "assets/forgetpass/Forgot password-cuate.svg"))),
                 Container(
-                  height: Simplify.hightClc(context, 400),
+                  height: myApplication.hightClc(context, 400),
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(
-                      horizontal: Simplify.widthClc(context, 24)),
+                      horizontal: myApplication.widthClc(context, 24)),
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -59,8 +59,8 @@ class ForgetPassword extends StatelessWidget {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                            top: Simplify.hightClc(context, 24),
-                            bottom: Simplify.hightClc(context, 8)),
+                            top: myApplication.hightClc(context, 24),
+                            bottom: myApplication.hightClc(context, 8)),
                         child: Center(
                           child: AutoSizeText(
                             "Oops! Forgot Password?",
@@ -73,7 +73,7 @@ class ForgetPassword extends StatelessWidget {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 24)),
+                            bottom: myApplication.hightClc(context, 24)),
                         child: Center(
                           child: AutoSizeText(
                             "Don't Worry, we will help you recover your password simply and quickly.",
@@ -87,7 +87,7 @@ class ForgetPassword extends StatelessWidget {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                            bottom: Simplify.hightClc(context, 16)),
+                            bottom: myApplication.hightClc(context, 16)),
                         child: Center(
                           child: AutoSizeText(
                             "Please enter your email to recover",
@@ -102,10 +102,9 @@ class ForgetPassword extends StatelessWidget {
                       myTextField(
                         hint: "Email",
                         prefix: "assets/registerPics/vuesax-bulk-sms.svg",
-                        suffix: "",
                       ),
                       SizedBox(
-                        height: Simplify.hightClc(context, 32),
+                        height: myApplication.hightClc(context, 32),
                       ),
 
                       //forgetpass

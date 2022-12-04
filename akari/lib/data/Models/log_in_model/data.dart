@@ -5,7 +5,7 @@ class Data {
   String? email;
   String? name;
   String? phone;
-  List<String>? roles;
+  List<dynamic>? roles;
 
   Data({this.id, this.email, this.name, this.phone, this.roles});
 
@@ -14,7 +14,7 @@ class Data {
         email: json['email'] as String?,
         name: json['name'] as String?,
         phone: json['phone'] as String?,
-        roles: json['roles'] as List<String>?,
+        roles: json['roles'] as List<dynamic>?,
       );
 
   Map<String, dynamic> toJson() => {

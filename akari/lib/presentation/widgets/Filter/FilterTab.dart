@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,11 +12,12 @@ class FilterTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: Simplify.hightClc(context, 24),
+        height: myApplication.hightClc(context, 24),
         padding: EdgeInsets.symmetric(
-          horizontal: Simplify.widthClc(context, 4),
+          horizontal: myApplication.widthClc(context, 4),
         ),
-        margin: EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 2)),
+        margin: EdgeInsets.symmetric(
+            horizontal: myApplication.widthClc(context, 2)),
         decoration: BoxDecoration(
             color:
                 booll ? Color.fromARGB(255, 100, 179, 244) : Color(0xFFFFFFFF),

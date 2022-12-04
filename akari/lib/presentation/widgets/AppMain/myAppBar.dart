@@ -1,4 +1,4 @@
-import 'package:akari/data/Shared/Simplify.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -11,7 +11,8 @@ class myAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Simplify.widthClc(context, 12)),
+      margin:
+          EdgeInsets.symmetric(horizontal: myApplication.widthClc(context, 12)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,14 +21,14 @@ class myAppBar extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
           ),
           SizedBox(
-            height: Simplify.hightClc(context, 8),
+            height: myApplication.hightClc(context, 8),
           ),
           AutoSizeText(
             "Here you can find what you need!",
             style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
           ),
           SizedBox(
-            height: Simplify.hightClc(context, 16),
+            height: myApplication.hightClc(context, 16),
           ),
           SearchFilter(() => Navigator.push(
               //
