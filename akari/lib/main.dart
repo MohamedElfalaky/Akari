@@ -9,7 +9,7 @@ import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/screens/MarketProfile/MarketProfile.dart';
+import 'package:akari/presentation/screens/MyMap/MyMap.dart';
 import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:akari/presentation/screens/Register.dart';
@@ -112,7 +112,7 @@ class MyApp extends StatelessWidget {
                 '/forgetpassword': (context) => ForgetPassword(),
                 '/otp': (context) => OTP(),
               },
-              home: MarketProfile(),
+              home: AppMain(),
             );
           });
         },

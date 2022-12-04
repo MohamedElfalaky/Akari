@@ -1,8 +1,12 @@
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/Chat/Chat.dart';
+import 'package:akari/presentation/screens/Favorite/Favorite.dart';
+import 'package:akari/presentation/screens/More/More.dart';
 import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
 
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -14,18 +18,7 @@ class AppMain extends StatefulWidget {
 }
 
 int currentIndex = 0;
-final screens = [
-  AppMainScreen(),
-  Center(
-    child: Text("S2"),
-  ),
-  Center(
-    child: Text("S3"),
-  ),
-  Center(
-    child: Text("S4"),
-  ),
-];
+final screens = [AppMainScreen(), Favorite(), Chat(), More()];
 
 class _AppMainState extends State<AppMain> {
   @override
@@ -39,15 +32,7 @@ class _AppMainState extends State<AppMain> {
       }, // hide keyboard on tap anywhere
 
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: myApplication.hightClc(context, 181),
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(16))),
-          title: myAppBar(),
-        ),
         body: IndexedStack(index: currentIndex, children: screens),
-        floatingActionButton: ViewOnMap(),
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.white70,
           selectedItemColor: Colors.white,
@@ -65,12 +50,15 @@ class _AppMainState extends State<AppMain> {
                 icon: SvgPicture.asset("assets/bottomNav/home-hashtag.svg"),
                 label: "home"),
             BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(heartBulk),
                 icon: SvgPicture.asset("assets/bottomNav/heart.svg"),
                 label: "favorite"),
             BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(messageBulk),
                 icon: SvgPicture.asset("assets/bottomNav/message-text.svg"),
                 label: "chat"),
             BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(categoryBulk),
                 icon: SvgPicture.asset("assets/bottomNav/category.svg"),
                 label: "more"),
           ],

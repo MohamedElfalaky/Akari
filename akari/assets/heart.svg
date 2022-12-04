@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_24917" data-name="Rectangle 24917" width="24" height="24" transform="translate(5769 5472)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="heart" transform="translate(-5769 -5472)" clip-path="url(#clip-path)">
+    <path id="Icon_ionic-ios-heart" data-name="Icon ionic-ios-heart" d="M17.99,3.938h-.048a5.424,5.424,0,0,0-4.567,2.6,5.424,5.424,0,0,0-4.567-2.6H8.76a5.55,5.55,0,0,0-5.385,5.65,12.485,12.485,0,0,0,2.3,6.635,40.955,40.955,0,0,0,7.7,7.715,40.955,40.955,0,0,0,7.7-7.715,12.485,12.485,0,0,0,2.3-6.635A5.55,5.55,0,0,0,17.99,3.938Z" transform="translate(5767.625 5470.063)" fill="#fff"/>
+  </g>
+</svg>

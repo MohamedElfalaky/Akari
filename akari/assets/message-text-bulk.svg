@@ -1,0 +1,8 @@
+<svg id="message-text_bulk" data-name="message-text/bulk" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="vuesax_bulk_message-text" data-name="vuesax/bulk/message-text">
+    <g id="message-text">
+      <path id="Subtraction_10" data-name="Subtraction 10" d="M-5712-5535a1.508,1.508,0,0,1-1.2-.66l-1.5-1.99a1.108,1.108,0,0,0-.8-.4h-1.5a5,5,0,0,1-5-4.979v-6.98a5,5,0,0,1,5-4.99h10a5,5,0,0,1,5,4.99v6.98a5,5,0,0,1-5,4.979h-1.5a1.016,1.016,0,0,0-.8.4l-1.5,1.99A1.508,1.508,0,0,1-5712-5535Zm-5-9.75a.751.751,0,0,0-.75.75.751.751,0,0,0,.75.75h6a.751.751,0,0,0,.751-.75.751.751,0,0,0-.751-.75Zm0-5a.76.76,0,0,0-.75.75.751.751,0,0,0,.75.75h10a.751.751,0,0,0,.75-.75.76.76,0,0,0-.75-.75Z" transform="translate(5724 5557)" fill="#fff"/>
+      <path id="Vector" d="M0,0H24V24H0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

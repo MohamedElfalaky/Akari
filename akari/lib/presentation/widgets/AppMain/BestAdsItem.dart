@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
 class BestAdsItem extends StatelessWidget {
-  const BestAdsItem({super.key});
-
+  const BestAdsItem({super.key, this.myBool});
+  final bool? myBool;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,10 +40,15 @@ class BestAdsItem extends StatelessWidget {
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(50)),
                 child: Center(
-                  child: Icon(
-                    Icons.favorite_outline,
-                    color: Colors.red,
-                  ),
+                  child: myBool == true
+                      ? Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      : Icon(
+                          Icons.favorite_outline,
+                          color: Colors.red,
+                        ),
                 ),
               )
             ],

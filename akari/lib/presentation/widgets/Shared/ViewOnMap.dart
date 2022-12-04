@@ -1,3 +1,5 @@
+import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/MyMap/MyMap.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,7 @@ class ViewOnMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () {
-        // Add your onPressed code here!
+        myApplication.navigateTo(MyMap(), context);
       },
       mouseCursor: SystemMouseCursors.click,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
