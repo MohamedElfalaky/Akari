@@ -40,6 +40,11 @@ class _OnBoardingState extends State<OnBoarding> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _timer!.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

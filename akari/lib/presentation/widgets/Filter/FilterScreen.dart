@@ -43,7 +43,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AutoSizeText(
+                      Text(
                         "Contract Type",
                         style: TextStyle(
                             fontSize: 16,
@@ -103,7 +103,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AutoSizeText(
+                      Text(
                         "Property Type",
                         style: TextStyle(
                             fontSize: 16,
@@ -158,7 +158,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AutoSizeText(
+                      Text(
                         "Price ( SD )",
                         style: TextStyle(
                             fontSize: 16,
@@ -166,9 +166,8 @@ class _FilterScreenState extends State<FilterScreen> {
                             color: Color(0xFF363A3D)),
                       ),
                       Container(
-                          margin: EdgeInsets.only(
-                              top: myApplication.hightClc(context, 16)),
-                          height: myApplication.hightClc(context, 40),
+                          margin: EdgeInsets.only(top: 16),
+                          // height: myApplication.hightClc(context, 40),
                           child: Row(
                             // scrollDirection: Axis.horizontal,
                             children: [
@@ -237,7 +236,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AutoSizeText(
+                      Text(
                         "Unit Laws",
                         style: TextStyle(
                             fontSize: 16,
@@ -314,7 +313,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       }
                     },
                     child: Center(
-                        child: AutoSizeText(
+                        child: Text(
                       "Confirm",
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
@@ -332,7 +331,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       horizontal: myApplication.widthClc(context, 32)),
                   child: TextButton(
                     onPressed: () {},
-                    child: AutoSizeText(
+                    child: Text(
                       "Reset Filters",
                       style: TextStyle(
                           fontWeight: FontWeight.normal,

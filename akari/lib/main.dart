@@ -112,7 +112,7 @@ class MyApp extends StatelessWidget {
                 '/forgetpassword': (context) => ForgetPassword(),
                 '/otp': (context) => OTP(),
               },
-              home: AppMain(),
+              home: Splash(),
             );
           });
         },
