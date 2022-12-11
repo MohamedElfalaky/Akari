@@ -1,6 +1,6 @@
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/More/components/MoreScreen.dart';
+import 'package:akari/presentation/screens/ProfilePage/components/ProfilePageScreen.dart';
 
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 
@@ -8,21 +8,21 @@ import 'package:flutter/material.dart';
 
 import '../../../app/global.dart';
 
-class More extends StatefulWidget {
-  const More();
+class ProfilePage extends StatefulWidget {
+  const ProfilePage();
 
   @override
-  State<More> createState() => _MoreState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _MoreState extends State<More> {
-  // final MoreController _MoreControllerController = MoreController();
+class _ProfilePageState extends State<ProfilePage> {
+  // final ProfilePageController _ProfilePageControllerController = ProfilePageController();
 
   @override
   void initState() {
     super.initState();
 
-    // _MoreControllerController.MoreAPIs(
+    // _ProfilePageControllerController.ProfilePageAPIs(
     //     context, CacheHelper.getFromShared("token"));
   }
 
@@ -52,10 +52,15 @@ class _MoreState extends State<More> {
                   borderRadius:
                       BorderRadius.vertical(bottom: Radius.circular(16))),
               title: Text(
-                "More",
+                "Profile",
                 style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
               ),
+              leading: BackButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
-            body: MoreScreen()));
+            body: ProfilePageScreen()));
   }
 }

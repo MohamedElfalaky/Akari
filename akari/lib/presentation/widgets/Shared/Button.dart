@@ -13,8 +13,8 @@ class myButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: MediaQuery.of(context).size.height * 45 / 812,
-        width: MediaQuery.of(context).size.width * 311 / 375,
+        height: 45,
+        // width: 100,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(

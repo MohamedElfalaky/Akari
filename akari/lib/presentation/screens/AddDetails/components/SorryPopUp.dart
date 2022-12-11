@@ -1,21 +1,21 @@
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
+import 'package:akari/presentation/screens/Register.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../../helpers/AppLocalizations.dart';
-
-class ResetMail extends StatefulWidget {
+class SorryPopUp extends StatefulWidget {
   @override
-  State<ResetMail> createState() => _ResetMailState();
+  State<SorryPopUp> createState() => _SorryPopUpState();
 }
 
-class _ResetMailState extends State<ResetMail> {
+class _SorryPopUpState extends State<SorryPopUp> {
   int navigateTothisIndex = 4;
   @override
   Widget build(BuildContext context) {
@@ -40,14 +40,14 @@ class _ResetMailState extends State<ResetMail> {
                           child: Icon(Icons.close)),
                     ],
                   ),
-                  SvgPicture.asset("assets/Enter OTP-bro.svg"),
+                  SvgPicture.asset(sorryy),
                   Container(
                     margin: EdgeInsets.only(
                         top: myApplication.hightClc(context, 24),
                         bottom: myApplication.hightClc(context, 8)),
                     child: Center(
                       child: Text(
-                        "Recover mail successfully sent",
+                        "you aren't a user",
                         style: TextStyle(
                             fontFamily: "Tajawal",
                             fontSize: 18,
@@ -61,7 +61,7 @@ class _ResetMailState extends State<ResetMail> {
                         bottom: myApplication.hightClc(context, 16)),
                     child: Center(
                       child: Text(
-                        "password recovery mail has been successfully sent to your email: name@example.test",
+                        "Create account now and start using smart building",
                         style: TextStyle(
                             fontFamily: "Tajawal,Regular",
                             fontSize: 13,
@@ -72,8 +72,8 @@ class _ResetMailState extends State<ResetMail> {
                   ),
                   myButton(() {
                     Navigator.pop(context);
-                    myApplication.navigateTo(LogIn(), context);
-                  }, "Done"),
+                    myApplication.navigateTo(Register(), context);
+                  }, "Create account"),
                 ]),
           )),
     );

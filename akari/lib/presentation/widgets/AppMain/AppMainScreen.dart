@@ -1,4 +1,5 @@
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
@@ -75,10 +76,18 @@ class AppMainScreen extends StatelessWidget {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      BestAdsItem(),
-                      BestAdsItem(),
-                      BestAdsItem(),
-                      BestAdsItem(),
+                      InkWell(
+                          onTap: () =>
+                              myApplication.navigateTo(AddDetails(), context),
+                          child: BestAdsItem()),
+                      InkWell(
+                          onTap: () =>
+                              myApplication.navigateTo(AddDetails(), context),
+                          child: BestAdsItem()),
+                      InkWell(
+                          onTap: () =>
+                              myApplication.navigateTo(AddDetails(), context),
+                          child: BestAdsItem()),
                     ],
                   ),
                 )

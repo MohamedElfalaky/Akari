@@ -52,8 +52,8 @@ class ForgetPassword extends StatelessWidget {
                       ],
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.sp),
-                          topRight: Radius.circular(30.sp))),
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [

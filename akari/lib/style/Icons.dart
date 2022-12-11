@@ -4,6 +4,14 @@ String passOff = "assets/passOff.svg";
 String heartBulk = "assets/heart.svg";
 String messageBulk = "assets/message-text-bulk.svg";
 String categoryBulk = "assets/category-bold.svg";
+String roomm = "assets/Room.svg";
+String bedd = "assets/bed.svg";
+String sorryy = "assets/Feeling sorry-pana.svg";
+String pass11 = "assets/password.svg";
+String termss = "assets/terms.svg";
+String calll = "assets/registerPics/call-bulk.svg";
+String msgg = "assets/registerPics/vuesax-bulk-sms.svg";
+// String termss = "assets/terms.svg";
 
 // Lottie
 String lottieExtension = "assets/Images/lottie/";
