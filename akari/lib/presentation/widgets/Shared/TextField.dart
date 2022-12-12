@@ -63,10 +63,13 @@ class myTextField extends StatelessWidget {
         contentPadding: EdgeInsets.only(
             left: myApplication.widthClc(context, 16),
             bottom: myApplication.hightClc(context, 16)),
-        prefixIcon: Container(
-          margin: EdgeInsets.only(top: 12, left: 12, bottom: 12, right: 6),
-          child: SvgPicture.asset(prefix ?? ""),
-        ),
+        prefixIcon: prefix != null
+            ? Container(
+                margin:
+                    EdgeInsets.only(top: 12, left: 12, bottom: 12, right: 6),
+                child: SvgPicture.asset(prefix ?? ""),
+              )
+            : null,
         suffixIcon: Container(
           width: 10,
           margin: EdgeInsets.all(12),

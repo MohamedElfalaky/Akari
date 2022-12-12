@@ -10,6 +10,7 @@ String sorryy = "assets/Feeling sorry-pana.svg";
 String pass11 = "assets/password.svg";
 String termss = "assets/terms.svg";
 String calll = "assets/registerPics/call-bulk.svg";
+String lockk = "assets/registerPics/vuesax-bulk-lock.svg";
 String msgg = "assets/registerPics/vuesax-bulk-sms.svg";
 String usrr = "assets/registerPics/user-bulk.svg";
 String penn = "assets/Group 62567.svg";

@@ -101,7 +101,67 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
               height: 36,
               child: myButton(
                 btnClr: Theme.of(context).colorScheme.secondary,
-                () {},
+                () {
+                  showModalBottomSheet(
+                      backgroundColor: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0),
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          // margin: EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 40),
+                          height: 280,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  topRight: Radius.circular(25)),
+                              color: Colors.white,
+                              border: Border.all(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Change your email",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                "Enter new distinctive email and you will receive confirmation code for verification",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: "Tajawal", fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 24,
+                              ),
+                              myTextField(
+                                prefix: msgg,
+                              ),
+                              SizedBox(
+                                height: 24,
+                              ),
+                              myButton(
+                                () {},
+                                "Apply Changes",
+                              ),
+                            ],
+                          ),
+                        );
+                      });
+                },
                 "Change email",
               ),
             ),
