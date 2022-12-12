@@ -11,7 +11,8 @@ String pass11 = "assets/password.svg";
 String termss = "assets/terms.svg";
 String calll = "assets/registerPics/call-bulk.svg";
 String msgg = "assets/registerPics/vuesax-bulk-sms.svg";
-// String termss = "assets/terms.svg";
+String usrr = "assets/registerPics/user-bulk.svg";
+String penn = "assets/Group 62567.svg";
 
 // Lottie
 String lottieExtension = "assets/Images/lottie/";

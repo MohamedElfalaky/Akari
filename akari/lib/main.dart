@@ -13,6 +13,7 @@ import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/screens/MyMap/MyMap.dart';
 import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
+import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
 import 'package:akari/presentation/screens/ProfilePage/ProfilePage.dart';
 import 'package:akari/presentation/screens/Register.dart';
 import 'package:akari/presentation/screens/Splash.dart';

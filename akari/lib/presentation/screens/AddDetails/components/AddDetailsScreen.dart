@@ -1,5 +1,6 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
+import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -484,7 +485,117 @@ class AddDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: 16,
                     ),
-                    myButton(() {}, "Contact Advertiser"),
+                    myButton(() {
+                      showModalBottomSheet(
+                          barrierColor: Theme.of(context)
+                              .colorScheme
+                              .secondary
+                              .withOpacity(0),
+                          backgroundColor: Theme.of(context)
+                              .colorScheme
+                              .secondary
+                              .withOpacity(0),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              padding: EdgeInsets.all(20),
+                              height: 300,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(25),
+                                      topRight: Radius.circular(25)),
+                                  color: Colors.white,
+                                  border: Border.all(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Price",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "150 SD / month",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  myButton(
+                                    () {},
+                                    "Call",
+                                    btnClr:
+                                        Theme.of(context).colorScheme.secondary,
+                                    txtClr: Colors.white,
+                                    btnIcon: Icon(Icons.phone),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  myButton(
+                                    () {
+                                      myApplication.navigateTo(
+                                          OneChatPage(), context);
+                                    },
+                                    "Chat",
+                                    btnClr: Colors.white,
+                                    txtClr:
+                                        Theme.of(context).colorScheme.secondary,
+                                    btnIcon: Icon(
+                                      Icons.chat,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  myButton(
+                                    () {},
+                                    "Whats App",
+                                    btnClr: Colors.white,
+                                    txtClr:
+                                        Theme.of(context).colorScheme.secondary,
+                                    btnIcon: Icon(
+                                      Icons.whatsapp,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Center(
+                                    child: SizedBox(
+                                      width: 130,
+                                      child: myButton(
+                                        () {
+                                          Navigator.pop(context);
+                                        },
+                                        "Cancel",
+                                        btnIcon: Icon(Icons.close),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          });
+                    }, "Contact Advertiser"),
                     SizedBox(
                       height: 16,
                     ),
@@ -497,4 +608,14 @@ class AddDetailsScreen extends StatelessWidget {
       ],
     );
   }
+// void myButtomSheet(BuildContext context) {
+//     showModalBottomSheet(
+//         barrierColor: Theme.of(context).colorScheme.secondary.withOpacity(0),
+//         backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0),
+//         context: context,
+//         builder: (BuildContext context) {
+//           return Text("data") ;
+//         });
+//   }
+
 }

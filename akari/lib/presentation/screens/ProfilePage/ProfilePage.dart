@@ -52,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   borderRadius:
                       BorderRadius.vertical(bottom: Radius.circular(16))),
               title: Text(
-                "Profile",
+                "ِEdit Profile",
                 style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
               ),
               leading: BackButton(

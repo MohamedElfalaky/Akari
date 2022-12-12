@@ -12,6 +12,8 @@ class myTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final keyBoardType;
   final TextEditingController? controller;
+  final clr;
+  final maxLines;
   const myTextField(
       {this.hint,
       this.prefix,
@@ -19,11 +21,14 @@ class myTextField extends StatelessWidget {
       this.obscureTxt,
       this.validator,
       this.keyBoardType,
-      this.controller});
+      this.controller,
+      this.clr,
+      this.maxLines});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       // height: 60,    // ميتقيدش بحجم عشان ميبوظش وقت الايرور
       // width: double.infinity,
       controller: controller,
@@ -34,11 +39,11 @@ class myTextField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.bottom,
       cursorHeight: 25,
       decoration: InputDecoration(
-        fillColor: Color(0xFFFFF7E999),
+        fillColor: clr ?? Color(0xFFFFF7E999),
         filled: true,
         hintText: hint,
         // label: Padding(
-        //     padding: EdgeInsets.only(top: 4.sp),
+        //     padding: EdgeInsets.only(top: 4),
         //     child: AutoSizeText(
         //       hint!,
         //       style: TextStyle(
@@ -48,9 +53,9 @@ class myTextField extends StatelessWidget {
         // border: OutlineInputBorder(), // square border
         enabledBorder: OutlineInputBorder(
             //rounded borders
-            borderRadius: BorderRadius.circular(4.sp),
+            borderRadius: BorderRadius.circular(4),
             borderSide: BorderSide(
-              color: Color(0xFFFFF7E999),
+              color: clr ?? Color(0xFFFFF7E999),
             )),
         focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
@@ -59,14 +64,13 @@ class myTextField extends StatelessWidget {
             left: myApplication.widthClc(context, 16),
             bottom: myApplication.hightClc(context, 16)),
         prefixIcon: Container(
-          margin:
-              EdgeInsets.only(top: 12.sp, left: 12.sp, bottom: 12.sp, right: 6),
-          child: SvgPicture.asset(prefix!),
+          margin: EdgeInsets.only(top: 12, left: 12, bottom: 12, right: 6),
+          child: SvgPicture.asset(prefix ?? ""),
         ),
         suffixIcon: Container(
           width: 10,
           margin: EdgeInsets.all(12),
-          child: suffix,
+          child: suffix ?? Container(),
         ),
       ),
     );

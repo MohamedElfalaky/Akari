@@ -2,6 +2,7 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
+import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,54 +63,71 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
               height: 8,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SvgPicture.asset(
                   msgg,
-                  height: 20,
+                  height: 25,
                 ),
-                Text(
-                  "ahmed@example.test",
-                  style: TextStyle(color: Colors.grey),
+                SizedBox(
+                  width: 8,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "ِEmail",
+                      style: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .secondary
+                              .withOpacity(0.7),
+                          fontSize: 12),
+                    ),
+                    Text(
+                      "ahmed@example.test",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
                 )
               ],
             ),
             SizedBox(
-              height: 8,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  calll,
-                  height: 20,
-                ),
-                Text(
-                  "021153668498",
-                  style: TextStyle(color: Colors.grey),
-                )
-              ],
+              height: 16,
             ),
             SizedBox(
-              height: 24,
-            ),
-            Text(
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer, ReadMore",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                height: 1.5,
-                fontFamily: "Tajawal",
-                fontSize: 13,
-                wordSpacing: 1.5,
+              width: 138,
+              height: 36,
+              child: myButton(
+                btnClr: Theme.of(context).colorScheme.secondary,
+                () {},
+                "Change email",
               ),
             ),
             SizedBox(
               height: 24,
             ),
+            myTextField(
+              prefix: usrr,
+            ),
             SizedBox(
-              child: myButton(() {}, "edit profile"),
-              width: 138,
-            )
+              height: 24,
+            ),
+            myTextField(
+              prefix: calll,
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            myTextField(
+              maxLines: 7,
+              hint: "About you...",
+            ),
+            SizedBox(
+              height: 32,
+            ),
+            myButton(() {}, "Save")
           ],
         ),
       )

@@ -4,7 +4,6 @@ import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/screens/Register.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +15,6 @@ class SorryPopUp extends StatefulWidget {
 }
 
 class _SorryPopUpState extends State<SorryPopUp> {
-  int navigateTothisIndex = 4;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -28,7 +26,7 @@ class _SorryPopUpState extends State<SorryPopUp> {
           padding: EdgeInsets.all(1),
           child: Container(
             width: 300,
-            height: 380,
+            height: 360,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -42,9 +40,7 @@ class _SorryPopUpState extends State<SorryPopUp> {
                   ),
                   SvgPicture.asset(sorryy),
                   Container(
-                    margin: EdgeInsets.only(
-                        top: myApplication.hightClc(context, 24),
-                        bottom: myApplication.hightClc(context, 8)),
+                    margin: EdgeInsets.only(top: 24, bottom: 8),
                     child: Center(
                       child: Text(
                         "you aren't a user",
@@ -57,8 +53,7 @@ class _SorryPopUpState extends State<SorryPopUp> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                        bottom: myApplication.hightClc(context, 16)),
+                    margin: EdgeInsets.only(bottom: 16),
                     child: Center(
                       child: Text(
                         "Create account now and start using smart building",
