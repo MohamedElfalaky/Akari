@@ -28,7 +28,7 @@ class myTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: maxLines,
+      maxLines: maxLines ?? 1,
       // height: 60,    // ميتقيدش بحجم عشان ميبوظش وقت الايرور
       // width: double.infinity,
       controller: controller,
