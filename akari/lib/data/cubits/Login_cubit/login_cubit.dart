@@ -29,7 +29,8 @@ class LoginCubit extends Cubit<LoginState> {
         if (value != null) {
           emit(LoginSuccess(value));
         } else {
-          LoginError(value.toString());
+          emit(LoginError(value.toString()));
+          print(value);
         }
       });
     } catch (e) {

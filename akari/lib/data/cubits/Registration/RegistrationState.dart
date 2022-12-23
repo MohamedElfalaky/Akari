@@ -8,7 +8,7 @@ class RegistrationInitial extends RegistrationState {}
 class RegistrationLoading extends RegistrationState {}
 
 class RegistrationSuccess extends RegistrationState {
-  final LogInModel myRegistrationModel;
+  final RegisterModel myRegistrationModel;
   RegistrationSuccess(this.myRegistrationModel);
 }
 

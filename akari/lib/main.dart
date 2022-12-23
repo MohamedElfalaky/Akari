@@ -113,7 +113,6 @@ class MyApp extends StatelessWidget {
                 '/register': (context) => Register(),
                 '/login': (context) => LogIn(),
                 '/forgetpassword': (context) => ForgetPassword(),
-                '/otp': (context) => OTP(),
               },
               home: Splash(),
             );

@@ -11,7 +11,8 @@ import 'package:sizer/sizer.dart';
 import 'package:pinput/pinput.dart';
 
 class OTP extends StatelessWidget {
-  OTP({super.key});
+  String userMail;
+  OTP({super.key, required this.userMail});
   final pinController = TextEditingController();
 
   @override
@@ -113,7 +114,7 @@ class OTP extends StatelessWidget {
                             bottom: myApplication.hightClc(context, 40)),
                         child: Center(
                           child: AutoSizeText(
-                            " alimohamed@example.test",
+                            userMail,
                             style: TextStyle(
                                 fontFamily: "Tajawal,Regular",
                                 fontSize: 16,
@@ -132,14 +133,7 @@ class OTP extends StatelessWidget {
                       SizedBox(
                         height: myApplication.hightClc(context, 48),
                       ),
-                      myButton(
-                          () => showDialog(
-                                context: context,
-                                builder: (BuildContext myContext) {
-                                  return ResetMail();
-                                },
-                              ),
-                          "Confirm"),
+                      myButton(() {}, "Confirm"),
                       SizedBox(
                         height: myApplication.hightClc(context, 16),
                       ),
@@ -166,11 +160,12 @@ class OTP extends StatelessWidget {
                           ),
                           InkWell(
                               onTap: () {
-                                Navigator.pushReplacementNamed(
-                                    context, "/register");
-                                // Navigator.of(context).pushNamedAndRemoveUntil(
-                                //     "/register",
-                                //     (Route<dynamic> route) => false);
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext myContext) {
+                                    return ResetMail();
+                                  },
+                                );
                               },
                               child: AutoSizeText(" Resend",
                                   style: TextStyle(

@@ -3,21 +3,29 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:akari/data/Models/log_in_model/log_in_model.dart';
+import 'package:akari/data/Models/register_model/register_model.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../App/constants.dart';
 
-class LoginRepo {
-  Future<LogInModel?> logIn(String mail, String pass) async {
+class RegisterRepo {
+  Future<RegisterModel?> register(
+      String name, String mail, String pass, String phone) async {
     try {
-      var response = await http.post(Uri.parse('$baseURL/auth/login'),
-          headers: headers, body: {"email": mail, "password": pass});
+      var response = await http.post(Uri.parse('$baseURL/auth/register'),
+          headers: headers,
+          body: {
+            "name": name,
+            "email": mail,
+            "password": pass,
+            "phone": phone
+          });
 
       Map<String, dynamic> responsemap = json.decode(response.body);
-      if (response.statusCode == 200 && responsemap["result"] == true) {
-        final data = LogInModel.fromJson(responsemap);
+      if (response.statusCode == 201 && responsemap["result"] == true) {
+        final data = RegisterModel.fromJson(responsemap);
         myApplication.showToast(text: data.message!, color: Colors.green);
         return data;
       } else {
@@ -33,6 +41,9 @@ class LoginRepo {
       if (kDebugMode) {
         print('SocketException: ${e.toString()}');
       }
+    } catch (e) {
+      print(e);
     }
+    return null;
   }
 }
