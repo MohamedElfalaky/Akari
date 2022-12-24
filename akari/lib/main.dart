@@ -1,4 +1,7 @@
+import 'package:akari/data/Models/resend_otp/otp.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
+import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
+import 'package:akari/data/cubits/VarifayOtp/VarifayOtpCubit.dart';
 import 'package:akari/helpers/AppLocalizations.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/dio_helper.dart';
@@ -48,6 +51,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
         BlocProvider<RegistrationCubit>(
             create: (context) => RegistrationCubit()),
+        BlocProvider<VarifayOtpCubit>(create: (context) => VarifayOtpCubit()),
+        BlocProvider<ResendOtpCubit>(create: (context) => ResendOtpCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -114,7 +119,7 @@ class MyApp extends StatelessWidget {
                 '/login': (context) => LogIn(),
                 '/forgetpassword': (context) => ForgetPassword(),
               },
-              home: Splash(),
+              home: OTP(userMail: "bodefalaky@gmail.com"),
             );
           });
         },

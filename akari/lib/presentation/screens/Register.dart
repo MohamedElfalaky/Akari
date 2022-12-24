@@ -213,6 +213,7 @@ class Register extends StatelessWidget {
                               return state is! RegistrationLoading
                                   ? myButton(() {
                                       if (_formKey.currentState!.validate()) {
+                                        print("HElooooo");
                                         context
                                             .read<RegistrationCubit>()
                                             .userRegistration(
