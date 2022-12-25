@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ResetMail extends StatefulWidget {
+  final String mail;
+  ResetMail({required this.mail});
   @override
   State<ResetMail> createState() => _ResetMailState();
 }
@@ -20,7 +22,7 @@ class _ResetMailState extends State<ResetMail> {
           padding: EdgeInsets.all(1),
           child: Container(
             width: 300,
-            height: 380,
+            height: 400,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -52,13 +54,25 @@ class _ResetMailState extends State<ResetMail> {
                     margin: EdgeInsets.only(
                         bottom: myApplication.hightClc(context, 16)),
                     child: Center(
-                      child: Text(
-                        "password recovery mail has been successfully sent to your email: name@example.test",
-                        style: TextStyle(
-                            fontFamily: "Tajawal,Regular",
-                            fontSize: 13,
-                            color: Color(0xFF363A3D)),
-                        textAlign: TextAlign.center,
+                      child: Column(
+                        children: [
+                          Text(
+                            "password recovery mail has been successfully sent to your email: ",
+                            style: TextStyle(
+                                fontFamily: "Tajawal,Regular",
+                                fontSize: 13,
+                                color: Color(0xFF363A3D)),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            widget.mail,
+                            style: TextStyle(
+                                fontFamily: "Tajawal,Regular",
+                                fontSize: 14,
+                                color: Theme.of(context).colorScheme.primary),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                     ),
                   ),

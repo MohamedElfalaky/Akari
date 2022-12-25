@@ -1,5 +1,6 @@
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
+import 'package:akari/data/cubits/VarifyOtp%20copy/ForgetPassCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/helpers/AppLocalizations.dart';
 import 'package:akari/helpers/CacheHelper.dart';
@@ -48,63 +49,63 @@ class MyApp extends StatelessWidget {
             create: (context) => RegistrationCubit()),
         BlocProvider<ResendOtpCubit>(create: (context) => ResendOtpCubit()),
         BlocProvider<VarifyOtpCubit>(create: (context) => VarifyOtpCubit()),
+        BlocProvider<ForgetPassCubit>(create: (context) => ForgetPassCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
           return Sizer(builder: (context, orientation, deviceType) {
             return MaterialApp(
-              builder: (context, child) => ResponsiveWrapper.builder(
-                  BouncingScrollWrapper.builder(context, child!),
-                  maxWidth: 1200,
-                  minWidth: 450,
-                  defaultScale: true,
-                  breakpoints: [
-                    const ResponsiveBreakpoint.resize(450, name: MOBILE),
-                    const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                    const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                    const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                    const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
-                  ],
-                  background: Container(color: const Color(0xFFF5F5F5))),
-              debugShowCheckedModeBanner: false,
-
-              locale:
-                  state is ChangeLocaleState ? state.local : const Locale('en'),
-              // const Locale('ar'),
-              supportedLocales: const [
-                Locale('en'),
-                Locale('ar')
-              ], //Localization
-              localizationsDelegates: const [
-                AppLocalizations
-                    .delegate, // Localization basedon mobile defaulte language
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate
-              ],
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                primaryColor: Color(0xFFDC8035),
-                colorScheme: ThemeData().colorScheme.copyWith(
-                    primary: Color(0xFFDC8035),
-                    secondary: Color(0xFF116A92),
-                    tertiary: Color(0xFFF4F4F4)),
-                scaffoldBackgroundColor: Color(0xFFF4F4F4),
-                // primarySwatch: Colors.blue,
-              ),
-              routes: {
-                '/splash': (context) => Splash(),
-                '/onboarding': (context) => OnBoarding(),
-                '/appmain': (context) => AppMain(),
-                '/filter': (context) => Filter(),
-                // '/afterfilter': (context) => AfterFilterAndSearch(null),
-                '/allcategory': (context) => AllCategory(),
-                '/register': (context) => Register(),
-                '/login': (context) => LogIn(),
-                '/forgetpassword': (context) => ForgetPassword(),
-              },
-              home: Splash(),
-            );
+                builder: (context, child) => ResponsiveWrapper.builder(
+                    BouncingScrollWrapper.builder(context, child!),
+                    maxWidth: 1200,
+                    minWidth: 450,
+                    defaultScale: true,
+                    breakpoints: [
+                      const ResponsiveBreakpoint.resize(450, name: MOBILE),
+                      const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+                      const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+                      const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+                      const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+                    ],
+                    background: Container(color: const Color(0xFFF5F5F5))),
+                debugShowCheckedModeBanner: false,
+                locale: state is ChangeLocaleState
+                    ? state.local
+                    : const Locale('en'),
+                // const Locale('ar'),
+                supportedLocales: const [
+                  Locale('en'),
+                  Locale('ar')
+                ], //Localization
+                localizationsDelegates: const [
+                  AppLocalizations
+                      .delegate, // Localization basedon mobile defaulte language
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate
+                ],
+                title: 'Flutter Demo',
+                theme: ThemeData(
+                  primaryColor: Color(0xFFDC8035),
+                  colorScheme: ThemeData().colorScheme.copyWith(
+                      primary: Color(0xFFDC8035),
+                      secondary: Color(0xFF116A92),
+                      tertiary: Color(0xFFF4F4F4)),
+                  scaffoldBackgroundColor: Color(0xFFF4F4F4),
+                  // primarySwatch: Colors.blue,
+                ),
+                routes: {
+                  '/splash': (context) => Splash(),
+                  '/onboarding': (context) => OnBoarding(),
+                  '/appmain': (context) => AppMain(),
+                  '/filter': (context) => Filter(),
+                  // '/afterfilter': (context) => AfterFilterAndSearch(null),
+                  '/allcategory': (context) => AllCategory(),
+                  '/register': (context) => Register(),
+                  '/login': (context) => LogIn(),
+                  '/forgetpassword': (context) => ForgetPassword(),
+                },
+                home: Splash());
           });
         },
       ),
