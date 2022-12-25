@@ -4,18 +4,21 @@ import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ResetMail extends StatefulWidget {
+class OtpSent extends StatefulWidget {
+  final String mail;
+  OtpSent(this.mail);
   @override
-  State<ResetMail> createState() => _ResetMailState();
+  State<OtpSent> createState() => _OtpSentState();
 }
 
-class _ResetMailState extends State<ResetMail> {
+class _OtpSentState extends State<OtpSent> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       scrollable: true,
+      // title: Text('Filter'),
       content: Padding(
           padding: EdgeInsets.all(1),
           child: Container(
@@ -39,7 +42,7 @@ class _ResetMailState extends State<ResetMail> {
                         bottom: myApplication.hightClc(context, 8)),
                     child: Center(
                       child: Text(
-                        "Recover mail successfully sent",
+                        "OTP sent successflly",
                         style: TextStyle(
                             fontFamily: "Tajawal",
                             fontSize: 18,
@@ -53,7 +56,7 @@ class _ResetMailState extends State<ResetMail> {
                         bottom: myApplication.hightClc(context, 16)),
                     child: Center(
                       child: Text(
-                        "password recovery mail has been successfully sent to your email: name@example.test",
+                        "OTP has been successfully sent to your email: ${widget.mail}",
                         style: TextStyle(
                             fontFamily: "Tajawal,Regular",
                             fontSize: 13,
@@ -64,7 +67,6 @@ class _ResetMailState extends State<ResetMail> {
                   ),
                   myButton(() {
                     Navigator.pop(context);
-                    myApplication.navigateTo(LogIn(), context);
                   }, "Done"),
                 ]),
           )),

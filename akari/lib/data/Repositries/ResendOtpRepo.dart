@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:akari/data/Models/log_in_model/log_in_model.dart';
 import 'package:akari/data/Models/resend_otp/resend_otp.dart';
-import 'package:akari/data/Models/varify_otp/varify_otp.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
