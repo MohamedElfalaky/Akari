@@ -2,9 +2,19 @@
 
 import 'package:flutter/material.dart';
 
-const Map<String, String> headers = {'lang': 'en'};
+const Map<String, String> headers = {
+  "Content-Type": "application/json",
+  "Content-Length": "<calculated when request is sent>",
+  "Host": "<calculated when request is sent>",
+  "User-Agent": "PostmanRuntime/7.30.0",
+  "Accept": "*/*",
+  "Accept-Encoding": "gzip, deflate, br",
+  "Connection": "keep-alive",
+  'lang': 'en'
+};
 
 const baseURL = "http://localhost:3052";
+// "http://3.70.249.119";
 
 // "http://44.204.106.117:3052";
 

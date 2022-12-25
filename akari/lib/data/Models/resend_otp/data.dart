@@ -8,7 +8,7 @@ class Data {
   String? email;
   String? name;
   String? password;
-  List<String>? roles;
+  List<dynamic>? roles;
   String? phone;
   Otp? otp;
   String? currency;
@@ -45,7 +45,7 @@ class Data {
         email: json['email'] as String?,
         name: json['name'] as String?,
         password: json['password'] as String?,
-        roles: json['roles'] as List<String>?,
+        roles: json['roles'] as List<dynamic>?,
         phone: json['phone'] as String?,
         otp: json['otp'] == null
             ? null
