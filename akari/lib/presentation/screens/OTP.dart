@@ -2,6 +2,7 @@ import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
+import 'package:akari/presentation/screens/ResetPass.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/OtpSent.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
@@ -13,7 +14,8 @@ import 'package:pinput/pinput.dart';
 
 class OTP extends StatelessWidget {
   String userMail;
-  OTP({super.key, required this.userMail});
+  String fromWhere;
+  OTP({super.key, required this.userMail, required this.fromWhere});
   final pinController = TextEditingController();
 
   @override
@@ -52,7 +54,16 @@ class OTP extends StatelessWidget {
       child: BlocListener<VarifyOtpCubit, VarifyOtpState>(
         listener: (context, state) {
           if (state is VarifyOtpSuccess) {
-            myApplication.navigateToRemove(context, LogIn());
+            if (fromWhere == "register") {
+              myApplication.navigateToRemove(context, LogIn());
+            } else if (fromWhere == "forget pass") {
+              myApplication.navigateToRemove(
+                  context,
+                  ResetPass(
+                    userMail: userMail,
+                    token: state.myVarifyOtpModel.accessToken!,
+                  ));
+            }
           }
         },
         child: Scaffold(

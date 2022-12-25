@@ -4,25 +4,26 @@ import 'dart:io';
 
 import 'package:akari/data/Models/log_in_model/log_in_model.dart';
 import 'package:akari/data/Models/resend_otp/resend_otp.dart';
-import 'package:akari/data/Models/varify_otp2/varify_otp2.dart';
+import 'package:akari/data/Models/reset_pass_model.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../App/constants.dart';
 
-class VarifyOtpRepo {
-  Future<VarifyOtp2?> varifyOtp(String mail, int otp) async {
+class ResetPassRepo {
+  Future<ResetPassModel?> resetPass(String pass, String token) async {
     try {
-      var response = await http.post(Uri.parse('$baseURL/auth/verify-otp'),
-          headers: {
-            "content-type": "application/json",
-          },
-          body: jsonEncode({"email": mail, "otp": otp}));
+      var response =
+          await http.post(Uri.parse('$baseURL/user/reset-password'), headers: {
+        "Authorization": "bearer $token",
+      }, body: {
+        "password": pass
+      });
 
       Map<String, dynamic> responsemap = json.decode(response.body);
       if (response.statusCode == 200 && responsemap["result"] == true) {
-        final data = VarifyOtp2.fromJson(responsemap);
+        final data = ResetPassModel.fromJson(responsemap);
         myApplication.showToast(text: data.message!, color: Colors.green);
         return data;
       } else {

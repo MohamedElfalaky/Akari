@@ -37,6 +37,7 @@ class Register extends StatelessWidget {
               myApplication.navigateTo(
                   OTP(
                     userMail: state.myRegistrationModel.data!.email!,
+                    fromWhere: "register",
                   ),
                   context);
             }

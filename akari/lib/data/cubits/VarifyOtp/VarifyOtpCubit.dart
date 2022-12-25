@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:akari/data/Models/varify_otp_model.dart';
+import 'package:akari/data/Models/varify_otp2/varify_otp2.dart';
 import 'package:akari/data/Repositries/VarifyOtpRepo.dart';
 
 import 'package:akari/style/Icons.dart';

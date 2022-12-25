@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:akari/data/Models/forget_pass_model.dart';
-import 'package:akari/data/Models/varify_otp_model.dart';
 import 'package:akari/data/Repositries/ForgetPassRepo.dart';
 import 'package:akari/data/Repositries/VarifyOtpRepo.dart';
 

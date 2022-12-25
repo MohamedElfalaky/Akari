@@ -8,7 +8,7 @@ class VarifyOtpInitial extends VarifyOtpState {}
 class VarifyOtpLoading extends VarifyOtpState {}
 
 class VarifyOtpSuccess extends VarifyOtpState {
-  final VarifyOtpModel myVarifyOtpModel;
+  final VarifyOtp2 myVarifyOtpModel;
   VarifyOtpSuccess(this.myVarifyOtpModel);
 }
 

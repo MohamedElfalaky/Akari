@@ -1,6 +1,7 @@
-import 'package:akari/data/cubits/VarifyOtp%20copy/ForgetPassCubit.dart';
+import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/Filter.dart';
+import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
@@ -30,12 +31,18 @@ class ForgetPassword extends StatelessWidget {
         body: BlocListener<ForgetPassCubit, ForgetPassState>(
           listener: (context, state) {
             if (state is ForgetPassSuccess) {
-              showDialog(
-                context: context,
-                builder: (BuildContext myContext) {
-                  return ResetMail(mail: _mailText.text);
-                },
-              );
+              // showDialog(
+              //   context: context,
+              //   builder: (BuildContext myContext) {
+              //     return ResetMail(mail: _mailText.text);
+              //   },
+              // );
+              myApplication.navigateTo(
+                  OTP(
+                    userMail: _mailText.text,
+                    fromWhere: "forget pass",
+                  ),
+                  context);
             }
           },
           child: Form(

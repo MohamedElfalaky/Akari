@@ -32,6 +32,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         if (value != null) {
           emit(RegistrationSuccess(value));
         } else {
+          print(value);
           emit(RegistrationError(value.toString()));
         }
       });
