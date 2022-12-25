@@ -1,4 +1,3 @@
-import 'package:akari/data/Models/resend_otp/otp.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/VarifayOtp/VarifayOtpCubit.dart';
@@ -7,17 +6,13 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/dio_helper.dart';
 import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
-import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/screens/MyMap/MyMap.dart';
 import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
-import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
-import 'package:akari/presentation/screens/ProfilePage/ProfilePage.dart';
 import 'package:akari/presentation/screens/Register.dart';
 import 'package:akari/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
@@ -87,17 +82,6 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate
               ],
-
-              // لو لغة الهاتف مدعومه ف الاب بتاعي حطها لو لا حط اول لغه
-              // localeResolutionCallback: ((deviceLocale, supportedLocales) {
-              //   for (var local in supportedLocales) {
-              //     if (deviceLocale != null &&
-              //         deviceLocale.languageCode == local.languageCode) {
-              //       return deviceLocale;
-              //     }
-              //     return supportedLocales.first;
-              //   }
-              // }),
               title: 'Flutter Demo',
               theme: ThemeData(
                 primaryColor: Color(0xFFDC8035),
@@ -119,7 +103,7 @@ class MyApp extends StatelessWidget {
                 '/login': (context) => LogIn(),
                 '/forgetpassword': (context) => ForgetPassword(),
               },
-              home: OTP(userMail: "bodefalaky@gmail.com"),
+              home:Splash(),
             );
           });
         },
