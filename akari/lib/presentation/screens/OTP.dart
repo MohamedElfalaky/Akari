@@ -19,8 +19,8 @@ class OTP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-      width: 44,
-      height: 44,
+      width: 56,
+      height: 56,
       textStyle: TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(30, 60, 87, 1),
