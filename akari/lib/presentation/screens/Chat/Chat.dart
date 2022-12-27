@@ -1,6 +1,7 @@
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/Chat/components/ChatScreen.dart';
+import 'package:akari/presentation/screens/Chat/controller/ChatController.dart';
 
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 
@@ -16,14 +17,13 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  // final ChatController _ChatControllerController = ChatController();
+  final ChatController _ChatController = ChatController();
 
   @override
   void initState() {
     super.initState();
 
-    // _ChatControllerController.ChatAPIs(
-    //     context, CacheHelper.getFromShared("token"));
+    _ChatController.ChatAPIs(context, CacheHelper.getFromShared("token"));
   }
 
   @override
