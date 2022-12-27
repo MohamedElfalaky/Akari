@@ -26,23 +26,23 @@ class AppMainScreen extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsets.only(
-              left: myApplication.widthClc(context, 16),
-              right: myApplication.widthClc(context, 16),
-              top: myApplication.widthClc(context, 16),
+              left: 16,
+              right: 16,
+              top: 16,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    AutoSizeText(
+                    Text(
                       "Categories",
                       style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                     ),
                     Spacer(),
                     InkWell(
                       onTap: () => Navigator.pushNamed(context, "/allcategory"),
-                      child: AutoSizeText(
+                      child: Text(
                         "View All",
                         style: TextStyle(
                             fontSize: 14,
@@ -54,8 +54,7 @@ class AppMainScreen extends StatelessWidget {
                 ),
                 Container(
                     width: double.infinity,
-                    margin: EdgeInsets.only(
-                        top: myApplication.hightClc(context, 8)),
+                    margin: EdgeInsets.only(top: 8),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -65,14 +64,13 @@ class AppMainScreen extends StatelessWidget {
                 Container(
                     margin: EdgeInsets.only(
                         top: myApplication.hightClc(context, 24)),
-                    child: AutoSizeText(
+                    child: Text(
                       "Best Ads",
                       style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                     )),
                 Container(
                   height: myApplication.hightClc(context, 447),
-                  margin:
-                      EdgeInsets.only(top: myApplication.hightClc(context, 8)),
+                  margin: EdgeInsets.only(top: 8),
                   child: ListView(
                     shrinkWrap: true,
                     children: [

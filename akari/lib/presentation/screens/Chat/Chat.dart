@@ -23,7 +23,7 @@ class _ChatState extends State<Chat> {
   void initState() {
     super.initState();
 
-    _ChatController.ChatAPIs(context, CacheHelper.getFromShared("token"));
+    // _ChatController.ChatAPIs(context, CacheHelper.getFromShared("token"));
   }
 
   @override

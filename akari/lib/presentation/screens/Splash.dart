@@ -23,17 +23,23 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(
+    return Stack(
       children: [
-        Container(
-          child: SvgPicture.asset('assets/background_pattarn.svg'),
-        ),
         Center(
-            child: SvgPicture.asset(
-          'assets/logo.svg',
-        )),
+          child: SvgPicture.asset(
+            'assets/background_pattarn.svg',
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Center(
+                child: SvgPicture.asset(
+              'assets/logo.svg',
+            ))),
       ],
-    ));
+    );
   }
 }

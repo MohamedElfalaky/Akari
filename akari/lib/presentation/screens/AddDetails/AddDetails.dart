@@ -41,10 +41,12 @@ class _AddDetailsState extends State<AddDetails> {
         }
       }, // hide keyboard on tap anywhere
 
-      child: Scaffold(
-          // backgroundColor: Theme.of(context).colorScheme.secondary,
+      child: SafeArea(
+        child: Scaffold(
+            // backgroundColor: Theme.of(context).colorScheme.secondary,
 
-          body: AddDetailsScreen()),
+            body: AddDetailsScreen()),
+      ),
     );
   }
 }

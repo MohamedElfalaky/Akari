@@ -13,7 +13,7 @@ class BestAdsItemInMap extends StatelessWidget {
       margin: EdgeInsets.only(right: 15),
       decoration: BoxDecoration(
           color: Color(0xFFFFFFFF), borderRadius: BorderRadius.circular(8)),
-      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

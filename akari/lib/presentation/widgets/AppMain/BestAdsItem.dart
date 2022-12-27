@@ -14,8 +14,8 @@ class BestAdsItem extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 8, bottom: 8),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-      height: 360,
-      width: myApplication.widthClc(context, 327),
+      height: 380,
+      width: 330,
       child: Column(
         children: [
           Stack(

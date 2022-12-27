@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class OneChat extends StatelessWidget {
   final String? img;
-  const OneChat({super.key, this.img});
+  final String? namee;
+  final String? lastMassage;
+  const OneChat({super.key, this.img, this.namee, this.lastMassage});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class OneChat extends StatelessWidget {
                   SizedBox(
                     width: 200,
                     child: Text(
-                      "Ahmed Mohamed",
+                      namee!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style:
@@ -53,7 +55,7 @@ class OneChat extends StatelessWidget {
                   SizedBox(
                     width: 200,
                     child: Text(
-                      "نعم مازال متوفر كيف يمككني مساعدتك ؟نعم مازال متوفر كيف يمككني مساعدتك ؟",
+                      lastMassage!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),

@@ -1,4 +1,5 @@
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
+import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
@@ -13,10 +14,9 @@ import 'package:akari/presentation/screens/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
+import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
 import 'package:akari/presentation/screens/Register.dart';
-import 'package:akari/presentation/screens/ResetPass.dart';
 import 'package:akari/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<VarifyOtpCubit>(create: (context) => VarifyOtpCubit()),
         BlocProvider<ForgetPassCubit>(create: (context) => ForgetPassCubit()),
         BlocProvider<ResetPassCubit>(create: (context) => ResetPassCubit()),
+        BlocProvider<GetRoomsCubit>(create: (context) => GetRoomsCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

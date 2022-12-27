@@ -15,597 +15,576 @@ class AddDetailsScreen extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          margin: EdgeInsets.only(
-              // top: 8,
-              bottom: 17),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-          height: 800,
-          // width: myApplication.widthClc(context, 327),
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      margin: EdgeInsets.only(
+          // top: 8,
+          bottom: 17),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+      // height: MediaQuery.of(context).size.height,
+      // width: myApplication.widthClc(context, 327),
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Stack(
+            // alignment: AlignmentDirectional.topEnd,
             children: [
-              Stack(
-                // alignment: AlignmentDirectional.topEnd,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                          fit: BoxFit.fill),
-                      // color: Colors.green,
-                    ),
-                    height: myApplication.hightClc(context, 176),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 8, left: 8),
-                        height: 32,
-                        width: 32,
-                        child: Center(
-                            child: BackButton(
-                          color: Colors.white,
-                          onPressed: () => Navigator.pop(context),
-                        )),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 8, right: 8),
-                        height: 32,
-                        width: 32,
-                        decoration: BoxDecoration(
-                            color: Colors.white70,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Center(
-                            child: Icon(
-                          Icons.favorite_outline,
-                          color: Colors.red,
-                        )),
-                      ),
-                    ],
-                  )
-                ],
-              ),
               Container(
                 decoration: BoxDecoration(
-                    // color: Color(0xFFFFFFFF),
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10))),
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(
-                    horizontal: myApplication.widthClc(context, 12),
-                    vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                              bottom: myApplication.hightClc(context, 12)),
-                          child: AutoSizeText(
-                            "Villa five stars",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Spacer(),
-                        InkWell(
-                          onTap: () async {
-                            await Share.share("sharedtext");
-                          },
-                          child: Icon(
-                            Icons.share,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                            flex: 2,
-                            child: Row(children: [
-                              Container(
-                                  margin: EdgeInsets.only(right: 6, bottom: 8),
-                                  height: 14,
-                                  width: 14,
-                                  child: SvgPicture.asset(
-                                      "assets/AdsPics/location.svg")),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        myApplication.hightClc(context, 12)),
-                                child: AutoSizeText(
-                                  "Sudan, Alkhartom ",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ])),
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.only(
-                                    bottom: myApplication.hightClc(context, 12),
-                                    right: 6,
-                                  ),
-                                  height: 14,
-                                  width: 14,
-                                  child: SvgPicture.asset(
-                                      "assets/AdsPics/post date.svg")),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        myApplication.hightClc(context, 12)),
-                                child: AutoSizeText(
-                                  "19 OCT",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+                      fit: BoxFit.fill),
+                  // color: Colors.green,
                 ),
+                height: myApplication.hightClc(context, 176),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: myApplication.widthClc(context, 12),
-                    vertical: 8),
-                // height: 200,
-                width: double.infinity,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Description", style: TextStyle(fontSize: 16)),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: myApplication.widthClc(context, 12),
-                    vertical: 8),
-                // height: 200,
-                width: double.infinity,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Rooms and Beds",
-                        style: TextStyle(
-                          fontSize: 16,
-                        )),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child:
-                                    SvgPicture.asset("assets/AdsPics/area.svg"),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "200 m",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(
-                                    "assets/AdsPics/floor no..svg"),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "3 floors",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(
-                                  roomm,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "3 floors",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(bedd),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "200 m",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          flex: 2,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(bedd),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "3 Bathrooms",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: myApplication.widthClc(context, 12),
-                    vertical: 8),
-                // height: 200,
-                width: double.infinity,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("ways of comfort",
-                        style: TextStyle(
-                          fontSize: 16,
-                        )),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child:
-                                    SvgPicture.asset("assets/AdsPics/area.svg"),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "elevator",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(
-                                    "assets/AdsPics/floor no..svg"),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "Wifi",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(
-                                  roomm,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "TV",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 6, bottom: 8),
-                                height: 14,
-                                width: 14,
-                                child: SvgPicture.asset(bedd),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 8),
-                                child: AutoSizeText(
-                                  "kitchen",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: myApplication.widthClc(context, 12),
-                    vertical: 8),
-                // height: 200,
-                width: double.infinity,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Price", style: TextStyle(fontSize: 16)),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      "150 SD/month",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    myButton(() {
-                      showModalBottomSheet(
-                          barrierColor: Theme.of(context)
-                              .colorScheme
-                              .secondary
-                              .withOpacity(0),
-                          backgroundColor: Theme.of(context)
-                              .colorScheme
-                              .secondary
-                              .withOpacity(0),
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10),
-                              padding: EdgeInsets.all(20),
-                              height: 300,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(25),
-                                      topRight: Radius.circular(25)),
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Price",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "150 SD / month",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                  ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  myButton(
-                                    () {},
-                                    "Call",
-                                    btnClr:
-                                        Theme.of(context).colorScheme.secondary,
-                                    txtClr: Colors.white,
-                                    btnIcon: Icon(Icons.phone),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  myButton(
-                                    () {
-                                      myApplication.navigateTo(
-                                          OneChatPage(), context);
-                                    },
-                                    "Chat",
-                                    btnClr: Colors.white,
-                                    txtClr:
-                                        Theme.of(context).colorScheme.secondary,
-                                    btnIcon: Icon(
-                                      Icons.chat,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  myButton(
-                                    () {},
-                                    "Whats App",
-                                    btnClr: Colors.white,
-                                    txtClr:
-                                        Theme.of(context).colorScheme.secondary,
-                                    btnIcon: Icon(
-                                      Icons.whatsapp,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Center(
-                                    child: SizedBox(
-                                      width: 130,
-                                      child: myButton(
-                                        () {
-                                          Navigator.pop(context);
-                                        },
-                                        "Cancel",
-                                        btnIcon: Icon(Icons.close),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          });
-                    }, "Contact Advertiser"),
-                    SizedBox(
-                      height: 16,
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 8, left: 8),
+                    height: 32,
+                    width: 32,
+                    child: Center(
+                        child: BackButton(
+                      color: Colors.white,
+                      onPressed: () => Navigator.pop(context),
+                    )),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 8, right: 8),
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                        color: Colors.white70,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Center(
+                        child: Icon(
+                      Icons.favorite_outline,
+                      color: Colors.red,
+                    )),
+                  ),
+                ],
               )
             ],
           ),
-        ),
-      ],
+          Container(
+            decoration: BoxDecoration(
+                // color: Color(0xFFFFFFFF),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10))),
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(
+                horizontal: myApplication.widthClc(context, 12), vertical: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          bottom: myApplication.hightClc(context, 12)),
+                      child: AutoSizeText(
+                        "Villa five stars",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Spacer(),
+                    InkWell(
+                      onTap: () async {
+                        await Share.share("sharedtext");
+                      },
+                      child: Icon(
+                        Icons.share,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                        flex: 2,
+                        child: Row(children: [
+                          Container(
+                              margin: EdgeInsets.only(right: 6, bottom: 8),
+                              height: 14,
+                              width: 14,
+                              child: SvgPicture.asset(
+                                  "assets/AdsPics/location.svg")),
+                          Container(
+                            margin: EdgeInsets.only(
+                                bottom: myApplication.hightClc(context, 12)),
+                            child: AutoSizeText(
+                              "Sudan, Alkhartom ",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ])),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                              margin: EdgeInsets.only(
+                                bottom: myApplication.hightClc(context, 12),
+                                right: 6,
+                              ),
+                              height: 14,
+                              width: 14,
+                              child: SvgPicture.asset(
+                                  "assets/AdsPics/post date.svg")),
+                          Container(
+                            margin: EdgeInsets.only(
+                                bottom: myApplication.hightClc(context, 12)),
+                            child: AutoSizeText(
+                              "19 OCT",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: myApplication.widthClc(context, 12), vertical: 8),
+            // height: 200,
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Description", style: TextStyle(fontSize: 16)),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: myApplication.widthClc(context, 12), vertical: 8),
+            // height: 200,
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Rooms and Beds",
+                    style: TextStyle(
+                      fontSize: 16,
+                    )),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset("assets/AdsPics/area.svg"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "200 m",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(
+                                "assets/AdsPics/floor no..svg"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "3 floors",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(
+                              roomm,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "3 floors",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(bedd),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "200 m",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(bedd),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "3 Bathrooms",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: myApplication.widthClc(context, 12), vertical: 8),
+            // height: 200,
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("ways of comfort",
+                    style: TextStyle(
+                      fontSize: 16,
+                    )),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset("assets/AdsPics/area.svg"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "elevator",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(
+                                "assets/AdsPics/floor no..svg"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "Wifi",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(
+                              roomm,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "TV",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
+                            child: SvgPicture.asset(bedd),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8),
+                            child: AutoSizeText(
+                              "kitchen",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: myApplication.widthClc(context, 12), vertical: 8),
+            // height: 200,
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Price", style: TextStyle(fontSize: 16)),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "150 SD/month",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.primary),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                myButton(() {
+                  showModalBottomSheet(
+                      barrierColor: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0),
+                      backgroundColor: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0),
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.all(20),
+                          height: 300,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  topRight: Radius.circular(25)),
+                              color: Colors.white,
+                              border: Border.all(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Price",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "150 SD / month",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              myButton(
+                                () {},
+                                "Call",
+                                btnClr: Theme.of(context).colorScheme.secondary,
+                                txtClr: Colors.white,
+                                btnIcon: Icon(Icons.phone),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              myButton(
+                                () {
+                                  myApplication.navigateTo(
+                                      OneChatPage(), context);
+                                },
+                                "Chat",
+                                btnClr: Colors.white,
+                                txtClr: Theme.of(context).colorScheme.secondary,
+                                btnIcon: Icon(
+                                  Icons.chat,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              myButton(
+                                () {},
+                                "Whats App",
+                                btnClr: Colors.white,
+                                txtClr: Theme.of(context).colorScheme.secondary,
+                                btnIcon: Icon(
+                                  Icons.whatsapp,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Center(
+                                child: SizedBox(
+                                  width: 130,
+                                  child: myButton(
+                                    () {
+                                      Navigator.pop(context);
+                                    },
+                                    "Cancel",
+                                    btnIcon: Icon(Icons.close),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      });
+                }, "Contact Advertiser"),
+                SizedBox(
+                  height: 16,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 // void myButtomSheet(BuildContext context) {

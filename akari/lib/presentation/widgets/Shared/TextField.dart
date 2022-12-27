@@ -14,6 +14,7 @@ class myTextField extends StatelessWidget {
   final TextEditingController? controller;
   final clr;
   final maxLines;
+  final minLines;
   const myTextField(
       {this.hint,
       this.prefix,
@@ -23,12 +24,14 @@ class myTextField extends StatelessWidget {
       this.keyBoardType,
       this.controller,
       this.clr,
-      this.maxLines});
+      this.maxLines,
+      this.minLines});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines ?? 1,
+      minLines: minLines ?? maxLines,
       // height: 60,    // ميتقيدش بحجم عشان ميبوظش وقت الايرور
       // width: double.infinity,
       controller: controller,

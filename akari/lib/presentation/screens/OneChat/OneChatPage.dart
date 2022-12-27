@@ -95,6 +95,8 @@ class _OneChatPageState extends State<OneChatPage> {
           ),
           body: Container(
               // height: MyApplication.hightClc(context, 700),  معدتش هتحتاجها الكونتينر بقى لعمل مارجن ف الاول بس لتخطيط الصفحة
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(
                 left: 24,
                 right: 24,
