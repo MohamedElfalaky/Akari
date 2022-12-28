@@ -16,7 +16,7 @@ class AddDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
           // top: 8,
           bottom: 17),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
@@ -29,7 +29,7 @@ class AddDetailsScreen extends StatelessWidget {
             // alignment: AlignmentDirectional.topEnd,
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(
                           "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
@@ -42,7 +42,7 @@ class AddDetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8, left: 8),
+                    margin: const EdgeInsets.only(top: 8, left: 8),
                     height: 32,
                     width: 32,
                     child: Center(
@@ -52,13 +52,13 @@ class AddDetailsScreen extends StatelessWidget {
                     )),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 8, right: 8),
+                    margin: const EdgeInsets.only(top: 8, right: 8),
                     height: 32,
                     width: 32,
                     decoration: BoxDecoration(
                         color: Colors.white70,
                         borderRadius: BorderRadius.circular(50)),
-                    child: Center(
+                    child: const Center(
                         child: Icon(
                       Icons.favorite_outline,
                       color: Colors.red,
@@ -69,7 +69,7 @@ class AddDetailsScreen extends StatelessWidget {
             ],
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 // color: Color(0xFFFFFFFF),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(10),
@@ -85,13 +85,13 @@ class AddDetailsScreen extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(
                           bottom: myApplication.hightClc(context, 12)),
-                      child: AutoSizeText(
+                      child: const AutoSizeText(
                         "Villa five stars",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () async {
                         await Share.share("sharedtext");
@@ -110,7 +110,8 @@ class AddDetailsScreen extends StatelessWidget {
                         flex: 2,
                         child: Row(children: [
                           Container(
-                              margin: EdgeInsets.only(right: 6, bottom: 8),
+                              margin:
+                                  const EdgeInsets.only(right: 6, bottom: 8),
                               height: 14,
                               width: 14,
                               child: SvgPicture.asset(
@@ -118,7 +119,7 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: AutoSizeText(
+                            child: const AutoSizeText(
                               "Sudan, Alkhartom ",
                               style: TextStyle(
                                 fontSize: 14,
@@ -142,7 +143,7 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: AutoSizeText(
+                            child: const AutoSizeText(
                               "19 OCT",
                               style: TextStyle(
                                 fontSize: 14,
@@ -157,7 +158,7 @@ class AddDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -169,16 +170,16 @@ class AddDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Description", style: TextStyle(fontSize: 16)),
-                SizedBox(
+                const Text("Description", style: TextStyle(fontSize: 16)),
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
+                const Text(
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(
@@ -190,11 +191,11 @@ class AddDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Rooms and Beds",
+                const Text("Rooms and Beds",
                     style: TextStyle(
                       fontSize: 16,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
@@ -205,14 +206,14 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset("assets/AdsPics/area.svg"),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "200 m",
                               style: TextStyle(
                                 fontSize: 14,
@@ -227,15 +228,15 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(
                                 "assets/AdsPics/floor no..svg"),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "3 floors",
                               style: TextStyle(
                                 fontSize: 14,
@@ -250,7 +251,7 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(
@@ -259,8 +260,8 @@ class AddDetailsScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "3 floors",
                               style: TextStyle(
                                 fontSize: 14,
@@ -280,14 +281,14 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(bedd),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "200 m",
                               style: TextStyle(
                                 fontSize: 14,
@@ -302,14 +303,14 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(bedd),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "3 Bathrooms",
                               style: TextStyle(
                                 fontSize: 14,
@@ -324,7 +325,7 @@ class AddDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -336,11 +337,11 @@ class AddDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("ways of comfort",
+                const Text("ways of comfort",
                     style: TextStyle(
                       fontSize: 16,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
@@ -351,14 +352,14 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset("assets/AdsPics/area.svg"),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "elevator",
                               style: TextStyle(
                                 fontSize: 14,
@@ -373,15 +374,15 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(
                                 "assets/AdsPics/floor no..svg"),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "Wifi",
                               style: TextStyle(
                                 fontSize: 14,
@@ -396,7 +397,7 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(
@@ -405,8 +406,8 @@ class AddDetailsScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "TV",
                               style: TextStyle(
                                 fontSize: 14,
@@ -426,14 +427,14 @@ class AddDetailsScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            margin: const EdgeInsets.only(right: 6, bottom: 8),
                             height: 14,
                             width: 14,
                             child: SvgPicture.asset(bedd),
                           ),
                           Container(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: AutoSizeText(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: const AutoSizeText(
                               "kitchen",
                               style: TextStyle(
                                 fontSize: 14,
@@ -448,7 +449,7 @@ class AddDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -460,8 +461,8 @@ class AddDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Price", style: TextStyle(fontSize: 16)),
-                SizedBox(
+                const Text("Price", style: TextStyle(fontSize: 16)),
+                const SizedBox(
                   height: 8,
                 ),
                 Text(
@@ -470,7 +471,7 @@ class AddDetailsScreen extends StatelessWidget {
                       fontSize: 16,
                       color: Theme.of(context).colorScheme.primary),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 myButton(() {
@@ -486,11 +487,11 @@ class AddDetailsScreen extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          padding: EdgeInsets.all(20),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.all(20),
                           height: 300,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(25),
                                   topRight: Radius.circular(25)),
                               color: Colors.white,
@@ -500,13 +501,13 @@ class AddDetailsScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Price",
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -516,7 +517,7 @@ class AddDetailsScreen extends StatelessWidget {
                                     color:
                                         Theme.of(context).colorScheme.primary),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               myButton(
@@ -524,9 +525,9 @@ class AddDetailsScreen extends StatelessWidget {
                                 "Call",
                                 btnClr: Theme.of(context).colorScheme.secondary,
                                 txtClr: Colors.white,
-                                btnIcon: Icon(Icons.phone),
+                                btnIcon: const Icon(Icons.phone),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               myButton(
@@ -543,7 +544,7 @@ class AddDetailsScreen extends StatelessWidget {
                                       Theme.of(context).colorScheme.secondary,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               myButton(
@@ -557,7 +558,7 @@ class AddDetailsScreen extends StatelessWidget {
                                       Theme.of(context).colorScheme.secondary,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Center(
@@ -568,7 +569,7 @@ class AddDetailsScreen extends StatelessWidget {
                                       Navigator.pop(context);
                                     },
                                     "Cancel",
-                                    btnIcon: Icon(Icons.close),
+                                    btnIcon: const Icon(Icons.close),
                                   ),
                                 ),
                               ),
@@ -577,7 +578,7 @@ class AddDetailsScreen extends StatelessWidget {
                         );
                       });
                 }, "Contact Advertiser"),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
               ],

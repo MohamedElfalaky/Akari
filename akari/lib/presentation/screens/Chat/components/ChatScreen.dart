@@ -1,7 +1,8 @@
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/Chat/components/OneChat.dart';
+import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
+import 'package:akari/presentation/screens/Chat/components/OneChatCard.dart';
 import 'package:akari/presentation/screens/Chat/controller/ChatController.dart';
 import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
@@ -22,7 +23,9 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _ChatController.ChatAPIs(context, CacheHelper.getFromShared("token"));
+    if (CacheHelper.getFromShared("token") != null) {
+      _ChatController.ChatAPIs(context, CacheHelper.getFromShared("token"));
+    }
   }
 
   @override
@@ -39,8 +42,19 @@ class _ChatScreenState extends State<ChatScreen> {
                       itemCount: state.myGetRoomsModel.data!.length,
                       itemBuilder: (context, index) => InkWell(
                             onTap: () => myApplication.navigateTo(
-                                OneChatPage(), context),
-                            child: OneChat(
+                                OneChatPage(
+                                  image: state.myGetRoomsModel.data![index]
+                                      .participant!.image,
+                                  namee: state.myGetRoomsModel.data![index]
+                                      .participant!.name,
+                                  roomId: state.myGetRoomsModel.data![index].id,
+                                  receiverId: state.myGetRoomsModel.data![index]
+                                      .participant!.id,
+                                  phoneNumber: state.myGetRoomsModel
+                                      .data![index].participant!.phone,
+                                ),
+                                context),
+                            child: OneChatCard(
                               img: state.myGetRoomsModel.data![index]
                                   .participant!.image,
                               namee: state.myGetRoomsModel.data![index]

@@ -1,7 +1,5 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 
-import 'package:flutter/material.dart';
-
 const Map<String, String> headers = {
   // "Content-Type": "application/json",
   // "Content-Length": "<calculated when request is sent>",

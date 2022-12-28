@@ -1,4 +1,6 @@
+import 'package:akari/data/Models/get_massage_model/get_massage_model.dart';
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
+import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<ForgetPassCubit>(create: (context) => ForgetPassCubit()),
         BlocProvider<ResetPassCubit>(create: (context) => ResetPassCubit()),
         BlocProvider<GetRoomsCubit>(create: (context) => GetRoomsCubit()),
+        BlocProvider<GetMassagesCubit>(create: (context) => GetMassagesCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

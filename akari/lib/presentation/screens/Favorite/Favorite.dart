@@ -1,12 +1,6 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/Favorite/components/FavoriteAppBar.dart';
 import 'package:akari/presentation/screens/Favorite/components/FavoriteScreen.dart';
-import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 
 import 'package:flutter/material.dart';
-
-import '../../../app/global.dart';
 
 class Favorite extends StatefulWidget {
   const Favorite();

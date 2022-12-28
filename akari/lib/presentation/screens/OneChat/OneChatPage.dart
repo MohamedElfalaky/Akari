@@ -5,11 +5,18 @@ import 'package:akari/presentation/screens/OneChat/components/OneChatScreen.dart
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/global.dart';
 
 class OneChatPage extends StatefulWidget {
-  const OneChatPage();
+  final image;
+  final String? namee;
+  final String? roomId;
+  final String? receiverId;
+  final String? phoneNumber;
+  OneChatPage(
+      {this.image, this.namee, this.receiverId, this.roomId, this.phoneNumber});
 
   @override
   State<OneChatPage> createState() => _OneChatPageState();
@@ -63,13 +70,13 @@ class _OneChatPageState extends State<OneChatPage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     image: DecorationImage(
-                        image: NetworkImage(
+                        image: NetworkImage(widget.image ??
                             "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"),
                         fit: BoxFit.fill),
                   ),
                 ),
                 Text(
-                  "Ahmed Mohamed",
+                  widget.namee!,
                   style: TextStyle(
                       fontSize: 16,
                       color: Theme.of(context).colorScheme.secondary),
@@ -77,16 +84,25 @@ class _OneChatPageState extends State<OneChatPage> {
               ],
             ),
             actions: [
-              Icon(
-                Icons.phone,
-                color: Theme.of(context).colorScheme.secondary,
+              InkWell(
+                onTap: () =>
+                    launchUrl(Uri.parse("tel://+2${widget.phoneNumber}")),
+                child: Icon(
+                  Icons.phone,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
               SizedBox(
                 width: 15,
               ),
-              Icon(
-                Icons.whatsapp,
-                color: Colors.green,
+              InkWell(
+                onTap: () {
+                  launchWhatsapp(widget.phoneNumber!, "hello");
+                },
+                child: Icon(
+                  Icons.whatsapp,
+                  color: Colors.green,
+                ),
               ),
               SizedBox(
                 width: 20,
@@ -101,7 +117,19 @@ class _OneChatPageState extends State<OneChatPage> {
                 left: 24,
                 right: 24,
               ),
-              child: OneChatScreen())),
+              child: OneChatScreen(
+                  roomId: widget.roomId, receiver: widget.receiverId))),
     );
+  }
+
+  void launchWhatsapp(String numberr, String massagee) async {
+    String url = "whatsapp://send?phone=+2$numberr&text=$massagee";
+    await canLaunchUrl(Uri.parse(
+      url,
+    ))
+        ? launchUrl(Uri.parse(url))
+        : myApplication.showToast(
+            text: "cannot open whats app",
+            color: Theme.of(context).colorScheme.primary);
   }
 }

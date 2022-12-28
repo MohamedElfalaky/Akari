@@ -45,13 +45,13 @@ class _MoreState extends State<More> {
         }, // hide keyboard on tap anywhere
 
         child: Scaffold(
-            backgroundColor: Color(0xFFF4F4F4),
+            backgroundColor: const Color(0xFFF4F4F4),
             appBar: AppBar(
               automaticallyImplyLeading: false,
               // centerTitle: true,
               toolbarHeight: 152,
               elevation: 0,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.vertical(bottom: Radius.circular(16))),
               title: Column(
@@ -59,18 +59,18 @@ class _MoreState extends State<More> {
                 children: [
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Hello, Ahmed Mohamed",
                         style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
-                          onTap: () =>
-                              myApplication.navigateTo(ProfilePage(), context),
+                          onTap: () => myApplication.navigateTo(
+                              const ProfilePage(), context),
                           child: Container(
                             height: 32,
                             width: 32,
-                            padding: EdgeInsets.all(7),
+                            padding: const EdgeInsets.all(7),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.white24),
@@ -81,7 +81,7 @@ class _MoreState extends State<More> {
                           ))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Container(
@@ -89,25 +89,25 @@ class _MoreState extends State<More> {
                     // padding:
                     //     EdgeInsets.symmetric(horizontal: 38, vertical: 5),
                     width: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         // color: Colors.white,
                         borderRadius:
                             BorderRadius.vertical(bottom: Radius.circular(20))),
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 10),
+                          margin: const EdgeInsets.only(right: 10),
                           height: 56,
                           width: 56,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: NetworkImage(
                                     "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"),
                                 fit: BoxFit.fill),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         Column(
@@ -116,26 +116,26 @@ class _MoreState extends State<More> {
                             Row(
                               children: [
                                 SvgPicture.asset(calll),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
-                                Text(
+                                const Text(
                                   "Ahmed Mohamed",
                                   style: TextStyle(
                                       fontFamily: "Tajawal", fontSize: 16),
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Row(
                               children: [
                                 SvgPicture.asset(msgg),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
-                                Text(
+                                const Text(
                                   "ahmed@example.test",
                                   style: TextStyle(
                                       fontFamily: "Tajawal", fontSize: 16),
@@ -150,6 +150,6 @@ class _MoreState extends State<More> {
                 ],
               ),
             ),
-            body: MoreScreen()));
+            body: const MoreScreen()));
   }
 }

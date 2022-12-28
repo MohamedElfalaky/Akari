@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class OneChat extends StatelessWidget {
+class OneChatCard extends StatelessWidget {
   final String? img;
   final String? namee;
   final String? lastMassage;
-  const OneChat({super.key, this.img, this.namee, this.lastMassage});
+  const OneChatCard({super.key, this.img, this.namee, this.lastMassage});
 
   @override
   Widget build(BuildContext context) {
