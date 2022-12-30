@@ -5,16 +5,24 @@ import 'participant.dart';
 class Datum {
   String? id;
   Participant? participant;
+  String? senderId;
   String? lastMessage;
   DateTime? createdAt;
 
-  Datum({this.id, this.participant, this.lastMessage, this.createdAt});
+  Datum({
+    this.id,
+    this.participant,
+    this.senderId,
+    this.lastMessage,
+    this.createdAt,
+  });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json['_id'] as String?,
         participant: json['participant'] == null
             ? null
             : Participant.fromJson(json['participant'] as Map<String, dynamic>),
+        senderId: json['senderId'] as String?,
         lastMessage: json['lastMessage'] as String?,
         createdAt: json['createdAt'] == null
             ? null
@@ -24,6 +32,7 @@ class Datum {
   Map<String, dynamic> toJson() => {
         '_id': id,
         'participant': participant?.toJson(),
+        'senderId': senderId,
         'lastMessage': lastMessage,
         'createdAt': createdAt?.toIso8601String(),
       };
@@ -40,6 +49,7 @@ class Datum {
   int get hashCode =>
       id.hashCode ^
       participant.hashCode ^
+      senderId.hashCode ^
       lastMessage.hashCode ^
       createdAt.hashCode;
 }

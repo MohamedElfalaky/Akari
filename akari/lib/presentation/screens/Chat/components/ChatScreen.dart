@@ -50,6 +50,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                   roomId: state.myGetRoomsModel.data![index].id,
                                   receiverId: state.myGetRoomsModel.data![index]
                                       .participant!.id,
+                                  senderId: state
+                                      .myGetRoomsModel.data![index].senderId,
                                   phoneNumber: state.myGetRoomsModel
                                       .data![index].participant!.phone,
                                 ),

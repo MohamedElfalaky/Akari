@@ -1,7 +1,9 @@
+// import 'dart:html' hide Platform;
+
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/OneChat/components/OneChatScreen.dart';
-
+import 'dart:io' show Platform;
 import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
 
 import 'package:flutter/material.dart';
@@ -15,8 +17,14 @@ class OneChatPage extends StatefulWidget {
   final String? roomId;
   final String? receiverId;
   final String? phoneNumber;
+  final String? senderId;
   OneChatPage(
-      {this.image, this.namee, this.receiverId, this.roomId, this.phoneNumber});
+      {this.image,
+      this.namee,
+      this.receiverId,
+      this.roomId,
+      this.phoneNumber,
+      this.senderId});
 
   @override
   State<OneChatPage> createState() => _OneChatPageState();
@@ -85,8 +93,9 @@ class _OneChatPageState extends State<OneChatPage> {
             ),
             actions: [
               InkWell(
-                onTap: () =>
-                    launchUrl(Uri.parse("tel://+2${widget.phoneNumber}")),
+                onTap: () {
+                  launchUrl(Uri.parse("tel://+2${widget.phoneNumber}"));
+                },
                 child: Icon(
                   Icons.phone,
                   color: Theme.of(context).colorScheme.secondary,
@@ -118,18 +127,32 @@ class _OneChatPageState extends State<OneChatPage> {
                 right: 24,
               ),
               child: OneChatScreen(
-                  roomId: widget.roomId, receiver: widget.receiverId))),
+                  roomId: widget.roomId,
+                  receiver: widget.receiverId,
+                  sender: widget.senderId))),
     );
   }
 
   void launchWhatsapp(String numberr, String massagee) async {
-    String url = "whatsapp://send?phone=+2$numberr&text=$massagee";
-    await canLaunchUrl(Uri.parse(
-      url,
-    ))
-        ? launchUrl(Uri.parse(url))
-        : myApplication.showToast(
-            text: "cannot open whats app",
-            color: Theme.of(context).colorScheme.primary);
+    String androidUrl = "whatsapp://send?phone=+2$numberr&text=$massagee";
+    String iosUrl = "https://wa.me/+2$numberr?text=${Uri.parse(massagee)}";
+
+    if (Platform.isIOS) {
+      await canLaunchUrl(Uri.parse(
+        iosUrl,
+      ))
+          ? launchUrl(Uri.parse(iosUrl))
+          : myApplication.showToast(
+              text: "cannot open whats app",
+              color: Theme.of(context).colorScheme.primary);
+    } else {
+      await canLaunchUrl(Uri.parse(
+        androidUrl,
+      ))
+          ? launchUrl(Uri.parse(androidUrl))
+          : myApplication.showToast(
+              text: "cannot open whats app",
+              color: Theme.of(context).colorScheme.primary);
+    }
   }
 }
