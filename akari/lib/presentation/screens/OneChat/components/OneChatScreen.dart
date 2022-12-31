@@ -31,19 +31,22 @@ class _OneChatScreenState extends State<OneChatScreen> {
   List<dynamic> msgs = [];
   Socket? socket;
 
-  initTheSocket() {
+  _initTheSocket() {
     socket = io(baseURL, {
       "transports": ["websocket"],
-      "autoConnect": false
+      "autoConnect": false,
+      "query": {"token": "${CacheHelper.getFromShared("token")}"}
     });
-    socket!.connect();
-    socket!.onConnect((_) {
-      print("Hello, socket connected!");
-      socket!.on("message", (msgIbjct) {
-        print(" فيه رسالة اتبعتت");
-        setMessage(msgIbjct["message"], msgIbjct["senderId"]);
-      });
+
+    socket!.on("message", (msgIbjct) {
+      print(" فيه رسالة اتبعتت");
+      setMessage(msgIbjct["message"], msgIbjct["senderId"]);
     });
+    // socket!.connect();
+    // socket!.onConnect((_) {
+    //   print("السوكت التاني اتربط");
+
+    // });
   }
 
   sendMassage(String msg, String receiverId, String senderId) {
@@ -54,30 +57,47 @@ class _OneChatScreenState extends State<OneChatScreen> {
 
   setMessage(String theMsg, String id) {
     String type;
-    id == widget.sender ? type = "sent" : type = "received";
+    if (id == widget.sender) {
+      type = "sent";
+    } else if (id == widget.receiver) {
+      type = "received";
+    } else {
+      type = "";
+    }
     if (mounted) {
       setState(() {
         msgs.add({"massage": theMsg, "type": type});
       });
     }
-    _scrollController1.animateTo(_scrollController1.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+    if (_scrollController1.hasClients) {
+      _scrollController1.animateTo(_scrollController1.position.maxScrollExtent,
+          duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+    }
   }
 
   @override
   void initState() {
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   if (_scrollController1.hasClients) {
+    //     _scrollController1.animateTo(
+    //         _scrollController1.position.maxScrollExtent,
+    //         duration: Duration(milliseconds: 300),
+    //         curve: Curves.easeOut);
+    //   }
+    // });
     // TODO: implement initState
+
     super.initState();
     _OneChatController.oneChatAPIs(
         context, CacheHelper.getFromShared("token"), widget.roomId!);
-    initTheSocket();
+    _initTheSocket();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    socket!.close();
+    // _scrollController1.dispose();
   }
 
   @override

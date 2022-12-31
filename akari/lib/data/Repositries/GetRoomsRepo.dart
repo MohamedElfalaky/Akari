@@ -25,6 +25,9 @@ class GetRoomsRepo {
         final data = GetRoomsModel.fromJson(responsemap);
         myApplication.showToast(text: data.message!, color: Colors.green);
         return data;
+      } else if (response.statusCode == 401) {
+        final data = GetRoomsModel.fromJson(responsemap);
+        return data;
       } else {
         myApplication.showToast(
             text: responsemap["message"], color: Colors.red);

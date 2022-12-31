@@ -1,3 +1,4 @@
+import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
@@ -8,9 +9,21 @@ import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppMainScreen extends StatelessWidget {
+class AppMainScreen extends StatefulWidget {
   const AppMainScreen({super.key});
+
+  @override
+  State<AppMainScreen> createState() => _AppMainScreenState();
+}
+
+class _AppMainScreenState extends State<AppMainScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // AllAddsCubit.get(context).userAllAdds();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,26 +82,33 @@ class AppMainScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                     )),
                 Container(
-                  height: myApplication.hightClc(context, 447),
-                  margin: EdgeInsets.only(top: 8),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      InkWell(
-                          onTap: () =>
-                              myApplication.navigateTo(AddDetails(), context),
-                          child: BestAdsItem()),
-                      InkWell(
-                          onTap: () =>
-                              myApplication.navigateTo(AddDetails(), context),
-                          child: BestAdsItem()),
-                      InkWell(
-                          onTap: () =>
-                              myApplication.navigateTo(AddDetails(), context),
-                          child: BestAdsItem()),
-                    ],
-                  ),
-                )
+                    height: myApplication.hightClc(context, 447),
+                    margin: EdgeInsets.only(top: 8),
+                    child: Center(
+                      child: Text("heloo"),
+                    )
+
+                    // BlocBuilder<AllAddsCubit, AllAddsState>(
+                    //   builder:
+
+                    //    (context, state) {
+                    //     return state is AllAddsSuccess
+                    //         ? ListView.builder(
+                    //             shrinkWrap: true,
+                    //             itemCount: 5,
+                    //             itemBuilder: (context, index) {
+                    //               return InkWell(
+                    //                   onTap: () => myApplication.navigateTo(
+                    //                       AddDetails(), context),
+                    //                   child: BestAdsItem());
+                    //             },
+                    //           )
+                    //         : Center(
+                    //             child: CircularProgressIndicator(),
+                    //           );
+                    //   },
+                    // ),
+                    )
               ],
             ),
           ),

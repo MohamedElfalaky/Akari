@@ -5,6 +5,8 @@ import 'package:path/path.dart';
 
 class OneChatController {
   ///vars
+  List<dynamic> msgs = [];
+  final ScrollController _scrollController1 = ScrollController();
 
   ///methods
   void oneChatAPIs(BuildContext context, String token, String roomId) async {

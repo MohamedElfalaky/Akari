@@ -21,11 +21,11 @@ class GetRoomsCubit extends Cubit<GetRoomsState> {
     try {
       emit(GetRoomsLoading());
       getRoomsRepo.getRooms(token).then((value) {
-        if (value != null) {
+        if (value!.data != null) {
           emit(GetRoomsSuccess(value));
         } else {
           print(value);
-          emit(GetRoomsError(value.toString()));
+          emit(GetRoomsError(value.message!));
         }
       });
     } catch (e) {

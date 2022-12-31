@@ -1,4 +1,5 @@
 import 'package:akari/data/Models/get_massage_model/get_massage_model.dart';
+import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
@@ -31,6 +32,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
+  CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
   runApp(const MyApp());
 }
 
@@ -57,6 +59,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<ResetPassCubit>(create: (context) => ResetPassCubit()),
         BlocProvider<GetRoomsCubit>(create: (context) => GetRoomsCubit()),
         BlocProvider<GetMassagesCubit>(create: (context) => GetMassagesCubit()),
+        BlocProvider<AllAddsCubit>(create: (context) => AllAddsCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
