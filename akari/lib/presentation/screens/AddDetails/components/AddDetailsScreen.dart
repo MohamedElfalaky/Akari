@@ -489,7 +489,7 @@ class AddDetailsScreen extends StatelessWidget {
                         return Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                           padding: const EdgeInsets.all(20),
-                          height: 300,
+                          height: 330,
                           decoration: BoxDecoration(
                               borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(25),
@@ -532,8 +532,8 @@ class AddDetailsScreen extends StatelessWidget {
                               ),
                               myButton(
                                 () {
-                                  myApplication.navigateTo(
-                                      OneChatPage(), context);
+                                  // myApplication.navigateTo(
+                                  //     OneChatPage(), context);
                                 },
                                 "Chat",
                                 btnClr: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:akari/data/Models/get_massage_model/get_massage_model.dart';
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
+import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
@@ -34,7 +35,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
-  CacheHelper.removeFromShared("token");
+  // CacheHelper.removeFromShared("token");
   // CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
   // print(
   //     DateFormat().formatDuration(DateTime.now().subtract(Duration(hours: 5)))); // المفروض فرق الزمن
@@ -66,6 +67,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<GetRoomsCubit>(create: (context) => GetRoomsCubit()),
         BlocProvider<GetMassagesCubit>(create: (context) => GetMassagesCubit()),
         BlocProvider<AllAddsCubit>(create: (context) => AllAddsCubit()),
+        BlocProvider<GetFavoritesCubit>(
+            create: (context) => GetFavoritesCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

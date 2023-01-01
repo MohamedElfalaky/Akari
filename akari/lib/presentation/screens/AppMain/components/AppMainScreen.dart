@@ -93,28 +93,30 @@ class _AppMainScreenState extends State<AppMainScreen> {
                           return state is AllAddsSuccess
                               ? ListView.builder(
                                   shrinkWrap: true,
-                                  itemCount: state.myAllAddsModel.data!.length,
+                                  itemCount: state.myAllAddsModel.data.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                         onTap: () => myApplication.navigateTo(
                                             AddDetails(), context),
                                         child: BestAdsItem(
-                                          img: state.myAllAddsModel.data![index]
-                                              .images!.first,
-                                          title: state.myAllAddsModel
-                                              .data![index].title,
-                                          area: state.myAllAddsModel
-                                              .data![index].roomsAndBeds!.area
+                                          img: state.myAllAddsModel.data[index]
+                                              .images.first.normal,
+                                          title: state
+                                              .myAllAddsModel.data[index].title,
+                                          area: state.myAllAddsModel.data[index]
+                                              .details.area
                                               .toString(),
                                           floors: state.myAllAddsModel
-                                              .data![index].roomsAndBeds!.floors
+                                              .data[index].details.floors
                                               .toString(),
                                           statee: state.myAllAddsModel
-                                              .data![index].address!.state,
-                                          createdAt: state.myAllAddsModel
-                                              .data![index].createdAt,
-                                          price: state
-                                              .myAllAddsModel.data![index].price
+                                              .data[index].address.state,
+                                          createdAt: DateTime.parse(
+                                            state.myAllAddsModel.data[index]
+                                                .createdAt,
+                                          ),
+                                          price: state.myAllAddsModel
+                                              .data[index].price.inSP
                                               .toString(),
                                         ));
                                   },

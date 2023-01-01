@@ -1,7 +1,6 @@
 import 'dart:math';
 
-import 'package:akari/data/Models/all_adds_model/all_adds_model.dart';
-
+import 'package:akari/data/Models/AllAddsModel.dart';
 import 'package:akari/data/Repositries/AllAddsRepo.dart';
 
 import 'package:flutter/material.dart';

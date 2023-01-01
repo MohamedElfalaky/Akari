@@ -1,40 +1,52 @@
 import 'package:collection/collection.dart';
 
-class RoomsAndBeds {
+class Details {
   int? area;
   int? floors;
   int? roomsCount;
-  int? bedsCount;
+  int? bedroomsCount;
   int? bathroomCount;
+  String? deliveryTerm;
+  String? renterType;
+  String? rentFrequency;
 
-  RoomsAndBeds({
+  Details({
     this.area,
     this.floors,
     this.roomsCount,
-    this.bedsCount,
+    this.bedroomsCount,
     this.bathroomCount,
+    this.deliveryTerm,
+    this.renterType,
+    this.rentFrequency,
   });
 
-  factory RoomsAndBeds.fromJson(Map<String, dynamic> json) => RoomsAndBeds(
+  factory Details.fromJson(Map<String, dynamic> json) => Details(
         area: json['area'] as int?,
         floors: json['floors'] as int?,
         roomsCount: json['roomsCount'] as int?,
-        bedsCount: json['bedsCount'] as int?,
+        bedroomsCount: json['bedroomsCount'] as int?,
         bathroomCount: json['bathroomCount'] as int?,
+        deliveryTerm: json['deliveryTerm'] as String?,
+        renterType: json['renterType'] as String?,
+        rentFrequency: json['rentFrequency'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
         'area': area,
         'floors': floors,
         'roomsCount': roomsCount,
-        'bedsCount': bedsCount,
+        'bedroomsCount': bedroomsCount,
         'bathroomCount': bathroomCount,
+        'deliveryTerm': deliveryTerm,
+        'renterType': renterType,
+        'rentFrequency': rentFrequency,
       };
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! RoomsAndBeds) return false;
+    if (other is! Details) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }
@@ -44,6 +56,9 @@ class RoomsAndBeds {
       area.hashCode ^
       floors.hashCode ^
       roomsCount.hashCode ^
-      bedsCount.hashCode ^
-      bathroomCount.hashCode;
+      bedroomsCount.hashCode ^
+      bathroomCount.hashCode ^
+      deliveryTerm.hashCode ^
+      renterType.hashCode ^
+      rentFrequency.hashCode;
 }

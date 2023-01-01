@@ -18,6 +18,8 @@ String blueLogo = "assets/blueLogo.png";
 String brownLogo = "assets/brownLogo.png";
 String whiteLogo = "assets/whiteLogo.png";
 String mainLogo = "assets/mainLogo.png";
+String belll = "assets/notification-bell-svgrepo-com.svg";
+String becomeAdvertisor = "assets/becomeAdvertisor.svg";
 
 // Lottie
 String lottieExtension = "assets/Images/lottie/";

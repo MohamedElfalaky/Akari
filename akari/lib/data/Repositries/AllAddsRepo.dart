@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:akari/data/Models/all_adds_model/all_adds_model.dart';
+import 'package:akari/data/Models/AllAddsModel.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;

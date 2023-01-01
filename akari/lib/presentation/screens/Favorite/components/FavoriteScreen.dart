@@ -1,5 +1,9 @@
+import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
+import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+import 'package:akari/presentation/screens/Favorite/controller/CartController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,13 +15,15 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-  // FavoriteController _FavoriteController = FavoriteController();
+  GetFavoritesController _FavoriteController = GetFavoritesController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // _FavoriteController.FavoriteAPIs(context, CacheHelper.getFromShared("token"));
+    _FavoriteController.getFavoritesAPIs(
+      context,
+    );
   }
 
   @override
@@ -26,11 +32,42 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         ? Center(
             child: Text("Please log in to access your favourite list"),
           )
-        : ListView(shrinkWrap: true, children: [
-            BestAdsItem(),
-            BestAdsItem(),
-            BestAdsItem(),
-            BestAdsItem(),
-          ]);
+        : BlocBuilder<GetFavoritesCubit, GetFavoritesState>(
+            builder: (context, state) {
+              return state is GetFavoritesSuccess
+                  ? ListView.builder(
+                      itemCount: state.myGetFavoritesModel.data!.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () =>
+                              myApplication.navigateTo(AddDetails(), context),
+                          child: BestAdsItem(
+                            img: state.myGetFavoritesModel.data![index].images!
+                                .first.normal,
+                            title: state.myGetFavoritesModel.data![index].title,
+                            area: state
+                                .myGetFavoritesModel.data![index].details!.area
+                                .toString(),
+                            floors: state.myGetFavoritesModel.data![index]
+                                .details!.floors
+                                .toString(),
+                            statee: state.myGetFavoritesModel.data![index]
+                                .address!.state,
+                            createdAt: state
+                                .myGetFavoritesModel.data![index].createdAt,
+                            price: state
+                                .myGetFavoritesModel.data![index].price!.inSp
+                                .toString(),
+                            isFavorite: true,
+                          ),
+                        );
+                      },
+                      shrinkWrap: true,
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
+          );
   }
 }
