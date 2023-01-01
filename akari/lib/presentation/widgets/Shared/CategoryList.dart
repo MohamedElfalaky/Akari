@@ -1,5 +1,7 @@
 import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 List<Widget> categoryTaps = [
   TabBarItem("Flat", "assets/flat.svg"),
@@ -47,4 +49,10 @@ List<Map> contractTaps = [
 List<Map> unitLawsTaps = [
   {"name": "allow animals", "bool": false},
   {"name": "allow Smoking", "bool": false},
+];
+
+const List<Map> adsTaps = [
+  {"name": "Ads.", "img": adsTap},
+  {"name": "Views", "img": viewTap},
+  {"name": "Calls", "img": callsTap},
 ];

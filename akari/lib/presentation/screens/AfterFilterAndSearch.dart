@@ -7,6 +7,7 @@ import 'package:akari/presentation/widgets/Filter/AfterFilterAppBar.dart';
 import 'package:akari/presentation/widgets/Filter/FilterAppBar.dart';
 import 'package:akari/presentation/widgets/Filter/FilterScreen.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,10 +47,36 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
           ),
           child: ListView(
             children: [
-              BestAdsItem(),
-              BestAdsItem(),
-              BestAdsItem(),
-              BestAdsItem(),
+              BestAdsItem(
+                img: defaultHouse,
+                title: "test",
+                area: "test",
+                floors: "test",
+                statee: "test",
+                createdAt: DateTime.now(),
+                price: "test",
+                isFavorite: null,
+              ),
+              BestAdsItem(
+                img: defaultHouse,
+                title: "test",
+                area: "test",
+                floors: "test",
+                statee: "test",
+                createdAt: DateTime.now(),
+                price: "test",
+                isFavorite: null,
+              ),
+              BestAdsItem(
+                img: defaultHouse,
+                title: "test",
+                area: "test",
+                floors: "test",
+                statee: "test",
+                createdAt: DateTime.now(),
+                price: "test",
+                isFavorite: null,
+              ),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -286,6 +287,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           elevation: 0,
                         ),
                         onPressed: () {
+                          CacheHelper.removeFromShared("token");
                           Navigator.pushReplacementNamed(context, "/appmain");
                         },
                         child: Center(

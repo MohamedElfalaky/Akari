@@ -1,6 +1,7 @@
 import 'package:akari/data/Repositries/GetFavoritesRepo.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/presentation/screens/AddDetails/components/BecomeAdvertisorPopUp.dart';
+import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 
 import 'package:akari/presentation/screens/Chat/Chat.dart';
 import 'package:akari/presentation/screens/Favorite/Favorite.dart';
@@ -57,9 +58,15 @@ class _AppMainState extends State<AppMain> {
               showDialog(
                 context: context,
                 builder: (BuildContext myContext) {
-                  return BecomeAdvertisorPopUp();
+                  return SorryPopUp();
                 },
               );
+              // showDialog(
+              //   context: context,
+              //   builder: (BuildContext myContext) {
+              //     return BecomeAdvertisorPopUp();
+              //   },
+              // );
             },
           ),
           floatingActionButtonLocation:

@@ -11,6 +11,7 @@ import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppMainScreen extends StatefulWidget {
   const AppMainScreen({super.key});
@@ -49,6 +50,83 @@ class _AppMainScreenState extends State<AppMainScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                ////////// adds bar
+
+                Row(
+                  children: [
+                    Text(
+                      "My Ads.",
+                      style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
+                    ),
+                    Spacer(),
+                    InkWell(
+                      // onTap: () => Navigator.pushNamed(context, "/allcategory"),
+                      child: Text(
+                        "View All",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Tajawal,Regular",
+                            color: Theme.of(context).colorScheme.secondary),
+                      ),
+                    )
+                  ],
+                ),
+                Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.only(top: 8),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                          // scrollDirection: Axis.horizontal,
+                          children: adsTaps.map((e) {
+                        return Container(
+                          height: 80,
+                          width: 140,
+                          margin: EdgeInsets.only(right: 16),
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0, horizontal: 12),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    e["img"],
+                                    height: 50,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(
+                                        "123",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(e["name"],
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                          ))
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList()),
+                    )),
+                SizedBox(
+                  height: 25,
+                ),
+                /////////// catigory bar
                 Row(
                   children: [
                     Text(
@@ -77,6 +155,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                           // scrollDirection: Axis.horizontal,
                           children: categoryTaps),
                     )),
+
                 Container(
                     margin: EdgeInsets.only(
                         top: myApplication.hightClc(context, 24)),

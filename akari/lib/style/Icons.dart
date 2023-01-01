@@ -1,36 +1,42 @@
 // svgs
-String passOn = "assets/passOn.svg";
-String passOff = "assets/passOff.svg";
-String heartBulk = "assets/heart.svg";
-String messageBulk = "assets/message-text-bulk.svg";
-String categoryBulk = "assets/category-bold.svg";
-String roomm = "assets/Room.svg";
-String bedd = "assets/bed.svg";
-String sorryy = "assets/Feeling sorry-pana.svg";
-String pass11 = "assets/password.svg";
-String termss = "assets/terms.svg";
-String calll = "assets/registerPics/call-bulk.svg";
-String lockk = "assets/registerPics/vuesax-bulk-lock.svg";
-String msgg = "assets/registerPics/vuesax-bulk-sms.svg";
-String usrr = "assets/registerPics/user-bulk.svg";
-String penn = "assets/Group 62567.svg";
-String blueLogo = "assets/blueLogo.png";
-String brownLogo = "assets/brownLogo.png";
-String whiteLogo = "assets/whiteLogo.png";
-String mainLogo = "assets/mainLogo.png";
-String belll = "assets/notification-bell-svgrepo-com.svg";
-String becomeAdvertisor = "assets/becomeAdvertisor.svg";
+const String passOn = "assets/passOn.svg";
+const String passOff = "assets/passOff.svg";
+const String heartBulk = "assets/heart.svg";
+const String messageBulk = "assets/message-text-bulk.svg";
+const String categoryBulk = "assets/category-bold.svg";
+const String roomm = "assets/Room.svg";
+const String bedd = "assets/bed.svg";
+const String sorryy = "assets/Feeling sorry-pana.svg";
+const String pass11 = "assets/password.svg";
+const String termss = "assets/terms.svg";
+const String calll = "assets/registerPics/call-bulk.svg";
+const String lockk = "assets/registerPics/vuesax-bulk-lock.svg";
+const String msgg = "assets/registerPics/vuesax-bulk-sms.svg";
+const String usrr = "assets/registerPics/user-bulk.svg";
+const String penn = "assets/Group 62567.svg";
+const String blueLogo = "assets/blueLogo.png";
+const String brownLogo = "assets/brownLogo.png";
+const String whiteLogo = "assets/whiteLogo.png";
+const String mainLogo = "assets/mainLogo.png";
+const String belll = "assets/notification-bell-svgrepo-com.svg";
+const String becomeAdvertisor = "assets/becomeAdvertisor.svg";
+const String adsTap = "assets/myadsNew.svg";
+const String viewTap = "assets/myViewsNew.svg";
+const String callsTap = "assets/callsTap.svg";
+// const String newcalls = "assets/Group 62745.svg";
+const String myAddss = "assets/myAds.svg";
 
 // Lottie
-String lottieExtension = "assets/Images/lottie/";
-String helloHand = "${lottieExtension}80604-hand.json";
-String forgetPass = "${lottieExtension}82078-confusion.json";
+const String lottieExtension = "assets/Images/lottie/";
+const String helloHand = "${lottieExtension}80604-hand.json";
+const String forgetPass = "${lottieExtension}82078-confusion.json";
 //png
-String pngExtension = "assets/Images/png/";
-String loginBackground = "${pngExtension}evan-wise-D99y38Na5Xo-unsplash.png";
-String clockk = "${pngExtension}Clock.png";
+const String pngExtension = "assets/Images/png/";
+const String loginBackground =
+    "${pngExtension}evan-wise-D99y38Na5Xo-unsplash.png";
+const String clockk = "${pngExtension}Clock.png";
 
 // NetWork
 
-String noReturant =
-    "https://png.pngitem.com/pimgs/s/201-2011783_png-restaurant-transparent-png.png";
+String defaultHouse =
+    "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/download-23.jpg";

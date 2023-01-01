@@ -2,6 +2,7 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ChangePassWord/ChangePassWord.dart';
 import 'package:akari/presentation/screens/ContactUs/ContactUs.dart';
+import 'package:akari/presentation/screens/More/components/MyAdsScreen.dart';
 import 'package:akari/presentation/screens/ProfilePage/ProfilePage.dart';
 import 'package:akari/presentation/screens/TAC/TAC.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
@@ -41,6 +42,9 @@ class _MoreScreenState extends State<MoreScreen> {
             SizedBox(
               height: 24,
             ),
+
+            //////////////////// change password
+
             InkWell(
               onTap: () => myApplication.navigateTo(ChangePassWord(), context),
               child: Container(
@@ -66,7 +70,56 @@ class _MoreScreenState extends State<MoreScreen> {
                 ),
               ),
             ),
-            /////
+
+            //////////////////// My Adds
+            SizedBox(
+              height: 16,
+            ),
+            InkWell(
+              onTap: () => myApplication.navigateTo(MyAdsScreen(), context),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                height: 48,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12)),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      myAddss,
+                      height: 30,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "My Ads.",
+                          style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "(123)",
+                          style: TextStyle(
+                              fontFamily: "Tajawal",
+                              fontSize: 16,
+                              color: Theme.of(context).colorScheme.secondary),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_sharp)
+                  ],
+                ),
+              ),
+            ),
+
+            //////////////////// Currancy
 
             SizedBox(
               height: 16,
@@ -352,10 +405,10 @@ class _MoreScreenState extends State<MoreScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 150,
-            ),
-            myButton(() {}, "Become an advertisor")
+            // SizedBox(
+            //   height: 150,
+            // ),
+            // myButton(() {}, "Become an advertisor")
           ],
         ),
       )

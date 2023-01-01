@@ -26,7 +26,7 @@ class _SearchFilterState extends State<SearchFilter> {
         children: [
           SizedBox(
             width: myApplication.widthClc(context, 272),
-            height: myApplication.hightClc(context, 40),
+            // height: myApplication.hightClc(context, 40),
             child: TypeAheadFormField(
               suggestionsCallback: (pattern) => getSuggestion(pattern),
               itemBuilder: (context, itemData) => Container(

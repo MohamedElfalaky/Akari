@@ -49,6 +49,9 @@ class BestAdsItem extends StatelessWidget {
                 ),
                 height: myApplication.hightClc(context, 176),
               ),
+              // isFavorite != null
+              //     ?
+
               Container(
                 margin: EdgeInsets.only(
                     top: myApplication.hightClc(context, 8),
@@ -59,31 +62,31 @@ class BestAdsItem extends StatelessWidget {
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(50)),
                 child: Center(
-                  child: isFavorite == true
-                      ? InkWell(
-                          child: Icon(
-                            Icons.favorite,
-                            color: Colors.red,
-                          ),
-                        )
-                      : InkWell(
-                          onTap: () {
-                            if (CacheHelper.getFromShared("token") == null) {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext myContext) {
-                                  return SorryPopUp();
-                                },
-                              );
-                            }
-                          },
-                          child: Icon(
-                            Icons.favorite_outline,
-                            color: Colors.red,
-                          ),
-                        ),
-                ),
+                    child: isFavorite == true
+                        ? InkWell(
+                            child: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
+                          )
+                        : InkWell(
+                            onTap: () {
+                              if (CacheHelper.getFromShared("token") == null) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext myContext) {
+                                    return SorryPopUp();
+                                  },
+                                );
+                              }
+                            },
+                            child: Icon(
+                              Icons.favorite_outline,
+                              color: Colors.red,
+                            ),
+                          )),
               )
+              // : Container()
             ],
           ),
           Container(
