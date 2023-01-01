@@ -1,10 +1,11 @@
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
-import 'package:akari/presentation/screens/AppMain.dart';
+import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +51,10 @@ class LogIn extends StatelessWidget {
                           height: myApplication.hightClc(context, 350),
                           color: Theme.of(context).colorScheme.tertiary,
                           child: Center(
-                              child: SvgPicture.asset("assets/LoginLogo.svg"))),
+                              child: Image.asset(
+                            mainLogo,
+                            height: 250,
+                          ))),
                       Container(
                         height: myApplication.hightClc(context, 440),
                         width: double.infinity,

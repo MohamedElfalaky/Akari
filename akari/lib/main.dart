@@ -13,13 +13,14 @@ import 'package:akari/helpers/dio_helper.dart';
 import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
-import 'package:akari/presentation/screens/AppMain.dart';
+import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
 import 'package:akari/presentation/screens/Register.dart';
+import 'package:akari/presentation/screens/ResetPass.dart';
 import 'package:akari/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,12 +28,17 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sizer/sizer.dart';
+import 'package:intl/intl.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
-  CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
+  CacheHelper.removeFromShared("token");
+  // CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
+  // print(
+  //     DateFormat().formatDuration(DateTime.now().subtract(Duration(hours: 5)))); // المفروض فرق الزمن
+  // print(DateFormat.yMMMd().format(DateTime.parse("2022-11-04T06:46:13.081Z")).toString());
   runApp(const MyApp());
 }
 

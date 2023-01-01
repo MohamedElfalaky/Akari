@@ -6,6 +6,7 @@ import 'package:akari/presentation/screens/ResetPass.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/OtpSent.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -87,9 +88,11 @@ class OTP extends StatelessWidget {
                         height: myApplication.hightClc(context, 340),
                         color: Theme.of(context).colorScheme.tertiary,
                         child: Center(
-                            child: SvgPicture.asset(
-                          "assets/logo1.svg",
-                        ))),
+                          child: Image.asset(
+                            mainLogo,
+                            height: 300,
+                          ),
+                        )),
                     Container(
                       height: myApplication.hightClc(context, 460),
                       width: double.infinity,

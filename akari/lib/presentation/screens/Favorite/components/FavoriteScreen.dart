@@ -1,5 +1,5 @@
 import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,11 +22,15 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(shrinkWrap: true, children: [
-      BestAdsItem(myBool: true),
-      BestAdsItem(myBool: true),
-      BestAdsItem(myBool: true),
-      BestAdsItem(myBool: true),
-    ]);
+    return CacheHelper.getFromShared("token") == null
+        ? Center(
+            child: Text("Please log in to access your favourite list"),
+          )
+        : ListView(shrinkWrap: true, children: [
+            BestAdsItem(),
+            BestAdsItem(),
+            BestAdsItem(),
+            BestAdsItem(),
+          ]);
   }
 }

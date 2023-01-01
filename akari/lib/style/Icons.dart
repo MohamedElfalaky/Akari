@@ -14,6 +14,10 @@ String lockk = "assets/registerPics/vuesax-bulk-lock.svg";
 String msgg = "assets/registerPics/vuesax-bulk-sms.svg";
 String usrr = "assets/registerPics/user-bulk.svg";
 String penn = "assets/Group 62567.svg";
+String blueLogo = "assets/blueLogo.png";
+String brownLogo = "assets/brownLogo.png";
+String whiteLogo = "assets/whiteLogo.png";
+String mainLogo = "assets/mainLogo.png";
 
 // Lottie
 String lottieExtension = "assets/Images/lottie/";

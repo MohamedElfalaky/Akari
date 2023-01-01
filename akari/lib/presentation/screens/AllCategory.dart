@@ -1,9 +1,9 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/widgets/AllCategory/AllCategoryAppBar.dart';
-import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
-import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
-import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
+import 'package:akari/presentation/screens/AppMain/components/AppMainScreen.dart';
+import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 import 'package:akari/presentation/widgets/Filter/FilterAppBar.dart';
 import 'package:akari/presentation/widgets/Filter/FilterScreen.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';

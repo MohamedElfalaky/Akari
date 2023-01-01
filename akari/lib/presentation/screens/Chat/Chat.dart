@@ -3,7 +3,7 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/Chat/components/ChatScreen.dart';
 import 'package:akari/presentation/screens/Chat/controller/ChatController.dart';
 
-import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
+import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 
 import 'package:flutter/material.dart';
 

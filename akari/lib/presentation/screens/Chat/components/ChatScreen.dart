@@ -9,7 +9,7 @@ import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart
 import 'package:akari/presentation/screens/Chat/components/OneChatCard.dart';
 import 'package:akari/presentation/screens/Chat/controller/ChatController.dart';
 import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socket_io_client/socket_io_client.dart';

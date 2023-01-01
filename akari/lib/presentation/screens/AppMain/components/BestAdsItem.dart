@@ -1,14 +1,35 @@
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
+import 'package:intl/intl.dart';
 
 class BestAdsItem extends StatelessWidget {
-  const BestAdsItem({super.key, this.myBool});
-  final bool? myBool;
+  final String? img;
+  final String? title;
+  final String? area;
+  final String? floors;
+  final String? statee;
+  final DateTime? createdAt;
+  final String? price;
+  final bool? isFavorite;
+
+  const BestAdsItem(
+      {super.key,
+      this.img,
+      this.title,
+      this.area,
+      this.floors,
+      this.statee,
+      this.createdAt,
+      this.price,
+      this.isFavorite});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,9 +44,7 @@ class BestAdsItem extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(
-                          "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                      fit: BoxFit.fill),
+                      image: NetworkImage(img ?? "no img"), fit: BoxFit.fill),
                   // color: Colors.green,
                 ),
                 height: myApplication.hightClc(context, 176),
@@ -40,14 +59,28 @@ class BestAdsItem extends StatelessWidget {
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(50)),
                 child: Center(
-                  child: myBool == true
-                      ? Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                  child: isFavorite == true
+                      ? InkWell(
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
                         )
-                      : Icon(
-                          Icons.favorite_outline,
-                          color: Colors.red,
+                      : InkWell(
+                          onTap: () {
+                            if (CacheHelper.getFromShared("token") == null) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext myContext) {
+                                  return SorryPopUp();
+                                },
+                              );
+                            }
+                          },
+                          child: Icon(
+                            Icons.favorite_outline,
+                            color: Colors.red,
+                          ),
                         ),
                 ),
               )
@@ -68,9 +101,11 @@ class BestAdsItem extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(bottom: 8, top: 8),
-                  child: AutoSizeText(
-                    "Villa five stars",
+                  child: Text(
+                    title!,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                 ),
                 Row(
@@ -92,8 +127,8 @@ class BestAdsItem extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 right: myApplication.widthClc(context, 125),
                                 bottom: myApplication.hightClc(context, 8)),
-                            child: AutoSizeText(
-                              "200 m",
+                            child: Text(
+                              "$area m",
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -118,8 +153,8 @@ class BestAdsItem extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 8)),
-                            child: AutoSizeText(
-                              "3 floors",
+                            child: Text(
+                              "$floors floors",
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -147,8 +182,8 @@ class BestAdsItem extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: AutoSizeText(
-                              "Sudan, Alkhartom ",
+                            child: Text(
+                              statee!,
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -171,8 +206,8 @@ class BestAdsItem extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: AutoSizeText(
-                              "19 OCT",
+                            child: Text(
+                              DateFormat.yMMMd().format(createdAt!).toString(),
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -187,8 +222,8 @@ class BestAdsItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      child: AutoSizeText(
-                        "150 SD / month",
+                      child: Text(
+                        "$price SD / month",
                         style: TextStyle(
                             fontSize: 22,
                             fontFamily: "Tajawal",
@@ -197,12 +232,9 @@ class BestAdsItem extends StatelessWidget {
                     ),
                     Spacer(),
                     IconButton(
-                        onPressed: (() => showDialog(
-                              context: context,
-                              builder: (BuildContext myContext) {
-                                return SorryPopUp();
-                              },
-                            )),
+                        onPressed: () async {
+                          await Share.share("sharedtext");
+                        },
                         icon: Icon(
                           Icons.share,
                           color: Theme.of(context).colorScheme.secondary,

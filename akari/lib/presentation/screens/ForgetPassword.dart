@@ -6,6 +6,7 @@ import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,8 +57,10 @@ class ForgetPassword extends StatelessWidget {
                         height: myApplication.hightClc(context, 90),
                         color: Theme.of(context).colorScheme.tertiary,
                         child: Center(
-                            child: SvgPicture.asset(
-                                "assets/forgetpass/logo.svg"))),
+                            child: Image.asset(
+                          mainLogo,
+                          height: 130,
+                        ))),
                     Container(
                         height: myApplication.hightClc(context, 300),
                         color: Theme.of(context).colorScheme.tertiary,

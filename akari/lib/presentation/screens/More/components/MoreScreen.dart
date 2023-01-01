@@ -4,7 +4,7 @@ import 'package:akari/presentation/screens/ChangePassWord/ChangePassWord.dart';
 import 'package:akari/presentation/screens/ContactUs/ContactUs.dart';
 import 'package:akari/presentation/screens/ProfilePage/ProfilePage.dart';
 import 'package:akari/presentation/screens/TAC/TAC.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';

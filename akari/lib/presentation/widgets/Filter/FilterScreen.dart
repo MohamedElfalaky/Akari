@@ -1,7 +1,7 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
-import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:auto_size_text/auto_size_text.dart';

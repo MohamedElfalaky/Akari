@@ -1,10 +1,11 @@
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AppMain/controller/AppMainController.dart';
 import 'package:akari/presentation/screens/Chat/Chat.dart';
 import 'package:akari/presentation/screens/Favorite/Favorite.dart';
 import 'package:akari/presentation/screens/More/More.dart';
-import 'package:akari/presentation/widgets/AppMain/AppMainScreen.dart';
+import 'package:akari/presentation/screens/AppMain/components/AppMainScreen.dart';
 
-import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
+import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,12 @@ int currentIndex = 0;
 final screens = [AppMainScreen(), Favorite(), Chat(), More()];
 
 class _AppMainState extends State<AppMain> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -2,14 +2,14 @@ import 'package:collection/collection.dart';
 
 class Location {
   String? type;
-  List<double>? coordinates;
+  List<dynamic>? coordinates;
   String? id;
 
   Location({this.type, this.coordinates, this.id});
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
         type: json['type'] as String?,
-        coordinates: json['coordinates'] as List<double>?,
+        coordinates: json['coordinates'] as List<dynamic>?,
         id: json['_id'] as String?,
       );
 

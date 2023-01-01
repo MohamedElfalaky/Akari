@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:akari/style/Icons.dart';
+
 import '../../helpers/AppLocalizations.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +37,7 @@ class _SplashState extends State<Splash> {
         ),
         Scaffold(
             backgroundColor: Colors.transparent,
-            body: Center(
-                child: SvgPicture.asset(
-              'assets/logo.svg',
-            ))),
+            body: Center(child: Image.asset(mainLogo))),
       ],
     );
   }

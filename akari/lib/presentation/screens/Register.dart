@@ -4,6 +4,7 @@ import 'package:akari/presentation/screens/OTP.dart';
 import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +56,10 @@ class Register extends StatelessWidget {
                         ),
                         color: Theme.of(context).colorScheme.tertiary,
                         child: Center(
-                            child: SvgPicture.asset("assets/logoRege.svg"))),
+                            child: Image.asset(
+                          mainLogo,
+                          height: 110,
+                        ))),
                     Container(
                       height: myApplication.hightClc(context, 672),
                       width: double.infinity,

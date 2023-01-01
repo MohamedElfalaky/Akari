@@ -1,101 +1,26 @@
 import 'package:collection/collection.dart';
 
-import 'address.dart';
-import 'comfort_ways.dart';
-import 'location.dart';
-import 'rating.dart';
-import 'rooms_and_beds.dart';
+import 'datum.dart';
 
 class AllAddsModel {
-  String? id;
-  String? title;
-  List<String>? images;
-  String? description;
-  String? contractType;
-  String? buildingType;
-  int? price;
-  List<String>? unitLaws;
-  Rating? rating;
-  bool? isActive;
-  Address? address;
-  Location? location;
-  RoomsAndBeds? roomsAndBeds;
-  ComfortWays? comfortWays;
-  String? advisor;
-  int? v;
-  DateTime? createdAt;
+  List<Datum>? data;
+  String? message;
+  bool? result;
 
-  AllAddsModel({
-    this.id,
-    this.title,
-    this.images,
-    this.description,
-    this.contractType,
-    this.buildingType,
-    this.price,
-    this.unitLaws,
-    this.rating,
-    this.isActive,
-    this.address,
-    this.location,
-    this.roomsAndBeds,
-    this.comfortWays,
-    this.advisor,
-    this.v,
-    this.createdAt,
-  });
+  AllAddsModel({this.data, this.message, this.result});
 
   factory AllAddsModel.fromJson(Map<String, dynamic> json) => AllAddsModel(
-        id: json['_id'] as String?,
-        title: json['title'] as String?,
-        images: json['images'] as List<String>?,
-        description: json['description'] as String?,
-        contractType: json['contractType'] as String?,
-        buildingType: json['buildingType'] as String?,
-        price: json['price'] as int?,
-        unitLaws: json['unitLaws'] as List<String>?,
-        rating: json['rating'] == null
-            ? null
-            : Rating.fromJson(json['rating'] as Map<String, dynamic>),
-        isActive: json['isActive'] as bool?,
-        address: json['address'] == null
-            ? null
-            : Address.fromJson(json['address'] as Map<String, dynamic>),
-        location: json['location'] == null
-            ? null
-            : Location.fromJson(json['location'] as Map<String, dynamic>),
-        roomsAndBeds: json['roomsAndBeds'] == null
-            ? null
-            : RoomsAndBeds.fromJson(
-                json['roomsAndBeds'] as Map<String, dynamic>),
-        comfortWays: json['comfortWays'] == null
-            ? null
-            : ComfortWays.fromJson(json['comfortWays'] as Map<String, dynamic>),
-        advisor: json['advisor'] as String?,
-        v: json['__v'] as int?,
-        createdAt: json['createdAt'] == null
-            ? null
-            : DateTime.parse(json['createdAt'] as String),
+        data: (json['data'] as List<dynamic>?)
+            ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        message: json['message'] as String?,
+        result: json['result'] as bool?,
       );
 
   Map<String, dynamic> toJson() => {
-        '_id': id,
-        'title': title,
-        'images': images,
-        'description': description,
-        'contractType': contractType,
-        'buildingType': buildingType,
-        'price': price,
-        'unitLaws': unitLaws,
-        'rating': rating?.toJson(),
-        'isActive': isActive,
-        'address': address?.toJson(),
-        'location': location?.toJson(),
-        'roomsAndBeds': roomsAndBeds?.toJson(),
-        'comfortWays': comfortWays?.toJson(),
-        'advisor': advisor,
-        '__v': v,
-        'createdAt': createdAt?.toIso8601String(),
+        'data': data?.map((e) => e.toJson()).toList(),
+        'message': message,
+        'result': result,
       };
 
   @override
@@ -107,22 +32,5 @@ class AllAddsModel {
   }
 
   @override
-  int get hashCode =>
-      id.hashCode ^
-      title.hashCode ^
-      images.hashCode ^
-      description.hashCode ^
-      contractType.hashCode ^
-      buildingType.hashCode ^
-      price.hashCode ^
-      unitLaws.hashCode ^
-      rating.hashCode ^
-      isActive.hashCode ^
-      address.hashCode ^
-      location.hashCode ^
-      roomsAndBeds.hashCode ^
-      comfortWays.hashCode ^
-      advisor.hashCode ^
-      v.hashCode ^
-      createdAt.hashCode;
+  int get hashCode => data.hashCode ^ message.hashCode ^ result.hashCode;
 }

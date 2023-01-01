@@ -1,9 +1,10 @@
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
-import 'package:akari/presentation/widgets/AppMain/BestAdsItem.dart';
-import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
-import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
+import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
+import 'package:akari/presentation/screens/AppMain/controller/AppMainController.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
@@ -19,10 +20,12 @@ class AppMainScreen extends StatefulWidget {
 }
 
 class _AppMainScreenState extends State<AppMainScreen> {
+  AppMainController appMainController = AppMainController();
+
   @override
   void initState() {
     super.initState();
-    // AllAddsCubit.get(context).userAllAdds();
+    appMainController.AppMainAPIs(context);
   }
 
   @override
@@ -85,30 +88,43 @@ class _AppMainScreenState extends State<AppMainScreen> {
                     height: myApplication.hightClc(context, 447),
                     margin: EdgeInsets.only(top: 8),
                     child: Center(
-                      child: Text("heloo"),
-                    )
-
-                    // BlocBuilder<AllAddsCubit, AllAddsState>(
-                    //   builder:
-
-                    //    (context, state) {
-                    //     return state is AllAddsSuccess
-                    //         ? ListView.builder(
-                    //             shrinkWrap: true,
-                    //             itemCount: 5,
-                    //             itemBuilder: (context, index) {
-                    //               return InkWell(
-                    //                   onTap: () => myApplication.navigateTo(
-                    //                       AddDetails(), context),
-                    //                   child: BestAdsItem());
-                    //             },
-                    //           )
-                    //         : Center(
-                    //             child: CircularProgressIndicator(),
-                    //           );
-                    //   },
-                    // ),
-                    )
+                      child: BlocBuilder<AllAddsCubit, AllAddsState>(
+                        builder: (context, state) {
+                          return state is AllAddsSuccess
+                              ? ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: state.myAllAddsModel.data!.length,
+                                  itemBuilder: (context, index) {
+                                    return InkWell(
+                                        onTap: () => myApplication.navigateTo(
+                                            AddDetails(), context),
+                                        child: BestAdsItem(
+                                          img: state.myAllAddsModel.data![index]
+                                              .images!.first,
+                                          title: state.myAllAddsModel
+                                              .data![index].title,
+                                          area: state.myAllAddsModel
+                                              .data![index].roomsAndBeds!.area
+                                              .toString(),
+                                          floors: state.myAllAddsModel
+                                              .data![index].roomsAndBeds!.floors
+                                              .toString(),
+                                          statee: state.myAllAddsModel
+                                              .data![index].address!.state,
+                                          createdAt: state.myAllAddsModel
+                                              .data![index].createdAt,
+                                          price: state
+                                              .myAllAddsModel.data![index].price
+                                              .toString(),
+                                        ));
+                                  },
+                                )
+                              : Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                        },
+                      ),
+                    ))
               ],
             ),
           ),

@@ -1,4 +1,4 @@
-import 'package:akari/presentation/widgets/AppMain/TabBarItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> categoryTaps = [

@@ -2,7 +2,7 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ProfilePage/components/ProfilePageScreen.dart';
 
-import 'package:akari/presentation/widgets/AppMain/myAppBar.dart';
+import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 
 import 'package:flutter/material.dart';
 

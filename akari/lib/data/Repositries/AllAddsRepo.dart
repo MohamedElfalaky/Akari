@@ -11,12 +11,10 @@ import '../../App/constants.dart';
 class AllAddsRepo {
   Future<AllAddsModel?> allAdds() async {
     try {
-      print("object");
       var response = await http.post(Uri.parse('$baseURL/ads'), body: {});
 
       Map<String, dynamic> responsemap = json.decode(response.body);
       if (response.statusCode == 200) {
-        print("sts200");
         final data = AllAddsModel.fromJson(responsemap);
         return data;
       } else {
