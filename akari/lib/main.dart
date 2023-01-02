@@ -13,7 +13,9 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/dio_helper.dart';
 import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/FormPage1.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/FormPage1.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/FormPage2.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPage3.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
@@ -120,13 +122,12 @@ class MyApp extends StatelessWidget {
                   '/onboarding': (context) => OnBoarding(),
                   '/appmain': (context) => AppMain(),
                   '/filter': (context) => Filter(),
-                  // '/afterfilter': (context) => AfterFilterAndSearch(null),
                   '/allcategory': (context) => AllCategory(),
                   '/register': (context) => Register(),
                   '/login': (context) => LogIn(),
                   '/forgetpassword': (context) => ForgetPassword(),
                 },
-                home: Splash());
+                home: FormPage3());
           });
         },
       ),

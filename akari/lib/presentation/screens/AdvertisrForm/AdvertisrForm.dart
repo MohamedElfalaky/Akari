@@ -1,4 +1,4 @@
-import 'package:akari/presentation/screens/AdvertisrForm/components/FormPage1.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/FormPage1.dart';
 import 'package:akari/presentation/screens/Favorite/components/FavoriteScreen.dart';
 
 import 'package:flutter/material.dart';

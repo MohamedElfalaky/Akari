@@ -25,6 +25,14 @@ const String viewTap = "assets/myViewsNew.svg";
 const String callsTap = "assets/callsTap.svg";
 // const String newcalls = "assets/Group 62745.svg";
 const String myAddss = "assets/myAds.svg";
+const String dropDownArrow = "assets/dropDownArrow.svg";
+const String myArea = "assets/myArea.svg";
+const String myTitle = "assets/myTitle.svg";
+const String myBathroom = "assets/myBathroom.svg";
+const String myBed = "assets/myBed.svg";
+const String myStairs = "assets/myStairs.svg";
+const String myDate = "assets/myDate.svg";
+const String plusss = "assets/plusss.svg";
 
 // Lottie
 const String lottieExtension = "assets/Images/lottie/";

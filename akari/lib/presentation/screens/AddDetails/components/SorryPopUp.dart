@@ -2,6 +2,7 @@ import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/screens/Register.dart';
+import 'package:akari/presentation/widgets/Shared/myOutLinedButton.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _SorryPopUpState extends State<SorryPopUp> {
           padding: EdgeInsets.all(1),
           child: Container(
             width: 300,
-            height: 360,
+            // height: 360,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -69,6 +70,17 @@ class _SorryPopUpState extends State<SorryPopUp> {
                     Navigator.pop(context);
                     myApplication.navigateTo(Register(), context);
                   }, "Create account"),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  myOutLinedButton(
+                    () {
+                      Navigator.pop(context);
+                      myApplication.navigateTo(LogIn(), context);
+                    },
+                    "Log in",
+                    txtClr: Theme.of(context).colorScheme.primary,
+                  ),
                 ]),
           )),
     );

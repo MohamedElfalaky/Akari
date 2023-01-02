@@ -15,6 +15,8 @@ class myTextField extends StatelessWidget {
   final clr;
   final maxLines;
   final minLines;
+  final maxlenth;
+  final enabled;
   const myTextField(
       {this.hint,
       this.prefix,
@@ -25,13 +27,17 @@ class myTextField extends StatelessWidget {
       this.controller,
       this.clr,
       this.maxLines,
-      this.minLines});
+      this.minLines,
+      this.maxlenth,
+      this.enabled});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled ?? true,
       maxLines: maxLines ?? 1,
       minLines: minLines ?? maxLines,
+      maxLength: maxlenth,
       // height: 60,    // ميتقيدش بحجم عشان ميبوظش وقت الايرور
       // width: double.infinity,
       controller: controller,
@@ -45,14 +51,13 @@ class myTextField extends StatelessWidget {
         fillColor: clr ?? Color(0xFFFFF7E999),
         filled: true,
         hintText: hint,
-        // label: Padding(
-        //     padding: EdgeInsets.only(top: 4),
-        //     child: AutoSizeText(
-        //       hint!,
-        //       style: TextStyle(
-        //           color: Theme.of(context).colorScheme.secondary,
-        //           fontSize: 14),
-        //     )),
+        label: Padding(
+            padding: EdgeInsets.only(top: 4),
+            child: AutoSizeText(
+              hint ?? "",
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary, fontSize: 14),
+            )),
         // border: OutlineInputBorder(), // square border
         enabledBorder: OutlineInputBorder(
             //rounded borders
@@ -65,7 +70,8 @@ class myTextField extends StatelessWidget {
                 color: Theme.of(context).colorScheme.secondary, width: 2)),
         contentPadding: EdgeInsets.only(
             left: myApplication.widthClc(context, 16),
-            bottom: myApplication.hightClc(context, 16)),
+            bottom: myApplication.hightClc(context, 12),
+            top: myApplication.hightClc(context, 12)),
         prefixIcon: prefix != null
             ? Container(
                 margin:

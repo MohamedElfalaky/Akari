@@ -1,34 +1,33 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class myButton extends StatelessWidget {
+class myOutLinedButton extends StatelessWidget {
   final myHandler;
   final String buttonName;
   final Color? btnClr;
   final Color? txtClr;
   final Widget? btnIcon;
+  final int? btnType;
 
-  const myButton(
-    this.myHandler,
-    this.buttonName, {
-    this.btnClr,
-    this.txtClr,
-    this.btnIcon,
-  });
+  const myOutLinedButton(this.myHandler, this.buttonName,
+      {this.btnClr, this.txtClr, this.btnIcon, this.btnType});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         height: 50,
         // width: 100,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
+        child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(
+                color: txtClr ?? Theme.of(context).colorScheme.primary),
             shape: RoundedRectangleBorder(
-                side: BorderSide(color: txtClr ?? Colors.white),
+                side: BorderSide(
+                    color: txtClr ?? Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.all(Radius.circular(23))),
             textStyle: TextStyle(fontWeight: FontWeight.normal),
             elevation: 0,
-            backgroundColor: btnClr ?? Color(0XFFDC8035),
+            // backgroundColor: btnClr ?? Color(0XFFDC8035),
           ),
           onPressed: myHandler,
           child: Center(
