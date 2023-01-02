@@ -137,10 +137,10 @@ class _FormPage3State extends State<FormPage3> {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              ...imageFileList
-                                  .map((e) => Image.file(
-                                      File(e.path, "d ", BoxFit.cover)))
-                                  .toList(),
+                              // ...imageFileList
+                              //     .map((e) => Image.file(
+                              //         File(e.path, "d ", BoxFit.cover)))
+                              //     .toList(),
                               InkWell(
                                 onTap: () {
                                   selectImages();
