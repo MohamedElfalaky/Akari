@@ -42,6 +42,7 @@ class _FormPage1State extends State<FormPage1> {
             child: Row(
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Post new Ad.",

@@ -45,29 +45,37 @@ class myTextField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
       obscureText: obscureTxt ?? false,
-      textAlignVertical: TextAlignVertical.bottom,
+      textAlignVertical: TextAlignVertical.center,
       cursorHeight: 25,
       decoration: InputDecoration(
         fillColor: clr ?? Color(0xFFFFF7E999),
         filled: true,
         hintText: hint,
-        label: Padding(
-            padding: EdgeInsets.only(top: 4),
-            child: AutoSizeText(
-              hint ?? "",
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary, fontSize: 14),
-            )),
+        label: Text(
+          hint ?? "",
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.secondary,
+          ),
+        ),
         // border: OutlineInputBorder(), // square border
-        enabledBorder: OutlineInputBorder(
-            //rounded borders
-            borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(
-              color: clr ?? Color(0xFFFFF7E999),
-            )),
+        // enabledBorder: OutlineInputBorder(
+        //     //rounded borders
+
+        //     borderRadius: BorderRadius.circular(1),
+        //     borderSide: BorderSide(
+        //       color: clr ?? Color(0xFFFFF7E999),
+        //     )),
+        // disabledBorder: OutlineInputBorder(
+        //     //rounded borders
+
+        //     borderRadius: BorderRadius.circular(1),
+        //     borderSide: BorderSide(
+        //       color: clr ?? Color(0xFFFFF7E999),
+        //     )),
         focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.secondary, width: 2)),
+
         contentPadding: EdgeInsets.only(
             left: myApplication.widthClc(context, 16),
             bottom: myApplication.hightClc(context, 12),

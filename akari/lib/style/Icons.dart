@@ -33,6 +33,9 @@ const String myBed = "assets/myBed.svg";
 const String myStairs = "assets/myStairs.svg";
 const String myDate = "assets/myDate.svg";
 const String plusss = "assets/plusss.svg";
+const String adress1 = "assets/adress1.svg";
+const String adress2 = "assets/adress2.svg";
+const String priceDetails = "assets/priceDetails.svg";
 
 // Lottie
 const String lottieExtension = "assets/Images/lottie/";

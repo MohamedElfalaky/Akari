@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
@@ -10,6 +10,7 @@ import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class FormPage3 extends StatefulWidget {
@@ -25,8 +26,8 @@ class _FormPage3State extends State<FormPage3> {
   List<XFile> imageFileList = [];
   List<String> myAmenitesList = [];
   void selectImages() async {
-    final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
-    if (selectedImages!.isNotEmpty) {
+    List<XFile>? selectedImages = await imagePicker.pickMultiImage();
+    if (selectedImages.isNotEmpty) {
       imageFileList.addAll(selectedImages);
       setState(() {});
     }
@@ -107,6 +108,8 @@ class _FormPage3State extends State<FormPage3> {
           body: Form(
             key: _formKey,
             child: ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
                     // outlining container
@@ -137,10 +140,7 @@ class _FormPage3State extends State<FormPage3> {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              // ...imageFileList
-                              //     .map((e) => Image.file(
-                              //         File(e.path, "d ", BoxFit.cover)))
-                              //     .toList(),
+                              ////////////////// زرار اضافة الصور
                               InkWell(
                                 onTap: () {
                                   selectImages();
@@ -184,6 +184,19 @@ class _FormPage3State extends State<FormPage3> {
                                   ),
                                 ),
                               ),
+
+                              ////////////////////////// بماب ع الصور اللي اترفعت
+                              ...imageFileList
+                                  .map((e) => Container(
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 5),
+                                      height: 200,
+                                      width: 200,
+                                      child: Image.file(
+                                        File(e.path),
+                                        fit: BoxFit.cover,
+                                      )))
+                                  .toList(),
                             ],
                           ),
                         ),

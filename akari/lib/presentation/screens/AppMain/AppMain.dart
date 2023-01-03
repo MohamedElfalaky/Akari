@@ -72,8 +72,9 @@ class _AppMainState extends State<AppMain> {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           //bottom nav bar
+
           bottomNavigationBar: BottomAppBar(
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             clipBehavior: Clip.antiAlias, // تصميم مكان الفاب
             notchMargin: 6, // نوتش للفاب
             child: BottomNavigationBar(

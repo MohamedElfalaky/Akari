@@ -58,6 +58,7 @@ class _FormPage2State extends State<FormPage2> {
               child: Row(
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Post new Ad.",
@@ -104,6 +105,8 @@ class _FormPage2State extends State<FormPage2> {
           body: Form(
             key: _formKey,
             child: ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
                     // outlining container
