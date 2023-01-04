@@ -73,8 +73,8 @@ class _MoreState extends State<More> {
                       children: [
                         Row(
                           children: [
-                            const Text(
-                              "Hello, Ahmed Mohamed",
+                            Text(
+                              "Hello, ${CacheHelper.getFromShared("name")}",
                               style: TextStyle(
                                   fontSize: 24, fontFamily: "Tajawal"),
                             ),
@@ -134,8 +134,8 @@ class _MoreState extends State<More> {
                                       const SizedBox(
                                         width: 8,
                                       ),
-                                      const Text(
-                                        "Ahmed Mohamed",
+                                      Text(
+                                        " ${CacheHelper.getFromShared("phone")}",
                                         style: TextStyle(
                                             fontFamily: "Tajawal",
                                             fontSize: 16),
@@ -151,8 +151,8 @@ class _MoreState extends State<More> {
                                       const SizedBox(
                                         width: 8,
                                       ),
-                                      const Text(
-                                        "ahmed@example.test",
+                                      Text(
+                                        " ${CacheHelper.getFromShared("email")}",
                                         style: TextStyle(
                                             fontFamily: "Tajawal",
                                             fontSize: 16),

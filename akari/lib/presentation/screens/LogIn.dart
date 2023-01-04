@@ -28,6 +28,14 @@ class LogIn extends StatelessWidget {
           CacheHelper.saveToShared("name", state.myLoginModel.data!.name!);
           CacheHelper.saveToShared("phone", state.myLoginModel.data!.phone!);
           CacheHelper.saveToShared("token", state.myLoginModel.accessToken!);
+          // CacheHelper.saveStringListToShared(
+          //     "roles", state.myLoginModel.data!.roles as List<String>);
+
+          state.myLoginModel.data!.roles!
+                  .where((element) => element == "advertiser")
+                  .isNotEmpty
+              ? CacheHelper.saveToShared("isAdvertiser", "yes")
+              : CacheHelper.saveToShared("isAdvertiser", "no");
           myApplication.navigateToRemove(context, AppMain());
         }
       },

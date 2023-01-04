@@ -11,6 +11,10 @@ class CacheHelper {
     await prefs!.setString(key, value);
   }
 
+  static Future saveStringListToShared(String key, List<String> value) async {
+    await prefs!.setStringList(key, value);
+  }
+
   static Future saveIntToShared(String key, int value) async {
     await prefs!.setInt(key, value);
   }
@@ -25,6 +29,10 @@ class CacheHelper {
 
   static getFromShared(String key) {
     return prefs!.get(key);
+  }
+
+  static List<String>? getStringListFromShared(String key) {
+    return prefs!.getStringList(key);
   }
 
   static getLangCode() {

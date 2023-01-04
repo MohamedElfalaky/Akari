@@ -258,6 +258,7 @@ class _FormPage5State extends State<FormPage5> {
                           children: [
                             SizedBox(
                               height: 20,
+                              width: 20,
                               child: Checkbox(
                                 activeColor:
                                     Theme.of(context).colorScheme.primary,
@@ -282,6 +283,7 @@ class _FormPage5State extends State<FormPage5> {
                           children: [
                             SizedBox(
                               height: 20,
+                              width: 20,
                               child: Checkbox(
                                 activeColor:
                                     Theme.of(context).colorScheme.primary,
@@ -292,6 +294,9 @@ class _FormPage5State extends State<FormPage5> {
                                   });
                                 },
                               ),
+                            ),
+                            SizedBox(
+                              width: 8,
                             ),
                             Text("Negotiable")
                           ],

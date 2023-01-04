@@ -27,7 +27,7 @@ const List<Map> categoryDropDown = [
   {"name": "Building", "img": "assets/building.svg"},
   {"name": "Land", "img": "assets/land.svg"},
   {"name": "Office", "img": "assets/Office.svg"},
-  {"name": "Duplex", "img": "assets/Duplex.svg"},
+  // {"name": "Duplex", "img": "assets/Duplex.svg"},
   {"name": "Wedding halls", "img": "assets/Tent.svg"},
   {"name": "Farm", "img": "assets/Farm.svg"},
   {"name": "Room", "img": "assets/Room.svg"},
@@ -35,7 +35,7 @@ const List<Map> categoryDropDown = [
   {"name": "Chalet", "img": "assets/Chalet.svg"},
   {"name": "Sports clubs", "img": "assets/Hut.svg"},
   {"name": "Lounge", "img": "assets/Lounge.svg"},
-  {"name": "Appartment", "img": "assets/Appartment.svg"},
+  {"name": "Appartments", "img": "assets/Appartment.svg"},
   {"name": "Ware house", "img": "assets/Ware house.svg"},
   {"name": "furnished apartments", "img": "assets/furnished apartments.svg"},
 ];

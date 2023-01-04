@@ -10,19 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class FormPage2 extends StatefulWidget {
+class P2VillaAppartment extends StatefulWidget {
   final String category;
   final String contractType;
-  FormPage2({super.key, required this.category, required this.contractType});
+  P2VillaAppartment(
+      {super.key, required this.category, required this.contractType});
 
   @override
-  State<FormPage2> createState() => _FormPage2State();
+  State<P2VillaAppartment> createState() => _P2VillaAppartmentState();
 }
 
-class _FormPage2State extends State<FormPage2> {
+class _P2VillaAppartmentState extends State<P2VillaAppartment> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> _typeList = [];
-  final List<String> _deliveryTermList = [];
+  final List<String> _rentPeriods = [];
   final TextEditingController _titleText = TextEditingController();
   final TextEditingController _areaText = TextEditingController();
   final TextEditingController _bathRoomText = TextEditingController();
@@ -36,11 +36,25 @@ class _FormPage2State extends State<FormPage2> {
   List<bool> _isSelected = [true, false, false];
   String _selectedContractType = "Finished";
   /////////
-  List<String> _contractType2 = ["Apartment", "Duplex"];
-  List<bool> _isSelected2 = [true, false];
-  String _selectedContractType2 = "Apartment";
+
+  ////////
+  List<String> _selections3 = ["Singles", "Families", "Both"];
+  List<bool> _isSelected3 = [true, false, false];
+  String _selected3 = "Finished";
+/////////
+  bool _daily = false;
+  bool _monthly = false;
+  bool _yearly = false;
+  bool _Any = false;
   @override
   Widget build(BuildContext context) {
+    List<String> _contractType2 = widget.category == "Appartments"
+        ? ["Apartment", "Duplex"]
+        : ["Stand Alone", "Town House", "Twin House"];
+    List<bool> _isSelected2 =
+        widget.category == "Appartments" ? [true, false] : [true, false, false];
+    String _selectedContractType2 =
+        widget.category == "Appartments" ? "Apartment" : "Stand Alone";
     _dateText.text = "${defaltDate.year}/${defaltDate.month}/${defaltDate.day}";
     return GestureDetector(
       onTap: () {
@@ -345,8 +359,235 @@ class _FormPage2State extends State<FormPage2> {
                                 height: 16,
                               ),
                               /////////////////////////////////////
+                              widget.contractType == "Rent"
+                                  ?
+
+                                  ////
+
+                                  Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Who can rent *"),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        ToggleButtons(
+                                          fillColor: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          isSelected: _isSelected3,
+                                          selectedColor: Colors.white,
+                                          children: _selections3
+                                              .map((e) => Container(
+                                                  margin:
+                                                      const EdgeInsets.all(12),
+                                                  child: Text(e)))
+                                              .toList(),
+                                          onPressed: (newIndex) {
+                                            setState(() {
+                                              for (int myIndex = 0;
+                                                  myIndex < _isSelected3.length;
+                                                  myIndex++) {
+                                                if (myIndex == newIndex) {
+                                                  _isSelected3[myIndex] = true;
+                                                  _selected3 =
+                                                      _selections3[myIndex];
+                                                  print(_selected3);
+                                                } else {
+                                                  _isSelected3[myIndex] = false;
+                                                }
+                                              }
+                                            });
+                                          },
+                                        ),
+                                        SizedBox(
+                                          height: 16,
+                                        ),
+                                        Text("Can be rented *"),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 20,
+                                                  child: Checkbox(
+                                                    activeColor:
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .primary,
+                                                    value: _daily,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _daily = value!;
+                                                      });
+                                                      if (_daily == true) {
+                                                        _rentPeriods
+                                                            .add("Daily");
+                                                      } else {
+                                                        _rentPeriods
+                                                            .remove("Daily");
+                                                      }
+                                                      print(_rentPeriods);
+                                                    },
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Text(
+                                                  "Daily",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: "Tajawal"),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              width: 47,
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 20,
+                                                  child: Checkbox(
+                                                    activeColor:
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .primary,
+                                                    value: _monthly,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _monthly = value!;
+                                                      });
+                                                      if (_monthly == true) {
+                                                        _rentPeriods
+                                                            .add("Monthly");
+                                                      } else {
+                                                        _rentPeriods
+                                                            .remove("Monthly");
+                                                      }
+                                                      print(_rentPeriods);
+                                                    },
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Text(
+                                                  "Monthly",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: "Tajawal"),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        ////////////////////////////////////////////////////////////////// Check box 2
+                                        Row(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 20,
+                                                  child: Checkbox(
+                                                    activeColor:
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .primary,
+                                                    value: _yearly,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _yearly = value!;
+                                                      });
+                                                      if (_yearly == true) {
+                                                        _rentPeriods
+                                                            .add("Yearly");
+                                                      } else {
+                                                        _rentPeriods
+                                                            .remove("Yearly");
+                                                      }
+                                                      print(_rentPeriods);
+                                                    },
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Text(
+                                                  "Yearly",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: "Tajawal"),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              width: 40,
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 20,
+                                                  width: 20,
+                                                  child: Checkbox(
+                                                    activeColor:
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .primary,
+                                                    value: _Any,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _Any = value!;
+                                                      });
+                                                      if (_Any == true) {
+                                                        _rentPeriods
+                                                            .add("Any period");
+                                                      } else {
+                                                        _rentPeriods.remove(
+                                                            "Any period");
+                                                      }
+                                                      print(_rentPeriods);
+                                                    },
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Text(
+                                                  "Any period",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: "Tajawal"),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        ///////////////////
+                                        SizedBox(
+                                          height: 12,
+                                        )
+                                      ],
+                                    )
+                                  : SizedBox(),
                               myTextField(
-                                hint: "   Description *",
+                                hint: "Description *",
                                 controller: _descriptioneText,
                                 keyBoardType: TextInputType.text,
                                 validator: (value) {

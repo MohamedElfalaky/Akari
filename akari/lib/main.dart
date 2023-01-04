@@ -13,10 +13,7 @@ import 'package:akari/helpers/dio_helper.dart';
 import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/FormPage1.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/FormPage2.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPage3.dart';
-
-import 'package:akari/presentation/screens/AdvertisrForm/components/page4/FormPage4.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/P2Villa&Appartment.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page5/FormPage5.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
@@ -24,10 +21,8 @@ import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/ForgetPassword.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/screens/More/More.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:akari/presentation/screens/Register.dart';
-import 'package:akari/presentation/screens/ResetPass.dart';
 import 'package:akari/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +30,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sizer/sizer.dart';
-import 'package:intl/intl.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -129,7 +123,7 @@ class MyApp extends StatelessWidget {
                   '/login': (context) => LogIn(),
                   '/forgetpassword': (context) => ForgetPassword(),
                 },
-                home: FormPage6());
+                home: Splash());
           });
         },
       ),

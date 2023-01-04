@@ -1,6 +1,6 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/FormPage2.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/P2Villa&Appartment.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
@@ -18,12 +18,12 @@ class FormPage1 extends StatefulWidget {
 
 class _FormPage1State extends State<FormPage1> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> _contractTapsList = [];
-  String? dropDownValue;
-  bool togelValidation = true;
 
   List<String> _contractType = ["Rent", "Investment", "Selling"];
   List<bool> _isSelected = [true, false, false];
+
+  ///////////
+  String? dropDownValue;
   String _selectedContractType = "Rent";
 
   @override
@@ -152,7 +152,11 @@ class _FormPage1State extends State<FormPage1> {
                       validator: (value) {
                         if (dropDownValue == null) {
                           return "You must select a category";
+                        } else if (dropDownValue != "Appartments" &&
+                            dropDownValue != "Villa") {
+                          return "Only Appartments and Villas are available now to be advertised";
                         }
+                        ;
                       },
                     ),
                   ),
@@ -207,19 +211,15 @@ class _FormPage1State extends State<FormPage1> {
                     flex: 10,
                   ),
                   myButton(() {
-                    if (_contractTapsList.isEmpty) {
-                      setState(() {
-                        togelValidation = false;
-                      });
-                    } else {
-                      setState(() {
-                        togelValidation = true;
-                      });
-                    }
-
                     if (_formKey.currentState!.validate()) {
                       print("HElooooo");
-                      myApplication.navigateTo(FormPage2(), context);
+
+                      myApplication.navigateTo(
+                          P2VillaAppartment(
+                            category: dropDownValue!,
+                            contractType: _selectedContractType,
+                          ),
+                          context);
                     }
                   }, "continue  ➔"),
                   Spacer(

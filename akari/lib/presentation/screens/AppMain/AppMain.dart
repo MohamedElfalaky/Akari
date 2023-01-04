@@ -1,7 +1,10 @@
 import 'package:akari/data/Repositries/GetFavoritesRepo.dart';
 import 'package:akari/helpers/CacheHelper.dart';
+import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/BecomeAdvertisorPopUp.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/FormPage1.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
 
 import 'package:akari/presentation/screens/Chat/Chat.dart';
 import 'package:akari/presentation/screens/Favorite/Favorite.dart';
@@ -55,18 +58,21 @@ class _AppMainState extends State<AppMain> {
             heroTag: "btn1",
             child: Icon(Icons.add),
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext myContext) {
-                  return SorryPopUp();
-                },
-              );
-              // showDialog(
-              //   context: context,
-              //   builder: (BuildContext myContext) {
-              //     return BecomeAdvertisorPopUp();
-              //   },
-              // );
+              CacheHelper.getFromShared("token") == null
+                  ? showDialog(
+                      context: context,
+                      builder: (BuildContext myContext) {
+                        return SorryPopUp();
+                      },
+                    )
+                  : CacheHelper.getFromShared("isAdvertiser") != "yes"
+                      ? showDialog(
+                          context: context,
+                          builder: (BuildContext myContext) {
+                            return BecomeAdvertisorPopUp();
+                          },
+                        )
+                      : myApplication.navigateTo(FormPage1(), context);
             },
           ),
           floatingActionButtonLocation:

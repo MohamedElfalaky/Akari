@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
@@ -6,15 +9,73 @@ import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AddDetailsScreen extends StatelessWidget {
-  const AddDetailsScreen({
-    super.key,
-  });
+  final String? contractType;
+  final String? buildingType;
+  final String? deliveryTerm;
+  final String? address;
+  final String? createdAt;
+  final String? description;
+  final String? area;
+  final String? floor;
+  final String? bedRooms;
+  final String? bathRooms;
+  final List<String>? amenities;
+  final String? priceSd;
+  final String? priceDollar;
+  final String? phone;
+  final String? advertiserId;
+  final bool? isFavorite;
+  const AddDetailsScreen(
+      {super.key,
+      this.contractType,
+      this.buildingType,
+      this.deliveryTerm,
+      this.address,
+      this.createdAt,
+      this.description,
+      this.area,
+      this.floor,
+      this.bedRooms,
+      this.bathRooms,
+      this.amenities,
+      this.priceSd,
+      this.priceDollar,
+      this.phone,
+      this.advertiserId,
+      this.isFavorite});
   @override
   Widget build(BuildContext context) {
+    void launchWhatsapp(String numberr, String massagee) async {
+      String androidUrl = "whatsapp://send?phone=+2$numberr&text=$massagee";
+      String iosUrl = "https://wa.me/+2$numberr?text=${Uri.parse(massagee)}";
+
+      if (Platform.isIOS) {
+        await canLaunchUrl(Uri.parse(
+          iosUrl,
+        ))
+            ? launchUrl(Uri.parse(iosUrl))
+            : myApplication.showToast(
+                text: "cannot open whats app",
+                color: Theme.of(context).colorScheme.primary);
+      } else {
+        await canLaunchUrl(Uri.parse(
+          androidUrl,
+        ))
+            ? launchUrl(Uri.parse(androidUrl))
+            : myApplication.showToast(
+                text: "cannot open whats app",
+                color: Theme.of(context).colorScheme.primary);
+      }
+    }
+
+    // launchUrl(Uri.parse("tel://+2${widget.phoneNumber}"));
+
     return Container(
       margin: const EdgeInsets.only(
           // top: 8,
@@ -51,19 +112,33 @@ class AddDetailsScreen extends StatelessWidget {
                       onPressed: () => Navigator.pop(context),
                     )),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 8, right: 8),
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                        color: Colors.white70,
-                        borderRadius: BorderRadius.circular(50)),
-                    child: const Center(
-                        child: Icon(
-                      Icons.favorite_outline,
-                      color: Colors.red,
-                    )),
-                  ),
+                  isFavorite == false
+                      ? SizedBox()
+                      : InkWell(
+                          onTap: () {
+                            if (CacheHelper.getFromShared("token") == null) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext myContext) {
+                                  return SorryPopUp();
+                                },
+                              );
+                            }
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 8, right: 8),
+                            height: 32,
+                            width: 32,
+                            decoration: BoxDecoration(
+                                color: Colors.white70,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: const Center(
+                                child: Icon(
+                              Icons.favorite_outline,
+                              color: Colors.red,
+                            )),
+                          ),
+                        ),
                 ],
               )
             ],
@@ -85,8 +160,8 @@ class AddDetailsScreen extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(
                           bottom: myApplication.hightClc(context, 12)),
-                      child: const AutoSizeText(
-                        "Villa five stars",
+                      child: Text(
+                        "$buildingType",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -119,9 +194,9 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: const AutoSizeText(
-                              "Sudan, Alkhartom ",
-                              style: TextStyle(
+                            child: Text(
+                              "Sudan, $address ",
+                              style: const TextStyle(
                                 fontSize: 14,
                               ),
                             ),
@@ -143,8 +218,10 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: const AutoSizeText(
-                              "19 OCT",
+                            child: Text(
+                              DateFormat.yMMMd()
+                                  .format(DateTime.parse(createdAt!))
+                                  .toString(),
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -174,8 +251,7 @@ class AddDetailsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
+                Text(description!)
               ],
             ),
           ),
@@ -213,8 +289,8 @@ class AddDetailsScreen extends StatelessWidget {
                           ),
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "200 m",
+                            child: Text(
+                              "$area",
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -236,8 +312,8 @@ class AddDetailsScreen extends StatelessWidget {
                           ),
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "3 floors",
+                            child: Text(
+                              "$floor floors",
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -261,8 +337,8 @@ class AddDetailsScreen extends StatelessWidget {
                           ),
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "3 floors",
+                            child: Text(
+                              "$bathRooms bathRooms",
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -288,30 +364,8 @@ class AddDetailsScreen extends StatelessWidget {
                           ),
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "200 m",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Flexible(
-                      flex: 2,
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 6, bottom: 8),
-                            height: 14,
-                            width: 14,
-                            child: SvgPicture.asset(bedd),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "3 Bathrooms",
+                            child: Text(
+                              "$bedRooms bedrooms",
                               style: TextStyle(
                                 fontSize: 14,
                               ),
@@ -337,115 +391,32 @@ class AddDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("ways of comfort",
+                const Text("Amenties",
                     style: TextStyle(
                       fontSize: 16,
                     )),
                 const SizedBox(
                   height: 8,
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 6, bottom: 8),
-                            height: 14,
-                            width: 14,
-                            child: SvgPicture.asset("assets/AdsPics/area.svg"),
+                Wrap(children: [
+                  ...amenities!.map(
+                    (e) {
+                      return Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1),
+                            borderRadius: BorderRadius.circular(4)),
+                        margin: const EdgeInsets.all(4),
+                        padding: EdgeInsets.all(3),
+                        child: Text(
+                          e,
+                          style: TextStyle(
+                            fontSize: 14,
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "elevator",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 6, bottom: 8),
-                            height: 14,
-                            width: 14,
-                            child: SvgPicture.asset(
-                                "assets/AdsPics/floor no..svg"),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "Wifi",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 6, bottom: 8),
-                            height: 14,
-                            width: 14,
-                            child: SvgPicture.asset(
-                              roomm,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "TV",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(right: 6, bottom: 8),
-                            height: 14,
-                            width: 14,
-                            child: SvgPicture.asset(bedd),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const AutoSizeText(
-                              "kitchen",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                        ),
+                      );
+                    },
+                  ).toList()
+                ])
               ],
             ),
           ),
@@ -465,11 +436,22 @@ class AddDetailsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Text(
-                  "150 SD/month",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).colorScheme.primary),
+                Row(
+                  children: [
+                    Text(
+                      "$priceSd SD",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "($priceDollar \$)",
+                      style: TextStyle(fontSize: 14, color: Colors.black),
+                    )
+                  ],
                 ),
                 const SizedBox(
                   height: 16,
@@ -510,18 +492,33 @@ class AddDetailsScreen extends StatelessWidget {
                               const SizedBox(
                                 height: 5,
                               ),
-                              Text(
-                                "150 SD / month",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
+                              Row(
+                                children: [
+                                  Text(
+                                    "$priceSd SD",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    "($priceDollar \$)",
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.black),
+                                  )
+                                ],
                               ),
                               const SizedBox(
                                 height: 15,
                               ),
                               myButton(
-                                () {},
+                                () {
+                                  launchUrl(Uri.parse("tel://+2${phone}"));
+                                },
                                 "Call",
                                 btnClr: Theme.of(context).colorScheme.secondary,
                                 txtClr: Colors.white,
@@ -548,7 +545,9 @@ class AddDetailsScreen extends StatelessWidget {
                                 height: 5,
                               ),
                               myButton(
-                                () {},
+                                () {
+                                  launchWhatsapp(phone!, "hello");
+                                },
                                 "Whats App",
                                 btnClr: Colors.white,
                                 txtClr: Theme.of(context).colorScheme.secondary,
@@ -588,14 +587,4 @@ class AddDetailsScreen extends StatelessWidget {
       ),
     );
   }
-// void myButtomSheet(BuildContext context) {
-//     showModalBottomSheet(
-//         barrierColor: Theme.of(context).colorScheme.secondary.withOpacity(0),
-//         backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0),
-//         context: context,
-//         builder: (BuildContext context) {
-//           return Text("data") ;
-//         });
-//   }
-
 }

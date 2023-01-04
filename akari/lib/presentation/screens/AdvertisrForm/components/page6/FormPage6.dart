@@ -1,5 +1,7 @@
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/LocationService.dart';
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/page6/AdPosted.dart';
 import 'package:akari/presentation/screens/TAC/TAC.dart';
 
 import 'package:akari/presentation/widgets/Shared/Button.dart';
@@ -21,8 +23,10 @@ class FormPage6 extends StatefulWidget {
 class _FormPage6State extends State<FormPage6> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _nameText = TextEditingController();
-  final TextEditingController _mobileNumberText = TextEditingController();
+  final TextEditingController _nameText =
+      TextEditingController(text: CacheHelper.getFromShared("name"));
+  final TextEditingController _mobileNumberText =
+      TextEditingController(text: CacheHelper.getFromShared("phone"));
   bool confirmTerms = false;
   List<String> _yourcapacity = [
     "Owner",
@@ -166,6 +170,10 @@ class _FormPage6State extends State<FormPage6> {
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please Enter your Mobile Number";
+                            } else if (value.isNotEmpty &&
+                                !RegExp(r'(^(?:[+0]9)?[0-9]{11}$)')
+                                    .hasMatch(value)) {
+                              return "Invalide mobile number";
                             }
                             return null;
                           },
@@ -342,6 +350,12 @@ class _FormPage6State extends State<FormPage6> {
                           if (_formKey.currentState!.validate() &&
                               confirmTerms == true) {
                             print("HElooooooooooooo");
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext myContext) {
+                                return AdPosted();
+                              },
+                            );
                           } else if (confirmTerms == false) {
                             setState(() {
                               confirmTerms = false;

@@ -16,8 +16,14 @@ class ProfilePageScreen extends StatefulWidget {
 }
 
 class _ProfilePageScreenState extends State<ProfilePageScreen> {
-  // ProfilePageController _ProfilePageController = ProfilePageController();
-
+  TextEditingController mailController =
+      TextEditingController(text: CacheHelper.getFromShared("email"));
+  TextEditingController phoneController =
+      TextEditingController(text: CacheHelper.getFromShared("phone"));
+  // TextEditingController aboutController =
+  //     TextEditingController(text: CacheHelper.getFromShared("email"));
+  TextEditingController nameController =
+      TextEditingController(text: CacheHelper.getFromShared("name"));
   @override
   void initState() {
     // TODO: implement initState
@@ -56,7 +62,7 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Ahmed mohamed",
+              " ${CacheHelper.getFromShared("name")}",
               style: TextStyle(fontFamily: "Tajawal", fontSize: 24),
             ),
             SizedBox(
@@ -86,7 +92,7 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
                           fontSize: 12),
                     ),
                     Text(
-                      "ahmed@example.test",
+                      "${CacheHelper.getFromShared("email")}",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],
@@ -149,6 +155,7 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
                               ),
                               myTextField(
                                 prefix: msgg,
+                                controller: mailController,
                               ),
                               SizedBox(
                                 height: 24,
@@ -170,12 +177,14 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
             ),
             myTextField(
               prefix: usrr,
+              controller: nameController,
             ),
             SizedBox(
               height: 24,
             ),
             myTextField(
               prefix: calll,
+              controller: phoneController,
             ),
             SizedBox(
               height: 24,
@@ -183,6 +192,7 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
             myTextField(
               maxLines: 7,
               hint: "About you...",
+              // controller: aboutController,
             ),
             SizedBox(
               height: 32,

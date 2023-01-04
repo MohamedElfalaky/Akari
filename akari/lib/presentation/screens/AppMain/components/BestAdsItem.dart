@@ -17,6 +17,7 @@ class BestAdsItem extends StatelessWidget {
   final String? statee;
   final DateTime? createdAt;
   final String? price;
+  final String? priceDollar;
   final bool? isFavorite;
 
   const BestAdsItem(
@@ -28,6 +29,7 @@ class BestAdsItem extends StatelessWidget {
       this.statee,
       this.createdAt,
       this.price,
+      this.priceDollar,
       this.isFavorite});
 
   @override
@@ -51,41 +53,43 @@ class BestAdsItem extends StatelessWidget {
               ),
               // isFavorite != null
               //     ?
-
-              Container(
-                margin: EdgeInsets.only(
-                    top: myApplication.hightClc(context, 8),
-                    left: myApplication.widthClc(context, 8)),
-                height: myApplication.widthClc(context, 32),
-                width: myApplication.widthClc(context, 32),
-                decoration: BoxDecoration(
-                    color: Colors.white70,
-                    borderRadius: BorderRadius.circular(50)),
-                child: Center(
-                    child: isFavorite == true
-                        ? InkWell(
-                            child: Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                            ),
-                          )
-                        : InkWell(
-                            onTap: () {
-                              if (CacheHelper.getFromShared("token") == null) {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext myContext) {
-                                    return SorryPopUp();
+              isFavorite == null
+                  ? SizedBox()
+                  : Container(
+                      margin: EdgeInsets.only(
+                          top: myApplication.hightClc(context, 8),
+                          left: myApplication.widthClc(context, 8)),
+                      height: myApplication.widthClc(context, 32),
+                      width: myApplication.widthClc(context, 32),
+                      decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Center(
+                          child: isFavorite == true
+                              ? InkWell(
+                                  child: Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                  ),
+                                )
+                              : InkWell(
+                                  onTap: () {
+                                    if (CacheHelper.getFromShared("token") ==
+                                        null) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext myContext) {
+                                          return SorryPopUp();
+                                        },
+                                      );
+                                    }
                                   },
-                                );
-                              }
-                            },
-                            child: Icon(
-                              Icons.favorite_outline,
-                              color: Colors.red,
-                            ),
-                          )),
-              )
+                                  child: Icon(
+                                    Icons.favorite_outline,
+                                    color: Colors.red,
+                                  ),
+                                )),
+                    )
               // : Container()
             ],
           ),
@@ -226,12 +230,22 @@ class BestAdsItem extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        "$price SD / month",
+                        "$price SD",
                         style: TextStyle(
                             fontSize: 22,
                             fontFamily: "Tajawal",
                             color: Theme.of(context).colorScheme.secondary),
                       ),
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "($priceDollar \$)",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: "Tajawal",
+                          color: Colors.black),
                     ),
                     Spacer(),
                     IconButton(

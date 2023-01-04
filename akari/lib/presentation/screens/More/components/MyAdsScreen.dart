@@ -140,7 +140,7 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                       statee: "test",
                       createdAt: DateTime.now(),
                       price: "test",
-                      isFavorite: null,
+                      // isFavorite: null,
                     ),
                     BestAdsItem(
                       img: defaultHouse,

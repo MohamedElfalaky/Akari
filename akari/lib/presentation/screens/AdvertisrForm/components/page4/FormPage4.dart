@@ -211,6 +211,7 @@ class _FormPage4State extends State<FormPage4> {
   var area;
   var street;
   var wholeLocation;
+
   Future<LocationData> getMyLocation() async {
     _districtText.text = "Loading..";
     _stateText.text = "Loading..";
