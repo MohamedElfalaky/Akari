@@ -44,6 +44,7 @@ class Register extends StatelessWidget {
             }
           },
           child: ListView(
+            physics: NeverScrollableScrollPhysics(),
             children: [
               Form(
                 key: _formKey,
@@ -76,30 +77,40 @@ class Register extends StatelessWidget {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30.sp),
                               topRight: Radius.circular(30.sp))),
-                      child: Column(
+                      child: ListView(
+                        physics: BouncingScrollPhysics(),
+                        shrinkWrap: true,
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: myApplication.hightClc(context, 16),
-                                bottom: myApplication.hightClc(context, 8)),
-                            child: AutoSizeText(
-                              "Create Account",
-                              style: TextStyle(
-                                  fontFamily: "Tajawal",
-                                  fontSize: 24,
-                                  color: Theme.of(context).colorScheme.primary),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                bottom: myApplication.hightClc(context, 24)),
-                            child: AutoSizeText(
-                              "Be part of Aqari Now !",
-                              style: TextStyle(
-                                  fontFamily: "Tajawal,Regular",
-                                  fontSize: 13,
-                                  color: Color(0xFF363A3D)),
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: myApplication.hightClc(context, 16),
+                                    bottom: myApplication.hightClc(context, 8)),
+                                child: Text(
+                                  "Create Account",
+                                  style: TextStyle(
+                                      fontFamily: "Tajawal",
+                                      fontSize: 24,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    bottom:
+                                        myApplication.hightClc(context, 24)),
+                                child: Text(
+                                  "Be part of Aqari Now !",
+                                  style: TextStyle(
+                                      fontFamily: "Tajawal,Regular",
+                                      fontSize: 13,
+                                      color: Color(0xFF363A3D)),
+                                ),
+                              ),
+                            ],
                           ),
                           myTextField(
                             hint: "Email",
@@ -245,7 +256,7 @@ class Register extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              AutoSizeText(
+                              Text(
                                 "By creating account you accept Smart Building",
                                 style: TextStyle(
                                   fontFamily: "Tajawal,Regular",
@@ -255,7 +266,7 @@ class Register extends StatelessWidget {
                               ),
                               InkWell(
                                   onTap: () {},
-                                  child: AutoSizeText("Terms and conditions",
+                                  child: Text("Terms and conditions",
                                       style: TextStyle(
                                           fontFamily: "Tajawal",
                                           color: Theme.of(context)

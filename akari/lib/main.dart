@@ -18,6 +18,7 @@ import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPa
 
 import 'package:akari/presentation/screens/AdvertisrForm/components/page4/FormPage4.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page5/FormPage5.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
@@ -128,7 +129,7 @@ class MyApp extends StatelessWidget {
                   '/login': (context) => LogIn(),
                   '/forgetpassword': (context) => ForgetPassword(),
                 },
-                home: FormPage5());
+                home: FormPage6());
           });
         },
       ),

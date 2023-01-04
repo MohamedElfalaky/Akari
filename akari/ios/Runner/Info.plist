@@ -6,6 +6,10 @@
 		<string>Photo access allow</string>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>The app needs you current location to auto fill it</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>The app needs you current location to auto fill it</string>
 		<key>CFBundleDisplayName</key>
 		<string>Akari</string>
 		<key>CFBundleExecutable</key>

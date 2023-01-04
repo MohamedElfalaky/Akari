@@ -1,5 +1,6 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/FormPage2.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
@@ -20,6 +21,10 @@ class _FormPage1State extends State<FormPage1> {
   final List<String> _contractTapsList = [];
   String? dropDownValue;
   bool togelValidation = true;
+
+  List<String> _contractType = ["Rent", "Investment", "Selling"];
+  List<bool> _isSelected = [true, false, false];
+  String _selectedContractType = "Rent";
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +98,7 @@ class _FormPage1State extends State<FormPage1> {
               margin: EdgeInsets.only(left: 24, right: 24, top: 30),
               height: MediaQuery.of(context).size.height,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     // dropdown menu container
@@ -169,62 +175,34 @@ class _FormPage1State extends State<FormPage1> {
                     height: 8,
                   ),
 
-                  //////////////////////////////////////// toggle
+                  /////////////////////////////////////////////////////////////////////////////////
 
-                  Container(
-                      // margin: EdgeInsets.only(
-                      //     top: myApplication.hightClc(context, 19)),
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children:
-                        contractTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
-                            .map((e) => InkWell(
-                                  child: ToggleTap(e["name"], e["bool"]),
-                                  onTap: () {
-                                    if (_contractTapsList
-                                            .where((element) =>
-                                                element == e["name"])
-                                            .isNotEmpty &&
-                                        _contractTapsList
-                                                .where((element) =>
-                                                    element == e["name"])
-                                                .first ==
-                                            e["name"]) {
-                                      setState(() {
-                                        _contractTapsList.remove(e["name"]);
-                                        e["bool"] = false;
-                                      });
-                                    } else {
-                                      if (_contractTapsList.length == 1) {
-                                      } else {
-                                        setState(() {
-                                          _contractTapsList.add(e["name"]);
-                                          e["bool"] = true;
-                                        });
-                                      }
-                                    }
-
-                                    print(_contractTapsList);
-                                  },
-                                ))
-                            .toList(),
-                  )),
-                  SizedBox(
-                    height: 5,
+                  ToggleButtons(
+                    fillColor: Theme.of(context).colorScheme.primary,
+                    isSelected: _isSelected,
+                    selectedColor: Colors.white,
+                    children: _contractType
+                        .map((e) => Container(
+                            margin: const EdgeInsets.all(12), child: Text(e)))
+                        .toList(),
+                    onPressed: (newIndex) {
+                      setState(() {
+                        for (int myIndex = 0;
+                            myIndex < _isSelected.length;
+                            myIndex++) {
+                          if (myIndex == newIndex) {
+                            _isSelected[myIndex] = true;
+                            _selectedContractType = _contractType[myIndex];
+                            print(_selectedContractType);
+                          } else {
+                            _isSelected[myIndex] = false;
+                          }
+                        }
+                      });
+                    },
                   ),
-                  ///////////////////////////////////////////////////////////////////////////////
-                  togelValidation
-                      ? Container()
-                      : Row(
-                          children: [
-                            Text(
-                              "    You must select contract type",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 209, 37, 25),
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
+
+                  /////////////////////////////////////////////////////////////////////////////
                   Spacer(
                     flex: 10,
                   ),
@@ -239,9 +217,9 @@ class _FormPage1State extends State<FormPage1> {
                       });
                     }
 
-                    if (_formKey.currentState!.validate() &&
-                        _contractTapsList.isNotEmpty) {
+                    if (_formKey.currentState!.validate()) {
                       print("HElooooo");
+                      myApplication.navigateTo(FormPage2(), context);
                     }
                   }, "continue  ➔"),
                   Spacer(

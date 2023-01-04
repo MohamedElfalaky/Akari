@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/page4/FormPage4.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
@@ -25,6 +26,7 @@ class _FormPage3State extends State<FormPage3> {
   final ImagePicker imagePicker = ImagePicker();
   List<XFile> imageFileList = [];
   List<String> myAmenitesList = [];
+  bool imgList = true;
   void selectImages() async {
     List<XFile>? selectedImages = await imagePicker.pickMultiImage();
     if (selectedImages.isNotEmpty) {
@@ -126,7 +128,7 @@ class _FormPage3State extends State<FormPage3> {
                               style: TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "(Add at least 5 images for your property)",
+                              "(Add at least 3 images for your property)",
                               style: TextStyle(
                                   color: Color.fromARGB(102, 6, 7, 28)),
                             )
@@ -192,16 +194,44 @@ class _FormPage3State extends State<FormPage3> {
                                           EdgeInsets.symmetric(horizontal: 5),
                                       height: 200,
                                       width: 200,
-                                      child: Image.file(
-                                        File(e.path),
-                                        fit: BoxFit.cover,
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: [
+                                          Image.file(
+                                            File(e.path),
+                                            fit: BoxFit.cover,
+                                          ),
+                                          IconButton(
+                                              alignment: Alignment.topLeft,
+                                              onPressed: () {
+                                                setState(() {
+                                                  imageFileList.remove(e);
+                                                });
+                                              },
+                                              icon: CircleAvatar(
+                                                backgroundColor:
+                                                    Color.fromARGB(255, 7, 4, 4)
+                                                        .withOpacity(0.2),
+                                                child: Icon(
+                                                  Icons.clear_sharp,
+                                                  color: Color.fromARGB(
+                                                      255, 220, 28, 15),
+                                                ),
+                                              ))
+                                        ],
                                       )))
                                   .toList(),
                             ],
                           ),
                         ),
+                        imgList == false
+                            ? Text(
+                                "You must upload 3 pictures at least",
+                                style: TextStyle(color: Colors.red),
+                              )
+                            : Container(),
                         SizedBox(
-                          height: 18,
+                          height: 30,
                         ),
                         Row(
                           children: [
@@ -240,11 +270,13 @@ class _FormPage3State extends State<FormPage3> {
                                                 myAmenitesList
                                                     .remove(e["name"]);
                                                 e["bool"] = false;
+                                                print(myAmenitesList);
                                               });
                                             } else {
                                               setState(() {
                                                 myAmenitesList.add(e["name"]);
                                                 e["bool"] = true;
+                                                print(myAmenitesList);
                                               });
                                             }
                                           },
@@ -253,8 +285,17 @@ class _FormPage3State extends State<FormPage3> {
                         /////////////////
                         Spacer(),
                         myButton(() {
-                          if (_formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate() &&
+                              imageFileList.length >= 3) {
+                            setState(() {
+                              imgList = true;
+                            });
                             print("HElooooooooooooo");
+                            myApplication.navigateTo(FormPage4(), context);
+                          } else {
+                            setState(() {
+                              imgList = false;
+                            });
                           }
                         }, "continue  ➔"),
                         Spacer()

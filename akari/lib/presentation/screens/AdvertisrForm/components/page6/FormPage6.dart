@@ -1,6 +1,6 @@
 import 'package:akari/helpers/LocationService.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
+import 'package:akari/presentation/screens/TAC/TAC.dart';
 
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
@@ -11,22 +11,38 @@ import 'package:flutter_svg/svg.dart';
 import 'package:location/location.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class FormPage5 extends StatefulWidget {
-  FormPage5({super.key});
+class FormPage6 extends StatefulWidget {
+  FormPage6({super.key});
 
   @override
-  State<FormPage5> createState() => _FormPage5State();
+  State<FormPage6> createState() => _FormPage6State();
 }
 
-class _FormPage5State extends State<FormPage5> {
+class _FormPage6State extends State<FormPage6> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _priceLsText = TextEditingController();
-  final TextEditingController _priceDollarText = TextEditingController();
-  final TextEditingController _dPPText = TextEditingController();
-  bool receivedInDollar = false;
-  bool negotiable = false;
-  String paymentValue = "Cash";
+  final TextEditingController _nameText = TextEditingController();
+  final TextEditingController _mobileNumberText = TextEditingController();
+  bool confirmTerms = false;
+  List<String> _yourcapacity = [
+    "Owner",
+    "Advertiser",
+    "Representative",
+  ];
+  List<bool> _isSelected = [true, false, false];
+
+  String capacityValue = "Owner";
+  //////////////
+
+  List<String> _yourcapacity2 = [
+    "Chat",
+    "Call",
+    "WhatsApp",
+    "All",
+  ];
+  List<bool> _isSelected2 = [true, false, false, false];
+
+  String capacityValue2 = "Chat";
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -68,7 +84,7 @@ class _FormPage5State extends State<FormPage5> {
                         height: 4,
                       ),
                       Text(
-                        "Address & Price details",
+                        "Advertiser details",
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
@@ -79,7 +95,7 @@ class _FormPage5State extends State<FormPage5> {
                   Spacer(),
                   CircularStepProgressIndicator(
                     totalSteps: 6,
-                    currentStep: 5,
+                    currentStep: 6,
                     stepSize: 5,
                     selectedColor: Theme.of(context).colorScheme.primary,
                     unselectedColor: Colors.grey[300],
@@ -90,7 +106,7 @@ class _FormPage5State extends State<FormPage5> {
                     roundedCap: (_, __) => true,
                     child: Center(
                       child: Text(
-                        "5/6",
+                        "6/6",
                         style: TextStyle(color: Colors.black, fontSize: 14),
                       ),
                     ),
@@ -115,80 +131,8 @@ class _FormPage5State extends State<FormPage5> {
                           height: 4,
                         ),
 
-                        Row(
-                          children: [
-                            SvgPicture.asset(priceDetails),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "Price details",
-                              style: TextStyle(
-                                fontSize: 16,
-                                // fontFamily: "Tajawal",
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        myTextField(
-                          hint: "Price in (LS) *",
-                          controller: _priceLsText,
-                          keyBoardType: TextInputType.number,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please Enter Price in (LS)";
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              "(Set price in Sudanese dinar)",
-                              style: TextStyle(
-                                  color: Color.fromARGB(118, 12, 13, 77)),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-
-                        myTextField(
-                          hint: "Price in (\$) *",
-                          controller: _priceDollarText,
-                          keyBoardType: TextInputType.number,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please Enter Price in ((\$)";
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              "(Set price in Dollar)",
-                              style: TextStyle(
-                                  color: Color.fromARGB(118, 12, 13, 77)),
-                            )
-                          ],
-                        ),
-                        ////////////////////////////////////////////////////////////////////////////////
-
                         Text(
-                          "Price details",
+                          "Review your details",
                           style: TextStyle(
                             fontSize: 16,
                             // fontFamily: "Tajawal",
@@ -197,108 +141,188 @@ class _FormPage5State extends State<FormPage5> {
                         SizedBox(
                           height: 12,
                         ),
+                        myTextField(
+                          prefix: usrr,
+                          hint: "Name *",
+                          controller: _nameText,
+                          keyBoardType: TextInputType.text,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Enter your name";
+                            }
+                            return null;
+                          },
+                        ),
+
+                        SizedBox(
+                          height: 16,
+                        ),
+
+                        myTextField(
+                          prefix: calll,
+                          hint: "Mobile Number *",
+                          controller: _mobileNumberText,
+                          keyBoardType: TextInputType.number,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Enter your Mobile Number";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: 26,
+                        ),
+                        ////////////////////////////////////////////////////////////////////////////////
+
+                        ////////////////////////////////////////////////////////////////////////////////
+
+                        Text(
+                          "Your capacity",
+                          style: TextStyle(
+                            fontSize: 16,
+                            // fontFamily: "Tajawal",
+                          ),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
 
                         ToggleButtons(
                           fillColor: Theme.of(context).colorScheme.primary,
-                          isSelected: paymentOptionsBool,
+                          isSelected: _isSelected,
                           selectedColor: Colors.white,
-                          //  paymentOptions
+                          //  _yourcapacity
                           //     .map((e) => bool.fromEnvironment(e["myBool"]))
                           //     .toList(),
-                          children: paymentOptions
+                          children: _yourcapacity
                               .map((e) => Container(
                                   margin: EdgeInsets.all(12), child: Text(e)))
                               .toList() as List<Widget>,
                           onPressed: (newIndex) {
                             setState(() {
                               for (int myIndex = 0;
-                                  myIndex < paymentOptionsBool.length;
+                                  myIndex < _isSelected.length;
                                   myIndex++) {
                                 if (myIndex == newIndex) {
-                                  paymentOptionsBool[myIndex] = true;
-                                  paymentValue = paymentOptions[myIndex];
-                                  print(paymentValue);
+                                  _isSelected[myIndex] = true;
+                                  capacityValue = _yourcapacity[myIndex];
+                                  print(capacityValue);
                                 } else {
-                                  paymentOptionsBool[myIndex] = false;
+                                  _isSelected[myIndex] = false;
                                 }
                               }
                             });
                           },
                         ),
 
-                        /////////////////////////////////////////////////////////////////////////////////////
+                        /////////////////////////////////////////////////////////////
+
+                        ////////////////////////////////////////////////////////////////////////////////
                         SizedBox(
-                          height: 16,
+                          height: 26,
                         ),
-                        myTextField(
-                          hint: "Down payment percentage *",
-                          controller: _dPPText,
-                          keyBoardType: TextInputType.number,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please Enter Down payment percentage";
-                            } else if (value.length > 2) {
-                              return "Invalide percentage";
-                            }
-                            return null;
-                          },
-                          suffix: Text(
-                            "%",
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.secondary,
-                                fontSize: 18),
+                        Text(
+                          "Contact Method",
+                          style: TextStyle(
+                            fontSize: 16,
+                            // fontFamily: "Tajawal",
                           ),
                         ),
+                        SizedBox(
+                          height: 8,
+                        ),
+
+                        ToggleButtons(
+                          fillColor: Theme.of(context).colorScheme.primary,
+                          isSelected: _isSelected2,
+                          selectedColor: Colors.white,
+                          //  _yourcapacity
+                          //     .map((e) => bool.fromEnvironment(e["myBool"]))
+                          //     .toList(),
+                          children: _yourcapacity2
+                              .map((e) => Container(
+                                  margin: EdgeInsets.all(12), child: Text(e)))
+                              .toList() as List<Widget>,
+                          onPressed: (newIndex) {
+                            setState(() {
+                              for (int myIndex = 0;
+                                  myIndex < _isSelected2.length;
+                                  myIndex++) {
+                                if (myIndex == newIndex) {
+                                  _isSelected2[myIndex] = true;
+                                  capacityValue2 = _yourcapacity2[myIndex];
+                                  print(capacityValue2);
+                                } else {
+                                  _isSelected2[myIndex] = false;
+                                }
+                              }
+                            });
+                          },
+                        ),
+
+                        /////////////////////////////////////////////////////////////
 
                         SizedBox(
                           height: 20,
                         ),
 
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
                               height: 20,
                               child: Checkbox(
                                 activeColor:
                                     Theme.of(context).colorScheme.primary,
-                                value: receivedInDollar,
+                                value: confirmTerms,
                                 onChanged: (value) {
                                   setState(() {
-                                    receivedInDollar = value!;
+                                    confirmTerms = value!;
                                   });
                                 },
                               ),
                             ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text("Receive offers only in Dollar")
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "I have read and accepted all ",
+                                      style: TextStyle(
+                                          fontSize: 16, fontFamily: "Tajawal"),
+                                    ),
+                                    InkWell(
+                                      onTap: () => myApplication.navigateTo(
+                                          TAC(), context),
+                                      child: Text(
+                                        "Terms and Conditions ",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: "Tajawal",
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  "of Smart Building ",
+                                  style: TextStyle(
+                                      fontSize: 16, fontFamily: "Tajawal"),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                         SizedBox(
                           height: 8,
                         ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                              child: Checkbox(
-                                activeColor:
-                                    Theme.of(context).colorScheme.primary,
-                                value: negotiable,
-                                onChanged: (value) {
-                                  setState(() {
-                                    negotiable = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                            Text("Negotiable")
-                          ],
-                        ),
 
                         SizedBox(
-                          height: 190,
+                          height: 200,
                         ),
 
                         /////////////////////////////////////
@@ -306,7 +330,6 @@ class _FormPage5State extends State<FormPage5> {
                         myButton(() {
                           if (_formKey.currentState!.validate()) {
                             print("HElooooooooooooo");
-                            myApplication.navigateTo(FormPage6(), context);
                           }
                         }, "continue  ➔"),
                       ],

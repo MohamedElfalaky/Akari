@@ -1,5 +1,6 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPage3.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
@@ -28,7 +29,14 @@ class _FormPage2State extends State<FormPage2> {
   final TextEditingController _descriptioneText = TextEditingController();
   final TextEditingController _dateText = TextEditingController();
   DateTime defaltDate = DateTime.now();
-
+  ///////
+  List<String> _contractType = ["Finished", "Semi-Finished", "Not Finished"];
+  List<bool> _isSelected = [true, false, false];
+  String _selectedContractType = "Finished";
+  /////////
+  List<String> _contractType2 = ["Apartment", "Duplex"];
+  List<bool> _isSelected2 = [true, false];
+  String _selectedContractType2 = "Apartment";
   @override
   Widget build(BuildContext context) {
     _dateText.text = "${defaltDate.year}/${defaltDate.month}/${defaltDate.day}";
@@ -113,7 +121,6 @@ class _FormPage2State extends State<FormPage2> {
                     margin: EdgeInsets.only(left: 24, right: 24, top: 30),
                     height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
-                      // shrinkWrap: true,
                       children: [
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.68,
@@ -155,48 +162,35 @@ class _FormPage2State extends State<FormPage2> {
                               SizedBox(
                                 height: 8,
                               ),
-                              Container(
-                                  // margin: EdgeInsets.only(
-                                  //     top: myApplication.hightClc(context, 19)),
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children:
-                                    typeTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
-                                        .map((e) => InkWell(
-                                              child: ToggleTap(
-                                                  e["name"], e["bool"]),
-                                              onTap: () {
-                                                if (_typeList
-                                                        .where((element) =>
-                                                            element ==
-                                                            e["name"])
-                                                        .isNotEmpty &&
-                                                    _typeList
-                                                            .where((element) =>
-                                                                element ==
-                                                                e["name"])
-                                                            .first ==
-                                                        e["name"]) {
-                                                  setState(() {
-                                                    _typeList.remove(e["name"]);
-                                                    e["bool"] = false;
-                                                  });
-                                                } else {
-                                                  if (_typeList.length == 1) {
-                                                  } else {
-                                                    setState(() {
-                                                      _typeList.add(e["name"]);
-                                                      e["bool"] = true;
-                                                    });
-                                                  }
-                                                }
-
-                                                print(_typeList);
-                                              },
-                                            ))
-                                        .toList(),
-                              )),
-/////////////////////// Type end
+                              //////////////////////////////////////////////////////////////////////////////////
+                              ToggleButtons(
+                                fillColor:
+                                    Theme.of(context).colorScheme.primary,
+                                isSelected: _isSelected2,
+                                selectedColor: Colors.white,
+                                children: _contractType2
+                                    .map((e) => Container(
+                                        margin: const EdgeInsets.all(12),
+                                        child: Text(e)))
+                                    .toList(),
+                                onPressed: (newIndex) {
+                                  setState(() {
+                                    for (int myIndex = 0;
+                                        myIndex < _isSelected2.length;
+                                        myIndex++) {
+                                      if (myIndex == newIndex) {
+                                        _isSelected2[myIndex] = true;
+                                        _selectedContractType2 =
+                                            _contractType2[myIndex];
+                                        print(_selectedContractType2);
+                                      } else {
+                                        _isSelected2[myIndex] = false;
+                                      }
+                                    }
+                                  });
+                                },
+                              ),
+                              //////////////////////////////////////////////////////////////////////////////////
                               SizedBox(
                                 height: 16,
                               ),
@@ -316,51 +310,35 @@ class _FormPage2State extends State<FormPage2> {
                               SizedBox(
                                 height: 8,
                               ),
-                              Container(
-                                  // margin: EdgeInsets.only(
-                                  //     top: myApplication.hightClc(context, 19)),
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children:
-                                    deliveryTerm // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
-                                        .map((e) => InkWell(
-                                              child: ToggleTap(
-                                                  e["name"], e["bool"]),
-                                              onTap: () {
-                                                if (_deliveryTermList
-                                                        .where((element) =>
-                                                            element ==
-                                                            e["name"])
-                                                        .isNotEmpty &&
-                                                    _deliveryTermList
-                                                            .where((element) =>
-                                                                element ==
-                                                                e["name"])
-                                                            .first ==
-                                                        e["name"]) {
-                                                  setState(() {
-                                                    _deliveryTermList
-                                                        .remove(e["name"]);
-                                                    e["bool"] = false;
-                                                  });
-                                                } else {
-                                                  if (_deliveryTermList
-                                                          .length ==
-                                                      1) {
-                                                  } else {
-                                                    setState(() {
-                                                      _deliveryTermList
-                                                          .add(e["name"]);
-                                                      e["bool"] = true;
-                                                    });
-                                                  }
-                                                }
 
-                                                print(_deliveryTermList);
-                                              },
-                                            ))
-                                        .toList(),
-                              )),
+                              ToggleButtons(
+                                fillColor:
+                                    Theme.of(context).colorScheme.primary,
+                                isSelected: _isSelected,
+                                selectedColor: Colors.white,
+                                children: _contractType
+                                    .map((e) => Container(
+                                        margin: const EdgeInsets.all(12),
+                                        child: Text(e)))
+                                    .toList(),
+                                onPressed: (newIndex) {
+                                  setState(() {
+                                    for (int myIndex = 0;
+                                        myIndex < _isSelected.length;
+                                        myIndex++) {
+                                      if (myIndex == newIndex) {
+                                        _isSelected[myIndex] = true;
+                                        _selectedContractType =
+                                            _contractType[myIndex];
+                                        print(_selectedContractType);
+                                      } else {
+                                        _isSelected[myIndex] = false;
+                                      }
+                                    }
+                                  });
+                                },
+                              ),
+
                               SizedBox(
                                 height: 16,
                               ),
@@ -377,7 +355,7 @@ class _FormPage2State extends State<FormPage2> {
                                   }
                                   return null;
                                 },
-                                maxLines: 8,
+                                maxLines: 6,
                                 maxlenth: 2000,
                               ),
                               Row(
@@ -399,6 +377,7 @@ class _FormPage2State extends State<FormPage2> {
                         myButton(() {
                           if (_formKey.currentState!.validate()) {
                             print("HElooooooooooooo");
+                            myApplication.navigateTo(FormPage3(), context);
                           }
                         }, "continue  ➔"),
                         Spacer()

@@ -109,3 +109,10 @@ List<Map> amenities = [
   {"name": "Extra unit", "bool": false},
   {"name": "Tent", "bool": false},
 ];
+
+List<String> paymentOptions = [
+  "Cash",
+  "Installment",
+  "Cash or Installment",
+];
+List<bool> paymentOptionsBool = [true, false, false];
