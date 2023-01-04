@@ -272,6 +272,7 @@ class _FormPage6State extends State<FormPage6> {
                           children: [
                             SizedBox(
                               height: 20,
+                              width: 20,
                               child: Checkbox(
                                 activeColor:
                                     Theme.of(context).colorScheme.primary,
@@ -282,6 +283,9 @@ class _FormPage6State extends State<FormPage6> {
                                   });
                                 },
                               ),
+                            ),
+                            SizedBox(
+                              width: 8,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -320,16 +324,28 @@ class _FormPage6State extends State<FormPage6> {
                         SizedBox(
                           height: 8,
                         ),
+                        confirmTerms == false
+                            ? Text(
+                                "You must confirm terms and conditions",
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 12),
+                              )
+                            : Container(),
 
                         SizedBox(
-                          height: 200,
+                          height: 180,
                         ),
 
                         /////////////////////////////////////
 
                         myButton(() {
-                          if (_formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate() &&
+                              confirmTerms == true) {
                             print("HElooooooooooooo");
+                          } else if (confirmTerms == false) {
+                            setState(() {
+                              confirmTerms = false;
+                            });
                           }
                         }, "continue  ➔"),
                       ],
