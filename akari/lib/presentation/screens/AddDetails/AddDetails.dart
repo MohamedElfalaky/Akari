@@ -19,11 +19,12 @@ class AddDetails extends StatefulWidget {
   final String? floor;
   final String? bedRooms;
   final String? bathRooms;
-  final List<String>? amenities;
+  final List<dynamic>? amenities;
   final String? priceSd;
   final String? priceDollar;
   final String? phone;
   final String? advertiserId;
+  final String? adId;
   final bool? isFavorite;
   const AddDetails(
       {super.key,
@@ -42,6 +43,7 @@ class AddDetails extends StatefulWidget {
       this.priceDollar,
       this.phone,
       this.advertiserId,
+      this.adId,
       this.isFavorite});
 
   @override
@@ -79,23 +81,23 @@ class _AddDetailsState extends State<AddDetails> {
             // backgroundColor: Theme.of(context).colorScheme.secondary,
 
             body: AddDetailsScreen(
-          contractType: widget.contractType,
-          buildingType: widget.buildingType,
-          deliveryTerm: widget.deliveryTerm,
-          address: widget.address,
-          createdAt: widget.createdAt,
-          description: widget.description,
-          area: widget.area,
-          floor: widget.floor,
-          bedRooms: widget.bedRooms,
-          bathRooms: widget.bathRooms,
-          amenities: widget.amenities,
-          priceSd: widget.priceSd,
-          priceDollar: widget.priceDollar,
-          phone: widget.phone,
-          advertiserId: widget.advertiserId,
-          isFavorite: widget.isFavorite,
-        )),
+                contractType: widget.contractType,
+                buildingType: widget.buildingType,
+                deliveryTerm: widget.deliveryTerm,
+                address: widget.address,
+                createdAt: widget.createdAt,
+                description: widget.description,
+                area: widget.area,
+                floor: widget.floor,
+                bedRooms: widget.bedRooms,
+                bathRooms: widget.bathRooms,
+                amenities: widget.amenities,
+                priceSd: widget.priceSd,
+                priceDollar: widget.priceDollar,
+                phone: widget.phone,
+                advertiserId: widget.advertiserId,
+                isFavorite: widget.isFavorite,
+                adId: widget.adId)),
       ),
     );
   }

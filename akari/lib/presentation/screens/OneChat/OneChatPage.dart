@@ -5,6 +5,7 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/OneChat/components/OneChatScreen.dart';
 import 'dart:io' show Platform;
 import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
+import 'package:akari/style/Icons.dart';
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -78,8 +79,7 @@ class _OneChatPageState extends State<OneChatPage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     image: DecorationImage(
-                        image: NetworkImage(widget.image ??
-                            "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"),
+                        image: NetworkImage(widget.image ?? noImg),
                         fit: BoxFit.fill),
                   ),
                 ),

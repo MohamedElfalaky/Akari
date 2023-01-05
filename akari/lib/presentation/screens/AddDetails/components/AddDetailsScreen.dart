@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:akari/data/cubits/AddToFavorite/AddToFavoriteCubit.dart';
+import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
@@ -25,11 +27,12 @@ class AddDetailsScreen extends StatelessWidget {
   final String? floor;
   final String? bedRooms;
   final String? bathRooms;
-  final List<String>? amenities;
+  final List<dynamic>? amenities;
   final String? priceSd;
   final String? priceDollar;
   final String? phone;
   final String? advertiserId;
+  final String? adId;
   final bool? isFavorite;
   const AddDetailsScreen(
       {super.key,
@@ -48,6 +51,7 @@ class AddDetailsScreen extends StatelessWidget {
       this.priceDollar,
       this.phone,
       this.advertiserId,
+      this.adId,
       this.isFavorite});
   @override
   Widget build(BuildContext context) {
@@ -123,6 +127,18 @@ class AddDetailsScreen extends StatelessWidget {
                                   return SorryPopUp();
                                 },
                               );
+                            } else {
+                              isFavorite == null
+                                  ? AddToFavoriteCubit.get(context)
+                                      .userAddToFavorite(
+                                          adId!,
+                                          CacheHelper.getFromShared("token"),
+                                          context)
+                                  : RemoveFromFavoriteCubit.get(context)
+                                      .userRemoveFromFavorite(
+                                          adId!,
+                                          CacheHelper.getFromShared("token"),
+                                          context);
                             }
                           },
                           child: Container(
@@ -132,11 +148,16 @@ class AddDetailsScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white70,
                                 borderRadius: BorderRadius.circular(50)),
-                            child: const Center(
-                                child: Icon(
-                              Icons.favorite_outline,
-                              color: Colors.red,
-                            )),
+                            child: Center(
+                                child: isFavorite == null
+                                    ? Icon(
+                                        Icons.favorite_outline,
+                                        color: Colors.red,
+                                      )
+                                    : Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      )),
                           ),
                         ),
                 ],

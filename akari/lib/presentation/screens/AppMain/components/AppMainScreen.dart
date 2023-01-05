@@ -234,6 +234,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                               advertiserId: state.myAllAddsModel
                                                   .data[index].advertiser
                                                   .toString(),
+                                              adId: state.myAllAddsModel
+                                                  .data[index].id,
                                               // isFavorite: false,
                                             ),
                                             context),
@@ -260,6 +262,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                           priceDollar: state.myAllAddsModel
                                               .data[index].price.inUSD
                                               .toString(),
+                                          adId: state
+                                              .myAllAddsModel.data[index].id,
                                           isFavorite: false,
                                         ));
                                   },

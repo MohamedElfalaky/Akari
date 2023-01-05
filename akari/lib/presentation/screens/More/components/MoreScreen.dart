@@ -93,7 +93,7 @@ class _MoreScreenState extends State<MoreScreen> {
                           child: Row(
                             children: [
                               SvgPicture.asset(
-                                myAddss,
+                                adsTap,
                                 height: 30,
                                 color: Theme.of(context).colorScheme.primary,
                               ),

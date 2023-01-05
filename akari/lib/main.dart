@@ -1,9 +1,11 @@
+import 'package:akari/data/cubits/AddToFavorite/AddToFavoriteCubit.dart';
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
+import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
@@ -69,6 +71,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<AllAddsCubit>(create: (context) => AllAddsCubit()),
         BlocProvider<GetFavoritesCubit>(
             create: (context) => GetFavoritesCubit()),
+        BlocProvider<AddToFavoriteCubit>(
+            create: (context) => AddToFavoriteCubit()),
+        BlocProvider<RemoveFromFavoriteCubit>(
+            create: (context) => RemoveFromFavoriteCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

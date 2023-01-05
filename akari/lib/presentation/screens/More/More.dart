@@ -116,9 +116,8 @@ class _MoreState extends State<More> {
                                 width: 56,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  image: const DecorationImage(
-                                      image: NetworkImage(
-                                          "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"),
+                                  image: DecorationImage(
+                                      image: NetworkImage(noImg),
                                       fit: BoxFit.fill),
                                 ),
                               ),

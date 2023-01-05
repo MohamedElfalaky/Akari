@@ -81,9 +81,9 @@ List<Map> unitLawsTaps = [
 ];
 
 const List<Map> adsTaps = [
-  {"name": "Ads.", "img": adsTap},
-  {"name": "Views", "img": viewTap},
-  {"name": "Calls", "img": callsTap},
+  {"name": "Ads.", "img": "assets/adsSoNew.svg"},
+  {"name": "Views", "img": "assets/viewsSoNew.svg"},
+  {"name": "Calls", "img": "assets/callsSoNew.svg"},
 ];
 
 List<Map> amenities = [

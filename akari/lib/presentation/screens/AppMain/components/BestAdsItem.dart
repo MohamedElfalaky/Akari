@@ -1,3 +1,5 @@
+import 'package:akari/data/cubits/AddToFavorite/AddToFavoriteCubit.dart';
+import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
@@ -18,6 +20,7 @@ class BestAdsItem extends StatelessWidget {
   final DateTime? createdAt;
   final String? price;
   final String? priceDollar;
+  final String? adId;
   final bool? isFavorite;
 
   const BestAdsItem(
@@ -30,6 +33,7 @@ class BestAdsItem extends StatelessWidget {
       this.createdAt,
       this.price,
       this.priceDollar,
+      this.adId,
       this.isFavorite});
 
   @override
@@ -67,6 +71,13 @@ class BestAdsItem extends StatelessWidget {
                       child: Center(
                           child: isFavorite == true
                               ? InkWell(
+                                  onTap: () {
+                                    RemoveFromFavoriteCubit.get(context)
+                                        .userRemoveFromFavorite(
+                                            adId!,
+                                            CacheHelper.getFromShared("token"),
+                                            context);
+                                  },
                                   child: Icon(
                                     Icons.favorite,
                                     color: Colors.red,
@@ -82,6 +93,14 @@ class BestAdsItem extends StatelessWidget {
                                           return SorryPopUp();
                                         },
                                       );
+                                    } else {
+                                      //add fav
+                                      AddToFavoriteCubit.get(context)
+                                          .userAddToFavorite(
+                                              adId!,
+                                              CacheHelper.getFromShared(
+                                                  "token"),
+                                              context);
                                     }
                                   },
                                   child: Icon(

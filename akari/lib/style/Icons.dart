@@ -20,11 +20,11 @@ const String whiteLogo = "assets/whiteLogo.png";
 const String mainLogo = "assets/mainLogo.png";
 const String belll = "assets/notification-bell-svgrepo-com.svg";
 const String becomeAdvertisor = "assets/becomeAdvertisor.svg";
-const String adsTap = "assets/myadsNew.svg";
-const String viewTap = "assets/myViewsNew.svg";
-const String callsTap = "assets/callsTap.svg";
+const String adsTap = "assets/adsSoNew.svg";
+const String viewTap = "assets/viewsSoNew.svg";
+const String callsTap = "assets/callsSoNew.svg";
 // const String newcalls = "assets/Group 62745.svg";
-const String myAddss = "assets/myAds.svg";
+// const String myAddss = "assets/myAds.svg";
 const String dropDownArrow = "assets/dropDownArrow.svg";
 const String myArea = "assets/myArea.svg";
 const String myTitle = "assets/myTitle.svg";
@@ -51,3 +51,5 @@ const String clockk = "${pngExtension}Clock.png";
 
 String defaultHouse =
     "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/download-23.jpg";
+String noImg =
+    "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg";
