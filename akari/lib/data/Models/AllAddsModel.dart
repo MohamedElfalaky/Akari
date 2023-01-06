@@ -1,24 +1,24 @@
 class AllAddsModel {
   AllAddsModel({
-    required this.data,
-    required this.message,
     required this.result,
+    required this.message,
+    required this.data,
   });
-  late final List<Data> data;
-  late final String message;
   late final bool result;
+  late final String message;
+  late final List<Data> data;
 
   AllAddsModel.fromJson(Map<String, dynamic> json) {
-    data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
-    message = json['message'];
     result = json['result'];
+    message = json['message'];
+    data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['data'] = data.map((e) => e.toJson()).toList();
-    _data['message'] = message;
     _data['result'] = result;
+    _data['message'] = message;
+    _data['data'] = data.map((e) => e.toJson()).toList();
     return _data;
   }
 }
@@ -192,12 +192,12 @@ class Rating {
     required this.count,
     required this.all,
   });
-  late final result;
+  late final Null result;
   late final int count;
   late final List<dynamic> all;
 
   Rating.fromJson(Map<String, dynamic> json) {
-    result = json['result'];
+    result = null;
     count = json['count'];
     all = List.castFrom<dynamic, dynamic>(json['all']);
   }

@@ -1,3 +1,5 @@
+import 'package:akari/data/cubits/Page1/Page1Cubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/P2Villa&Appartment.dart';
@@ -6,6 +8,7 @@ import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
@@ -152,9 +155,9 @@ class _FormPage1State extends State<FormPage1> {
                       validator: (value) {
                         if (dropDownValue == null) {
                           return "You must select a category";
-                        } else if (dropDownValue != "Appartments" &&
+                        } else if (dropDownValue != "Apartment, Duplex" &&
                             dropDownValue != "Villa") {
-                          return "Only Appartments and Villas are available now to be advertised";
+                          return "Only Appartments, Duplex and Villas are available now to be advertised";
                         }
                         ;
                       },
@@ -210,18 +213,32 @@ class _FormPage1State extends State<FormPage1> {
                   Spacer(
                     flex: 10,
                   ),
-                  myButton(() {
-                    if (_formKey.currentState!.validate()) {
-                      print("HElooooo");
+                  BlocBuilder<Page1Cubit, Page1State>(
+                    builder: (context, state) {
+                      return state is Page1Loading
+                          ? Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            )
+                          : myButton(() {
+                              if (_formKey.currentState!.validate()) {
+                                print("HElooooo");
 
-                      myApplication.navigateTo(
-                          P2VillaAppartment(
-                            category: dropDownValue!,
-                            contractType: _selectedContractType,
-                          ),
-                          context);
-                    }
-                  }, "continue  ➔"),
+                                // myApplication.navigateTo(
+                                //     P2VillaAppartment(
+                                //       category: dropDownValue!,
+                                //       contractType: _selectedContractType,
+                                //     ),
+                                //     context);
+
+                                Page1Cubit.get(context).userPage1(
+                                    dropDownValue!,
+                                    _selectedContractType,
+                                    CacheHelper.getFromShared("token"),
+                                    context);
+                              }
+                            }, "continue  ➔");
+                    },
+                  ),
                   Spacer(
                       // flex: 1,
                       )

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:akari/data/cubits/AddAminties/AddAmintiesCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page4/FormPage4.dart';
@@ -9,13 +11,16 @@ import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class FormPage3 extends StatefulWidget {
-  FormPage3({super.key});
+  final String id;
+  final String category;
+  FormPage3({super.key, required this.id, required this.category});
 
   @override
   State<FormPage3> createState() => _FormPage3State();
@@ -23,17 +28,30 @@ class FormPage3 extends StatefulWidget {
 
 class _FormPage3State extends State<FormPage3> {
   final _formKey = GlobalKey<FormState>();
-  final ImagePicker imagePicker = ImagePicker();
+  XFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
   List<XFile> imageFileList = [];
   List<String> myAmenitesList = [];
   bool imgList = true;
-  void selectImages() async {
-    List<XFile>? selectedImages = await imagePicker.pickMultiImage();
-    if (selectedImages.isNotEmpty) {
-      imageFileList.addAll(selectedImages);
-      setState(() {});
+  void _pickImage() async {
+    try {
+      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+      setState(() {
+        _imageFile = pickedFile;
+      });
+    } catch (e) {
+      print("Image picker error " + e.toString());
     }
   }
+
+  /////  ابلود اكتر من صورة
+  // void selectImages() async {
+  //   List<XFile>? selectedImages = await _picker.pickMultiImage();
+  //   if (selectedImages.isNotEmpty) {
+  //     imageFileList.addAll(selectedImages);
+  //     setState(() {});
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +163,7 @@ class _FormPage3State extends State<FormPage3> {
                               ////////////////// زرار اضافة الصور
                               InkWell(
                                 onTap: () {
-                                  selectImages();
+                                  _pickImage();
                                 },
                                 child: Container(
                                   height: 200,
@@ -284,20 +302,42 @@ class _FormPage3State extends State<FormPage3> {
                                     .toList())),
                         /////////////////
                         Spacer(),
-                        myButton(() {
-                          if (_formKey.currentState!.validate() &&
-                              imageFileList.length >= 3) {
-                            setState(() {
-                              imgList = true;
-                            });
-                            print("HElooooooooooooo");
-                            myApplication.navigateTo(FormPage4(), context);
-                          } else {
-                            setState(() {
-                              imgList = false;
-                            });
-                          }
-                        }, "continue  ➔"),
+                        BlocBuilder<AddAmintiesCubit, AddAmintiesState>(
+                          builder: (context, state) {
+                            return state is AddAmintiesLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : myButton(() {
+                                    if (_formKey.currentState!.validate()
+
+                                        // &&
+                                        //     imageFileList.length >= 3
+                                        ) {
+                                      // setState(() {
+                                      //   imgList = true;
+                                      // }
+
+                                      // );
+                                      print("HElooooooooooooo");
+
+                                      AddAmintiesCubit.get(context)
+                                          .userAddAminties(
+                                              myAmenitesList,
+                                              widget.id,
+                                              CacheHelper.getFromShared(
+                                                  "token"),
+                                              widget.category,
+                                              context);
+                                    } else {
+                                      setState(() {
+                                        imgList = false;
+                                      });
+                                    }
+                                  }, "continue  ➔");
+                          },
+                        ),
+
                         Spacer()
                       ],
                     )),

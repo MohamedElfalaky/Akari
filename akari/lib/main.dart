@@ -1,14 +1,21 @@
+import 'package:akari/data/cubits/AddAminties/AddAmintiesCubit.dart';
+import 'package:akari/data/cubits/AddPrice/AddPriceCubit.dart';
 import 'package:akari/data/cubits/AddToFavorite/AddToFavoriteCubit.dart';
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
+import 'package:akari/data/cubits/ConfirmAdd/ConfirmAddCubit.dart';
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
+import 'package:akari/data/cubits/Page1/Page1Cubit.dart';
+import 'package:akari/data/cubits/Page2Appartment/Page2AppartmentCubit.dart';
+import 'package:akari/data/cubits/Page2Villa/Page2VillaCubit.dart';
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
 import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
+import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
 import 'package:akari/helpers/AppLocalizations.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/dio_helper.dart';
@@ -75,6 +82,14 @@ class MyApp extends StatelessWidget {
             create: (context) => AddToFavoriteCubit()),
         BlocProvider<RemoveFromFavoriteCubit>(
             create: (context) => RemoveFromFavoriteCubit()),
+        BlocProvider<Page1Cubit>(create: (context) => Page1Cubit()),
+        BlocProvider<Page2AppartmentCubit>(
+            create: (context) => Page2AppartmentCubit()),
+        BlocProvider<Page2VillaCubit>(create: (context) => Page2VillaCubit()),
+        BlocProvider<AddAmintiesCubit>(create: (context) => AddAmintiesCubit()),
+        BlocProvider<addAddressCubit>(create: (context) => addAddressCubit()),
+        BlocProvider<AddPriceCubit>(create: (context) => AddPriceCubit()),
+        BlocProvider<ConfirmAddCubit>(create: (context) => ConfirmAddCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -129,7 +144,7 @@ class MyApp extends StatelessWidget {
                   '/login': (context) => LogIn(),
                   '/forgetpassword': (context) => ForgetPassword(),
                 },
-                home: Splash());
+                home: AppMain());
           });
         },
       ),

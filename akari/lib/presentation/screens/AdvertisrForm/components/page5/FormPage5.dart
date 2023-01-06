@@ -1,3 +1,6 @@
+import 'package:akari/data/cubits/AddPrice/AddPriceCubit.dart';
+import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/LocationService.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
@@ -7,12 +10,15 @@ import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:location/location.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class FormPage5 extends StatefulWidget {
-  FormPage5({super.key});
+  final String id;
+  final String category;
+  FormPage5({super.key, required this.id, required this.category});
 
   @override
   State<FormPage5> createState() => _FormPage5State();
@@ -238,7 +244,7 @@ class _FormPage5State extends State<FormPage5> {
                             if (value!.isEmpty) {
                               return "Please Enter Down payment percentage";
                             } else if (value.length > 2) {
-                              return "Invalide percentage";
+                              return "Invalide percentage, it must be a percentage between 0-100";
                             }
                             return null;
                           },
@@ -308,12 +314,32 @@ class _FormPage5State extends State<FormPage5> {
 
                         /////////////////////////////////////
 
-                        myButton(() {
-                          if (_formKey.currentState!.validate()) {
-                            print("HElooooooooooooo");
-                            myApplication.navigateTo(FormPage6(), context);
-                          }
-                        }, "continue  ➔"),
+                        BlocBuilder<AddPriceCubit, AddPriceState>(
+                          builder: (context, state) {
+                            return state is AddPriceLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : myButton(() {
+                                    if (_formKey.currentState!.validate()) {
+                                      print("HElooooooooooooo");
+                                      // myApplication.navigateTo(FormPage6(), context);
+                                      AddPriceCubit.get(context).userAddPrice(
+                                          inUSD: _priceDollarText.text,
+                                          inSP: _priceLsText.text,
+                                          paymentOption: paymentValue,
+                                          downPaymentPercentage: _dPPText.text,
+                                          onlyAcceptUSD: receivedInDollar,
+                                          isNegotiable: negotiable,
+                                          id: widget.id,
+                                          token: CacheHelper.getFromShared(
+                                              "token"),
+                                          category: widget.category,
+                                          context: context);
+                                    }
+                                  }, "continue  ➔");
+                          },
+                        ),
                       ],
                     )),
               ],

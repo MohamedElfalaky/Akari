@@ -1,3 +1,5 @@
+import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/LocationService.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
@@ -8,13 +10,16 @@ import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:location/location.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:location/location.dart';
 
 class FormPage4 extends StatefulWidget {
-  FormPage4({super.key});
+  final String id;
+  final String category;
+  FormPage4({super.key, required this.id, required this.category});
 
   @override
   State<FormPage4> createState() => _FormPage4State();
@@ -23,10 +28,11 @@ class FormPage4 extends StatefulWidget {
 class _FormPage4State extends State<FormPage4> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _stateText = TextEditingController();
+  // final TextEditingController _stateText = TextEditingController();
   final TextEditingController _districtText = TextEditingController();
   final TextEditingController _detailedAddressText = TextEditingController();
   final TextEditingController _pOBox = TextEditingController();
+  String? _dropDownValue;
 
   @override
   Widget build(BuildContext context) {
@@ -132,16 +138,54 @@ class _FormPage4State extends State<FormPage4> {
                         SizedBox(
                           height: 11,
                         ),
-                        myTextField(
-                          hint: "State *",
-                          controller: _stateText,
-                          keyBoardType: TextInputType.text,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Please Enter State";
-                            }
-                            return null;
-                          },
+                        Container(
+                          // dropdown menu container
+                          // padding: EdgeInsets.all(5),
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              fillColor: Color(0xffFFF7E999),
+                              filled: true,
+                              border: InputBorder.none, // شلت البوردر
+                            ),
+                            hint: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    categoryBulk,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text("States"),
+                                  Text(
+                                    " *",
+                                    style: TextStyle(color: Colors.red),
+                                  )
+                                ],
+                              ),
+                            ),
+                            isExpanded: true,
+                            // icon: SvgPicture.asset(dropDownArrow),
+                            onChanged: (val) {
+                              setState(() {
+                                _dropDownValue = val.toString();
+                              });
+                            },
+                            value: _dropDownValue,
+                            items: appStates.map((e) {
+                              return DropdownMenuItem(value: e, child: Text(e));
+                            }).toList(),
+                            validator: (value) {
+                              if (_dropDownValue == null) {
+                                return "You must select a category";
+                              }
+                              ;
+                            },
+                          ),
                         ),
                         SizedBox(
                           height: 16,
@@ -191,12 +235,32 @@ class _FormPage4State extends State<FormPage4> {
 
                         /////////////////////////////////////
 
-                        myButton(() {
-                          if (_formKey.currentState!.validate()) {
-                            print("HElooooooooooooo");
-                            myApplication.navigateTo(FormPage5(), context);
-                          }
-                        }, "continue  ➔"),
+                        BlocBuilder<addAddressCubit, addAddressState>(
+                          builder: (context, state) {
+                            return state is addAddressLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : myButton(() {
+                                    if (_formKey.currentState!.validate()) {
+                                      print("HElooooooooooooo");
+                                      // myApplication.navigateTo(FormPage5(), context);
+                                      addAddressCubit
+                                          .get(context)
+                                          .useraddAddress(
+                                              _dropDownValue!,
+                                              _districtText.text,
+                                              _detailedAddressText.text,
+                                              _pOBox.text,
+                                              widget.id,
+                                              CacheHelper.getFromShared(
+                                                  "token"),
+                                              widget.category,
+                                              context);
+                                    }
+                                  }, "continue  ➔");
+                          },
+                        ),
                       ],
                     )),
               ],
@@ -205,16 +269,17 @@ class _FormPage4State extends State<FormPage4> {
     );
   }
 
-  var lat;
-  var long;
-  var country;
-  var area;
-  var street;
-  var wholeLocation;
+  // var lat;
+  // var long;
+  // var country;
+  // var area;
+  // var street;
+  // var wholeLocation;
 
   Future<LocationData> getMyLocation() async {
+    // _stateText.text = "Loading..";
+
     _districtText.text = "Loading..";
-    _stateText.text = "Loading..";
     _detailedAddressText.text = "Loading..";
     _pOBox.text = "Loading..";
     final service = LocationService();
@@ -223,7 +288,7 @@ class _FormPage4State extends State<FormPage4> {
     if (locationData != null) {
       final placeMark = await service.getPlaceMark(locationData: locationData);
       setState(() {
-        _stateText.text = placeMark?.administrativeArea ?? "Loading..";
+        // _stateText.text = placeMark?.administrativeArea ?? "Loading..";
         _districtText.text = placeMark?.subAdministrativeArea ?? "Loading..";
         _detailedAddressText.text = placeMark?.street ?? "Loading..";
         _pOBox.text = placeMark?.postalCode ?? "Loading..";

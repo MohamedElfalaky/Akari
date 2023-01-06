@@ -1,3 +1,4 @@
+import 'package:akari/data/cubits/ConfirmAdd/ConfirmAddCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/LocationService.dart';
 import 'package:akari/helpers/myApplication.dart';
@@ -9,12 +10,16 @@ import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:location/location.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class FormPage6 extends StatefulWidget {
-  FormPage6({super.key});
+  final String id;
+  final String category;
+  FormPage6({super.key, required this.id, required this.category});
 
   @override
   State<FormPage6> createState() => _FormPage6State();
@@ -346,22 +351,38 @@ class _FormPage6State extends State<FormPage6> {
 
                         /////////////////////////////////////
 
-                        myButton(() {
-                          if (_formKey.currentState!.validate() &&
-                              confirmTerms == true) {
-                            print("HElooooooooooooo");
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext myContext) {
-                                return AdPosted();
-                              },
-                            );
-                          } else if (confirmTerms == false) {
-                            setState(() {
-                              confirmTerms = false;
-                            });
-                          }
-                        }, "continue  ➔"),
+                        BlocBuilder<ConfirmAddCubit, ConfirmAddState>(
+                          builder: (context, state) {
+                            return state is ConfirmAddLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : myButton(() {
+                                    if (_formKey.currentState!.validate() &&
+                                        confirmTerms == true) {
+                                      print("HElooooooooooooo");
+
+                                      ConfirmAddCubit.get(context)
+                                          .userConfirmAdd(
+                                              name: _nameText.text,
+                                              mobileNumber:
+                                                  _mobileNumberText.text,
+                                              capacity: capacityValue,
+                                              contactMethod: capacityValue2,
+                                              termsAccepted: confirmTerms,
+                                              id: widget.id,
+                                              token: CacheHelper.getFromShared(
+                                                  "token"),
+                                              category: widget.category,
+                                              context: context);
+                                    } else if (confirmTerms == false) {
+                                      setState(() {
+                                        confirmTerms = false;
+                                      });
+                                    }
+                                  }, "continue  ➔");
+                          },
+                        ),
                       ],
                     )),
               ],

@@ -1,3 +1,6 @@
+import 'package:akari/data/cubits/Page2Appartment/Page2AppartmentCubit.dart';
+import 'package:akari/data/cubits/Page2Villa/Page2VillaCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPage3.dart';
@@ -7,14 +10,33 @@ import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class P2VillaAppartment extends StatefulWidget {
   final String category;
   final String contractType;
+  final String id;
+  List<String> contractType2;
+  List<bool> isSelected2;
+  String selectedSubType;
+  //  List<String> widget.contractType2 = widget.category == "Apartment, Duplex"
+  //       ? ["Apartment", "Duplex"]
+  //       : ["Stand Alone", "Town House", "Twin House"];
+  //   List<bool> isSelected2 = widget.category == "Apartment, Duplex"
+  //       ? [true, false]
+  //       : [true, false, false];
+  //   String widget.selectedSubType =
+  //       widget.category == "Apartment, Duplex" ? "Apartment" : "Stand Alone";
   P2VillaAppartment(
-      {super.key, required this.category, required this.contractType});
+      {super.key,
+      required this.category,
+      required this.contractType,
+      required this.id,
+      required this.contractType2,
+      required this.isSelected2,
+      required this.selectedSubType});
 
   @override
   State<P2VillaAppartment> createState() => _P2VillaAppartmentState();
@@ -31,31 +53,30 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
   final TextEditingController _descriptioneText = TextEditingController();
   final TextEditingController _dateText = TextEditingController();
   DateTime defaltDate = DateTime.now();
+
   ///////
   List<String> _contractType = ["Finished", "Semi-Finished", "Not Finished"];
   List<bool> _isSelected = [true, false, false];
-  String _selectedContractType = "Finished";
+  String _selectedDeliveryTerm = "Finished";
   /////////
 
   ////////
-  List<String> _selections3 = ["Singles", "Families", "Both"];
+  List<String> _selections3 = ["Singles", "Families", "Singles & Families"];
   List<bool> _isSelected3 = [true, false, false];
-  String _selected3 = "Finished";
+  String _selected3 = "Singles";
 /////////
   bool _daily = false;
   bool _monthly = false;
   bool _yearly = false;
   bool _Any = false;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
-    List<String> _contractType2 = widget.category == "Appartments"
-        ? ["Apartment", "Duplex"]
-        : ["Stand Alone", "Town House", "Twin House"];
-    List<bool> _isSelected2 =
-        widget.category == "Appartments" ? [true, false] : [true, false, false];
-    String _selectedContractType2 =
-        widget.category == "Appartments" ? "Apartment" : "Stand Alone";
-    _dateText.text = "${defaltDate.year}/${defaltDate.month}/${defaltDate.day}";
+    _dateText.text = "${defaltDate.year}-${defaltDate.month}-${defaltDate.day}";
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -182,9 +203,9 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                               ToggleButtons(
                                 fillColor:
                                     Theme.of(context).colorScheme.primary,
-                                isSelected: _isSelected2,
+                                isSelected: widget.isSelected2,
                                 selectedColor: Colors.white,
-                                children: _contractType2
+                                children: widget.contractType2
                                     .map((e) => Container(
                                         margin: const EdgeInsets.all(12),
                                         child: Text(e)))
@@ -192,20 +213,22 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                 onPressed: (newIndex) {
                                   setState(() {
                                     for (int myIndex = 0;
-                                        myIndex < _isSelected2.length;
+                                        myIndex < widget.isSelected2.length;
                                         myIndex++) {
                                       if (myIndex == newIndex) {
-                                        _isSelected2[myIndex] = true;
-                                        _selectedContractType2 =
-                                            _contractType2[myIndex];
-                                        print(_selectedContractType2);
+                                        widget.isSelected2[myIndex] = true;
+                                        widget.selectedSubType =
+                                            widget.contractType2[myIndex];
+                                        // print(widget.contractType2[myIndex]);
+                                        print(widget.selectedSubType);
                                       } else {
-                                        _isSelected2[myIndex] = false;
+                                        widget.isSelected2[myIndex] = false;
                                       }
                                     }
                                   });
                                 },
                               ),
+
                               //////////////////////////////////////////////////////////////////////////////////
                               SizedBox(
                                 height: 16,
@@ -344,9 +367,9 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                         myIndex++) {
                                       if (myIndex == newIndex) {
                                         _isSelected[myIndex] = true;
-                                        _selectedContractType =
+                                        _selectedDeliveryTerm =
                                             _contractType[myIndex];
-                                        print(_selectedContractType);
+                                        print(_selectedDeliveryTerm);
                                       } else {
                                         _isSelected[myIndex] = false;
                                       }
@@ -617,12 +640,59 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                           ),
                         ),
                         Spacer(),
-                        myButton(() {
-                          if (_formKey.currentState!.validate()) {
-                            print("HElooooooooooooo");
-                            myApplication.navigateTo(FormPage3(), context);
-                          }
-                        }, "continue  ➔"),
+                        BlocBuilder<Page2AppartmentCubit, Page2AppartmentState>(
+                          builder: (context, state) {
+                            return state is Page2AppartmentLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : myButton(() {
+                                    if (_formKey.currentState!.validate()) {
+                                      print("HElooooooooooooo");
+
+                                      widget.category == "Apartment, Duplex"
+                                          ? Page2AppartmentCubit.get(context)
+                                              .userPage2Appartment(
+                                                  _titleText.text,
+                                                  widget.selectedSubType,
+                                                  int.parse(_areaText.text),
+                                                  int.parse(_bedRoomText.text),
+                                                  int.parse(_bathRoomText.text),
+                                                  int.parse(_floorText.text),
+                                                  _selectedDeliveryTerm,
+                                                  _selected3,
+                                                  _rentPeriods.isEmpty
+                                                      ? ["Any period"]
+                                                      : _rentPeriods,
+                                                  _descriptioneText.text,
+                                                  widget.id,
+                                                  CacheHelper.getFromShared(
+                                                      "token"),
+                                                  widget.category,
+                                                  context)
+                                          : Page2VillaCubit.get(context)
+                                              .userPage2Villa(
+                                                  _titleText.text,
+                                                  widget.selectedSubType,
+                                                  int.parse(_areaText.text),
+                                                  int.parse(_bedRoomText.text),
+                                                  int.parse(_bathRoomText.text),
+                                                  int.parse(_floorText.text),
+                                                  _selectedDeliveryTerm,
+                                                  _selected3,
+                                                  _rentPeriods.isEmpty
+                                                      ? ["Any period"]
+                                                      : _rentPeriods,
+                                                  _descriptioneText.text,
+                                                  widget.id,
+                                                  CacheHelper.getFromShared(
+                                                      "token"),
+                                                  widget.category,
+                                                  context);
+                                    }
+                                  }, "continue  ➔");
+                          },
+                        ),
                         Spacer()
                       ],
                     )),

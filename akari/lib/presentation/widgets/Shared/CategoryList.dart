@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 List<Widget> categoryTaps = [
   TabBarItem("Flat", "assets/flat.svg"),
   TabBarItem("Bulding", "assets/building.svg"),
-  TabBarItem("Wedding halls", "assets/Tent.svg"),
+  TabBarItem("Tent", "assets/Tent.svg"),
   TabBarItem("Land", "assets/land.svg"),
   TabBarItem("Office", "assets/Office.svg"),
   TabBarItem("Duplex", "assets/Duplex.svg"),
@@ -32,14 +32,35 @@ const List<Map> categoryDropDown = [
   {"name": "Farm", "img": "assets/Farm.svg"},
   {"name": "Room", "img": "assets/Room.svg"},
   {"name": "Villa", "img": "assets/Villa.svg"},
+  {"name": "Store", "img": "assets/Store.svg"},
   {"name": "Chalet", "img": "assets/Chalet.svg"},
-  {"name": "Sports clubs", "img": "assets/Hut.svg"},
+  {"name": "Hut", "img": "assets/Hut.svg"},
   {"name": "Lounge", "img": "assets/Lounge.svg"},
-  {"name": "Appartments", "img": "assets/Appartment.svg"},
+  {"name": "Apartment, Duplex", "img": "assets/Appartment.svg"},
   {"name": "Ware house", "img": "assets/Ware house.svg"},
   {"name": "furnished apartments", "img": "assets/furnished apartments.svg"},
 ];
 
+List<String> appStates = [
+  "Khartoum",
+  "North Kordofan",
+  "Northern",
+  "Kassala",
+  "Blue Nile",
+  "North Darfur",
+  "South Darfur",
+  "South Kordofan",
+  "Al Jazirah",
+  "White Nile",
+  "River Nile",
+  "Red Sea",
+  "Al Qadarif",
+  "Sennar",
+  "West Darfur",
+  "Central Darfur",
+  "East Darfur",
+  "West Kordofan"
+];
 List<Map> myTaps = [
   {"name": "Flat", "bool": false},
   {"name": "Building", "bool": false},
