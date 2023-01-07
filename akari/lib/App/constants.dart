@@ -11,8 +11,8 @@ const Map<String, String> headers = {
   'lang': 'en'
 };
 
-const baseURL = "https://d9e4-197-121-62-206.eu.ngrok.io";
-// const baseURL = "http://3.70.249.119";
+// const baseURL = "https://d9e4-197-121-62-206.eu.ngrok.io";
+const baseURL = "http://3.70.249.119";
 //  "http://3.70.249.119";
 //  "http://localhost:3052";
 

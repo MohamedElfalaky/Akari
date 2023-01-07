@@ -90,9 +90,13 @@ class _AppMainState extends State<AppMain> {
               type: BottomNavigationBarType.fixed,
               backgroundColor: Theme.of(context).colorScheme.secondary,
               currentIndex: currentIndex,
-              onTap: (index) => setState(() {
-                currentIndex = index;
-              }),
+              onTap: (index) {
+                chechAuth();
+
+                setState(() {
+                  currentIndex = index;
+                });
+              },
               items: [
                 BottomNavigationBarItem(
                     activeIcon: SvgPicture.asset(

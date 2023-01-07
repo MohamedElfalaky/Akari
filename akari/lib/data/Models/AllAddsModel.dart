@@ -13,14 +13,6 @@ class AllAddsModel {
     message = json['message'];
     data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
   }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['result'] = result;
-    _data['message'] = message;
-    _data['data'] = data.map((e) => e.toJson()).toList();
-    return _data;
-  }
 }
 
 class Data {
@@ -59,13 +51,13 @@ class Data {
   late final String buildingType;
   late final Price price;
   late final String paymentOption;
-  late final int downPaymentPercentage;
+  late final int? downPaymentPercentage;
   late final List<String> unitLaws;
   late final Rating rating;
   late final bool isActive;
   late final bool isSettled;
   late final Address address;
-  late final Location location;
+  late final Location? location;
   late final Details details;
   late final List<String> amenities;
   late final String advertiser;
@@ -92,7 +84,7 @@ class Data {
     isActive = json['isActive'];
     isSettled = json['isSettled'];
     address = Address.fromJson(json['address']);
-    location = Location.fromJson(json['location']);
+    location = Location.fromJson(json['location'] ?? {"": ""});
     details = Details.fromJson(json['details']);
     amenities = List.castFrom<dynamic, String>(json['amenities']);
     advertiser = json['advertiser'];
@@ -103,36 +95,6 @@ class Data {
     termsAccepted = json['termsAccepted'];
     V = json['__v'];
     createdAt = json['createdAt'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['_id'] = id;
-    _data['title'] = title;
-    _data['images'] = images.map((e) => e.toJson()).toList();
-    _data['description'] = description;
-    _data['contractType'] = contractType;
-    _data['buildingType'] = buildingType;
-    _data['price'] = price.toJson();
-    _data['paymentOption'] = paymentOption;
-    _data['downPaymentPercentage'] = downPaymentPercentage;
-    _data['unitLaws'] = unitLaws;
-    _data['rating'] = rating.toJson();
-    _data['isActive'] = isActive;
-    _data['isSettled'] = isSettled;
-    _data['address'] = address.toJson();
-    _data['location'] = location.toJson();
-    _data['details'] = details.toJson();
-    _data['amenities'] = amenities;
-    _data['advertiser'] = advertiser;
-    _data['name'] = name;
-    _data['mobileNumber'] = mobileNumber;
-    _data['capacity'] = capacity;
-    _data['contactMethod'] = contactMethod;
-    _data['termsAccepted'] = termsAccepted;
-    _data['__v'] = V;
-    _data['createdAt'] = createdAt;
-    return _data;
   }
 }
 
@@ -151,14 +113,6 @@ class Images {
     normal = json['normal'];
     small = json['small'];
   }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['_id'] = id;
-    _data['normal'] = normal;
-    _data['small'] = small;
-    return _data;
-  }
 }
 
 class Price {
@@ -175,14 +129,6 @@ class Price {
     inUSD = json['inUSD'];
     inSP = json['inSP'];
     id = json['_id'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['inUSD'] = inUSD;
-    _data['inSP'] = inSP;
-    _data['_id'] = id;
-    return _data;
   }
 }
 
@@ -201,14 +147,6 @@ class Rating {
     count = json['count'];
     all = List.castFrom<dynamic, dynamic>(json['all']);
   }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['result'] = result;
-    _data['count'] = count;
-    _data['all'] = all;
-    return _data;
-  }
 }
 
 class Address {
@@ -226,14 +164,6 @@ class Address {
     district = json['district'];
     id = json['_id'];
   }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['state'] = state;
-    _data['district'] = district;
-    _data['_id'] = id;
-    return _data;
-  }
 }
 
 class Location {
@@ -247,17 +177,9 @@ class Location {
   late final String id;
 
   Location.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    coordinates = List.castFrom<dynamic, double>(json['coordinates']);
-    id = json['_id'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['type'] = type;
-    _data['coordinates'] = coordinates;
-    _data['_id'] = id;
-    return _data;
+    type = json['type'] ?? "";
+    coordinates = List.castFrom<dynamic, double>(json['coordinates'] ?? [""]);
+    id = json['_id'] ?? "";
   }
 }
 
@@ -279,29 +201,16 @@ class Details {
   late final int bathroomCount;
   late final String deliveryTerm;
   late final String renterType;
-  late final String rentFrequency;
+  late final List rentFrequency;
 
   Details.fromJson(Map<String, dynamic> json) {
     area = json['area'];
-    floors = json['floors'];
-    roomsCount = json['roomsCount'];
-    bedroomsCount = json['bedroomsCount'];
-    bathroomCount = json['bathroomCount'];
-    deliveryTerm = json['deliveryTerm'];
-    renterType = json['renterType'];
+    floors = json['floors'] ?? 0;
+    roomsCount = json['roomsCount'] ?? 0;
+    bedroomsCount = json['bedroomsCount'] ?? 0;
+    bathroomCount = json['bathroomCount'] ?? 0;
+    deliveryTerm = json['deliveryTerm'] ?? "";
+    renterType = json['renterType'] ?? "";
     rentFrequency = json['rentFrequency'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['area'] = area;
-    _data['floors'] = floors;
-    _data['roomsCount'] = roomsCount;
-    _data['bedroomsCount'] = bedroomsCount;
-    _data['bathroomCount'] = bathroomCount;
-    _data['deliveryTerm'] = deliveryTerm;
-    _data['renterType'] = renterType;
-    _data['rentFrequency'] = rentFrequency;
-    return _data;
   }
 }

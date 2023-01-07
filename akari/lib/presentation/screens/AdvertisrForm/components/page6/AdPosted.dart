@@ -76,7 +76,7 @@ class _AdPostedState extends State<AdPosted> {
                   ),
                   myButton(() {
                     Navigator.pop(context);
-                    myApplication.navigateTo(AppMain(), context);
+                    // myApplication.navigateTo(AppMain(), context);
                   }, "Done"),
                 ]),
           )),

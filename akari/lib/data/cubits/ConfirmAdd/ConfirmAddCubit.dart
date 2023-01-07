@@ -9,9 +9,11 @@ import 'package:akari/data/Repositries/AllAddsRepo.dart';
 import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/P2Villa&Appartment.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page4/FormPage4.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page5/FormPage5.dart';
+import 'package:akari/presentation/screens/AdvertisrForm/components/page6/AdPosted.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
 import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 
@@ -48,6 +50,12 @@ class ConfirmAddCubit extends Cubit<ConfirmAddState> {
       ).then((value) {
         if (value != null) {
           myApplication.navigateTo(AppMain(), context);
+          showDialog(
+            context: context,
+            builder: (BuildContext myContext) {
+              return AdPosted();
+            },
+          );
 
           emit(ConfirmAddSuccess(value));
         } else {
