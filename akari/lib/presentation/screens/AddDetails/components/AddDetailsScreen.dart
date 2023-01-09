@@ -87,7 +87,7 @@ class AddDetailsScreen extends StatelessWidget {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
       // height: MediaQuery.of(context).size.height,
       // width: myApplication.widthClc(context, 327),
-      child: Column(
+      child: ListView(
         // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Stack(

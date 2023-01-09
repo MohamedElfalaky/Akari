@@ -1,3 +1,4 @@
+import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
@@ -6,6 +7,8 @@ import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../widgets/Filter/FilterAppBar.dart';
 
 class FilterScreen extends StatefulWidget {
   FilterScreen({super.key});
@@ -17,7 +20,7 @@ class FilterScreen extends StatefulWidget {
 class _FilterScreenState extends State<FilterScreen> {
   final List<String> contractTapsList = [];
   final List<String> filterTapsList = [];
-  final List<String> unitLawsTapsList = [];
+  // final List<String> unitLawsTapsList = [];
   final _formKey = GlobalKey<FormState>();
   final TextEditingController myController1 = TextEditingController();
   final TextEditingController myController2 = TextEditingController();
@@ -134,11 +137,13 @@ class _FilterScreenState extends State<FilterScreen> {
                                               filterTapsList.remove(e["name"]);
                                               e["bool"] = false;
                                             });
+                                            print(filterTapsList);
                                           } else {
                                             setState(() {
                                               filterTapsList.add(e["name"]);
                                               e["bool"] = true;
                                             });
+                                            print(filterTapsList);
                                           }
                                         },
                                       ))
@@ -176,7 +181,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                 controller: myController1,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "please enter initial cost";
+                                    return "Please enter initial price";
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(myController1.text)) {
@@ -200,7 +205,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                 controller: myController2,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "please enter final cost";
+                                    return "Please enter final price";
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(myController2.text)) {
@@ -227,62 +232,62 @@ class _FilterScreenState extends State<FilterScreen> {
                 SizedBox(
                   height: myApplication.hightClc(context, 8),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: myApplication.widthClc(context, 16),
-                    vertical: myApplication.hightClc(context, 16),
-                  ),
-                  color: Color(0xFFFFFFFF),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Unit Laws",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: "Tajawal",
-                            color: Color(0xFF363A3D)),
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(
-                              top: myApplication.hightClc(context, 19)),
-                          child: Row(
-                            // scrollDirection: Axis.horizontal,
-                            children:
-                                unitLawsTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
-                                    .map((e) => InkWell(
-                                          child:
-                                              FilterTab(e["name"], e["bool"]),
-                                          onTap: () {
-                                            if (unitLawsTapsList
-                                                    .where((element) =>
-                                                        element == e["name"])
-                                                    .isNotEmpty &&
-                                                unitLawsTapsList
-                                                        .where((element) =>
-                                                            element ==
-                                                            e["name"])
-                                                        .first ==
-                                                    e["name"]) {
-                                              setState(() {
-                                                unitLawsTapsList
-                                                    .remove(e["name"]);
-                                                e["bool"] = false;
-                                              });
-                                            } else {
-                                              setState(() {
-                                                unitLawsTapsList.add(e["name"]);
-                                                e["bool"] = true;
-                                              });
-                                            }
-                                            print(unitLawsTapsList);
-                                          },
-                                        ))
-                                    .toList(),
-                          )),
-                    ],
-                  ),
-                ),
+                // Container(
+                //   padding: EdgeInsets.symmetric(
+                //     horizontal: myApplication.widthClc(context, 16),
+                //     vertical: myApplication.hightClc(context, 16),
+                //   ),
+                //   color: Color(0xFFFFFFFF),
+                //   child: Column(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: [
+                //       Text(
+                //         "Unit Laws",
+                //         style: TextStyle(
+                //             fontSize: 16,
+                //             fontFamily: "Tajawal",
+                //             color: Color(0xFF363A3D)),
+                //       ),
+                //       Container(
+                //           margin: EdgeInsets.only(
+                //               top: myApplication.hightClc(context, 19)),
+                //           child: Row(
+                //             // scrollDirection: Axis.horizontal,
+                //             children:
+                //                 unitLawsTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
+                //                     .map((e) => InkWell(
+                //                           child:
+                //                               FilterTab(e["name"], e["bool"]),
+                //                           onTap: () {
+                //                             if (unitLawsTapsList
+                //                                     .where((element) =>
+                //                                         element == e["name"])
+                //                                     .isNotEmpty &&
+                //                                 unitLawsTapsList
+                //                                         .where((element) =>
+                //                                             element ==
+                //                                             e["name"])
+                //                                         .first ==
+                //                                     e["name"]) {
+                //                               setState(() {
+                //                                 unitLawsTapsList
+                //                                     .remove(e["name"]);
+                //                                 e["bool"] = false;
+                //                               });
+                //                             } else {
+                //                               setState(() {
+                //                                 unitLawsTapsList.add(e["name"]);
+                //                                 e["bool"] = true;
+                //                               });
+                //                             }
+                //                             print(unitLawsTapsList);
+                //                           },
+                //                         ))
+                //                     .toList(),
+                //           )),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: myApplication.hightClc(context, 50),
                 ),
@@ -291,56 +296,67 @@ class _FilterScreenState extends State<FilterScreen> {
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(
                       horizontal: myApplication.widthClc(context, 32)),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(23))),
-                      // textStyle: TextStyle(fontWeight: FontWeight.normal),
-                      elevation: 0,
-                      backgroundColor: Color(0XFFDC8035),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    AfterFilterAndSearch("Filter relust")));
-                        // context.read<LoginCubit>().userLogin(
-                        //     phone:
-                        //         "${countryCode?.dialCode ?? '+966'}${phoneText.text}",
-                        //     password: passwordText.text);
-                      }
+                  child: BlocBuilder<SearchFromHomeCubit, SearchFromHomeState>(
+                    builder: (context, state) {
+                      return state is SearchFromHomeLoading
+                          ? Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(23))),
+                                // textStyle: TextStyle(fontWeight: FontWeight.normal),
+                                elevation: 0,
+                                backgroundColor: Color(0XFFDC8035),
+                              ),
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  SearchFromHomeCubit.get(context)
+                                      .userConfirmFilter(
+                                          myState:
+                                              stateSearchInFilter.text.isEmpty
+                                                  ? "Khartoum"
+                                                  : stateSearchInFilter.text,
+                                          contractType: contractTapsList,
+                                          buildingType: filterTapsList,
+                                          priceFrom: myController1.text,
+                                          priceTo: myController2.text,
+                                          context: context);
+                                }
+                              },
+                              child: const Center(
+                                  child: Text(
+                                "Confirm",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontFamily: "Tajawal",
+                                    fontSize: 16,
+                                    color: Colors.white),
+                              )),
+                            );
                     },
-                    child: Center(
-                        child: Text(
-                      "Confirm",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontFamily: "Tajawal",
-                          fontSize: 16,
-                          color: Colors.white),
-                    )),
                   ),
                 ),
                 SizedBox(
                   height: myApplication.hightClc(context, 8),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(
-                      horizontal: myApplication.widthClc(context, 32)),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Reset Filters",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontFamily: "Tajawal",
-                          fontSize: 16,
-                          color: Color(0XFFB00020)),
-                    ),
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.symmetric(
+                //       horizontal: myApplication.widthClc(context, 32)),
+                //   child: TextButton(
+                //     onPressed: () {},
+                //     child: Text(
+                //       "Reset Filters",
+                //       style: TextStyle(
+                //           fontWeight: FontWeight.normal,
+                //           fontFamily: "Tajawal",
+                //           fontSize: 16,
+                //           color: Color(0XFFB00020)),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

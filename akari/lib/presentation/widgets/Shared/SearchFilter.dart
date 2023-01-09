@@ -1,4 +1,5 @@
 import 'package:akari/App/constants.dart';
+import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,14 @@ class _SearchFilterState extends State<SearchFilter> {
                         left: myApplication.widthClc(context, 10),
                         bottom: myApplication.hightClc(context, 10)),
                     prefixIcon: InkWell(
-                      onTap: () => widget.searchHandler(),
+                      onTap: () {
+                        SearchFromHomeCubit.get(context).userSearchFromHome(
+                            myState: _searchText.text.isEmpty
+                                ? "Khartoum"
+                                : _searchText.text,
+                            context: context);
+                        print(_searchText.text);
+                      },
                       child: Container(
                         margin: EdgeInsets.all(
                           5,

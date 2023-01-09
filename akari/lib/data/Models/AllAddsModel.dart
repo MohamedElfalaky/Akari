@@ -13,6 +13,14 @@ class AllAddsModel {
     message = json['message'];
     data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
   }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['result'] = result;
+    _data['message'] = message;
+    _data['data'] = data.map((e) => e.toJson()).toList();
+    return _data;
+  }
 }
 
 class Data {
@@ -26,7 +34,8 @@ class Data {
     required this.price,
     required this.paymentOption,
     required this.downPaymentPercentage,
-    required this.unitLaws,
+    required this.onlyAcceptUSD,
+    required this.isNegotiable,
     required this.rating,
     required this.isActive,
     required this.isSettled,
@@ -39,6 +48,7 @@ class Data {
     required this.mobileNumber,
     required this.capacity,
     required this.contactMethod,
+    required this.views,
     required this.termsAccepted,
     required this.V,
     required this.createdAt,
@@ -51,13 +61,14 @@ class Data {
   late final String buildingType;
   late final Price price;
   late final String paymentOption;
-  late final int? downPaymentPercentage;
-  late final List<String> unitLaws;
+  late final int downPaymentPercentage;
+  late final bool onlyAcceptUSD;
+  late final bool isNegotiable;
   late final Rating rating;
   late final bool isActive;
   late final bool isSettled;
   late final Address address;
-  late final Location? location;
+  late final Location location;
   late final Details details;
   late final List<String> amenities;
   late final String advertiser;
@@ -65,6 +76,7 @@ class Data {
   late final String mobileNumber;
   late final String capacity;
   late final String contactMethod;
+  late final int views;
   late final bool termsAccepted;
   late final int V;
   late final String createdAt;
@@ -78,8 +90,9 @@ class Data {
     buildingType = json['buildingType'];
     price = Price.fromJson(json['price']);
     paymentOption = json['paymentOption'];
-    downPaymentPercentage = json['downPaymentPercentage'];
-    unitLaws = List.castFrom<dynamic, String>(json['unitLaws']);
+    downPaymentPercentage = json['downPaymentPercentage'] ?? 0;
+    onlyAcceptUSD = json['onlyAcceptUSD'];
+    isNegotiable = json['isNegotiable'];
     rating = Rating.fromJson(json['rating']);
     isActive = json['isActive'];
     isSettled = json['isSettled'];
@@ -92,9 +105,42 @@ class Data {
     mobileNumber = json['mobileNumber'];
     capacity = json['capacity'];
     contactMethod = json['contactMethod'];
+    views = json['views'];
     termsAccepted = json['termsAccepted'];
     V = json['__v'];
     createdAt = json['createdAt'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['_id'] = id;
+    _data['title'] = title;
+    _data['images'] = images.map((e) => e.toJson()).toList();
+    _data['description'] = description;
+    _data['contractType'] = contractType;
+    _data['buildingType'] = buildingType;
+    _data['price'] = price.toJson();
+    _data['paymentOption'] = paymentOption;
+    _data['downPaymentPercentage'] = downPaymentPercentage;
+    _data['onlyAcceptUSD'] = onlyAcceptUSD;
+    _data['isNegotiable'] = isNegotiable;
+    _data['rating'] = rating.toJson();
+    _data['isActive'] = isActive;
+    _data['isSettled'] = isSettled;
+    _data['address'] = address.toJson();
+    _data['location'] = location.toJson();
+    _data['details'] = details.toJson();
+    _data['amenities'] = amenities;
+    _data['advertiser'] = advertiser;
+    _data['name'] = name;
+    _data['mobileNumber'] = mobileNumber;
+    _data['capacity'] = capacity;
+    _data['contactMethod'] = contactMethod;
+    _data['views'] = views;
+    _data['termsAccepted'] = termsAccepted;
+    _data['__v'] = V;
+    _data['createdAt'] = createdAt;
+    return _data;
   }
 }
 
@@ -113,22 +159,46 @@ class Images {
     normal = json['normal'];
     small = json['small'];
   }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['_id'] = id;
+    _data['normal'] = normal;
+    _data['small'] = small;
+    return _data;
+  }
 }
 
 class Price {
   Price({
     required this.inUSD,
     required this.inSP,
+    required this.meterInUSD,
+    required this.meterInSP,
     required this.id,
   });
   late final int inUSD;
   late final int inSP;
+  late final int meterInUSD;
+  late final int meterInSP;
   late final String id;
 
   Price.fromJson(Map<String, dynamic> json) {
     inUSD = json['inUSD'];
     inSP = json['inSP'];
+    meterInUSD = json['meterInUSD'] ?? 0;
+    meterInSP = json['meterInSP'] ?? 0;
     id = json['_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['inUSD'] = inUSD;
+    _data['inSP'] = inSP;
+    _data['meterInUSD'] = meterInUSD;
+    _data['meterInSP'] = meterInSP;
+    _data['_id'] = id;
+    return _data;
   }
 }
 
@@ -147,22 +217,46 @@ class Rating {
     count = json['count'];
     all = List.castFrom<dynamic, dynamic>(json['all']);
   }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['result'] = result;
+    _data['count'] = count;
+    _data['all'] = all;
+    return _data;
+  }
 }
 
 class Address {
   Address({
     required this.state,
     required this.district,
+    required this.detailedAddress,
+    required this.POBox,
     required this.id,
   });
   late final String state;
   late final String district;
+  late final String detailedAddress;
+  late final String POBox;
   late final String id;
 
   Address.fromJson(Map<String, dynamic> json) {
     state = json['state'];
     district = json['district'];
+    detailedAddress = json['detailedAddress'];
+    POBox = json['POBox'];
     id = json['_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['state'] = state;
+    _data['district'] = district;
+    _data['detailedAddress'] = detailedAddress;
+    _data['POBox'] = POBox;
+    _data['_id'] = id;
+    return _data;
   }
 }
 
@@ -178,13 +272,22 @@ class Location {
 
   Location.fromJson(Map<String, dynamic> json) {
     type = json['type'] ?? "";
-    coordinates = List.castFrom<dynamic, double>(json['coordinates'] ?? [""]);
+    coordinates = List.castFrom<dynamic, double>(json['coordinates'] ?? []);
     id = json['_id'] ?? "";
+  }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['type'] = type;
+    _data['coordinates'] = coordinates;
+    _data['_id'] = id;
+    return _data;
   }
 }
 
 class Details {
   Details({
+    required this.subType,
     required this.area,
     required this.floors,
     required this.roomsCount,
@@ -194,6 +297,7 @@ class Details {
     required this.renterType,
     required this.rentFrequency,
   });
+  late final String subType;
   late final int area;
   late final int floors;
   late final int roomsCount;
@@ -201,16 +305,31 @@ class Details {
   late final int bathroomCount;
   late final String deliveryTerm;
   late final String renterType;
-  late final List rentFrequency;
+  late final List<String> rentFrequency;
 
   Details.fromJson(Map<String, dynamic> json) {
+    subType = json['subType'];
     area = json['area'];
-    floors = json['floors'] ?? 0;
-    roomsCount = json['roomsCount'] ?? 0;
-    bedroomsCount = json['bedroomsCount'] ?? 0;
-    bathroomCount = json['bathroomCount'] ?? 0;
-    deliveryTerm = json['deliveryTerm'] ?? "";
-    renterType = json['renterType'] ?? "";
-    rentFrequency = json['rentFrequency'];
+    floors = json['floor'] ?? 1;
+    roomsCount = json['roomsCount'] ?? 1;
+    bedroomsCount = json['bedroomsCount'] ?? 1;
+    bathroomCount = json['bathroomCount'] ?? 1;
+    deliveryTerm = json['deliveryTerm'];
+    renterType = json['renterType'];
+    rentFrequency = List.castFrom<dynamic, String>(json['rentFrequency']);
+  }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['subType'] = subType;
+    _data['area'] = area;
+    _data['floor'] = floors;
+    _data['roomsCount'] = roomsCount;
+    _data['bedroomsCount'] = bedroomsCount;
+    _data['bathroomCount'] = bathroomCount;
+    _data['deliveryTerm'] = deliveryTerm;
+    _data['renterType'] = renterType;
+    _data['rentFrequency'] = rentFrequency;
+    return _data;
   }
 }

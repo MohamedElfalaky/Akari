@@ -4,6 +4,7 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:akari/presentation/screens/Favorite/controller/CartController.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -93,7 +94,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                     context),
                                 child: BestAdsItem(
                                   img: state.myGetFavoritesModel.data![index]
-                                      .images!.first.normal,
+                                          .images!.isNotEmpty
+                                      ? state.myGetFavoritesModel.data![index]
+                                          .images!.first.normal
+                                      : defaultHouse,
                                   title: state
                                       .myGetFavoritesModel.data![index].title,
                                   area: state.myGetFavoritesModel.data![index]
@@ -108,6 +112,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                       .data![index].createdAt,
                                   price: state.myGetFavoritesModel.data![index]
                                       .price!.inSp
+                                      .toString(),
+                                  priceDollar: state.myGetFavoritesModel
+                                      .data![index].price!.inUsd
                                       .toString(),
                                   adId:
                                       state.myGetFavoritesModel.data![index].id,

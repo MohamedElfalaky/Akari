@@ -6,7 +6,8 @@ import 'package:flutter_svg/svg.dart';
 class TabBarItem extends StatelessWidget {
   final String name;
   final String svg;
-  TabBarItem(this.name, this.svg);
+  final onpressHandler;
+  TabBarItem(this.name, this.svg, this.onpressHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class TabBarItem extends StatelessWidget {
         elevation: 0,
         backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
       ),
-      onPressed: () {},
+      onPressed: onpressHandler,
       child: Card(
         elevation: 2,
         child: Container(

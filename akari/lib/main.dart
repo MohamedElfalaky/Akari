@@ -14,6 +14,7 @@ import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
 import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dart';
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
+import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
 import 'package:akari/helpers/AppLocalizations.dart';
@@ -90,6 +91,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<addAddressCubit>(create: (context) => addAddressCubit()),
         BlocProvider<AddPriceCubit>(create: (context) => AddPriceCubit()),
         BlocProvider<ConfirmAddCubit>(create: (context) => ConfirmAddCubit()),
+        BlocProvider<SearchFromHomeCubit>(
+            create: (context) => SearchFromHomeCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -144,7 +147,7 @@ class MyApp extends StatelessWidget {
                   '/login': (context) => LogIn(),
                   '/forgetpassword': (context) => ForgetPassword(),
                 },
-                home: AppMain());
+                home: Splash());
           });
         },
       ),

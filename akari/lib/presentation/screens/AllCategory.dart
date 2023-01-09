@@ -1,4 +1,5 @@
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AppMain/controller/AppMainController.dart';
 import 'package:akari/presentation/widgets/AllCategory/AllCategoryAppBar.dart';
 import 'package:akari/presentation/screens/AppMain/components/AppMainScreen.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
@@ -21,6 +22,8 @@ class AllCategory extends StatefulWidget {
 }
 
 class _AllCategoryState extends State<AllCategory> {
+  AppMainController appMainController = AppMainController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,7 +50,12 @@ class _AllCategoryState extends State<AllCategory> {
             ),
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,
-              children: categoryTaps,
+              children: categoryDropDown
+                  .map((e) => TabBarItem(e["name"], e["img"], () {
+                        appMainController.AppMainAPIs(
+                            myContext: context, limit: 4);
+                      }))
+                  .toList(),
             )),
       ),
     );

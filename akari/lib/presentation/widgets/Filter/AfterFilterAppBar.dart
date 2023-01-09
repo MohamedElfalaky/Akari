@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AfterFilterAppBar extends StatelessWidget {
-  final String title;
-  const AfterFilterAppBar(this.title);
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +18,8 @@ class AfterFilterAppBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              AutoSizeText(
-                title,
+              Text(
+                "Result",
                 style: TextStyle(
                     fontSize: 24,
                     fontFamily: "Tajawal,Medium",

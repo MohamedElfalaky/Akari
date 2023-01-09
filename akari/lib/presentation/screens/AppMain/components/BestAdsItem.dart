@@ -4,6 +4,7 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -50,7 +51,8 @@ class BestAdsItem extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(img ?? "no img"), fit: BoxFit.fill),
+                      image: NetworkImage(img ?? defaultHouse),
+                      fit: BoxFit.fill),
                   // color: Colors.green,
                 ),
                 height: myApplication.hightClc(context, 176),
@@ -213,6 +215,8 @@ class BestAdsItem extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
                           ),
                         ])),

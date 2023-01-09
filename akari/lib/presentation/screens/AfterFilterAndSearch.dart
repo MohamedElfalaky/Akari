@@ -1,16 +1,11 @@
+import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AppMain/components/AppMainScreen.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
-import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 import 'package:akari/presentation/widgets/Filter/AfterFilterAppBar.dart';
-import 'package:akari/presentation/widgets/Filter/FilterAppBar.dart';
-import 'package:akari/presentation/widgets/Filter/FilterScreen.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
 import 'package:akari/style/Icons.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AfterFilterAndSearch extends StatefulWidget {
   final title;
@@ -36,7 +31,7 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
           backgroundColor: Color(0xFFFFFFFF),
           toolbarHeight: myApplication.hightClc(context, 140),
           elevation: 0,
-          title: AfterFilterAppBar(widget.title),
+          title: AfterFilterAppBar(),
         ),
         body: Container(
           height: myApplication.hightClc(context, 640),
@@ -45,39 +40,42 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
             right: myApplication.widthClc(context, 24),
             left: myApplication.widthClc(context, 24),
           ),
-          child: ListView(
-            children: [
-              BestAdsItem(
-                img: defaultHouse,
-                title: "test",
-                area: "test",
-                floors: "test",
-                statee: "test",
-                createdAt: DateTime.now(),
-                price: "test",
-                isFavorite: null,
-              ),
-              BestAdsItem(
-                img: defaultHouse,
-                title: "test",
-                area: "test",
-                floors: "test",
-                statee: "test",
-                createdAt: DateTime.now(),
-                price: "test",
-                isFavorite: null,
-              ),
-              BestAdsItem(
-                img: defaultHouse,
-                title: "test",
-                area: "test",
-                floors: "test",
-                statee: "test",
-                createdAt: DateTime.now(),
-                price: "test",
-                isFavorite: null,
-              ),
-            ],
+          child: BlocBuilder<SearchFromHomeCubit, SearchFromHomeState>(
+            builder: (context, state) {
+              return state is SearchFromHomeSuccess
+                  ? ListView.builder(
+                      itemCount: state.mySearchFromHomeModel.data.length,
+                      itemBuilder: (context, index) {
+                        return BestAdsItem(
+                          img: state.mySearchFromHomeModel.data[index].images
+                                  .isEmpty
+                              ? defaultHouse
+                              : state.mySearchFromHomeModel.data[index].images
+                                  .first.normal,
+                          title: state.mySearchFromHomeModel.data[index].title,
+                          area: state
+                              .mySearchFromHomeModel.data[index].details.area
+                              .toString(),
+                          floors: state
+                              .mySearchFromHomeModel.data[index].details.floors
+                              .toString(),
+                          statee: state
+                              .mySearchFromHomeModel.data[index].address.state,
+                          createdAt: DateTime.now(),
+                          price: state
+                              .mySearchFromHomeModel.data[index].price.inSP
+                              .toString(),
+                          priceDollar: state
+                              .mySearchFromHomeModel.data[index].price.inUSD
+                              .toString(),
+                          isFavorite: null,
+                        );
+                      },
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
           ),
         ),
         floatingActionButton: ViewOnMap(),

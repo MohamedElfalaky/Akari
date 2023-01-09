@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
+import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
+import 'package:akari/presentation/screens/AppMain/controller/AppMainController.dart';
 import 'package:akari/presentation/screens/MyMap/components/BestAdsItemInMap.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
@@ -16,6 +18,8 @@ class MyMapScreen extends StatefulWidget {
 }
 
 class _MyMapScreenState extends State<MyMapScreen> {
+  AppMainController appMainController = AppMainController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -80,7 +84,12 @@ class _MyMapScreenState extends State<MyMapScreen> {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                             // scrollDirection: Axis.horizontal,
-                            children: categoryTaps),
+                            children: categoryDropDown
+                                .map((e) => TabBarItem(e["name"], e["img"], () {
+                                      appMainController.AppMainAPIs(
+                                          myContext: context, limit: 4);
+                                    }))
+                                .toList()),
                       )),
                 ],
               ),

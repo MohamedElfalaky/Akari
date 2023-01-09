@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:akari/data/Models/AllAddsModel.dart';
 import 'package:akari/data/Models/add_to_favorite_model.dart';
 import 'package:akari/data/Models/get_favorites_model/get_favorites_model.dart';
 import 'package:akari/data/Repositries/AddAdvertiseRepo.dart';

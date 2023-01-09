@@ -3,10 +3,12 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
 import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 import 'package:akari/presentation/screens/AppMain/controller/AppMainController.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
+import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,7 +26,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
   @override
   void initState() {
     super.initState();
-    appMainController.AppMainAPIs(context);
+
+    appMainController.AppMainAPIs(myContext: context);
   }
 
   @override
@@ -163,7 +166,13 @@ class _AppMainScreenState extends State<AppMainScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                           // scrollDirection: Axis.horizontal,
-                          children: categoryTaps),
+                          children: categoryDropDown
+                              .map((e) => TabBarItem(e["name"], e["img"], () {
+                                    appMainController.AppMainAPIs(
+                                        myContext: context,
+                                        buildingType: [e["name"]]);
+                                  }))
+                              .toList()),
                     )),
 
                 Container(
@@ -182,90 +191,137 @@ class _AppMainScreenState extends State<AppMainScreen> {
                           return state is AllAddsSuccess
                               ? ListView.builder(
                                   shrinkWrap: true,
-                                  itemCount: state.myAllAddsModel.data.length,
+                                  itemCount: state.myAllAddsModel.data.isEmpty
+                                      ? 1
+                                      : state.myAllAddsModel.data.length,
                                   itemBuilder: (context, index) {
-                                    return InkWell(
-                                        onTap: () => myApplication.navigateTo(
-                                            AddDetails(
-                                              contractType: state.myAllAddsModel
-                                                  .data[index].contractType,
-                                              buildingType: state.myAllAddsModel
-                                                  .data[index].buildingType,
-                                              deliveryTerm: state
-                                                  .myAllAddsModel
-                                                  .data[index]
-                                                  .details
-                                                  .deliveryTerm,
-                                              address: state.myAllAddsModel
-                                                  .data[index].address.state,
-                                              createdAt: state.myAllAddsModel
-                                                  .data[index].createdAt,
-                                              description: state.myAllAddsModel
-                                                  .data[index].description,
+                                    return state.myAllAddsModel.data.isEmpty
+                                        ? Center(
+                                            child: Text("No Items"),
+                                          )
+                                        : InkWell(
+                                            onTap: () =>
+                                                myApplication.navigateTo(
+                                                    AddDetails(
+                                                      contractType: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .contractType,
+                                                      buildingType: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .buildingType,
+                                                      deliveryTerm: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .details
+                                                          .deliveryTerm,
+                                                      address: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .address
+                                                          .state,
+                                                      createdAt: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .createdAt
+                                                          .toString(),
+                                                      description: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .description,
+                                                      area: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .details
+                                                          .area
+                                                          .toString(),
+                                                      floor: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .details
+                                                          .floors
+                                                          .toString(),
+                                                      bedRooms: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .details
+                                                          .bedroomsCount
+                                                          .toString(),
+                                                      bathRooms: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .details
+                                                          .bathroomCount
+                                                          .toString(),
+                                                      amenities: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .amenities,
+                                                      priceSd: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .price
+                                                          .inSP
+                                                          .toString(),
+                                                      priceDollar: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .price
+                                                          .inUSD
+                                                          .toString(),
+                                                      phone: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .mobileNumber
+                                                          .toString(),
+                                                      advertiserId: state
+                                                          .myAllAddsModel
+                                                          .data[index]
+                                                          .advertiser
+                                                          .toString(),
+                                                      adId: state.myAllAddsModel
+                                                          .data[index].id,
+                                                      // isFavorite: false,
+                                                    ),
+                                                    context),
+                                            child: BestAdsItem(
+                                              img: state
+                                                      .myAllAddsModel
+                                                      .data[index]
+                                                      .images
+                                                      .isNotEmpty
+                                                  ? state
+                                                      .myAllAddsModel
+                                                      .data[index]
+                                                      .images
+                                                      .first
+                                                      .normal
+                                                  : defaultHouse,
+                                              title: state.myAllAddsModel
+                                                  .data[index].title,
                                               area: state.myAllAddsModel
                                                   .data[index].details.area
                                                   .toString(),
-                                              floor: state.myAllAddsModel
+                                              floors: state.myAllAddsModel
                                                   .data[index].details.floors
                                                   .toString(),
-                                              bedRooms: state
+                                              statee: state.myAllAddsModel
+                                                  .data[index].address.state,
+                                              createdAt: DateTime.parse(state
                                                   .myAllAddsModel
                                                   .data[index]
-                                                  .details
-                                                  .bedroomsCount
-                                                  .toString(),
-                                              bathRooms: state
-                                                  .myAllAddsModel
-                                                  .data[index]
-                                                  .details
-                                                  .bathroomCount
-                                                  .toString(),
-                                              amenities: state.myAllAddsModel
-                                                  .data[index].amenities,
-                                              priceSd: state.myAllAddsModel
+                                                  .createdAt),
+                                              price: state.myAllAddsModel
                                                   .data[index].price.inSP
                                                   .toString(),
                                               priceDollar: state.myAllAddsModel
                                                   .data[index].price.inUSD
                                                   .toString(),
-                                              phone: state.myAllAddsModel
-                                                  .data[index].mobileNumber
-                                                  .toString(),
-                                              advertiserId: state.myAllAddsModel
-                                                  .data[index].advertiser
-                                                  .toString(),
                                               adId: state.myAllAddsModel
                                                   .data[index].id,
-                                              // isFavorite: false,
-                                            ),
-                                            context),
-                                        child: BestAdsItem(
-                                          img: state.myAllAddsModel.data[index]
-                                              .images.first.normal,
-                                          title: state
-                                              .myAllAddsModel.data[index].title,
-                                          area: state.myAllAddsModel.data[index]
-                                              .details.area
-                                              .toString(),
-                                          floors: state.myAllAddsModel
-                                              .data[index].details.floors
-                                              .toString(),
-                                          statee: state.myAllAddsModel
-                                              .data[index].address.state,
-                                          createdAt: DateTime.parse(
-                                            state.myAllAddsModel.data[index]
-                                                .createdAt,
-                                          ),
-                                          price: state.myAllAddsModel
-                                              .data[index].price.inSP
-                                              .toString(),
-                                          priceDollar: state.myAllAddsModel
-                                              .data[index].price.inUSD
-                                              .toString(),
-                                          adId: state
-                                              .myAllAddsModel.data[index].id,
-                                          isFavorite: false,
-                                        ));
+                                              isFavorite: false,
+                                            ));
                                   },
                                 )
                               : Center(

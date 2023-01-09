@@ -8,7 +8,7 @@ class Details {
   int? bathroomCount;
   String? deliveryTerm;
   String? renterType;
-  String? rentFrequency;
+  List<dynamic>? rentFrequency;
 
   Details({
     this.area,
@@ -23,18 +23,18 @@ class Details {
 
   factory Details.fromJson(Map<String, dynamic> json) => Details(
         area: json['area'] as int?,
-        floors: json['floors'] as int?,
+        floors: json['floor'] as int?,
         roomsCount: json['roomsCount'] as int?,
         bedroomsCount: json['bedroomsCount'] as int?,
         bathroomCount: json['bathroomCount'] as int?,
         deliveryTerm: json['deliveryTerm'] as String?,
         renterType: json['renterType'] as String?,
-        rentFrequency: json['rentFrequency'] as String?,
+        rentFrequency: json['rentFrequency'] as List<dynamic>?,
       );
 
   Map<String, dynamic> toJson() => {
         'area': area,
-        'floors': floors,
+        'floor': floors,
         'roomsCount': roomsCount,
         'bedroomsCount': bedroomsCount,
         'bathroomCount': bathroomCount,

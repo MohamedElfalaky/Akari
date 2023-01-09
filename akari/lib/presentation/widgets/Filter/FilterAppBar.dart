@@ -12,9 +12,9 @@ class FilterAppBar extends StatefulWidget {
   State<FilterAppBar> createState() => _FilterAppBarState();
 }
 
-class _FilterAppBarState extends State<FilterAppBar> {
-  final TextEditingController _searchText = TextEditingController();
+final TextEditingController stateSearchInFilter = TextEditingController();
 
+class _FilterAppBarState extends State<FilterAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -74,10 +74,10 @@ class _FilterAppBarState extends State<FilterAppBar> {
                                 child: Text(itemData.toString())),
                           ),
                       onSuggestionSelected: (suggestion) => setState(() {
-                            _searchText.text = suggestion;
+                            stateSearchInFilter.text = suggestion;
                           }),
                       textFieldConfiguration: TextFieldConfiguration(
-                        controller: _searchText,
+                        controller: stateSearchInFilter,
                         textAlignVertical: TextAlignVertical.center,
                         // cursorWidth: 25,
                         decoration: InputDecoration(
