@@ -1,4 +1,3 @@
-import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/screens/Register.dart';
@@ -6,9 +5,8 @@ import 'package:akari/presentation/widgets/Shared/myOutLinedButton.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class SorryPopUp extends StatefulWidget {
   @override
@@ -19,13 +17,13 @@ class _SorryPopUpState extends State<SorryPopUp> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       scrollable: true,
       // title: Text('Filter'),
       content: Padding(
-          padding: EdgeInsets.all(1),
-          child: Container(
+          padding: const EdgeInsets.all(1),
+          child: SizedBox(
             width: 300,
             // height: 360,
             child: Column(
@@ -36,15 +34,15 @@ class _SorryPopUpState extends State<SorryPopUp> {
                     children: [
                       InkWell(
                           onTap: () => Navigator.pop(context),
-                          child: Icon(Icons.close)),
+                          child: const Icon(Icons.close)),
                     ],
                   ),
                   SvgPicture.asset(sorryy),
                   Container(
-                    margin: EdgeInsets.only(top: 24, bottom: 8),
+                    margin: const EdgeInsets.only(top: 24, bottom: 8),
                     child: Center(
                       child: Text(
-                        "you aren't a user",
+                        "you aren't a user".tr(context),
                         style: TextStyle(
                             fontFamily: "Tajawal",
                             fontSize: 18,
@@ -54,11 +52,12 @@ class _SorryPopUpState extends State<SorryPopUp> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 16),
+                    margin: const EdgeInsets.only(bottom: 16),
                     child: Center(
                       child: Text(
-                        "Create account now and start using smart building",
-                        style: TextStyle(
+                        "Create account now and start using smart building"
+                            .tr(context),
+                        style: const TextStyle(
                             fontFamily: "Tajawal,Regular",
                             fontSize: 13,
                             color: Color(0xFF363A3D)),
@@ -69,8 +68,8 @@ class _SorryPopUpState extends State<SorryPopUp> {
                   myButton(() {
                     Navigator.pop(context);
                     myApplication.navigateTo(Register(), context);
-                  }, "Create account"),
-                  SizedBox(
+                  }, "Create account".tr(context)),
+                  const SizedBox(
                     height: 8,
                   ),
                   myOutLinedButton(
@@ -78,7 +77,7 @@ class _SorryPopUpState extends State<SorryPopUp> {
                       Navigator.pop(context);
                       myApplication.navigateTo(LogIn(), context);
                     },
-                    "Log in",
+                    "Log in".tr(context),
                     txtClr: Theme.of(context).colorScheme.primary,
                   ),
                 ]),

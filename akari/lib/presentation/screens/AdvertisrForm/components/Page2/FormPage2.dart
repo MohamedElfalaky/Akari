@@ -1,19 +1,15 @@
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPage3.dart';
-import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
-import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class FormPage2 extends StatefulWidget {
   final String category;
   final String contractType;
-  FormPage2({super.key, required this.category, required this.contractType});
+  const FormPage2(
+      {super.key, required this.category, required this.contractType});
 
   @override
   State<FormPage2> createState() => _FormPage2State();
@@ -21,8 +17,6 @@ class FormPage2 extends StatefulWidget {
 
 class _FormPage2State extends State<FormPage2> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> _typeList = [];
-  final List<String> _deliveryTermList = [];
   final TextEditingController _titleText = TextEditingController();
   final TextEditingController _areaText = TextEditingController();
   final TextEditingController _bathRoomText = TextEditingController();
@@ -32,12 +26,16 @@ class _FormPage2State extends State<FormPage2> {
   final TextEditingController _dateText = TextEditingController();
   DateTime defaltDate = DateTime.now();
   ///////
-  List<String> _contractType = ["Finished", "Semi-Finished", "Not Finished"];
-  List<bool> _isSelected = [true, false, false];
+  final List<String> _contractType = [
+    "Finished",
+    "Semi-Finished",
+    "Not Finished"
+  ];
+  final List<bool> _isSelected = [true, false, false];
   String _selectedContractType = "Finished";
   /////////
-  List<String> _contractType2 = ["Apartment", "Duplex"];
-  List<bool> _isSelected2 = [true, false];
+  final List<String> _contractType2 = ["Apartment", "Duplex"];
+  final List<bool> _isSelected2 = [true, false];
   String _selectedContractType2 = "Apartment";
   @override
   Widget build(BuildContext context) {
@@ -71,17 +69,17 @@ class _FormPage2State extends State<FormPage2> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Post new Ad.",
-                        style: TextStyle(
+                        "Post new Ad.".tr(context),
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "Tajawal",
                             color: Colors.black),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text(
-                        "Main details",
+                        "Main details".tr(context),
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
@@ -89,7 +87,7 @@ class _FormPage2State extends State<FormPage2> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   CircularStepProgressIndicator(
                     totalSteps: 6,
                     currentStep: 2,
@@ -101,7 +99,7 @@ class _FormPage2State extends State<FormPage2> {
                     height: 50,
                     selectedStepSize: 5,
                     roundedCap: (_, __) => true,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "2/6",
                         style: TextStyle(color: Colors.black, fontSize: 14),
@@ -116,11 +114,11 @@ class _FormPage2State extends State<FormPage2> {
             key: _formKey,
             child: ListView(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Container(
                     // outlining container
-                    margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+                    margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
                     height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       children: [
@@ -133,22 +131,23 @@ class _FormPage2State extends State<FormPage2> {
                                 keyBoardType: TextInputType.text,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter title";
+                                    return "Please Enter title".tr(context);
                                   }
                                   return null;
                                 },
-                                hint: "Title *",
+                                hint: "Title *".tr(context),
                                 prefix: myTitle,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "(e.g. brand, model, age, type)",
-                                    style: TextStyle(
+                                    "(e.g. brand, model, age, type)"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontSize: 12,
                                         color:
                                             Color.fromARGB(217, 85, 85, 108)),
@@ -160,8 +159,8 @@ class _FormPage2State extends State<FormPage2> {
                               // ),
 
 //////////////////////// type
-                              Text("Type *"),
-                              SizedBox(
+                              Text("Type *".tr(context)),
+                              const SizedBox(
                                 height: 8,
                               ),
                               //////////////////////////////////////////////////////////////////////////////////
@@ -173,7 +172,7 @@ class _FormPage2State extends State<FormPage2> {
                                 children: _contractType2
                                     .map((e) => Container(
                                         margin: const EdgeInsets.all(12),
-                                        child: Text(e)))
+                                        child: Text(e.tr(context))))
                                     .toList(),
                                 onPressed: (newIndex) {
                                   setState(() {
@@ -193,83 +192,90 @@ class _FormPage2State extends State<FormPage2> {
                                 },
                               ),
                               //////////////////////////////////////////////////////////////////////////////////
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "Area *",
+                                hint: "Area *".tr(context),
                                 controller: _areaText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter area";
+                                    return "Please Enter area".tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myArea,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "No. of bedrooms *",
+                                hint: "No. of bedrooms *".tr(context),
                                 controller: _bedRoomText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter No. of bedrooms";
+                                    return "Please Enter No. of bedrooms"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myBed,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "No. of bathrooms *",
+                                hint: "No. of bathrooms *".tr(context),
                                 controller: _bathRoomText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter No. of bathrooms";
+                                    return "Please Enter No. of bathrooms"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myBathroom,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "Floor *",
+                                hint: "Floor *".tr(context),
                                 controller: _floorText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter floors number";
+                                    return "Please Enter floors number"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myStairs,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
 
@@ -287,7 +293,7 @@ class _FormPage2State extends State<FormPage2> {
                                   }
                                 },
                                 child: myTextField(
-                                  hint: "Delivery date*",
+                                  hint: "Delivery date*".tr(context),
                                   enabled: false,
                                   controller: _dateText,
                                   // keyBoardType: TextInputType.number,
@@ -299,17 +305,17 @@ class _FormPage2State extends State<FormPage2> {
                                   // },
                                   // hint: "Delivery date* - eg.(24-11-2020)",
                                   prefix: myDate,
-                                  suffix: Icon(Icons.arrow_downward),
+                                  suffix: const Icon(Icons.arrow_downward),
                                 ),
                               ),
 
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               ////////////////////////////////////// Delivery term
 
-                              Text("Delivery Term *"),
-                              SizedBox(
+                              Text("Delivery Term *".tr(context)),
+                              const SizedBox(
                                 height: 8,
                               ),
 
@@ -321,7 +327,7 @@ class _FormPage2State extends State<FormPage2> {
                                 children: _contractType
                                     .map((e) => Container(
                                         margin: const EdgeInsets.all(12),
-                                        child: Text(e)))
+                                        child: Text(e.tr(context))))
                                     .toList(),
                                 onPressed: (newIndex) {
                                   setState(() {
@@ -341,19 +347,21 @@ class _FormPage2State extends State<FormPage2> {
                                 },
                               ),
 
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               /////////////////////////////////////
                               myTextField(
-                                hint: "   Description *",
+                                hint: "Description *".tr(context),
                                 controller: _descriptioneText,
                                 keyBoardType: TextInputType.text,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter Description";
+                                    return "Please Enter Description"
+                                        .tr(context);
                                   } else if (value.length < 30) {
-                                    return "Description must be more than 30 characters";
+                                    return "Description must be more than 30 characters"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
@@ -364,8 +372,9 @@ class _FormPage2State extends State<FormPage2> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "(Include condition, features and reason for selling)",
-                                    style: TextStyle(
+                                    "(Include condition, features and reason for selling)"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontSize: 12,
                                         color:
                                             Color.fromARGB(217, 85, 85, 108)),
@@ -375,14 +384,13 @@ class _FormPage2State extends State<FormPage2> {
                             ],
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         myButton(() {
                           if (_formKey.currentState!.validate()) {
-                            print("HElooooooooooooo");
                             // myApplication.navigateTo(FormPage3(), context);
                           }
-                        }, "continue  ➔"),
-                        Spacer()
+                        }, "continue  ➔".tr(context)),
+                        const Spacer()
                       ],
                     )),
               ],

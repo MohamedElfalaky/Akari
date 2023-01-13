@@ -1,11 +1,6 @@
 import 'package:akari/helpers/myApplication.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../../app/global.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class ChangePassWordAppBar extends StatelessWidget {
   const ChangePassWordAppBar({super.key});
@@ -33,7 +28,7 @@ class ChangePassWordAppBar extends StatelessWidget {
           ),
           SizedBox(
             // width: 160,
-            child: Text("ChangePassWord",
+            child: Text("Change password".tr(context),
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,

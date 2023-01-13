@@ -2,20 +2,16 @@ import 'dart:io';
 
 import 'package:akari/data/cubits/AddAminties/AddAmintiesCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page4/FormPage4.dart';
-import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
-import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class FormPage3 extends StatefulWidget {
   final String id;
@@ -84,17 +80,17 @@ class _FormPage3State extends State<FormPage3> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Post new Ad.",
-                        style: TextStyle(
+                        "Post new Ad.".tr(context),
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "Tajawal",
                             color: Colors.black),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text(
-                        "Images and amenities",
+                        "Images and amenities".tr(context),
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
@@ -102,7 +98,7 @@ class _FormPage3State extends State<FormPage3> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   CircularStepProgressIndicator(
                     totalSteps: 6,
                     currentStep: 3,
@@ -114,7 +110,7 @@ class _FormPage3State extends State<FormPage3> {
                     height: 50,
                     selectedStepSize: 5,
                     roundedCap: (_, __) => true,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "3/6",
                         style: TextStyle(color: Colors.black, fontSize: 14),
@@ -129,11 +125,11 @@ class _FormPage3State extends State<FormPage3> {
             key: _formKey,
             child: ListView(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Container(
                     // outlining container
-                    margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+                    margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
                     height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,17 +138,18 @@ class _FormPage3State extends State<FormPage3> {
                         Row(
                           children: [
                             Text(
-                              "Media ",
-                              style: TextStyle(fontSize: 16),
+                              "Media ".tr(context),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "(Add at least 3 images for your property)",
-                              style: TextStyle(
+                              "(Add at least 5 images for your property)"
+                                  .tr(context),
+                              style: const TextStyle(
                                   color: Color.fromARGB(102, 6, 7, 28)),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         SizedBox(
@@ -170,33 +167,34 @@ class _FormPage3State extends State<FormPage3> {
                                   width: 200,
                                   decoration: BoxDecoration(
                                       border: Border.all(width: 1),
-                                      color: Color(0xFFF4F4F4)),
+                                      color: const Color(0xFFF4F4F4)),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SvgPicture.asset(plusss),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 10),
                                         child: Text(
-                                          "Tab to add images",
-                                          style: TextStyle(
+                                          "Tab to add images".tr(context),
+                                          style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 20),
                                         child: Text(
-                                          "Tab to add images At least (240 px *240 px)",
-                                          style: TextStyle(fontSize: 12),
+                                          "Tab to add images At least (240 px *240 px)"
+                                              .tr(context),
+                                          style: const TextStyle(fontSize: 12),
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
@@ -208,8 +206,8 @@ class _FormPage3State extends State<FormPage3> {
                               ////////////////////////// بماب ع الصور اللي اترفعت
                               ...imageFileList
                                   .map((e) => Container(
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: 5),
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 5),
                                       height: 200,
                                       width: 200,
                                       child: Stack(
@@ -228,9 +226,10 @@ class _FormPage3State extends State<FormPage3> {
                                               },
                                               icon: CircleAvatar(
                                                 backgroundColor:
-                                                    Color.fromARGB(255, 7, 4, 4)
+                                                    const Color.fromARGB(
+                                                            255, 7, 4, 4)
                                                         .withOpacity(0.2),
-                                                child: Icon(
+                                                child: const Icon(
                                                   Icons.clear_sharp,
                                                   color: Color.fromARGB(
                                                       255, 220, 28, 15),
@@ -244,22 +243,24 @@ class _FormPage3State extends State<FormPage3> {
                         ),
                         imgList == false
                             ? Text(
-                                "You must upload 3 pictures at least",
-                                style: TextStyle(color: Colors.red),
+                                "You must upload 5 pictures at least"
+                                    .tr(context),
+                                style: const TextStyle(color: Colors.red),
                               )
                             : Container(),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Row(
                           children: [
                             Text(
-                              "Amenities",
-                              style: TextStyle(fontSize: 16),
+                              "Amenities".tr(context),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "(Choose amenities found in your property)",
-                              style: TextStyle(
+                              "(Choose amenities found in your property)"
+                                  .tr(context),
+                              style: const TextStyle(
                                   color: Color.fromARGB(102, 6, 7, 28)),
                             )
                           ],
@@ -267,12 +268,13 @@ class _FormPage3State extends State<FormPage3> {
 
                         /////////////////
                         Container(
-                            margin: EdgeInsets.only(top: 8),
+                            margin: const EdgeInsets.only(top: 8),
                             child: Wrap(
                                 children: amenities
                                     .map((e) => InkWell(
-                                          child:
-                                              ToggleTap(e["name"], e["bool"]),
+                                          child: ToggleTap(
+                                              e["name"].toString().tr(context),
+                                              e["bool"]),
                                           onTap: () {
                                             if (myAmenitesList
                                                     .where((element) =>
@@ -301,11 +303,11 @@ class _FormPage3State extends State<FormPage3> {
                                         ))
                                     .toList())),
                         /////////////////
-                        Spacer(),
+                        const Spacer(),
                         BlocBuilder<AddAmintiesCubit, AddAmintiesState>(
                           builder: (context, state) {
                             return state is AddAmintiesLoading
-                                ? Center(
+                                ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
                                 : myButton(() {
@@ -319,7 +321,6 @@ class _FormPage3State extends State<FormPage3> {
                                       // }
 
                                       // );
-                                      print("HElooooooooooooo");
 
                                       AddAmintiesCubit.get(context)
                                           .userAddAminties(
@@ -334,11 +335,11 @@ class _FormPage3State extends State<FormPage3> {
                                         imgList = false;
                                       });
                                     }
-                                  }, "continue  ➔");
+                                  }, "continue  ➔".tr(context));
                           },
                         ),
 
-                        Spacer()
+                        const Spacer()
                       ],
                     )),
               ],

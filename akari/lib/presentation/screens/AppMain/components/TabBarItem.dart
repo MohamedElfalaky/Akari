@@ -6,16 +6,18 @@ import 'package:flutter_svg/svg.dart';
 class TabBarItem extends StatelessWidget {
   final String name;
   final String svg;
+  // ignore: prefer_typing_uninitialized_variables
   final onpressHandler;
-  TabBarItem(this.name, this.svg, this.onpressHandler);
+  const TabBarItem(this.name, this.svg, this.onpressHandler, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(1),
+        padding: const EdgeInsets.all(1),
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
       ),
       onPressed: onpressHandler,
       child: Card(
@@ -29,7 +31,8 @@ class TabBarItem extends StatelessWidget {
           height: myApplication.hightClc(context, 40),
           // width: myApplication.widthClc(context, 66),
           decoration: BoxDecoration(
-              color: Color(0xFFFFFFFF), borderRadius: BorderRadius.circular(3)),
+              color: const Color(0xFFFFFFFF),
+              borderRadius: BorderRadius.circular(3)),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

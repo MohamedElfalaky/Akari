@@ -1,9 +1,7 @@
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/Filter.dart';
 import 'package:akari/presentation/screens/OTP.dart';
-import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
-import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
+
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
@@ -11,7 +9,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class ForgetPassword extends StatelessWidget {
   ForgetPassword({super.key});
@@ -72,7 +70,7 @@ class ForgetPassword extends StatelessWidget {
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
                           horizontal: myApplication.widthClc(context, 24)),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                                 offset: Offset(0, 2),
@@ -92,7 +90,7 @@ class ForgetPassword extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 8)),
                             child: Center(
                               child: AutoSizeText(
-                                "Oops! Forgot Password?",
+                                "Oops! Forgot Password?".tr(context),
                                 style: TextStyle(
                                     fontFamily: "Tajawal",
                                     fontSize: 24,
@@ -106,8 +104,9 @@ class ForgetPassword extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 24)),
                             child: Center(
                               child: AutoSizeText(
-                                "Don't Worry, we will help you recover your password simply and quickly.",
-                                style: TextStyle(
+                                "Don't Worry, we will help you recover your password simply and quickly."
+                                    .tr(context),
+                                style: const TextStyle(
                                     fontFamily: "Tajawal,Regular",
                                     fontSize: 13,
                                     color: Color(0xFF363A3D)),
@@ -120,8 +119,9 @@ class ForgetPassword extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 16)),
                             child: Center(
                               child: AutoSizeText(
-                                "Please enter your email to recover",
-                                style: TextStyle(
+                                "Please enter your email to recover"
+                                    .tr(context),
+                                style: const TextStyle(
                                     fontFamily: "Tajawal,Regular",
                                     fontSize: 13,
                                     color: Color(0xFF363A3D)),
@@ -133,14 +133,15 @@ class ForgetPassword extends StatelessWidget {
                             controller: _mailText,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Please enter your mail";
+                                return "Please enter your mail".tr(context);
                               } else if (value.isNotEmpty &&
                                   !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                       .hasMatch(value)) {
-                                return "Please use mail formoula email@email.com";
+                                return "Please use mail formoula email@email.com"
+                                    .tr(context);
                               }
                             },
-                            hint: "Email",
+                            hint: "Email".tr(context),
                             prefix: "assets/registerPics/vuesax-bulk-sms.svg",
                           ),
                           SizedBox(
@@ -161,8 +162,8 @@ class ForgetPassword extends StatelessWidget {
                                             .userForgetPass(
                                                 mail: _mailText.text);
                                       }
-                                    }, "Recover password")
-                                  : Center(
+                                    }, "Recover password".tr(context))
+                                  : const Center(
                                       child: CircularProgressIndicator(),
                                     );
                             },

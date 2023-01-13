@@ -1,18 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:akari/data/cubits/Page2Appartment/Page2AppartmentCubit.dart';
 import 'package:akari/data/cubits/Page2Villa/Page2VillaCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page3/FormPage3.dart';
-import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
+
 import 'package:akari/presentation/widgets/Shared/Button.dart';
-import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class P2VillaAppartment extends StatefulWidget {
   final String category;
@@ -21,14 +19,6 @@ class P2VillaAppartment extends StatefulWidget {
   List<String> contractType2;
   List<bool> isSelected2;
   String selectedSubType;
-  //  List<String> widget.contractType2 = widget.category == "Apartment, Duplex"
-  //       ? ["Apartment", "Duplex"]
-  //       : ["Stand Alone", "Town House", "Twin House"];
-  //   List<bool> isSelected2 = widget.category == "Apartment, Duplex"
-  //       ? [true, false]
-  //       : [true, false, false];
-  //   String widget.selectedSubType =
-  //       widget.category == "Apartment, Duplex" ? "Apartment" : "Stand Alone";
   P2VillaAppartment(
       {super.key,
       required this.category,
@@ -55,14 +45,22 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
   DateTime defaltDate = DateTime.now();
 
   ///////
-  List<String> _contractType = ["Finished", "Semi-Finished", "Not Finished"];
-  List<bool> _isSelected = [true, false, false];
+  final List<String> _contractType = [
+    "Finished",
+    "Semi-Finished",
+    "Not Finished"
+  ];
+  final List<bool> _isSelected = [true, false, false];
   String _selectedDeliveryTerm = "Finished";
   /////////
 
   ////////
-  List<String> _selections3 = ["Singles", "Families", "Singles & Families"];
-  List<bool> _isSelected3 = [true, false, false];
+  final List<String> _selections3 = [
+    "Singles",
+    "Families",
+    "Singles & Families"
+  ];
+  final List<bool> _isSelected3 = [true, false, false];
   String _selected3 = "Singles";
 /////////
   bool _daily = false;
@@ -75,6 +73,7 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     _dateText.text = "${defaltDate.year}-${defaltDate.month}-${defaltDate.day}";
     return GestureDetector(
@@ -98,64 +97,61 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
               },
             ),
             leadingWidth: 30,
-            title: Container(
-              // margin: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Post new Ad.",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Tajawal",
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        "Main details",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: "Tajawal",
-                            color: Theme.of(context).colorScheme.secondary),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  CircularStepProgressIndicator(
-                    totalSteps: 6,
-                    currentStep: 2,
-                    stepSize: 5,
-                    selectedColor: Theme.of(context).colorScheme.primary,
-                    unselectedColor: Colors.grey[300],
-                    padding: 0,
-                    width: 50,
-                    height: 50,
-                    selectedStepSize: 5,
-                    roundedCap: (_, __) => true,
-                    child: Center(
-                      child: Text(
-                        "2/6",
-                        style: TextStyle(color: Colors.black, fontSize: 14),
-                      ),
+            title: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Post new Ad.".tr(context),
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: "Tajawal",
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      "Main details".tr(context),
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: "Tajawal",
+                          color: Theme.of(context).colorScheme.secondary),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                CircularStepProgressIndicator(
+                  totalSteps: 6,
+                  currentStep: 2,
+                  stepSize: 5,
+                  selectedColor: Theme.of(context).colorScheme.primary,
+                  unselectedColor: Colors.grey[300],
+                  padding: 0,
+                  width: 50,
+                  height: 50,
+                  selectedStepSize: 5,
+                  roundedCap: (_, __) => true,
+                  child: const Center(
+                    child: Text(
+                      "2/6",
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           body: Form(
             key: _formKey,
             child: ListView(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Container(
                     // outlining container
-                    margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+                    margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
                     height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       children: [
@@ -168,35 +164,32 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                 keyBoardType: TextInputType.text,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter title";
+                                    return "Please Enter title".tr(context);
                                   }
                                   return null;
                                 },
-                                hint: "Title *",
+                                hint: "Title *".tr(context),
                                 prefix: myTitle,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "(e.g. brand, model, age, type)",
-                                    style: TextStyle(
+                                    "(e.g. brand, model, age, type)"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontSize: 12,
                                         color:
                                             Color.fromARGB(217, 85, 85, 108)),
                                   )
                                 ],
                               ),
-                              // SizedBox(
-                              //   height: 8,
-                              // ),
 
-//////////////////////// type
-                              Text("Type *"),
-                              SizedBox(
+                              Text("Type *".tr(context)),
+                              const SizedBox(
                                 height: 8,
                               ),
                               //////////////////////////////////////////////////////////////////////////////////
@@ -208,7 +201,7 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                 children: widget.contractType2
                                     .map((e) => Container(
                                         margin: const EdgeInsets.all(12),
-                                        child: Text(e)))
+                                        child: Text(e.tr(context))))
                                     .toList(),
                                 onPressed: (newIndex) {
                                   setState(() {
@@ -230,83 +223,90 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                               ),
 
                               //////////////////////////////////////////////////////////////////////////////////
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "Area *",
+                                hint: "Area *".tr(context),
                                 controller: _areaText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter area";
+                                    return "Please Enter area".tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myArea,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "No. of bedrooms *",
+                                hint: "No. of bedrooms *".tr(context),
                                 controller: _bedRoomText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter No. of bedrooms";
+                                    return "Please Enter No. of bedrooms"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myBed,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "No. of bathrooms *",
+                                hint: "No. of bathrooms *".tr(context),
                                 controller: _bathRoomText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter No. of bathrooms";
+                                    return "Please Enter No. of bathrooms"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myBathroom,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               myTextField(
-                                hint: "Floor *",
+                                hint: "Floor *".tr(context),
                                 controller: _floorText,
                                 keyBoardType: TextInputType.number,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter floors number";
+                                    return "Please Enter floors number"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(value)) {
-                                    return "Please enter numbers only";
+                                    return "Please enter numbers only"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 prefix: myStairs,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
 
@@ -324,7 +324,7 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                   }
                                 },
                                 child: myTextField(
-                                  hint: "Delivery date*",
+                                  hint: "Delivery date*".tr(context),
                                   enabled: false,
                                   controller: _dateText,
                                   // keyBoardType: TextInputType.number,
@@ -336,17 +336,17 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                   // },
                                   // hint: "Delivery date* - eg.(24-11-2020)",
                                   prefix: myDate,
-                                  suffix: Icon(Icons.arrow_downward),
+                                  suffix: const Icon(Icons.arrow_downward),
                                 ),
                               ),
 
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               ////////////////////////////////////// Delivery term
 
-                              Text("Delivery Term *"),
-                              SizedBox(
+                              Text("Delivery Term *".tr(context)),
+                              const SizedBox(
                                 height: 8,
                               ),
 
@@ -378,7 +378,7 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                 },
                               ),
 
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               /////////////////////////////////////
@@ -391,8 +391,8 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text("Who can rent *"),
-                                        SizedBox(
+                                        Text("Who can rent *".tr(context)),
+                                        const SizedBox(
                                           height: 8,
                                         ),
                                         ToggleButtons(
@@ -405,7 +405,7 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                               .map((e) => Container(
                                                   margin:
                                                       const EdgeInsets.all(12),
-                                                  child: Text(e)))
+                                                  child: Text(e.tr(context))))
                                               .toList(),
                                           onPressed: (newIndex) {
                                             setState(() {
@@ -424,11 +424,11 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                             });
                                           },
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 16,
                                         ),
-                                        Text("Can be rented *"),
-                                        SizedBox(
+                                        Text("Can be rented *".tr(context)),
+                                        const SizedBox(
                                           height: 8,
                                         ),
                                         Row(
@@ -461,18 +461,18 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                                     },
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Text(
-                                                  "Daily",
-                                                  style: TextStyle(
+                                                  "Daily".tr(context),
+                                                  style: const TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: "Tajawal"),
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 47,
                                             ),
                                             Row(
@@ -503,12 +503,12 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                                     },
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Text(
-                                                  "Monthly",
-                                                  style: TextStyle(
+                                                  "Monthly".tr(context),
+                                                  style: const TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: "Tajawal"),
                                                 ),
@@ -547,18 +547,18 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                                     },
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Text(
-                                                  "Yearly",
-                                                  style: TextStyle(
+                                                  "Yearly".tr(context),
+                                                  style: const TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: "Tajawal"),
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 40,
                                             ),
                                             Row(
@@ -589,12 +589,12 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                                     },
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Text(
-                                                  "Any period",
-                                                  style: TextStyle(
+                                                  "Any period".tr(context),
+                                                  style: const TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: "Tajawal"),
                                                 ),
@@ -603,21 +603,23 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                           ],
                                         ),
                                         ///////////////////
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 12,
                                         )
                                       ],
                                     )
-                                  : SizedBox(),
+                                  : const SizedBox(),
                               myTextField(
-                                hint: "Description *",
+                                hint: "Description *".tr(context),
                                 controller: _descriptioneText,
                                 keyBoardType: TextInputType.text,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please Enter Description";
+                                    return "Please Enter Description"
+                                        .tr(context);
                                   } else if (value.length < 30) {
-                                    return "Description must be more than 30 characters";
+                                    return "Description must be more than 30 characters"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
@@ -628,8 +630,9 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "(Include condition, features and reason for selling)",
-                                    style: TextStyle(
+                                    "(Include condition, features and reason for selling)"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontSize: 12,
                                         color:
                                             Color.fromARGB(217, 85, 85, 108)),
@@ -639,17 +642,15 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                             ],
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         BlocBuilder<Page2AppartmentCubit, Page2AppartmentState>(
                           builder: (context, state) {
                             return state is Page2AppartmentLoading
-                                ? Center(
+                                ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
                                 : myButton(() {
                                     if (_formKey.currentState!.validate()) {
-                                      print("HElooooooooooooo");
-
                                       widget.category == "Apartment, Duplex"
                                           ? Page2AppartmentCubit.get(context)
                                               .userPage2Appartment(
@@ -693,7 +694,7 @@ class _P2VillaAppartmentState extends State<P2VillaAppartment> {
                                   }, "continue  ➔");
                           },
                         ),
-                        Spacer()
+                        const Spacer()
                       ],
                     )),
               ],

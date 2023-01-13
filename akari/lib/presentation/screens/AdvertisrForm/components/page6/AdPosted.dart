@@ -1,12 +1,6 @@
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AppMain/AppMain.dart';
-import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/screens/Register.dart';
-import 'package:akari/presentation/widgets/Shared/myOutLinedButton.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
-import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class AdPosted extends StatefulWidget {
   @override
@@ -17,13 +11,13 @@ class _AdPostedState extends State<AdPosted> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       scrollable: true,
       // title: Text('Filter'),
       content: Padding(
-          padding: EdgeInsets.all(1),
-          child: Container(
+          padding: const EdgeInsets.all(1),
+          child: SizedBox(
             width: 300,
             // height: 360,
             child: Column(
@@ -34,10 +28,10 @@ class _AdPostedState extends State<AdPosted> {
                     children: [
                       InkWell(
                           onTap: () => Navigator.pop(context),
-                          child: Icon(Icons.close)),
+                          child: const Icon(Icons.close)),
                     ],
                   ),
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Color(0xff2E9216),
                     radius: 60,
                     child: Center(
@@ -49,10 +43,10 @@ class _AdPostedState extends State<AdPosted> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 24, bottom: 8),
+                    margin: const EdgeInsets.only(top: 24, bottom: 8),
                     child: Center(
                       child: Text(
-                        "Your Ad. is posted successfully",
+                        "Your Ad. is posted successfully".tr(context),
                         style: TextStyle(
                             fontFamily: "Tajawal",
                             fontSize: 18,
@@ -62,11 +56,12 @@ class _AdPostedState extends State<AdPosted> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 16),
+                    margin: const EdgeInsets.only(bottom: 16),
                     child: Center(
                       child: Text(
-                        "Stay tuned for any inquiry about your property. we hope you good experience",
-                        style: TextStyle(
+                        "Stay tuned for any inquiry about your property. we hope you good experience"
+                            .tr(context),
+                        style: const TextStyle(
                             fontFamily: "Tajawal,Regular",
                             fontSize: 13,
                             color: Color(0xFF363A3D)),
@@ -77,7 +72,7 @@ class _AdPostedState extends State<AdPosted> {
                   myButton(() {
                     Navigator.pop(context);
                     // myApplication.navigateTo(AppMain(), context);
-                  }, "Done"),
+                  }, "Done".tr(context)),
                 ]),
           )),
     );

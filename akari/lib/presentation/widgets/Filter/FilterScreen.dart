@@ -1,17 +1,14 @@
 import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
-import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
+import '../../../helpers/AppLocalizations.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../widgets/Filter/FilterAppBar.dart';
 
 class FilterScreen extends StatefulWidget {
-  FilterScreen({super.key});
+  const FilterScreen({super.key});
 
   @override
   State<FilterScreen> createState() => _FilterScreenState();
@@ -42,13 +39,13 @@ class _FilterScreenState extends State<FilterScreen> {
                     horizontal: myApplication.widthClc(context, 16),
                     vertical: myApplication.hightClc(context, 16),
                   ),
-                  color: Color(0xFFFFFFFF),
+                  color: const Color(0xFFFFFFFF),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Contract Type",
-                        style: TextStyle(
+                        "Contract Type".tr(context),
+                        style: const TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
                             color: Color(0xFF363A3D)),
@@ -61,8 +58,9 @@ class _FilterScreenState extends State<FilterScreen> {
                             children:
                                 contractTaps // لما كتبت الليست هارد كود هنا السيتستيت مشتغلتش!
                                     .map((e) => InkWell(
-                                          child:
-                                              FilterTab(e["name"], e["bool"]),
+                                          child: FilterTab(
+                                              e["name"].toString().tr(context),
+                                              e["bool"]),
                                           onTap: () {
                                             if (contractTapsList
                                                     .where((element) =>
@@ -102,13 +100,13 @@ class _FilterScreenState extends State<FilterScreen> {
                     horizontal: myApplication.widthClc(context, 16),
                     vertical: myApplication.hightClc(context, 16),
                   ),
-                  color: Color(0xFFFFFFFF),
+                  color: const Color(0xFFFFFFFF),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Property Type",
-                        style: TextStyle(
+                        "Property Type".tr(context),
+                        style: const TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
                             color: Color(0xFF363A3D)),
@@ -119,7 +117,9 @@ class _FilterScreenState extends State<FilterScreen> {
                           child: Wrap(
                               children: myTaps
                                   .map((e) => InkWell(
-                                        child: FilterTab(e["name"], e["bool"]),
+                                        child: FilterTab(
+                                            e["name"].toString().tr(context),
+                                            e["bool"]),
                                         onTap: () {
                                           // filterTapsList.removeWhere(
                                           //     (element) => element == e["name"]);
@@ -159,19 +159,19 @@ class _FilterScreenState extends State<FilterScreen> {
                     horizontal: myApplication.widthClc(context, 16),
                     vertical: myApplication.hightClc(context, 16),
                   ),
-                  color: Color(0xFFFFFFFF),
+                  color: const Color(0xFFFFFFFF),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Price ( SD )",
-                        style: TextStyle(
+                        "Price ( SD )".tr(context),
+                        style: const TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
                             color: Color(0xFF363A3D)),
                       ),
                       Container(
-                          margin: EdgeInsets.only(top: 16),
+                          margin: const EdgeInsets.only(top: 16),
                           // height: myApplication.hightClc(context, 40),
                           child: Row(
                             // scrollDirection: Axis.horizontal,
@@ -181,19 +181,20 @@ class _FilterScreenState extends State<FilterScreen> {
                                 controller: myController1,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please enter initial price";
+                                    return "Please enter initial price"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(myController1.text)) {
-                                    return "Invalide cost";
+                                    return "Invalide cost".tr(context);
                                   }
                                   return null;
                                 },
-                                decoration: const InputDecoration(
-                                    fillColor:
-                                        Color.fromARGB(255, 255, 249, 215),
+                                decoration: InputDecoration(
+                                    fillColor: const Color.fromARGB(
+                                        255, 255, 249, 215),
                                     filled: true,
-                                    hintText: "From",
+                                    hintText: "From".tr(context),
                                     border: InputBorder.none),
                                 keyboardType: TextInputType.number,
                               )),
@@ -205,23 +206,25 @@ class _FilterScreenState extends State<FilterScreen> {
                                 controller: myController2,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return "Please enter final price";
+                                    return "Please enter final price"
+                                        .tr(context);
                                   } else if (value.isNotEmpty &&
                                       !RegExp(r'(^(?:[+0]9)?[0-9])')
                                           .hasMatch(myController2.text)) {
-                                    return "Invalide cost";
+                                    return "Invalide cost".tr(context);
                                   } else if (num.parse(myController2.text) <=
                                       num.parse(myController1.text)) {
-                                    return "final cost must be greater than initial cost";
+                                    return "final cost must be greater than initial cost"
+                                        .tr(context);
                                   }
                                   return null;
                                 },
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                    fillColor:
-                                        Color.fromARGB(255, 255, 249, 215),
+                                    fillColor: const Color.fromARGB(
+                                        255, 255, 249, 215),
                                     filled: true,
-                                    hintText: "To",
+                                    hintText: "To".tr(context),
                                     border: InputBorder.none),
                               ))
                             ],
@@ -299,17 +302,17 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: BlocBuilder<SearchFromHomeCubit, SearchFromHomeState>(
                     builder: (context, state) {
                       return state is SearchFromHomeLoading
-                          ? Center(
+                          ? const Center(
                               child: CircularProgressIndicator(),
                             )
                           : ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(23))),
                                 // textStyle: TextStyle(fontWeight: FontWeight.normal),
                                 elevation: 0,
-                                backgroundColor: Color(0XFFDC8035),
+                                backgroundColor: const Color(0XFFDC8035),
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
@@ -326,10 +329,10 @@ class _FilterScreenState extends State<FilterScreen> {
                                           context: context);
                                 }
                               },
-                              child: const Center(
+                              child: Center(
                                   child: Text(
-                                "Confirm",
-                                style: TextStyle(
+                                "Confirm".tr(context),
+                                style: const TextStyle(
                                     fontWeight: FontWeight.normal,
                                     fontFamily: "Tajawal",
                                     fontSize: 16,

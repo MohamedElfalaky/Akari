@@ -1,29 +1,19 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ContactUs/components/ContactUsScreen.dart';
 
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
-
+import '../../../helpers/AppLocalizations.dart';
 import 'package:flutter/material.dart';
 
-import '../../../app/global.dart';
-
 class ContactUs extends StatefulWidget {
-  const ContactUs();
+  const ContactUs({super.key});
 
   @override
   State<ContactUs> createState() => _ContactUsState();
 }
 
 class _ContactUsState extends State<ContactUs> {
-  // final ContactUsController _ContactUsControllerController = ContactUsController();
-
   @override
   void initState() {
     super.initState();
-
-    // _ContactUsControllerController.ContactUsAPIs(
-    //     context, CacheHelper.getFromShared("token"));
   }
 
   @override
@@ -39,10 +29,8 @@ class _ContactUsState extends State<ContactUs> {
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
-      }, // hide keyboard on tap anywhere
-
+      },
       child: Scaffold(
-          // backgroundColor: Theme.of(context).colorScheme.secondary,
           appBar: AppBar(
             leading: BackButton(
               onPressed: () => Navigator.pop(context),
@@ -54,18 +42,18 @@ class _ContactUsState extends State<ContactUs> {
             shape: const RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(16))),
-            title: const Text(
-              "Send your request",
-              style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
+            title: Text(
+              "Send your request".tr(context),
+              style: const TextStyle(fontSize: 24, fontFamily: "Tajawal"),
             ),
           ),
           body: Container(
               // height: MyApplication.hightClc(context, 700),  معدتش هتحتاجها الكونتينر بقى لعمل مارجن ف الاول بس لتخطيط الصفحة
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 left: 24,
                 right: 24,
               ),
-              child: ContactUsScreen())),
+              child: const ContactUsScreen())),
     );
   }
 }

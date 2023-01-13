@@ -3,13 +3,12 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/More/components/MoreScreen.dart';
 import 'package:akari/presentation/screens/ProfilePage/ProfilePage.dart';
 
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 import 'package:akari/style/Icons.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../app/global.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class More extends StatefulWidget {
   const More();
@@ -56,7 +55,7 @@ class _MoreState extends State<More> {
                         borderRadius:
                             BorderRadius.vertical(bottom: Radius.circular(16))),
                     title: Text(
-                      "More",
+                      "More".tr(context),
                       style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
                     ),
                   )
@@ -74,7 +73,7 @@ class _MoreState extends State<More> {
                         Row(
                           children: [
                             Text(
-                              "Hello, ${CacheHelper.getFromShared("name")}",
+                              "${'Hello'.tr(context)}, ${CacheHelper.getFromShared("name")}",
                               style: TextStyle(
                                   fontSize: 24, fontFamily: "Tajawal"),
                             ),
@@ -168,7 +167,8 @@ class _MoreState extends State<More> {
                   ),
             body: CacheHelper.getFromShared("token") == null
                 ? Center(
-                    child: Text("Please log in to access your personal data"),
+                    child: Text("Please log in to access your personal data"
+                        .tr(context)),
                   )
                 : const MoreScreen()));
   }

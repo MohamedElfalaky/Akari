@@ -2,10 +2,11 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
 import 'package:akari/style/Icons.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
+// ignore: camel_case_types
 class myAppBar extends StatelessWidget {
   const myAppBar({super.key});
 
@@ -20,10 +21,10 @@ class myAppBar extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Welcome",
-                style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
+                "Welcome".tr(context),
+                style: const TextStyle(fontSize: 24, fontFamily: "Tajawal"),
               ),
-              Spacer(),
+              const Spacer(),
               CircleAvatar(
                 backgroundColor: Colors.white,
                 child: SvgPicture.asset(
@@ -38,8 +39,8 @@ class myAppBar extends StatelessWidget {
             height: myApplication.hightClc(context, 8),
           ),
           Text(
-            "Here you can find what you need!",
-            style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
+            "Here you can find what you need!".tr(context),
+            style: const TextStyle(fontSize: 20, fontFamily: "Tajawal"),
           ),
           SizedBox(
             height: myApplication.hightClc(context, 16),
@@ -49,7 +50,7 @@ class myAppBar extends StatelessWidget {
               context,
               MaterialPageRoute<void>(
                   builder: (BuildContext context) =>
-                      AfterFilterAndSearch("Search relust"))))
+                      AfterFilterAndSearch("Search relust".tr(context)))))
         ],
       ),
     );

@@ -1,15 +1,11 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
-
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class ChangePassWordScreen extends StatefulWidget {
-  const ChangePassWordScreen();
+  const ChangePassWordScreen({super.key});
 
   @override
   State<ChangePassWordScreen> createState() => _ChangePassWordScreenState();
@@ -20,40 +16,38 @@ class _ChangePassWordScreenState extends State<ChangePassWordScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // _ChangePassWordController.ChangePassWordAPIs(context, CacheHelper.getFromShared("token"));
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(
+      const SizedBox(
         height: 24,
       ),
       myTextField(
         prefix: lockk,
-        hint: " Current Password",
+        hint: "Current Password".tr(context),
       ),
-      SizedBox(
+      const SizedBox(
         height: 24,
       ),
       myTextField(
-        hint: "New password",
+        hint: "New password".tr(context),
         prefix: lockk,
       ),
-      SizedBox(
+      const SizedBox(
         height: 24,
       ),
       myTextField(
-        hint: "Confirm password",
+        hint: "Confirm password".tr(context),
         prefix: lockk,
       ),
-      Spacer(
+      const Spacer(
         flex: 3,
       ),
-      myButton(() {}, "Confirm"),
-      Spacer(
+      myButton(() {}, "Confirm".tr(context)),
+      const Spacer(
         flex: 1,
       )
     ]);

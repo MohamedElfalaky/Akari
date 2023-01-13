@@ -3,13 +3,12 @@ import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/screens/ResetPass.dart';
-import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/presentation/widgets/OtpSent.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../helpers/AppLocalizations.dart';
 import 'package:sizer/sizer.dart';
 import 'package:pinput/pinput.dart';
 
@@ -24,12 +23,12 @@ class OTP extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(30, 60, 87, 1),
           fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
-        border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+        border: Border.all(color: const Color.fromRGBO(234, 239, 243, 1)),
         borderRadius: BorderRadius.circular(20),
       ),
     );
@@ -41,7 +40,7 @@ class OTP extends StatelessWidget {
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration!.copyWith(
-        color: Color.fromRGBO(234, 239, 243, 1),
+        color: const Color.fromRGBO(234, 239, 243, 1),
       ),
     );
 
@@ -100,7 +99,7 @@ class OTP extends StatelessWidget {
                           horizontal: myApplication.widthClc(context, 24)),
                       decoration: BoxDecoration(
                           boxShadow: [
-                            BoxShadow(
+                            const BoxShadow(
                                 offset: Offset(0, 2),
                                 color: Color(0xFF66718514),
                                 blurRadius: 4)
@@ -118,7 +117,7 @@ class OTP extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 16)),
                             child: Center(
                               child: Text(
-                                "Confirm Your Account",
+                                "Confirm Your Account".tr(context),
                                 style: TextStyle(
                                     fontFamily: "Tajawal",
                                     fontSize: 24,
@@ -133,8 +132,9 @@ class OTP extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 6)),
                             child: Center(
                               child: Text(
-                                "Enter Confirmation Code that has been sent to your email:",
-                                style: TextStyle(
+                                "Enter Confirmation Code that has been sent to your email:"
+                                    .tr(context),
+                                style: const TextStyle(
                                     fontFamily: "Tajawal,Regular",
                                     fontSize: 16,
                                     color: Color(0xFF363A3D)),
@@ -176,8 +176,8 @@ class OTP extends StatelessWidget {
                                       VarifyOtpCubit.get(context).userVarifyOtp(
                                           mail: userMail,
                                           otp: int.parse(pinController.text));
-                                    }, "Confirm")
-                                  : Center(
+                                    }, "Confirm".tr(context))
+                                  : const Center(
                                       child: CircularProgressIndicator(),
                                     );
                             },
@@ -199,8 +199,8 @@ class OTP extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Don't receive any code!",
-                                style: TextStyle(
+                                "Don't receive any code!".tr(context),
+                                style: const TextStyle(
                                   fontFamily: "Tajawal,Regular",
                                   color: Color(0XFF116A92),
                                   fontSize: 16,
@@ -215,14 +215,14 @@ class OTP extends StatelessWidget {
                                                 .read<ResendOtpCubit>()
                                                 .userResendOtp(mail: userMail);
                                           },
-                                          child: Text(" Resend",
+                                          child: const Text(" Resend",
                                               style: TextStyle(
                                                   fontFamily: "Tajawal",
                                                   color: Color(
                                                     0XFFDC8035,
                                                   ),
                                                   fontSize: 16)))
-                                      : Center(
+                                      : const Center(
                                           child: CircularProgressIndicator(),
                                         );
                                 },

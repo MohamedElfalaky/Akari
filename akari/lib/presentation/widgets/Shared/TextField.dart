@@ -1,8 +1,8 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:akari/helpers/myApplication.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
 
 class myTextField extends StatelessWidget {
   final String? hint;
@@ -17,8 +17,10 @@ class myTextField extends StatelessWidget {
   final minLines;
   final maxlenth;
   final enabled;
+  final bool? isLabled;
   const myTextField(
-      {this.hint,
+      {super.key,
+      this.hint,
       this.prefix,
       this.suffix,
       this.obscureTxt,
@@ -29,7 +31,8 @@ class myTextField extends StatelessWidget {
       this.maxLines,
       this.minLines,
       this.maxlenth,
-      this.enabled});
+      this.enabled,
+      this.isLabled});
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +51,17 @@ class myTextField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.center,
       cursorHeight: 25,
       decoration: InputDecoration(
-        fillColor: clr ?? Color(0xFFFFF7E999),
+        fillColor: clr ?? const Color(0xFFFFF7E999),
         filled: true,
         hintText: hint,
-        label: Text(
-          hint ?? "",
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.secondary,
-          ),
-        ),
+        label: isLabled == false
+            ? const Text("")
+            : Text(
+                hint ?? "",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
         // border: OutlineInputBorder(), // square border
         // enabledBorder: OutlineInputBorder(
         //     //rounded borders
@@ -82,14 +87,14 @@ class myTextField extends StatelessWidget {
             top: myApplication.hightClc(context, 12)),
         prefixIcon: prefix != null
             ? Container(
-                margin:
-                    EdgeInsets.only(top: 12, left: 12, bottom: 12, right: 6),
+                margin: const EdgeInsets.only(
+                    top: 12, left: 12, bottom: 12, right: 6),
                 child: SvgPicture.asset(prefix ?? ""),
               )
             : null,
         suffixIcon: Container(
           width: 10,
-          margin: EdgeInsets.all(12),
+          margin: const EdgeInsets.all(12),
           child: suffix ?? Container(),
         ),
       ),

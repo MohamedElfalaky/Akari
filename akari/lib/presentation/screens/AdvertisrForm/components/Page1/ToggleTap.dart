@@ -1,12 +1,9 @@
-import 'package:akari/helpers/myApplication.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ToggleTap extends StatelessWidget {
   final String valuee;
   final bool booll;
-  ToggleTap(this.valuee, this.booll);
+  const ToggleTap(this.valuee, this.booll, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +11,14 @@ class ToggleTap extends StatelessWidget {
       child: Container(
         height: 32,
         // width: 100,
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 4,
         ),
-        margin: EdgeInsets.symmetric(horizontal: 2),
+        margin: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
             color: booll
                 ? Theme.of(context).colorScheme.secondary
-                : Color(0xFFFFFFFF),
+                : const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.circular(3)),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -29,7 +26,7 @@ class ToggleTap extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             booll
-                ? Text(
+                ? const Text(
                     "−",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   )
@@ -37,7 +34,7 @@ class ToggleTap extends StatelessWidget {
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary,
                         fontSize: 20)),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Text(

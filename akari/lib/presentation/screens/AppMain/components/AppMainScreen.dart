@@ -12,6 +12,7 @@ import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class AppMainScreen extends StatefulWidget {
   const AppMainScreen({super.key});
@@ -37,15 +38,15 @@ class _AppMainScreenState extends State<AppMainScreen> {
         automaticallyImplyLeading: false,
         toolbarHeight: myApplication.hightClc(context, 181),
         elevation: 0,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(16))),
-        title: myAppBar(),
+        title: const myAppBar(),
       ),
       body: ListView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           Container(
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               left: 16,
               right: 16,
               top: 16,
@@ -60,15 +61,15 @@ class _AppMainScreenState extends State<AppMainScreen> {
                           Row(
                             children: [
                               Text(
-                                "My Ads.",
-                                style: TextStyle(
+                                "My Ads.".tr(context),
+                                style: const TextStyle(
                                     fontSize: 20, fontFamily: "Tajawal"),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               InkWell(
                                 // onTap: () => Navigator.pushNamed(context, "/allcategory"),
                                 child: Text(
-                                  "View All",
+                                  "View All".tr(context),
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontFamily: "Tajawal,Regular",
@@ -81,7 +82,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                           ),
                           Container(
                               width: double.infinity,
-                              margin: EdgeInsets.only(top: 8),
+                              margin: const EdgeInsets.only(top: 8),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
@@ -90,7 +91,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                   return Container(
                                     height: 80,
                                     width: 140,
-                                    margin: EdgeInsets.only(right: 16),
+                                    margin: const EdgeInsets.only(right: 16),
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -103,7 +104,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                               e["img"],
                                               height: 50,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 8,
                                             ),
                                             Column(
@@ -120,8 +121,11 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
-                                                Text(e["name"],
-                                                    style: TextStyle(
+                                                Text(
+                                                    e["name"]
+                                                        .toString()
+                                                        .tr(context),
+                                                    style: const TextStyle(
                                                       fontSize: 14,
                                                     ))
                                               ],
@@ -133,24 +137,25 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                   );
                                 }).toList()),
                               )),
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
                         ],
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 /////////// catigory bar
                 Row(
                   children: [
                     Text(
-                      "Categories",
-                      style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
+                      "Categories".tr(context),
+                      style:
+                          const TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () => Navigator.pushNamed(context, "/allcategory"),
                       child: Text(
-                        "View All",
+                        "View All".tr(context),
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: "Tajawal,Regular",
@@ -161,13 +166,15 @@ class _AppMainScreenState extends State<AppMainScreen> {
                 ),
                 Container(
                     width: double.infinity,
-                    margin: EdgeInsets.only(top: 8),
+                    margin: const EdgeInsets.only(top: 8),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                           // scrollDirection: Axis.horizontal,
                           children: categoryDropDown
-                              .map((e) => TabBarItem(e["name"], e["img"], () {
+                              .map((e) => TabBarItem(
+                                      e["name"].toString().tr(context),
+                                      e["img"], () {
                                     appMainController.AppMainAPIs(
                                         myContext: context,
                                         buildingType: [e["name"]]);
@@ -179,12 +186,13 @@ class _AppMainScreenState extends State<AppMainScreen> {
                     margin: EdgeInsets.only(
                         top: myApplication.hightClc(context, 24)),
                     child: Text(
-                      "Best Ads",
-                      style: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
+                      "Best Ads".tr(context),
+                      style:
+                          const TextStyle(fontSize: 20, fontFamily: "Tajawal"),
                     )),
                 Container(
                     height: myApplication.hightClc(context, 447),
-                    margin: EdgeInsets.only(top: 8),
+                    margin: const EdgeInsets.only(top: 8),
                     child: Center(
                       child: BlocBuilder<AllAddsCubit, AllAddsState>(
                         builder: (context, state) {
@@ -197,7 +205,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                   itemBuilder: (context, index) {
                                     return state.myAllAddsModel.data.isEmpty
                                         ? Center(
-                                            child: Text("No Items"),
+                                            child: Text("No Items".tr(context)),
                                           )
                                         : InkWell(
                                             onTap: () =>
@@ -324,7 +332,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                                             ));
                                   },
                                 )
-                              : Center(
+                              : const Center(
                                   child: CircularProgressIndicator(),
                                 );
                         },
@@ -335,7 +343,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
           ),
         ],
       ),
-      floatingActionButton: ViewOnMap(),
+      floatingActionButton: const ViewOnMap(),
     );
   }
 }

@@ -1,16 +1,14 @@
 // import 'dart:html' hide Platform;
 
-import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/OneChat/components/OneChatScreen.dart';
 import 'dart:io' show Platform;
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 import 'package:akari/style/Icons.dart';
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../app/global.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class OneChatPage extends StatefulWidget {
   final image;
@@ -143,7 +141,7 @@ class _OneChatPageState extends State<OneChatPage> {
       ))
           ? launchUrl(Uri.parse(iosUrl))
           : myApplication.showToast(
-              text: "cannot open whats app",
+              text: "cannot open whats app".tr(context),
               color: Theme.of(context).colorScheme.primary);
     } else {
       await canLaunchUrl(Uri.parse(
@@ -151,7 +149,7 @@ class _OneChatPageState extends State<OneChatPage> {
       ))
           ? launchUrl(Uri.parse(androidUrl))
           : myApplication.showToast(
-              text: "cannot open whats app",
+              text: "cannot open whats app".tr(context),
               color: Theme.of(context).colorScheme.primary);
     }
   }

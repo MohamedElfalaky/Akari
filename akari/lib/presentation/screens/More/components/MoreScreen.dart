@@ -1,16 +1,16 @@
+import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ChangePassWord/ChangePassWord.dart';
 import 'package:akari/presentation/screens/ContactUs/ContactUs.dart';
 import 'package:akari/presentation/screens/More/components/MyAdsScreen.dart';
-import 'package:akari/presentation/screens/ProfilePage/ProfilePage.dart';
 import 'package:akari/presentation/screens/TAC/TAC.dart';
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen();
@@ -21,34 +21,38 @@ class MoreScreen extends StatefulWidget {
 
 class _MoreScreenState extends State<MoreScreen> {
   // MoreController _MoreController = MoreController();
+  String selectedLang = 'non';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     // _MoreController.MoreAPIs(context, CacheHelper.getFromShared("token"));
+    LocalCubit.get(context).getSavedLanguage();
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView(shrinkWrap: true, children: [
       Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           left: 24,
           right: 24,
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
 
             //////////////////// change password
 
             InkWell(
-              onTap: () => myApplication.navigateTo(ChangePassWord(), context),
+              onTap: () =>
+                  myApplication.navigateTo(const ChangePassWord(), context),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 height: 48,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -57,15 +61,16 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Row(
                   children: [
                     SvgPicture.asset(pass11),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      "Change password",
-                      style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                      "Change password".tr(context),
+                      style:
+                          const TextStyle(fontFamily: "Tajawal", fontSize: 16),
                     ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward_sharp)
+                    const Spacer(),
+                    const Icon(Icons.arrow_forward_sharp)
                   ],
                 ),
               ),
@@ -76,15 +81,15 @@ class _MoreScreenState extends State<MoreScreen> {
             CacheHelper.getFromShared("isAdvertiser") == "yes"
                 ? Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       InkWell(
                         onTap: () =>
                             myApplication.navigateTo(MyAdsScreen(), context),
                         child: Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 5),
                           height: 48,
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -97,17 +102,17 @@ class _MoreScreenState extends State<MoreScreen> {
                                 height: 30,
                                 color: Theme.of(context).colorScheme.primary,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               ),
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     "My Ads.",
                                     style: TextStyle(
                                         fontFamily: "Tajawal", fontSize: 16),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
@@ -121,19 +126,19 @@ class _MoreScreenState extends State<MoreScreen> {
                                   ),
                                 ],
                               ),
-                              Spacer(),
-                              Icon(Icons.arrow_forward_sharp)
+                              const Spacer(),
+                              const Icon(Icons.arrow_forward_sharp)
                             ],
                           ),
                         ),
                       ),
                     ],
                   )
-                : SizedBox(),
+                : const SizedBox(),
 
             //////////////////// Currancy
 
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             InkWell(
@@ -145,11 +150,11 @@ class _MoreScreenState extends State<MoreScreen> {
                     builder: (BuildContext context) {
                       return Container(
                         // margin: EdgeInsets.symmetric(horizontal: 10),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 40),
                         height: 280,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25)),
                             color: Colors.white,
@@ -168,11 +173,11 @@ class _MoreScreenState extends State<MoreScreen> {
                                         Theme.of(context).colorScheme.primary),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             RadioListTile(
-                              title: Text("Sudanese pound (SD)"),
+                              title: const Text("Sudanese pound (SD)"),
                               value: "value",
                               groupValue: "valuse",
                               onChanged: (value) {},
@@ -182,7 +187,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                   Theme.of(context).colorScheme.primary,
                             ),
                             RadioListTile(
-                              title: Text("Dollars (\$)"),
+                              title: const Text("Dollars (\$)"),
                               value: "value",
                               groupValue: "value",
                               onChanged: (value) {},
@@ -191,12 +196,14 @@ class _MoreScreenState extends State<MoreScreen> {
                               selectedTileColor:
                                   Theme.of(context).colorScheme.primary,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             myButton(
-                              () {},
-                              "Apply Changes",
+                              () {
+                                Navigator.pop(context);
+                              },
+                              "Apply Changes".tr(context),
                             ),
                           ],
                         ),
@@ -204,7 +211,8 @@ class _MoreScreenState extends State<MoreScreen> {
                     });
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 height: 48,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -213,16 +221,17 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Row(
                   children: [
                     SvgPicture.asset(termss),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Row(
                       children: [
                         Text(
-                          "Currency : ",
-                          style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                          "Currency : ".tr(context),
+                          style: const TextStyle(
+                              fontFamily: "Tajawal", fontSize: 16),
                         ),
-                        Text("Sudanese pound (SD)",
+                        Text("Sudanese pound (SD)".tr(context),
                             style: TextStyle(
                                 fontFamily: "Tajawal",
                                 fontSize: 16,
@@ -234,7 +243,7 @@ class _MoreScreenState extends State<MoreScreen> {
               ),
             ),
             //////////////////
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             InkWell(
@@ -246,11 +255,11 @@ class _MoreScreenState extends State<MoreScreen> {
                     builder: (BuildContext context) {
                       return Container(
                         // margin: EdgeInsets.symmetric(horizontal: 10),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 40),
                         height: 280,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25)),
                             color: Colors.white,
@@ -262,42 +271,81 @@ class _MoreScreenState extends State<MoreScreen> {
                           children: [
                             Center(
                               child: Text(
-                                "Choose Language",
+                                "Choose Language".tr(context),
                                 style: TextStyle(
                                     fontSize: 20,
                                     color:
                                         Theme.of(context).colorScheme.primary),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
-                            RadioListTile(
-                              title: Text("English"),
-                              value: "value",
-                              groupValue: "valuse",
-                              onChanged: (value) {},
-                              activeColor:
-                                  Theme.of(context).colorScheme.primary,
-                              selectedTileColor:
-                                  Theme.of(context).colorScheme.primary,
+                            BlocListener<LocalCubit, LocalState>(
+                              listener: (context, state) {
+                                if (state is ChangeLocaleState) {
+                                  if (state.local.languageCode == "en") {
+                                    selectedLang = "English";
+                                  } else {
+                                    selectedLang = "العربية";
+                                  }
+                                }
+                              },
+                              child: Column(
+                                children: [
+                                  RadioListTile(
+                                    title: const Text("English"),
+                                    value: "English",
+                                    groupValue:
+                                        LocalCubit.get(context).selectedLang1,
+                                    onChanged: (value) {
+                                      LocalCubit.get(context).selectedLang1 =
+                                          value!;
+                                      String langCode = LocalCubit.get(context)
+                                                  .selectedLang1 ==
+                                              "English"
+                                          ? 'en'
+                                          : 'ar';
+                                      LocalCubit.get(context)
+                                          .changeLanguage(langCode);
+                                    },
+                                    activeColor:
+                                        Theme.of(context).colorScheme.primary,
+                                    selectedTileColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                  RadioListTile(
+                                    title: const Text("العربية"),
+                                    value: "العربية",
+                                    groupValue:
+                                        LocalCubit.get(context).selectedLang1,
+                                    onChanged: (value) {
+                                      LocalCubit.get(context).selectedLang1 =
+                                          value!;
+                                      String langCode = LocalCubit.get(context)
+                                                  .selectedLang1 ==
+                                              "English"
+                                          ? 'en'
+                                          : 'ar';
+                                      LocalCubit.get(context)
+                                          .changeLanguage(langCode);
+                                    },
+                                    activeColor:
+                                        Theme.of(context).colorScheme.primary,
+                                    selectedTileColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                ],
+                              ),
                             ),
-                            RadioListTile(
-                              title: Text("العربية"),
-                              value: "value",
-                              groupValue: "value",
-                              onChanged: (value) {},
-                              activeColor:
-                                  Theme.of(context).colorScheme.primary,
-                              selectedTileColor:
-                                  Theme.of(context).colorScheme.primary,
-                            ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             myButton(
-                              () {},
-                              "Apply Changes",
+                              () {
+                                Navigator.pop(context);
+                              },
+                              "Apply Changes".tr(context),
                             ),
                           ],
                         ),
@@ -305,7 +353,8 @@ class _MoreScreenState extends State<MoreScreen> {
                     });
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 height: 48,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -314,16 +363,17 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Row(
                   children: [
                     SvgPicture.asset(pass11),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Row(
                       children: [
                         Text(
-                          "Language : ",
-                          style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                          "Language : ".tr(context),
+                          style: const TextStyle(
+                              fontFamily: "Tajawal", fontSize: 16),
                         ),
-                        Text("English",
+                        Text(LocalCubit.get(context).selectedLang1,
                             style: TextStyle(
                                 fontFamily: "Tajawal",
                                 fontSize: 16,
@@ -335,13 +385,14 @@ class _MoreScreenState extends State<MoreScreen> {
               ),
             ),
             //////////////////
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             InkWell(
-              onTap: () => myApplication.navigateTo(ContactUs(), context),
+              onTap: () => myApplication.navigateTo(const ContactUs(), context),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 height: 48,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -350,27 +401,29 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Row(
                   children: [
                     SvgPicture.asset(termss),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      "Contact us",
-                      style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                      "Contact us".tr(context),
+                      style:
+                          const TextStyle(fontFamily: "Tajawal", fontSize: 16),
                     ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward_sharp)
+                    const Spacer(),
+                    const Icon(Icons.arrow_forward_sharp)
                   ],
                 ),
               ),
             ),
             //////////////////
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             InkWell(
-              onTap: () => myApplication.navigateTo(TAC(), context),
+              onTap: () => myApplication.navigateTo(const TAC(), context),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 height: 48,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -379,25 +432,27 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Row(
                   children: [
                     SvgPicture.asset(termss),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      "Terms and conditions",
-                      style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                      "Terms and conditions".tr(context),
+                      style:
+                          const TextStyle(fontFamily: "Tajawal", fontSize: 16),
                     ),
                   ],
                 ),
               ),
             ),
             //////////////////
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             InkWell(
-              onTap: () => myApplication.navigateTo(TAC(), context),
+              onTap: () => myApplication.navigateTo(const TAC(), context),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 height: 48,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -406,12 +461,13 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Row(
                   children: [
                     SvgPicture.asset(termss),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      "Privacy policy",
-                      style: TextStyle(fontFamily: "Tajawal", fontSize: 16),
+                      "Privacy policy".tr(context),
+                      style:
+                          const TextStyle(fontFamily: "Tajawal", fontSize: 16),
                     ),
                   ],
                 ),

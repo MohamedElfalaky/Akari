@@ -1,12 +1,4 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
-
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
-import 'package:akari/presentation/widgets/Shared/Button.dart';
-import 'package:akari/presentation/widgets/Shared/TextField.dart';
-import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TACScreen extends StatefulWidget {
   const TACScreen();
@@ -20,7 +12,6 @@ class _TACScreenState extends State<TACScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // _TACController.TACAPIs(context, CacheHelper.getFromShared("token"));
   }

@@ -22,10 +22,6 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/dio_helper.dart';
 import 'package:akari/data/cubits/Local/local_cubit.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/FormPage1.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/P2Villa&Appartment.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page5/FormPage5.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
 import 'package:akari/presentation/screens/AllCategory.dart';
 import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/presentation/screens/Filter.dart';
@@ -54,7 +50,7 @@ void main() async {
 }
 
 Future initialization(BuildContext? context) async {
-  await Future.delayed(Duration(seconds: 0));
+  await Future.delayed(const Duration(seconds: 0));
   FlutterNativeSplash.remove();
 }
 
@@ -112,9 +108,10 @@ class MyApp extends StatelessWidget {
                     ],
                     background: Container(color: const Color(0xFFF5F5F5))),
                 debugShowCheckedModeBanner: false,
-                locale: state is ChangeLocaleState
-                    ? state.local
-                    : const Locale('en'),
+                // locale: state is ChangeLocaleState
+                //     ? state.local
+                //     : const Locale('en'),
+                locale: const Locale('en'),
                 // const Locale('ar'),
                 supportedLocales: const [
                   Locale('en'),
@@ -129,25 +126,25 @@ class MyApp extends StatelessWidget {
                 ],
                 title: 'Flutter Demo',
                 theme: ThemeData(
-                  primaryColor: Color(0xFFDC8035),
+                  primaryColor: const Color(0xFFDC8035),
                   colorScheme: ThemeData().colorScheme.copyWith(
-                      primary: Color(0xFFDC8035),
-                      secondary: Color(0xFF116A92),
-                      tertiary: Color(0xFFF4F4F4)),
-                  scaffoldBackgroundColor: Color(0xFFF4F4F4),
+                      primary: const Color(0xFFDC8035),
+                      secondary: const Color(0xFF116A92),
+                      tertiary: const Color(0xFFF4F4F4)),
+                  scaffoldBackgroundColor: const Color(0xFFF4F4F4),
                   // primarySwatch: Colors.blue,
                 ),
                 routes: {
-                  '/splash': (context) => Splash(),
-                  '/onboarding': (context) => OnBoarding(),
-                  '/appmain': (context) => AppMain(),
-                  '/filter': (context) => Filter(),
-                  '/allcategory': (context) => AllCategory(),
+                  '/splash': (context) => const Splash(),
+                  '/onboarding': (context) => const OnBoarding(),
+                  '/appmain': (context) => const AppMain(),
+                  '/filter': (context) => const Filter(),
+                  '/allcategory': (context) => const AllCategory(),
                   '/register': (context) => Register(),
                   '/login': (context) => LogIn(),
                   '/forgetpassword': (context) => ForgetPassword(),
                 },
-                home: Splash());
+                home: const Splash());
           });
         },
       ),

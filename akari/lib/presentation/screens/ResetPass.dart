@@ -1,27 +1,24 @@
 import 'package:akari/data/cubits/Registration/RegistrationCubit.dart';
-import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
-import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/widgets/OtpSent.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
-import 'package:pinput/pinput.dart';
+import '../../helpers/AppLocalizations.dart';
 
+// ignore: must_be_immutable
 class ResetPass extends StatelessWidget {
   String userMail;
   String token;
   ResetPass({super.key, required this.userMail, required this.token});
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _passWordText = TextEditingController();
-  TextEditingController _rePassWordText = TextEditingController();
+  final TextEditingController _passWordText = TextEditingController();
+  final TextEditingController _rePassWordText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +57,10 @@ class ResetPass extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: myApplication.widthClc(context, 24)),
                       decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 offset: Offset(0, 2),
-                                color: Color(0xFF66718514),
+                                color: Color(0x66718514),
                                 blurRadius: 4)
                           ],
                           color: Colors.white,
@@ -79,7 +76,7 @@ class ResetPass extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 16)),
                             child: Center(
                               child: Text(
-                                "Reset your Password",
+                                "Reset your Password".tr(context),
                                 style: TextStyle(
                                     fontFamily: "Tajawal",
                                     fontSize: 24,
@@ -94,7 +91,8 @@ class ResetPass extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 6)),
                             child: Center(
                               child: Text(
-                                "Enter your new password and confirm it, the two passwords must be the same",
+                                "Enter your new password and confirm it, the two passwords must be the same"
+                                    .tr(context),
                                 style: TextStyle(
                                     fontFamily: "Tajawal,Regular",
                                     fontSize: 16,
@@ -103,7 +101,7 @@ class ResetPass extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           BlocBuilder<RegistrationCubit, RegistrationState>(
@@ -113,7 +111,7 @@ class ResetPass extends StatelessWidget {
                                   myTextField(
                                     obscureTxt: RegistrationCubit.get(context)
                                         .isHiddenPass1,
-                                    hint: "Password",
+                                    hint: "Password".tr(context),
                                     prefix:
                                         "assets/registerPics/vuesax-bulk-lock.svg",
                                     suffix: InkWell(
@@ -124,9 +122,11 @@ class ResetPass extends StatelessWidget {
                                             .securityIcon1),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "please enter your Password";
+                                        return "please enter your Password"
+                                            .tr(context);
                                       } else if (value.length <= 7) {
-                                        return "Password must be more than 7 fileds";
+                                        return "Password must be more than 7 fileds"
+                                            .tr(context);
                                       }
                                       return null;
                                     },
@@ -138,7 +138,7 @@ class ResetPass extends StatelessWidget {
                                   myTextField(
                                     obscureTxt: RegistrationCubit.get(context)
                                         .isHiddenPass2,
-                                    hint: "Confirm Password",
+                                    hint: "Confirm Password".tr(context),
                                     prefix:
                                         "assets/registerPics/vuesax-bulk-lock.svg",
                                     suffix: InkWell(
@@ -149,9 +149,11 @@ class ResetPass extends StatelessWidget {
                                             .securityIcon2),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "please re-enter your Password";
+                                        return "please re-enter your Password"
+                                            .tr(context);
                                       } else if (value != _passWordText.text) {
-                                        return "Passwords are not matching";
+                                        return "Passwords are not matching"
+                                            .tr(context);
                                       }
                                       return null;
                                     },
@@ -161,15 +163,13 @@ class ResetPass extends StatelessWidget {
                               );
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           BlocBuilder<ResetPassCubit, ResetPassState>(
                             builder: (context, state) {
                               return state is! ResetPassLoading
                                   ? myButton(() {
-                                      print(token);
-                                      print(_passWordText.text);
                                       if (_formKey.currentState!.validate()) {
                                         context
                                             .read<ResetPassCubit>()
@@ -177,8 +177,8 @@ class ResetPass extends StatelessWidget {
                                                 password: _passWordText.text,
                                                 token: token);
                                       }
-                                    }, "Reset password")
-                                  : Center(
+                                    }, "Reset password".tr(context))
+                                  : const Center(
                                       child: CircularProgressIndicator(),
                                     );
                             },

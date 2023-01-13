@@ -1,13 +1,8 @@
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AppMain/components/AppMainScreen.dart';
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
-import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
+
 import 'package:akari/presentation/widgets/Filter/FilterAppBar.dart';
 import 'package:akari/presentation/widgets/Filter/FilterScreen.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Filter extends StatefulWidget {
   const Filter({super.key});
@@ -30,7 +25,7 @@ class _FilterState extends State<Filter> {
         appBar: AppBar(
           automaticallyImplyLeading: false, // remove back button in appbar.
 
-          backgroundColor: Color(0xFFFFFFFF),
+          backgroundColor: const Color(0xFFFFFFFF),
           toolbarHeight: myApplication.hightClc(context, 155),
           elevation: 0,
           title: FilterAppBar(),

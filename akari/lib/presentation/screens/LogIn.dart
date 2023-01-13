@@ -2,15 +2,13 @@ import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:akari/presentation/screens/AppMain/AppMain.dart';
-import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
+import '../../helpers/AppLocalizations.dart';
 
 class LogIn extends StatelessWidget {
   LogIn({super.key});
@@ -36,7 +34,7 @@ class LogIn extends StatelessWidget {
                   .isNotEmpty
               ? CacheHelper.saveToShared("isAdvertiser", "yes")
               : CacheHelper.saveToShared("isAdvertiser", "no");
-          myApplication.navigateToRemove(context, AppMain());
+          myApplication.navigateToRemove(context, const AppMain());
         }
       },
       child: GestureDetector(
@@ -70,7 +68,7 @@ class LogIn extends StatelessWidget {
                             horizontal: myApplication.widthClc(context, 24)),
                         decoration: BoxDecoration(
                             boxShadow: [
-                              BoxShadow(
+                              const BoxShadow(
                                   offset: Offset(0, 2),
                                   color: Color(0xFF66718514),
                                   blurRadius: 4)
@@ -87,8 +85,8 @@ class LogIn extends StatelessWidget {
                                   top: myApplication.hightClc(context, 16),
                                   bottom: myApplication.hightClc(context, 8)),
                               child: Center(
-                                child: AutoSizeText(
-                                  "Login",
+                                child: Text(
+                                  "Login".tr(context),
                                   style: TextStyle(
                                       fontFamily: "Tajawal",
                                       fontSize: 24,
@@ -102,9 +100,9 @@ class LogIn extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: myApplication.hightClc(context, 24)),
                               child: Center(
-                                child: AutoSizeText(
-                                  "Welcome to Smart Building!",
-                                  style: TextStyle(
+                                child: Text(
+                                  "Welcome to Smart Building!".tr(context),
+                                  style: const TextStyle(
                                       fontFamily: "Tajawal,Regular",
                                       fontSize: 13,
                                       color: Color(0xFF363A3D)),
@@ -113,16 +111,17 @@ class LogIn extends StatelessWidget {
                             ),
                             myTextField(
                               controller: mailText,
-                              hint: "Email",
+                              hint: "Email".tr(context),
                               prefix: "assets/registerPics/vuesax-bulk-sms.svg",
                               // suffix: LoginCubit.get(context).securityIcon,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "Please enter your mail";
+                                  return "Please enter your mail".tr(context);
                                 } else if (value.isNotEmpty &&
                                     !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                         .hasMatch(value)) {
-                                  return "Please use mail formoula email@email.com";
+                                  return "Please use mail formoula email@email.com"
+                                      .tr(context);
                                 }
                               },
                             ),
@@ -136,7 +135,7 @@ class LogIn extends StatelessWidget {
                                   controller: passwordText,
                                   obscureTxt:
                                       LoginCubit.get(context).isHiddenPass,
-                                  hint: "Password",
+                                  hint: "Password".tr(context),
                                   prefix:
                                       "assets/registerPics/vuesax-bulk-lock.svg",
                                   suffix: InkWell(
@@ -146,9 +145,11 @@ class LogIn extends StatelessWidget {
                                           LoginCubit.get(context).securityIcon),
                                   validator: (value) {
                                     if (value!.isEmpty) {
-                                      return "please enter your Password";
+                                      return "please enter your Password"
+                                          .tr(context);
                                     } else if (value.length <= 5) {
-                                      return "Password must be more than 5 fileds";
+                                      return "Password must be more than 5 fileds"
+                                          .tr(context);
                                     }
                                     return null;
                                   },
@@ -162,8 +163,8 @@ class LogIn extends StatelessWidget {
                             InkWell(
                                 onTap: () => Navigator.pushNamed(
                                     context, "/forgetpassword"),
-                                child: AutoSizeText(
-                                  "Forget password ?",
+                                child: Text(
+                                  "Forget password ?".tr(context),
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontFamily: "Tajawal,Regular",
@@ -188,8 +189,8 @@ class LogIn extends StatelessWidget {
                                               mail: mailText.text,
                                               password: passwordText.text);
                                         }
-                                      }, "Log in")
-                                    : Center(
+                                      }, "Log in".tr(context))
+                                    : const Center(
                                         child: CircularProgressIndicator(),
                                       );
                               },
@@ -200,9 +201,9 @@ class LogIn extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                AutoSizeText(
-                                  "Don't have an account!",
-                                  style: TextStyle(
+                                Text(
+                                  "Don't have an account!".tr(context),
+                                  style: const TextStyle(
                                     fontFamily: "Tajawal",
                                     color: Color(0XFF116A92),
                                     fontSize: 16,
@@ -216,8 +217,8 @@ class LogIn extends StatelessWidget {
                                       //     "/register",
                                       //     (Route<dynamic> route) => false);
                                     },
-                                    child: AutoSizeText("  sign up",
-                                        style: TextStyle(
+                                    child: Text("  sign up".tr(context),
+                                        style: const TextStyle(
                                             fontFamily: "Tajawal",
                                             color: Color(
                                               0XFFDC8035,

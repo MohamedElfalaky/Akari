@@ -5,12 +5,12 @@ import 'package:akari/presentation/widgets/Shared/AlreadyHaveAccount.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+import '../../helpers/AppLocalizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
+// ignore: must_be_immutable
 class Register extends StatelessWidget {
   Register({super.key});
 
@@ -38,13 +38,13 @@ class Register extends StatelessWidget {
               myApplication.navigateTo(
                   OTP(
                     userMail: state.myRegistrationModel.data!.email!,
-                    fromWhere: "register",
+                    fromWhere: "register".tr(context),
                   ),
                   context);
             }
           },
           child: ListView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               Form(
                 key: _formKey,
@@ -67,10 +67,10 @@ class Register extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: myApplication.widthClc(context, 24)),
                       decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 offset: Offset(0, 2),
-                                color: Color(0xFF66718514),
+                                color: Color(0xff66718514),
                                 blurRadius: 4)
                           ],
                           color: Colors.white,
@@ -78,7 +78,7 @@ class Register extends StatelessWidget {
                               topLeft: Radius.circular(30.sp),
                               topRight: Radius.circular(30.sp))),
                       child: ListView(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
                         children: [
                           Column(
@@ -89,7 +89,7 @@ class Register extends StatelessWidget {
                                     top: myApplication.hightClc(context, 16),
                                     bottom: myApplication.hightClc(context, 8)),
                                 child: Text(
-                                  "Create Account",
+                                  "Create Account".tr(context),
                                   style: TextStyle(
                                       fontFamily: "Tajawal",
                                       fontSize: 24,
@@ -103,8 +103,8 @@ class Register extends StatelessWidget {
                                     bottom:
                                         myApplication.hightClc(context, 24)),
                                 child: Text(
-                                  "Be part of Aqari Now !",
-                                  style: TextStyle(
+                                  "Be part of Aqari Now !".tr(context),
+                                  style: const TextStyle(
                                       fontFamily: "Tajawal,Regular",
                                       fontSize: 13,
                                       color: Color(0xFF363A3D)),
@@ -113,15 +113,16 @@ class Register extends StatelessWidget {
                             ],
                           ),
                           myTextField(
-                            hint: "Email",
+                            hint: "Email".tr(context),
                             prefix: "assets/registerPics/vuesax-bulk-sms.svg",
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Please enter your mail";
+                                return "Please enter your mail".tr(context);
                               } else if (value.isNotEmpty &&
                                   !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                       .hasMatch(value)) {
-                                return "Please use mail formoula email@email.com";
+                                return "Please use mail formoula email@email.com"
+                                    .tr(context);
                               }
                               return null;
                             },
@@ -135,10 +136,11 @@ class Register extends StatelessWidget {
                             prefix: "assets/registerPics/user-bulk.svg",
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Please enter your Name";
+                                return "Please enter your Name".tr(context);
                               } else if (value.isNotEmpty &&
                                   value.length <= 5) {
-                                return "Name must be more then 5 characters ";
+                                return "Name must be more then 5 characters "
+                                    .tr(context);
                               }
                               return null;
                             },
@@ -148,15 +150,16 @@ class Register extends StatelessWidget {
                             height: myApplication.hightClc(context, 16),
                           ),
                           myTextField(
-                            hint: "Mobile",
+                            hint: "Mobile".tr(context),
                             prefix: "assets/registerPics/call-bulk.svg",
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "please enter your phone number";
+                                return "please enter your phone number"
+                                    .tr(context);
                               } else if (value.isNotEmpty &&
                                   !RegExp(r'(^(?:[+0]9)?[0-9]{11}$)')
                                       .hasMatch(value)) {
-                                return "Invalide mobile number";
+                                return "Invalide mobile number".tr(context);
                               }
                               return null;
                             },
@@ -173,7 +176,7 @@ class Register extends StatelessWidget {
                                   myTextField(
                                     obscureTxt: RegistrationCubit.get(context)
                                         .isHiddenPass1,
-                                    hint: "Password",
+                                    hint: "Password".tr(context),
                                     prefix:
                                         "assets/registerPics/vuesax-bulk-lock.svg",
                                     suffix: InkWell(
@@ -184,9 +187,11 @@ class Register extends StatelessWidget {
                                             .securityIcon1),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "please enter your Password";
+                                        return "please enter your Password"
+                                            .tr(context);
                                       } else if (value.length <= 7) {
-                                        return "Password must be more than 7 fileds";
+                                        return "Password must be more than 7 fileds"
+                                            .tr(context);
                                       }
                                       return null;
                                     },
@@ -198,7 +203,7 @@ class Register extends StatelessWidget {
                                   myTextField(
                                     obscureTxt: RegistrationCubit.get(context)
                                         .isHiddenPass2,
-                                    hint: "Confirm Password",
+                                    hint: "Confirm Password".tr(context),
                                     prefix:
                                         "assets/registerPics/vuesax-bulk-lock.svg",
                                     suffix: InkWell(
@@ -209,9 +214,11 @@ class Register extends StatelessWidget {
                                             .securityIcon2),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "please re-enter your Password";
+                                        return "please re-enter your Password"
+                                            .tr(context);
                                       } else if (value != passWordText.text) {
-                                        return "Passwords are not matching";
+                                        return "Passwords are not matching"
+                                            .tr(context);
                                       }
                                       return null;
                                     },
@@ -229,7 +236,6 @@ class Register extends StatelessWidget {
                               return state is! RegistrationLoading
                                   ? myButton(() {
                                       if (_formKey.currentState!.validate()) {
-                                        print("HElooooo");
                                         context
                                             .read<RegistrationCubit>()
                                             .userRegistration(
@@ -238,8 +244,8 @@ class Register extends StatelessWidget {
                                                 password: passWordText.text,
                                                 phone: phoneText.text);
                                       }
-                                    }, "Create Account")
-                                  : Center(
+                                    }, "Create Account".tr(context))
+                                  : const Center(
                                       child: CircularProgressIndicator(),
                                     );
                             },
@@ -257,8 +263,9 @@ class Register extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "By creating account you accept Smart Building",
-                                style: TextStyle(
+                                "By creating account you accept Smart Building"
+                                    .tr(context),
+                                style: const TextStyle(
                                   fontFamily: "Tajawal,Regular",
                                   color: Color(0XFF363A3D),
                                   fontSize: 14,
@@ -266,7 +273,8 @@ class Register extends StatelessWidget {
                               ),
                               InkWell(
                                   onTap: () {},
-                                  child: Text("Terms and conditions",
+                                  child: Text(
+                                      "Terms and conditions".tr(context),
                                       style: TextStyle(
                                           fontFamily: "Tajawal",
                                           color: Theme.of(context)

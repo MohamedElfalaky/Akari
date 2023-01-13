@@ -2,6 +2,7 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class AllCategoryAppBar extends StatelessWidget {
   const AllCategoryAppBar({super.key});
@@ -17,16 +18,16 @@ class AllCategoryAppBar extends StatelessWidget {
           Row(
             children: [
               AutoSizeText(
-                "All Categories",
-                style: TextStyle(
+                "All Categories".tr(context),
+                style: const TextStyle(
                     fontSize: 24,
                     fontFamily: "Tajawal,Medium",
                     color: Color(0xFF363A3D)),
               ),
-              Spacer(),
+              const Spacer(),
               InkWell(
                 onTap: () => Navigator.pop(context),
-                child: Icon(
+                child: const Icon(
                   Icons.close,
                   color: Color(0xFF363A3D),
                 ),
@@ -48,21 +49,21 @@ class AllCategoryAppBar extends StatelessWidget {
                     textAlignVertical: TextAlignVertical.center,
                     cursorHeight: 25,
                     decoration: InputDecoration(
-                        fillColor: Color(0xFFFFFFFF),
+                        fillColor: const Color(0xFFFFFFFF),
                         filled: true,
-                        hintText: "Find your state here !",
-                        focusedBorder: OutlineInputBorder(
+                        hintText: "Find your state here !".tr(context),
+                        focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                                 width: 1,
                                 color: Color.fromARGB(255, 47, 44, 44))),
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                             borderSide:
-                                BorderSide(width: 1, color: Color(70707033))),
+                                BorderSide(width: 1, color: Color(0x0436e759))),
                         contentPadding: EdgeInsets.only(
                             left: myApplication.widthClc(context, 10),
                             bottom: myApplication.hightClc(context, 10)),
                         prefixIcon: Container(
-                          margin: EdgeInsets.all(
+                          margin: const EdgeInsets.all(
                             5,
                           ),
                           child: SvgPicture.asset(

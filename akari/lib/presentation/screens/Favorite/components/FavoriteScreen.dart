@@ -7,6 +7,7 @@ import 'package:akari/presentation/screens/Favorite/controller/CartController.da
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen();
@@ -16,11 +17,10 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-  GetFavoritesController _FavoriteController = GetFavoritesController();
+  final GetFavoritesController _FavoriteController = GetFavoritesController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _FavoriteController.getFavoritesAPIs(
       context,
@@ -31,7 +31,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     return CacheHelper.getFromShared("token") == null
         ? Center(
-            child: Text("Please log in to access your favourite list"),
+            child:
+                Text("Please log in to access your favourite list".tr(context)),
           )
         : BlocBuilder<GetFavoritesCubit, GetFavoritesState>(
             builder: (context, state) {
@@ -42,7 +43,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           : state.myGetFavoritesModel.data!.length,
                       itemBuilder: (context, index) {
                         return state.myGetFavoritesModel.data!.length == 0
-                            ? Center(child: Text("Favorites list is empty"))
+                            ? Center(
+                                child:
+                                    Text("Favorites list is empty".tr(context)))
                             : InkWell(
                                 onTap: () => myApplication.navigateTo(
                                     AddDetails(
@@ -124,7 +127,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       },
                       shrinkWrap: true,
                     )
-                  : Center(
+                  : const Center(
                       child: CircularProgressIndicator(),
                     );
             },

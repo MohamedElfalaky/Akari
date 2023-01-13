@@ -1,25 +1,20 @@
 import 'package:akari/data/cubits/ConfirmAdd/ConfirmAddCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/LocationService.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page6/AdPosted.dart';
 import 'package:akari/presentation/screens/TAC/TAC.dart';
 
 import 'package:akari/presentation/widgets/Shared/Button.dart';
-import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:location/location.dart';
-import 'package:socket_io_client/socket_io_client.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class FormPage6 extends StatefulWidget {
   final String id;
   final String category;
-  FormPage6({super.key, required this.id, required this.category});
+  const FormPage6({super.key, required this.id, required this.category});
 
   @override
   State<FormPage6> createState() => _FormPage6State();
@@ -33,23 +28,23 @@ class _FormPage6State extends State<FormPage6> {
   final TextEditingController _mobileNumberText =
       TextEditingController(text: CacheHelper.getFromShared("phone"));
   bool confirmTerms = false;
-  List<String> _yourcapacity = [
+  final List<String> _yourcapacity = [
     "Owner",
     "Advertiser",
     "Representative",
   ];
-  List<bool> _isSelected = [true, false, false];
+  final List<bool> _isSelected = [true, false, false];
 
   String capacityValue = "Owner";
   //////////////
 
-  List<String> _yourcapacity2 = [
+  final List<String> _yourcapacity2 = [
     "Chat",
     "Call",
     "WhatsApp",
     "All",
   ];
-  List<bool> _isSelected2 = [true, false, false, false];
+  final List<bool> _isSelected2 = [true, false, false, false];
 
   String capacityValue2 = "Chat";
   @override
@@ -75,53 +70,50 @@ class _FormPage6State extends State<FormPage6> {
               },
             ),
             leadingWidth: 30,
-            title: Container(
-              // margin: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Post new Ad.",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Tajawal",
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        "Advertiser details",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: "Tajawal",
-                            color: Theme.of(context).colorScheme.secondary),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  CircularStepProgressIndicator(
-                    totalSteps: 6,
-                    currentStep: 6,
-                    stepSize: 5,
-                    selectedColor: Theme.of(context).colorScheme.primary,
-                    unselectedColor: Colors.grey[300],
-                    padding: 0,
-                    width: 50,
-                    height: 50,
-                    selectedStepSize: 5,
-                    roundedCap: (_, __) => true,
-                    child: Center(
-                      child: Text(
-                        "6/6",
-                        style: TextStyle(color: Colors.black, fontSize: 14),
-                      ),
+            title: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Post new Ad.".tr(context),
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: "Tajawal",
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      "Advertiser details",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: "Tajawal",
+                          color: Theme.of(context).colorScheme.secondary),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                CircularStepProgressIndicator(
+                  totalSteps: 6,
+                  currentStep: 6,
+                  stepSize: 5,
+                  selectedColor: Theme.of(context).colorScheme.primary,
+                  unselectedColor: Colors.grey[300],
+                  padding: 0,
+                  width: 50,
+                  height: 50,
+                  selectedStepSize: 5,
+                  roundedCap: (_, __) => true,
+                  child: const Center(
+                    child: Text(
+                      "6/6",
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           body: Form(
@@ -131,59 +123,60 @@ class _FormPage6State extends State<FormPage6> {
               // physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
-                    margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+                    margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
                     // height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
 
                         Text(
-                          "Review your details",
-                          style: TextStyle(
+                          "Review your details".tr(context),
+                          style: const TextStyle(
                             fontSize: 16,
                             // fontFamily: "Tajawal",
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         myTextField(
                           prefix: usrr,
-                          hint: "Name *",
+                          hint: "Name *".tr(context),
                           controller: _nameText,
                           keyBoardType: TextInputType.text,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter your name";
+                              return "Please Enter your name".tr(context);
                             }
                             return null;
                           },
                         ),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
 
                         myTextField(
                           prefix: calll,
-                          hint: "Mobile Number *",
+                          hint: "Mobile Number *".tr(context),
                           controller: _mobileNumberText,
                           keyBoardType: TextInputType.number,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter your Mobile Number";
+                              return "Please Enter your Mobile Number"
+                                  .tr(context);
                             } else if (value.isNotEmpty &&
                                 !RegExp(r'(^(?:[+0]9)?[0-9]{11}$)')
                                     .hasMatch(value)) {
-                              return "Invalide mobile number";
+                              return "Invalide mobile number".tr(context);
                             }
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 26,
                         ),
                         ////////////////////////////////////////////////////////////////////////////////
@@ -191,13 +184,13 @@ class _FormPage6State extends State<FormPage6> {
                         ////////////////////////////////////////////////////////////////////////////////
 
                         Text(
-                          "Your capacity",
-                          style: TextStyle(
+                          "Your capacity".tr(context),
+                          style: const TextStyle(
                             fontSize: 16,
                             // fontFamily: "Tajawal",
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
 
@@ -210,8 +203,9 @@ class _FormPage6State extends State<FormPage6> {
                           //     .toList(),
                           children: _yourcapacity
                               .map((e) => Container(
-                                  margin: EdgeInsets.all(12), child: Text(e)))
-                              .toList() as List<Widget>,
+                                  margin: const EdgeInsets.all(12),
+                                  child: Text(e.tr(context))))
+                              .toList(),
                           onPressed: (newIndex) {
                             setState(() {
                               for (int myIndex = 0;
@@ -232,17 +226,17 @@ class _FormPage6State extends State<FormPage6> {
                         /////////////////////////////////////////////////////////////
 
                         ////////////////////////////////////////////////////////////////////////////////
-                        SizedBox(
+                        const SizedBox(
                           height: 26,
                         ),
                         Text(
-                          "Contact Method",
-                          style: TextStyle(
+                          "Contact Method".tr(context),
+                          style: const TextStyle(
                             fontSize: 16,
                             // fontFamily: "Tajawal",
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
 
@@ -255,8 +249,9 @@ class _FormPage6State extends State<FormPage6> {
                           //     .toList(),
                           children: _yourcapacity2
                               .map((e) => Container(
-                                  margin: EdgeInsets.all(12), child: Text(e)))
-                              .toList() as List<Widget>,
+                                  margin: const EdgeInsets.all(12),
+                                  child: Text(e.tr(context))))
+                              .toList(),
                           onPressed: (newIndex) {
                             setState(() {
                               for (int myIndex = 0;
@@ -265,7 +260,6 @@ class _FormPage6State extends State<FormPage6> {
                                 if (myIndex == newIndex) {
                                   _isSelected2[myIndex] = true;
                                   capacityValue2 = _yourcapacity2[myIndex];
-                                  print(capacityValue2);
                                 } else {
                                   _isSelected2[myIndex] = false;
                                 }
@@ -276,7 +270,7 @@ class _FormPage6State extends State<FormPage6> {
 
                         /////////////////////////////////////////////////////////////
 
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
 
@@ -297,7 +291,7 @@ class _FormPage6State extends State<FormPage6> {
                                 },
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             Column(
@@ -306,15 +300,16 @@ class _FormPage6State extends State<FormPage6> {
                                 Row(
                                   children: [
                                     Text(
-                                      "I have read and accepted all ",
-                                      style: TextStyle(
+                                      "I have read and accepted all "
+                                          .tr(context),
+                                      style: const TextStyle(
                                           fontSize: 16, fontFamily: "Tajawal"),
                                     ),
                                     InkWell(
                                       onTap: () => myApplication.navigateTo(
-                                          TAC(), context),
+                                          const TAC(), context),
                                       child: Text(
-                                        "Terms and Conditions ",
+                                        "Terms and Conditions ".tr(context),
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: "Tajawal",
@@ -326,26 +321,27 @@ class _FormPage6State extends State<FormPage6> {
                                   ],
                                 ),
                                 Text(
-                                  "of Smart Building ",
-                                  style: TextStyle(
+                                  "of Smart Building ".tr(context),
+                                  style: const TextStyle(
                                       fontSize: 16, fontFamily: "Tajawal"),
                                 ),
                               ],
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         confirmTerms == false
                             ? Text(
-                                "You must confirm terms and conditions",
-                                style:
-                                    TextStyle(color: Colors.red, fontSize: 12),
+                                "You must confirm terms and conditions"
+                                    .tr(context),
+                                style: const TextStyle(
+                                    color: Colors.red, fontSize: 12),
                               )
                             : Container(),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 180,
                         ),
 
@@ -354,14 +350,12 @@ class _FormPage6State extends State<FormPage6> {
                         BlocBuilder<ConfirmAddCubit, ConfirmAddState>(
                           builder: (context, state) {
                             return state is ConfirmAddLoading
-                                ? Center(
+                                ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
                                 : myButton(() {
                                     if (_formKey.currentState!.validate() &&
                                         confirmTerms == true) {
-                                      print("HElooooooooooooo");
-
                                       ConfirmAddCubit.get(context)
                                           .userConfirmAdd(
                                               name: _nameText.text,
@@ -380,7 +374,7 @@ class _FormPage6State extends State<FormPage6> {
                                         confirmTerms = false;
                                       });
                                     }
-                                  }, "continue  ➔");
+                                  }, "continue  ➔".tr(context));
                           },
                         ),
                       ],

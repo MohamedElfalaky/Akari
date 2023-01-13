@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../helpers/myApplication.dart';
+import '../../helpers/AppLocalizations.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -26,7 +27,7 @@ class _OnBoardingState extends State<OnBoarding> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 5), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
       if (_currentPage < 2) {
         _currentPage++;
       } else {
@@ -35,7 +36,7 @@ class _OnBoardingState extends State<OnBoarding> {
 
       controller.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 350),
+        duration: const Duration(milliseconds: 350),
         curve: Curves.easeIn,
       );
     });
@@ -56,7 +57,7 @@ class _OnBoardingState extends State<OnBoarding> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                color: Color(0XFFF4F4F4),
+                color: const Color(0XFFF4F4F4),
                 height: MediaQuery.of(context).size.height * 0.65,
                 width: MediaQuery.of(context).size.width * 1,
                 child: PageView(
@@ -68,7 +69,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         children: [
                           Expanded(
                             child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0XFFF4F4F4),
                               ),
                               // color: Color(0XFFFFFFFF),
@@ -78,17 +79,17 @@ class _OnBoardingState extends State<OnBoarding> {
                             ),
                           ),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color(0xFFFFFFFF),
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20))),
-                            padding: EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.only(top: 20),
                             child: Column(
                               children: [
                                 AutoSizeText(
-                                  "Find what you want",
-                                  style: TextStyle(
+                                  "Find what you want".tr(context),
+                                  style: const TextStyle(
                                       color: Color(0xFFDC8035),
                                       fontSize: 24,
                                       fontFamily: "Tajawal"),
@@ -105,8 +106,9 @@ class _OnBoardingState extends State<OnBoarding> {
                                               375),
                                   child: AutoSizeText(
                                     textAlign: TextAlign.center,
-                                    "Through a Smart Building application, you can search for real estate, land, or furnished units for sale, rent or investment",
-                                    style: TextStyle(
+                                    "Through a Smart Building application, you can search for real estate, land, or furnished units for sale, rent or investment"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontSize: 14, fontFamily: "Tajawal"),
                                   ),
                                 ),
@@ -127,7 +129,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           Expanded(
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Color(0XFFF4F4F4),
+                                  color: const Color(0XFFF4F4F4),
                                   borderRadius: BorderRadius.circular(30)),
                               // color: Color(0XFFFFFFFF),
                               child: Center(
@@ -139,17 +141,17 @@ class _OnBoardingState extends State<OnBoarding> {
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color(0xFFFFFFFF),
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20))),
-                            padding: EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.only(top: 20),
                             child: Column(
                               children: [
                                 AutoSizeText(
-                                  "Earn With Smart Building",
-                                  style: TextStyle(
+                                  "Earn With Smart Building".tr(context),
+                                  style: const TextStyle(
                                       fontFamily: "Tajawal",
                                       color: Color(0xFFDC8035),
                                       fontSize: 24),
@@ -166,8 +168,9 @@ class _OnBoardingState extends State<OnBoarding> {
                                               375),
                                   child: AutoSizeText(
                                     textAlign: TextAlign.center,
-                                    "Through a Smart Building application, you can search for real estate, land, or furnished units for sale, rent or investment",
-                                    style: TextStyle(
+                                    "Through a Smart Building application, you can search for real estate, land, or furnished units for sale, rent or investment"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontSize: 14, fontFamily: "Tajawal"),
                                   ),
                                 ),
@@ -188,7 +191,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           Expanded(
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Color(0XFFF4F4F4),
+                                  color: const Color(0XFFF4F4F4),
                                   borderRadius: BorderRadius.circular(30)),
                               // color: Color(0XFFFFFFFF),
                               child: Center(
@@ -200,17 +203,17 @@ class _OnBoardingState extends State<OnBoarding> {
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color(0xFFFFFFFF),
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20))),
-                            padding: EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.only(top: 20),
                             child: Column(
                               children: [
                                 AutoSizeText(
-                                  "Find what you want",
-                                  style: TextStyle(
+                                  "Find what you want".tr(context),
+                                  style: const TextStyle(
                                       fontFamily: "Tajawal",
                                       color: Color(0xFFDC8035),
                                       fontSize: 24),
@@ -227,8 +230,9 @@ class _OnBoardingState extends State<OnBoarding> {
                                               375),
                                   child: AutoSizeText(
                                     textAlign: TextAlign.center,
-                                    "Through a Smart Building application, you can search for real estate, land, or furnished units for sale, rent or investment",
-                                    style: TextStyle(
+                                    "Through a Smart Building application, you can search for real estate, land, or furnished units for sale, rent or investment"
+                                        .tr(context),
+                                    style: const TextStyle(
                                         fontFamily: "Tajawal", fontSize: 14),
                                   ),
                                 ),
@@ -246,7 +250,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 ),
               ),
               Container(
-                color: Color(0xFFFFFFFF),
+                color: const Color(0xFFFFFFFF),
                 child: Center(
                   child: SmoothPageIndicator(
                     controller: controller,
@@ -260,7 +264,7 @@ class _OnBoardingState extends State<OnBoarding> {
           ),
           Expanded(
             child: Container(
-              color: Color(0xFFFFFFFF),
+              color: const Color(0xFFFFFFFF),
               height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * 1,
               padding: EdgeInsets.only(
@@ -271,7 +275,7 @@ class _OnBoardingState extends State<OnBoarding> {
               child: Column(
                 children: [
                   myButton(() => Navigator.pushNamed(context, "/register"),
-                      "Create Account"),
+                      "Create Account".tr(context)),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 16 / 812,
                   ),
@@ -280,21 +284,22 @@ class _OnBoardingState extends State<OnBoarding> {
                       width: MediaQuery.of(context).size.width * 311 / 375,
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: Color(0XFF116A92)),
-                          shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Color(0XFF116A92)),
+                          shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(23))),
-                          textStyle: TextStyle(fontWeight: FontWeight.normal),
+                          textStyle:
+                              const TextStyle(fontWeight: FontWeight.normal),
                           elevation: 0,
                         ),
                         onPressed: () {
                           CacheHelper.removeFromShared("token");
-                          myApplication.navigateTo(AppMain(), context);
+                          myApplication.navigateTo(const AppMain(), context);
                         },
                         child: Center(
                             child: AutoSizeText(
-                          "Continue as aguest",
-                          style: TextStyle(
+                          "Continue as aguest".tr(context),
+                          style: const TextStyle(
                               fontFamily: "Tajawal",
                               fontSize: 16,
                               color: Color(0XFF116A92)),

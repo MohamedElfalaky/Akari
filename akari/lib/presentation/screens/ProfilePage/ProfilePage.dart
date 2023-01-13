@@ -1,15 +1,10 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ProfilePage/components/ProfilePageScreen.dart';
 
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
-
 import 'package:flutter/material.dart';
-
-import '../../../app/global.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage();
+  const ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -42,18 +37,18 @@ class _ProfilePageState extends State<ProfilePage> {
         }, // hide keyboard on tap anywhere
 
         child: Scaffold(
-            backgroundColor: Color(0xFFF4F4F4),
+            backgroundColor: const Color(0xFFF4F4F4),
             appBar: AppBar(
               automaticallyImplyLeading: false,
               // centerTitle: true,
               toolbarHeight: 80,
               elevation: 0,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.vertical(bottom: Radius.circular(16))),
               title: Text(
-                "ِEdit Profile",
-                style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
+                "ِEdit Profile".tr(context),
+                style: const TextStyle(fontSize: 24, fontFamily: "Tajawal"),
               ),
               leading: BackButton(
                 onPressed: () {
@@ -61,6 +56,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 },
               ),
             ),
-            body: ProfilePageScreen()));
+            body: const ProfilePageScreen()));
   }
 }

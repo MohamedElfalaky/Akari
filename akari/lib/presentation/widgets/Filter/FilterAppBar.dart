@@ -1,12 +1,12 @@
 import 'package:akari/App/constants.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+import '../../../helpers/AppLocalizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class FilterAppBar extends StatefulWidget {
-  FilterAppBar({super.key});
+  const FilterAppBar({super.key});
 
   @override
   State<FilterAppBar> createState() => _FilterAppBarState();
@@ -25,17 +25,17 @@ class _FilterAppBarState extends State<FilterAppBar> {
         children: [
           Row(
             children: [
-              AutoSizeText(
-                "Filters",
-                style: TextStyle(
+              Text(
+                "Filters".tr(context),
+                style: const TextStyle(
                     fontSize: 24,
                     fontFamily: "Tajawal,Medium",
                     color: Color(0xFF363A3D)),
               ),
-              Spacer(),
+              const Spacer(),
               InkWell(
                 onTap: () => Navigator.pop(context),
-                child: Icon(
+                child: const Icon(
                   Icons.close,
                   color: Color(0xFF363A3D),
                 ),
@@ -45,12 +45,12 @@ class _FilterAppBarState extends State<FilterAppBar> {
           SizedBox(
             height: myApplication.hightClc(context, 20),
           ),
-          AutoSizeText(
-            "State",
+          Text(
+            "State".tr(context),
             style: TextStyle(
                 fontSize: 16,
                 fontFamily: "Tajawal",
-                color: Color(0xFF363A3D).withOpacity(0.8)),
+                color: const Color(0xFF363A3D).withOpacity(0.8)),
           ),
           SizedBox(
             height: myApplication.hightClc(context, 4),
@@ -66,7 +66,7 @@ class _FilterAppBarState extends State<FilterAppBar> {
                   child: TypeAheadFormField(
                       suggestionsCallback: (pattern) => getSuggestion(pattern),
                       itemBuilder: (context, itemData) => Container(
-                            padding: EdgeInsets.only(left: 20),
+                            padding: const EdgeInsets.only(left: 20),
                             height: 50,
                             // width: 30,
                             child: Align(
@@ -81,21 +81,21 @@ class _FilterAppBarState extends State<FilterAppBar> {
                         textAlignVertical: TextAlignVertical.center,
                         // cursorWidth: 25,
                         decoration: InputDecoration(
-                            fillColor: Color(0xFFFFFFFF),
+                            fillColor: const Color(0xFFFFFFFF),
                             filled: true,
-                            hintText: "Find your state here !",
-                            focusedBorder: OutlineInputBorder(
+                            hintText: "Find your state here !".tr(context),
+                            focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     width: 1,
                                     color: Color.fromARGB(255, 47, 44, 44))),
-                            border: OutlineInputBorder(
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     width: 1, color: Color(70707033))),
                             contentPadding: EdgeInsets.only(
                                 left: myApplication.widthClc(context, 10),
                                 bottom: myApplication.hightClc(context, 10)),
                             prefixIcon: Container(
-                              margin: EdgeInsets.all(
+                              margin: const EdgeInsets.all(
                                 5,
                               ),
                               child: SvgPicture.asset(

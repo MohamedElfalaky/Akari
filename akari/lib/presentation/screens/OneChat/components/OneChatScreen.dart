@@ -8,6 +8,7 @@ import 'package:akari/presentation/widgets/Shared/TextField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socket_io_client/socket_io_client.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class OneChatScreen extends StatefulWidget {
   final String? roomId;
@@ -163,12 +164,13 @@ class _OneChatScreenState extends State<OneChatScreen> {
             ),
             width: double.infinity,
             child: myTextField(
+              isLabled: false,
               controller: _chatController,
               keyBoardType: TextInputType.multiline,
               minLines: 1,
               maxLines: 5,
               clr: Colors.white,
-              hint: "write your message here..",
+              hint: "write your message here..".tr(context),
               suffix: InkWell(
                 onTap: () {
                   sendMassage(

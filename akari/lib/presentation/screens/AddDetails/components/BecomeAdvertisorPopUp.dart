@@ -1,15 +1,12 @@
-import 'package:akari/data/cubits/Login_cubit/login_cubit.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/LogIn.dart';
-import 'package:akari/presentation/screens/Register.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class BecomeAdvertisorPopUp extends StatefulWidget {
+  const BecomeAdvertisorPopUp({super.key});
+
   @override
   State<BecomeAdvertisorPopUp> createState() => _BecomeAdvertisorPopUpState();
 }
@@ -18,13 +15,13 @@ class _BecomeAdvertisorPopUpState extends State<BecomeAdvertisorPopUp> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       scrollable: true,
       // title: Text('Filter'),
       content: Padding(
-          padding: EdgeInsets.all(1),
-          child: Container(
+          padding: const EdgeInsets.all(1),
+          child: SizedBox(
             width: 300,
             height: 360,
             child: Column(
@@ -35,15 +32,15 @@ class _BecomeAdvertisorPopUpState extends State<BecomeAdvertisorPopUp> {
                     children: [
                       InkWell(
                           onTap: () => Navigator.pop(context),
-                          child: Icon(Icons.close)),
+                          child: const Icon(Icons.close)),
                     ],
                   ),
                   SvgPicture.asset(becomeAdvertisor),
                   Container(
-                    margin: EdgeInsets.only(top: 24, bottom: 8),
+                    margin: const EdgeInsets.only(top: 24, bottom: 8),
                     child: Center(
                       child: Text(
-                        "You must have Advertiser Account",
+                        "You must have Advertiser Account".tr(context),
                         style: TextStyle(
                             fontFamily: "Tajawal",
                             fontSize: 18,
@@ -53,11 +50,12 @@ class _BecomeAdvertisorPopUpState extends State<BecomeAdvertisorPopUp> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 16),
+                    margin: const EdgeInsets.only(bottom: 16),
                     child: Center(
                       child: Text(
-                        "You must apply to become an advertiser so, you can continue adding new Ads.",
-                        style: TextStyle(
+                        "You must apply to become an advertiser so, you can continue adding new Ads."
+                            .tr(context),
+                        style: const TextStyle(
                             fontFamily: "Tajawal,Regular",
                             fontSize: 13,
                             color: Color(0xFF363A3D)),
@@ -68,7 +66,7 @@ class _BecomeAdvertisorPopUpState extends State<BecomeAdvertisorPopUp> {
                   myButton(() {
                     Navigator.pop(context);
                     // myApplication.navigateTo(Register(), context);
-                  }, "Become an Advertiser"),
+                  }, "Become an Advertiser".tr(context)),
                 ]),
           )),
     );

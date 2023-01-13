@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'package:akari/style/Icons.dart';
 
-import '../../helpers/AppLocalizations.dart';
 import 'package:akari/presentation/screens/OnBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Splash extends StatefulWidget {
-  Splash({super.key});
+  const Splash({super.key});
 
   @override
   State<Splash> createState() => _SplashState();
@@ -18,9 +17,9 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3),
+        const Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => OnBoarding())));
+            builder: (BuildContext context) => const OnBoarding())));
   }
 
   @override

@@ -28,7 +28,7 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, // remove back button in appbar.
-          backgroundColor: Color(0xFFFFFFFF),
+          backgroundColor: const Color(0xFFFFFFFF),
           toolbarHeight: myApplication.hightClc(context, 140),
           elevation: 0,
           title: AfterFilterAppBar(),
@@ -72,13 +72,13 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
                         );
                       },
                     )
-                  : Center(
+                  : const Center(
                       child: CircularProgressIndicator(),
                     );
             },
           ),
         ),
-        floatingActionButton: ViewOnMap(),
+        floatingActionButton: const ViewOnMap(),
 
         // floatingActionButtonLocation: FloatingActionButtonLocation,
       ),

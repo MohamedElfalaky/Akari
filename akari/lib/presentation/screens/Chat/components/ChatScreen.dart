@@ -1,34 +1,28 @@
-import 'dart:async';
-
 import 'package:akari/App/constants.dart';
-import 'package:akari/data/Models/get_rooms_model/get_rooms_model.dart';
-import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
+
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 import 'package:akari/presentation/screens/Chat/components/OneChatCard.dart';
 import 'package:akari/presentation/screens/Chat/controller/ChatController.dart';
 import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socket_io_client/socket_io_client.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen();
+  const ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  ChatController _ChatController = ChatController();
   Socket? mySocket;
+  // ignore: prefer_typing_uninitialized_variables
   var roomsModel;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     if (CacheHelper.getFromShared("token") != null) {
       initTheSocket();
@@ -37,7 +31,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -45,7 +38,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return CacheHelper.getFromShared("token") == null
         ? Center(
-            child: Text("Log in to reach your chat rooms"),
+            child: Text("Log in to reach your chat rooms".tr(context)),
           )
         : roomsModel != null && roomsModel != "unAuth"
             ? ListView.builder(
@@ -80,9 +73,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     ))
             : roomsModel == "unAuth"
                 ? Center(
-                    child: Text("UnAuthrized, please log in"),
+                    child: Text("UnAuthrized, please log in".tr(context)),
                   )
-                : Center(
+                : const Center(
                     child: CircularProgressIndicator(),
                   );
   }

@@ -1,18 +1,12 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AppMain/controller/AppMainController.dart';
 import 'package:akari/presentation/widgets/AllCategory/AllCategoryAppBar.dart';
-import 'package:akari/presentation/screens/AppMain/components/AppMainScreen.dart';
-import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+
 import 'package:akari/presentation/screens/AppMain/components/TabBarItem.dart';
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
-import 'package:akari/presentation/widgets/Filter/FilterAppBar.dart';
-import 'package:akari/presentation/widgets/Filter/FilterScreen.dart';
+
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:sizer/sizer.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class AllCategory extends StatefulWidget {
   const AllCategory({super.key});
@@ -51,7 +45,8 @@ class _AllCategoryState extends State<AllCategory> {
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,
               children: categoryDropDown
-                  .map((e) => TabBarItem(e["name"], e["img"], () {
+                  .map((e) => TabBarItem(
+                          e["name"].toString().tr(context), e["img"], () {
                         appMainController.AppMainAPIs(
                             myContext: context, limit: 4);
                       }))

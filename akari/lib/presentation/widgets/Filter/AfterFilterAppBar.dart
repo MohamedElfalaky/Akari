@@ -1,12 +1,11 @@
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class AfterFilterAppBar extends StatelessWidget {
-
+  const AfterFilterAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +18,17 @@ class AfterFilterAppBar extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Result",
-                style: TextStyle(
+                "Result".tr(context),
+                style: const TextStyle(
                     fontSize: 24,
                     fontFamily: "Tajawal,Medium",
                     color: Color(0xFF363A3D)),
               ),
-              Spacer(),
+              const Spacer(),
               InkWell(
                 onTap: () => Navigator.pushNamedAndRemoveUntil(
                     context, "/appmain", (route) => false),
-                child: Icon(
+                child: const Icon(
                   Icons.close,
                   color: Color(0xFF363A3D),
                 ),
@@ -44,7 +43,7 @@ class AfterFilterAppBar extends StatelessWidget {
               context,
               MaterialPageRoute<void>(
                   builder: (BuildContext context) =>
-                      AfterFilterAndSearch("Search relust"))))
+                      const AfterFilterAndSearch("Search relust"))))
         ],
       ),
     );

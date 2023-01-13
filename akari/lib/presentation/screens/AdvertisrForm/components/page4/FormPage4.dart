@@ -1,10 +1,7 @@
 import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/LocationService.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page5/FormPage5.dart';
-import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
+
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
@@ -14,12 +11,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:location/location.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:location/location.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class FormPage4 extends StatefulWidget {
   final String id;
   final String category;
-  FormPage4({super.key, required this.id, required this.category});
+  const FormPage4({super.key, required this.id, required this.category});
 
   @override
   State<FormPage4> createState() => _FormPage4State();
@@ -65,17 +62,17 @@ class _FormPage4State extends State<FormPage4> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Post new Ad.",
-                        style: TextStyle(
+                        "Post new Ad.".tr(context),
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "Tajawal",
                             color: Colors.black),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text(
-                        "Address & Price details",
+                        "Address & Price details".tr(context),
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
@@ -83,7 +80,7 @@ class _FormPage4State extends State<FormPage4> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   CircularStepProgressIndicator(
                     totalSteps: 6,
                     currentStep: 4,
@@ -95,7 +92,7 @@ class _FormPage4State extends State<FormPage4> {
                     height: 50,
                     selectedStepSize: 5,
                     roundedCap: (_, __) => true,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "4/6",
                         style: TextStyle(color: Colors.black, fontSize: 14),
@@ -113,21 +110,21 @@ class _FormPage4State extends State<FormPage4> {
               // physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
-                    margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+                    margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
                     // height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       children: [
                         Row(
                           children: [
                             SvgPicture.asset(adress1),
-                            SizedBox(
+                            const SizedBox(
                               width: 3,
                             ),
                             Text(
-                              "Address",
-                              style: TextStyle(fontSize: 16),
+                              "Address".tr(context),
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             InkWell(
                                 onTap: () {
                                   getMyLocation();
@@ -135,14 +132,14 @@ class _FormPage4State extends State<FormPage4> {
                                 child: SvgPicture.asset(adress2))
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 11,
                         ),
                         Container(
                           // dropdown menu container
                           // padding: EdgeInsets.all(5),
                           child: DropdownButtonFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               fillColor: Color(0xffFFF7E999),
                               filled: true,
                               border: InputBorder.none, // شلت البوردر
@@ -157,11 +154,11 @@ class _FormPage4State extends State<FormPage4> {
                                     color:
                                         Theme.of(context).colorScheme.secondary,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  Text("States"),
-                                  Text(
+                                  Text("States".tr(context)),
+                                  const Text(
                                     " *",
                                     style: TextStyle(color: Colors.red),
                                   )
@@ -181,55 +178,57 @@ class _FormPage4State extends State<FormPage4> {
                             }).toList(),
                             validator: (value) {
                               if (_dropDownValue == null) {
-                                return "You must select a category";
+                                return "You must select a state".tr(context);
                               }
                               ;
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         myTextField(
-                          hint: "District *",
+                          hint: "District *".tr(context),
                           controller: _districtText,
                           keyBoardType: TextInputType.text,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter District";
+                              return "Please Enter District".tr(context);
                             }
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         myTextField(
-                          hint: "Detailed Address *",
+                          hint: "Detailed Address *".tr(context),
                           controller: _detailedAddressText,
                           keyBoardType: TextInputType.text,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter Detailed Address";
+                              return "Please Enter Detailed Address"
+                                  .tr(context)
+                                  .tr(context);
                             }
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         myTextField(
-                          hint: "P. O. Box",
+                          hint: "P. O. Box".tr(context),
                           controller: _pOBox,
                           keyBoardType: TextInputType.text,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter P. O. Box";
+                              return "Please Enter P. O. Box".tr(context);
                             }
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 250,
                         ),
 
@@ -238,12 +237,11 @@ class _FormPage4State extends State<FormPage4> {
                         BlocBuilder<addAddressCubit, addAddressState>(
                           builder: (context, state) {
                             return state is addAddressLoading
-                                ? Center(
+                                ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
                                 : myButton(() {
                                     if (_formKey.currentState!.validate()) {
-                                      print("HElooooooooooooo");
                                       // myApplication.navigateTo(FormPage5(), context);
                                       addAddressCubit
                                           .get(context)
@@ -258,7 +256,7 @@ class _FormPage4State extends State<FormPage4> {
                                               widget.category,
                                               context);
                                     }
-                                  }, "continue  ➔");
+                                  }, "continue  ➔".tr(context));
                           },
                         ),
                       ],
@@ -279,9 +277,9 @@ class _FormPage4State extends State<FormPage4> {
   Future<LocationData> getMyLocation() async {
     // _stateText.text = "Loading..";
 
-    _districtText.text = "Loading..";
-    _detailedAddressText.text = "Loading..";
-    _pOBox.text = "Loading..";
+    _districtText.text = "Loading..".tr(context);
+    _detailedAddressText.text = "Loading..".tr(context);
+    _pOBox.text = "Loading..".tr(context);
     final service = LocationService();
     final locationData = await service.getLocation();
 
@@ -289,9 +287,11 @@ class _FormPage4State extends State<FormPage4> {
       final placeMark = await service.getPlaceMark(locationData: locationData);
       setState(() {
         // _stateText.text = placeMark?.administrativeArea ?? "Loading..";
-        _districtText.text = placeMark?.subAdministrativeArea ?? "Loading..";
-        _detailedAddressText.text = placeMark?.street ?? "Loading..";
-        _pOBox.text = placeMark?.postalCode ?? "Loading..";
+        _districtText.text =
+            placeMark?.subAdministrativeArea ?? "Loading..".tr(context);
+        _detailedAddressText.text =
+            placeMark?.street ?? "Loading..".tr(context);
+        _pOBox.text = placeMark?.postalCode ?? "Loading..".tr(context);
       });
     }
     return locationData!;

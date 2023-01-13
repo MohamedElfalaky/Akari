@@ -1,12 +1,7 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ChangePassWord/components/ChangePassWordScreen.dart';
-
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 import 'package:flutter/material.dart';
-
-import '../../../app/global.dart';
 
 class ChangePassWord extends StatefulWidget {
   const ChangePassWord();
@@ -54,18 +49,18 @@ class _ChangePassWordState extends State<ChangePassWord> {
             shape: const RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(16))),
-            title: const Text(
-              "ChangePassWord",
-              style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
+            title: Text(
+              "Change password".tr(context),
+              style: const TextStyle(fontSize: 24, fontFamily: "Tajawal"),
             ),
           ),
           body: Container(
               // height: MyApplication.hightClc(context, 700),  معدتش هتحتاجها الكونتينر بقى لعمل مارجن ف الاول بس لتخطيط الصفحة
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 left: 24,
                 right: 24,
               ),
-              child: ChangePassWordScreen())),
+              child: const ChangePassWordScreen())),
     );
   }
 }

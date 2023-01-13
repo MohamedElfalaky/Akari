@@ -4,8 +4,7 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/BecomeAdvertisorPopUp.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
 import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/FormPage1.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
-
+import '../../../helpers/AppLocalizations.dart';
 import 'package:akari/presentation/screens/Chat/Chat.dart';
 import 'package:akari/presentation/screens/Favorite/Favorite.dart';
 import 'package:akari/presentation/screens/More/More.dart';
@@ -24,12 +23,16 @@ class AppMain extends StatefulWidget {
 
 GetFavoritesRepo getFavoritesRepo = GetFavoritesRepo();
 int currentIndex = 0;
-final screens = [AppMainScreen(), Favorite(), Chat(), More()];
+final screens = [
+  const AppMainScreen(),
+  const Favorite(),
+  const Chat(),
+  const More()
+];
 
 class _AppMainState extends State<AppMain> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     chechAuth();
   }
@@ -56,7 +59,7 @@ class _AppMainState extends State<AppMain> {
           floatingActionButton: FloatingActionButton(
             backgroundColor: Theme.of(context).colorScheme.primary,
             heroTag: "btn1",
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
             onPressed: () {
               CacheHelper.getFromShared("token") == null
                   ? showDialog(
@@ -69,7 +72,7 @@ class _AppMainState extends State<AppMain> {
                       ? showDialog(
                           context: context,
                           builder: (BuildContext myContext) {
-                            return BecomeAdvertisorPopUp();
+                            return const BecomeAdvertisorPopUp();
                           },
                         )
                       : myApplication.navigateTo(FormPage1(), context);
@@ -102,19 +105,19 @@ class _AppMainState extends State<AppMain> {
                     activeIcon: SvgPicture.asset(
                         "assets/BottomActive/home-hashtag-bold.svg"),
                     icon: SvgPicture.asset("assets/bottomNav/home-hashtag.svg"),
-                    label: "home"),
+                    label: "home".tr(context)),
                 BottomNavigationBarItem(
                     activeIcon: SvgPicture.asset(heartBulk),
                     icon: SvgPicture.asset("assets/bottomNav/heart.svg"),
-                    label: "favorite"),
+                    label: "favorite".tr(context)),
                 BottomNavigationBarItem(
                     activeIcon: SvgPicture.asset(messageBulk),
                     icon: SvgPicture.asset("assets/bottomNav/message-text.svg"),
-                    label: "chat"),
+                    label: "chat".tr(context)),
                 BottomNavigationBarItem(
                     activeIcon: SvgPicture.asset(categoryBulk),
                     icon: SvgPicture.asset("assets/bottomNav/category.svg"),
-                    label: "more"),
+                    label: "more".tr(context)),
               ],
             ),
           )),

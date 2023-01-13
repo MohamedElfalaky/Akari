@@ -3,10 +3,11 @@ import 'package:akari/presentation/screens/LogIn.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class ResetMail extends StatefulWidget {
   final String mail;
-  ResetMail({required this.mail});
+  const ResetMail({super.key, required this.mail});
   @override
   State<ResetMail> createState() => _ResetMailState();
 }
@@ -15,12 +16,12 @@ class _ResetMailState extends State<ResetMail> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       scrollable: true,
       content: Padding(
-          padding: EdgeInsets.all(1),
-          child: Container(
+          padding: const EdgeInsets.all(1),
+          child: SizedBox(
             width: 300,
             height: 400,
             child: Column(
@@ -31,7 +32,7 @@ class _ResetMailState extends State<ResetMail> {
                     children: [
                       InkWell(
                           onTap: () => Navigator.pop(context),
-                          child: Icon(Icons.close)),
+                          child: const Icon(Icons.close)),
                     ],
                   ),
                   SvgPicture.asset("assets/Enter OTP-bro.svg"),
@@ -41,7 +42,7 @@ class _ResetMailState extends State<ResetMail> {
                         bottom: myApplication.hightClc(context, 8)),
                     child: Center(
                       child: Text(
-                        "Recover mail successfully sent",
+                        "Recover mail successfully sent".tr(context),
                         style: TextStyle(
                             fontFamily: "Tajawal",
                             fontSize: 18,
@@ -57,8 +58,9 @@ class _ResetMailState extends State<ResetMail> {
                       child: Column(
                         children: [
                           Text(
-                            "password recovery mail has been successfully sent to your email: ",
-                            style: TextStyle(
+                            "password recovery mail has been successfully sent to your email: "
+                                .tr(context),
+                            style: const TextStyle(
                                 fontFamily: "Tajawal,Regular",
                                 fontSize: 13,
                                 color: Color(0xFF363A3D)),
@@ -79,7 +81,7 @@ class _ResetMailState extends State<ResetMail> {
                   myButton(() {
                     Navigator.pop(context);
                     myApplication.navigateTo(LogIn(), context);
-                  }, "Done"),
+                  }, "Done".tr(context)),
                 ]),
           )),
     );

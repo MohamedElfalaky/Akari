@@ -1,24 +1,16 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/Chat/components/ChatScreen.dart';
-import 'package:akari/presentation/screens/Chat/controller/ChatController.dart';
 
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
-
+import '../../../helpers/AppLocalizations.dart';
 import 'package:flutter/material.dart';
 
-import '../../../app/global.dart';
-
 class Chat extends StatefulWidget {
-  const Chat();
+  const Chat({super.key});
 
   @override
   State<Chat> createState() => _ChatState();
 }
 
 class _ChatState extends State<Chat> {
-  final ChatController _ChatController = ChatController();
-
   @override
   void initState() {
     super.initState();
@@ -51,18 +43,18 @@ class _ChatState extends State<Chat> {
             shape: const RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(16))),
-            title: const Text(
-              "Chat",
-              style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
+            title: Text(
+              "Chat".tr(context),
+              style: const TextStyle(fontSize: 24, fontFamily: "Tajawal"),
             ),
           ),
           body: Container(
               // height: MyApplication.hightClc(context, 700),  معدتش هتحتاجها الكونتينر بقى لعمل مارجن ف الاول بس لتخطيط الصفحة
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 left: 24,
                 right: 24,
               ),
-              child: ChatScreen())),
+              child: const ChatScreen())),
     );
   }
 }

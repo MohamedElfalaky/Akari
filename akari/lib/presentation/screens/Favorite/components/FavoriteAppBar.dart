@@ -1,11 +1,6 @@
 import 'package:akari/helpers/myApplication.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-
+import '../../../../helpers/AppLocalizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../../app/global.dart';
 
 class FavoriteAppBar extends StatelessWidget {
   const FavoriteAppBar({super.key});
@@ -13,7 +8,7 @@ class FavoriteAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 12, right: 12, top: 24),
+      margin: const EdgeInsets.only(left: 12, right: 12, top: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,8 +28,8 @@ class FavoriteAppBar extends StatelessWidget {
           ),
           SizedBox(
             // width: 160,
-            child: Text("Favorite ",
-                style: TextStyle(
+            child: Text("Favorite".tr(context),
+                style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),

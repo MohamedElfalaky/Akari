@@ -1,9 +1,5 @@
 import 'package:akari/data/cubits/Page1/Page1Cubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page1/ToggleTap.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/Page2/P2Villa&Appartment.dart';
-import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/style/Icons.dart';
@@ -11,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class FormPage1 extends StatefulWidget {
   FormPage1({super.key});
@@ -22,8 +19,8 @@ class FormPage1 extends StatefulWidget {
 class _FormPage1State extends State<FormPage1> {
   final _formKey = GlobalKey<FormState>();
 
-  List<String> _contractType = ["Rent", "Investment", "Selling"];
-  List<bool> _isSelected = [true, false, false];
+  final List<String> _contractType = ["Rent", "Investment", "Selling"];
+  final List<bool> _isSelected = [true, false, false];
 
   ///////////
   String? dropDownValue;
@@ -53,17 +50,17 @@ class _FormPage1State extends State<FormPage1> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Post new Ad.",
-                      style: TextStyle(
+                      "Post new Ad.".tr(context),
+                      style: const TextStyle(
                           fontSize: 14,
                           fontFamily: "Tajawal",
                           color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Text(
-                      "Main details",
+                      "Main details".tr(context),
                       style: TextStyle(
                           fontSize: 16,
                           fontFamily: "Tajawal",
@@ -71,7 +68,7 @@ class _FormPage1State extends State<FormPage1> {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 CircularStepProgressIndicator(
                   totalSteps: 6,
                   currentStep: 1,
@@ -83,7 +80,7 @@ class _FormPage1State extends State<FormPage1> {
                   height: 50,
                   selectedStepSize: 5,
                   roundedCap: (_, __) => true,
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "1/6",
                       style: TextStyle(color: Colors.black, fontSize: 14),
@@ -98,7 +95,7 @@ class _FormPage1State extends State<FormPage1> {
           key: _formKey,
           child: Container(
               // outlining container
-              margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+              margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
               height: MediaQuery.of(context).size.height,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +104,7 @@ class _FormPage1State extends State<FormPage1> {
                     // dropdown menu container
                     // padding: EdgeInsets.all(5),
                     child: DropdownButtonFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         fillColor: Color(0xffFFF7E999),
                         filled: true,
                         border: InputBorder.none, // شلت البوردر
@@ -120,11 +117,11 @@ class _FormPage1State extends State<FormPage1> {
                               categoryBulk,
                               color: Theme.of(context).colorScheme.secondary,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text("Categories"),
-                            Text(
+                            Text("Categories".tr(context)),
+                            const Text(
                               " *",
                               style: TextStyle(color: Colors.red),
                             )
@@ -145,40 +142,41 @@ class _FormPage1State extends State<FormPage1> {
                             child: Row(
                               children: [
                                 SvgPicture.asset(e["img"]),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
-                                Text(e["name"]),
+                                Text(e["name"].toString().tr(context)),
                               ],
                             ));
                       }).toList(),
                       validator: (value) {
                         if (dropDownValue == null) {
-                          return "You must select a category";
+                          return "You must select a category".tr(context);
                         } else if (dropDownValue != "Apartment, Duplex" &&
                             dropDownValue != "Villa") {
-                          return "Only Appartments, Duplex and Villas are available now to be advertised";
+                          return "Only Appartments, Duplex and Villas are available now to be advertised"
+                              .tr(context);
                         }
                         ;
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
                     children: [
                       Text(
-                        "This property for:",
-                        style: TextStyle(fontSize: 16),
+                        "This property for:".tr(context),
+                        style: const TextStyle(fontSize: 16),
                       ),
-                      Text(
+                      const Text(
                         " *",
                         style: TextStyle(color: Colors.red),
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
 
@@ -190,7 +188,8 @@ class _FormPage1State extends State<FormPage1> {
                     selectedColor: Colors.white,
                     children: _contractType
                         .map((e) => Container(
-                            margin: const EdgeInsets.all(12), child: Text(e)))
+                            margin: const EdgeInsets.all(12),
+                            child: Text(e.tr(context))))
                         .toList(),
                     onPressed: (newIndex) {
                       setState(() {
@@ -210,26 +209,17 @@ class _FormPage1State extends State<FormPage1> {
                   ),
 
                   /////////////////////////////////////////////////////////////////////////////
-                  Spacer(
+                  const Spacer(
                     flex: 10,
                   ),
                   BlocBuilder<Page1Cubit, Page1State>(
                     builder: (context, state) {
                       return state is Page1Loading
-                          ? Center(
+                          ? const Center(
                               child: CircularProgressIndicator.adaptive(),
                             )
                           : myButton(() {
                               if (_formKey.currentState!.validate()) {
-                                print("HElooooo");
-
-                                // myApplication.navigateTo(
-                                //     P2VillaAppartment(
-                                //       category: dropDownValue!,
-                                //       contractType: _selectedContractType,
-                                //     ),
-                                //     context);
-
                                 Page1Cubit.get(context).userPage1(
                                     dropDownValue!,
                                     _selectedContractType,
@@ -239,7 +229,7 @@ class _FormPage1State extends State<FormPage1> {
                             }, "continue  ➔");
                     },
                   ),
-                  Spacer(
+                  const Spacer(
                       // flex: 1,
                       )
                 ],

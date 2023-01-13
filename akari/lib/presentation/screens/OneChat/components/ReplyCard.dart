@@ -12,7 +12,7 @@ class ReplyCard extends StatelessWidget {
         constraints:
             BoxConstraints(maxWidth: MediaQuery.of(context).size.width - 100),
         child: Card(
-          margin: EdgeInsets.only(top: 20),
+          margin: const EdgeInsets.only(top: 20),
           // color: Color(0xffdcf8c6),
           child: Stack(children: [
             Padding(
@@ -20,17 +20,18 @@ class ReplyCard extends StatelessWidget {
                   left: 10, right: 50, top: 5, bottom: 20),
               child: Text(
                 msg!,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
-            Positioned(
-              bottom: 4,
-              right: 10,
-              child: Text(
-                "20:50",
-                style: TextStyle(fontSize: 13, color: Colors.grey[600]),
-              ),
-            )
+            // Positioned(
+            //   bottom: 4,
+            //   right: 10,
+            //   child:
+            //    Text(
+            //     "20:50",
+            //     style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+            //   ),
+            // )
           ]),
         ),
       ),

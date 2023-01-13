@@ -1,6 +1,6 @@
+import 'package:akari/helpers/AppLocalizations.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/MyMap/MyMap.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class ViewOnMap extends StatelessWidget {
@@ -14,8 +14,9 @@ class ViewOnMap extends StatelessWidget {
       },
       mouseCursor: SystemMouseCursors.click,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      label: const AutoSizeText(
-        'View on Map',
+      label: Text(
+        'View on Map'.tr(context),
+        // ignore: prefer_const_constructors
         style: TextStyle(fontSize: 14, fontFamily: "Tajawal,Regular"),
       ),
       icon: const Icon(Icons.map),

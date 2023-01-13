@@ -1,5 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import '../../../helpers/AppLocalizations.dart';
 
 class AlreadyHaveAccount extends StatelessWidget {
   final navigateHandler;
@@ -10,9 +10,9 @@ class AlreadyHaveAccount extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AutoSizeText(
-          "already have an account!",
-          style: TextStyle(
+        Text(
+          "already have an account!".tr(context),
+          style: const TextStyle(
             fontFamily: "Tajawal",
             color: Color(0XFF116A92),
             fontSize: 16,
@@ -24,8 +24,8 @@ class AlreadyHaveAccount extends StatelessWidget {
               // Navigator.of(context).pushNamedAndRemoveUntil(
               //     "/login", (Route<dynamic> route) => false);
             },
-            child: AutoSizeText(" sign in",
-                style: TextStyle(
+            child: Text(" sign in".tr(context),
+                style: const TextStyle(
                     fontFamily: "Tajawal",
                     color: Color(
                       0XFFDC8035,

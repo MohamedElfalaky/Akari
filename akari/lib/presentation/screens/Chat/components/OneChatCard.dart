@@ -10,7 +10,7 @@ class OneChatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -26,7 +26,7 @@ class OneChatCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(right: 20),
+                margin: const EdgeInsets.only(right: 20),
                 height: 56,
                 width: 56,
                 decoration: BoxDecoration(
@@ -44,11 +44,11 @@ class OneChatCard extends StatelessWidget {
                       namee!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SizedBox(
@@ -64,7 +64,7 @@ class OneChatCard extends StatelessWidget {
             ],
           ),
           Container(
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             // height: 18,
             // width: 40,
             decoration: BoxDecoration(
@@ -78,18 +78,18 @@ class OneChatCard extends StatelessWidget {
                   size: 18,
                   color: Theme.of(context).colorScheme.secondary,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
-                Text(
-                  "20 min",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontSize: 14),
-                ),
-                SizedBox(
+                // Text(
+                //   "20 min",
+                //   overflow: TextOverflow.ellipsis,
+                //   maxLines: 1,
+                //   style: TextStyle(
+                //       color: Theme.of(context).colorScheme.secondary,
+                //       fontSize: 14),
+                // ),
+                const SizedBox(
                   width: 4,
                 ),
               ],

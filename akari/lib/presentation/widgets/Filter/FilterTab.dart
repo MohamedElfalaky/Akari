@@ -1,12 +1,10 @@
 import 'package:akari/helpers/myApplication.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class FilterTab extends StatelessWidget {
   final String valuee;
   final bool booll;
-  FilterTab(this.valuee, this.booll);
+  const FilterTab(this.valuee, this.booll, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +17,9 @@ class FilterTab extends StatelessWidget {
         margin: EdgeInsets.symmetric(
             horizontal: myApplication.widthClc(context, 2)),
         decoration: BoxDecoration(
-            color:
-                booll ? Color.fromARGB(255, 100, 179, 244) : Color(0xFFFFFFFF),
+            color: booll
+                ? Color.fromARGB(255, 24, 18, 141)
+                : const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.circular(3)),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -30,9 +29,9 @@ class FilterTab extends StatelessWidget {
               size: 13,
               color: Colors.black,
             ),
-            AutoSizeText(
+            Text(
               valuee,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 13,
                   fontFamily: "Tajawal,Regular",
                   color: Color(0xFF363A3D)),

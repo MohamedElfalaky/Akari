@@ -2,14 +2,13 @@ import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 
-import 'package:akari/presentation/widgets/Filter/AfterFilterAppBar.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
 
-import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class MyAdsScreen extends StatefulWidget {
   @override
@@ -30,18 +29,18 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
         appBar: AppBar(
           automaticallyImplyLeading: false, // remove back button in appbar.
           toolbarHeight: 80,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(16))),
           elevation: 0,
           leading: BackButton(
             color: Colors.white,
             onPressed: () => Navigator.pop(context),
           ),
-          title: Text("My Ads."),
+          title: Text("My Ads.".tr(context)),
         ),
         body: Container(
           // height: myApplication.hightClc(context, 640),
-          margin: EdgeInsets.only(
+          margin: const EdgeInsets.only(
             top: 8,
             right: 24,
             left: 24,
@@ -50,16 +49,16 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ///////////// Statistics
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
-                "Statistics",
-                style: TextStyle(fontSize: 14, fontFamily: "Tajawal"),
+                "Statistics".tr(context),
+                style: const TextStyle(fontSize: 14, fontFamily: "Tajawal"),
               ),
               Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 4),
+                  margin: const EdgeInsets.only(top: 4),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -68,7 +67,7 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                       return Container(
                         height: 80,
                         width: 140,
-                        margin: EdgeInsets.only(right: 16),
+                        margin: const EdgeInsets.only(right: 16),
                         child: Card(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -80,7 +79,7 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                                   e["img"],
                                   height: 50,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
                                 Column(
@@ -96,8 +95,8 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                                               .secondary,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(e["name"],
-                                        style: TextStyle(
+                                    Text(e["name"].toString().tr(context),
+                                        style: const TextStyle(
                                           fontSize: 14,
                                         ))
                                   ],
@@ -109,21 +108,21 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                       );
                     }).toList()),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
 
               ///////////// Search
               Text(
-                "Ads.",
-                style: TextStyle(fontSize: 14, fontFamily: "Tajawal"),
+                "Ads.".tr(context),
+                style: const TextStyle(fontSize: 14, fontFamily: "Tajawal"),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               SearchFilter(() => myApplication.navigateToRemove(
-                  context, AfterFilterAndSearch("result"))),
-              SizedBox(
+                  context, const AfterFilterAndSearch("result"))),
+              const SizedBox(
                 height: 16,
               ),
               SizedBox(

@@ -9,13 +9,18 @@ class LocalCubit extends Cubit<LocalState> {
 
   static LocalCubit get(context) => BlocProvider.of(context);
 
+  String selectedLang1 =
+      CacheHelper.getLangCode() == "en" ? "English" : "العربية";
+
   Future<void> getSavedLanguage() async {
     final String cachedLanguageCode = await CacheHelper.getLangCode();
+    selectedLang1 = cachedLanguageCode == "en" ? "English" : "العربية";
     emit(ChangeLocaleState(local: Locale(cachedLanguageCode)));
   }
 
   Future<void> changeLanguage(String languageCode) async {
     await CacheHelper.saveToShared("LOCALE", languageCode);
+    selectedLang1 = languageCode == "en" ? "English" : "العربية";
     emit(ChangeLocaleState(local: Locale(languageCode)));
   }
 }

@@ -3,14 +3,12 @@ import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dar
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
-import 'package:akari/presentation/widgets/ForgetPassword/ResetMail.dart';
 import 'package:akari/style/Icons.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
+import '../../../../helpers/AppLocalizations.dart';
 
 class BestAdsItem extends StatelessWidget {
   final String? img;
@@ -40,7 +38,7 @@ class BestAdsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8, bottom: 8),
+      margin: const EdgeInsets.only(top: 8, bottom: 8),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
       height: 380,
       width: 330,
@@ -60,7 +58,7 @@ class BestAdsItem extends StatelessWidget {
               // isFavorite != null
               //     ?
               isFavorite == null
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Container(
                       margin: EdgeInsets.only(
                           top: myApplication.hightClc(context, 8),
@@ -80,7 +78,7 @@ class BestAdsItem extends StatelessWidget {
                                             CacheHelper.getFromShared("token"),
                                             context);
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.favorite,
                                     color: Colors.red,
                                   ),
@@ -105,7 +103,7 @@ class BestAdsItem extends StatelessWidget {
                                               context);
                                     }
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.favorite_outline,
                                     color: Colors.red,
                                   ),
@@ -115,7 +113,7 @@ class BestAdsItem extends StatelessWidget {
             ],
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color(0xFFFFFFFF),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(10),
@@ -128,10 +126,11 @@ class BestAdsItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 8, top: 8),
+                  margin: const EdgeInsets.only(bottom: 8, top: 8),
                   child: Text(
                     title!,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -157,7 +156,7 @@ class BestAdsItem extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 8)),
                             child: Text(
                               "$area m",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                               ),
                             ),
@@ -182,8 +181,8 @@ class BestAdsItem extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 8)),
                             child: Text(
-                              "$floors floors",
-                              style: TextStyle(
+                              "$floors ${'floors'.tr(context)}",
+                              style: const TextStyle(
                                 fontSize: 14,
                               ),
                             ),
@@ -212,7 +211,7 @@ class BestAdsItem extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 12)),
                             child: Text(
                               statee!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -238,7 +237,7 @@ class BestAdsItem extends StatelessWidget {
                                 bottom: myApplication.hightClc(context, 12)),
                             child: Text(
                               DateFormat.yMMMd().format(createdAt!).toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                               ),
                             ),
@@ -260,17 +259,17 @@ class BestAdsItem extends StatelessWidget {
                             color: Theme.of(context).colorScheme.secondary),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
                       "($priceDollar \$)",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 18,
                           fontFamily: "Tajawal",
                           color: Colors.black),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                         onPressed: () async {
                           await Share.share("sharedtext");

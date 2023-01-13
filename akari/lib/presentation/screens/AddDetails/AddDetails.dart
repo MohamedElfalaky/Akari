@@ -1,12 +1,6 @@
-import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AddDetails/components/AddDetailsAppBar.dart';
 import 'package:akari/presentation/screens/AddDetails/components/AddDetailsScreen.dart';
-import 'package:akari/presentation/screens/AppMain/components/myAppBar.dart';
 
 import 'package:flutter/material.dart';
-
-import '../../../app/global.dart';
 
 class AddDetails extends StatefulWidget {
   final String? contractType;

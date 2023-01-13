@@ -1,10 +1,5 @@
 import 'package:akari/data/cubits/AddPrice/AddPriceCubit.dart';
-import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
-import 'package:akari/helpers/LocationService.dart';
-import 'package:akari/helpers/myApplication.dart';
-import 'package:akari/presentation/screens/AdvertisrForm/components/page6/FormPage6.dart';
-
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/TextField.dart';
@@ -12,8 +7,8 @@ import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:location/location.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../../../../helpers/AppLocalizations.dart';
 
 class FormPage5 extends StatefulWidget {
   final String id;
@@ -64,17 +59,17 @@ class _FormPage5State extends State<FormPage5> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Post new Ad.",
-                        style: TextStyle(
+                        "Post new Ad.".tr(context),
+                        style: const TextStyle(
                             fontSize: 14,
                             fontFamily: "Tajawal",
                             color: Colors.black),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Text(
-                        "Address & Price details",
+                        "Address & Price details".tr(context),
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: "Tajawal",
@@ -82,7 +77,7 @@ class _FormPage5State extends State<FormPage5> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   CircularStepProgressIndicator(
                     totalSteps: 6,
                     currentStep: 5,
@@ -94,7 +89,7 @@ class _FormPage5State extends State<FormPage5> {
                     height: 50,
                     selectedStepSize: 5,
                     roundedCap: (_, __) => true,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "5/6",
                         style: TextStyle(color: Colors.black, fontSize: 14),
@@ -112,63 +107,63 @@ class _FormPage5State extends State<FormPage5> {
               // physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
-                    margin: EdgeInsets.only(left: 24, right: 24, top: 30),
+                    margin: const EdgeInsets.only(left: 24, right: 24, top: 30),
                     // height: MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
 
                         Row(
                           children: [
                             SvgPicture.asset(priceDetails),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
                             Text(
-                              "Price details",
-                              style: TextStyle(
+                              "Price details".tr(context),
+                              style: const TextStyle(
                                 fontSize: 16,
                                 // fontFamily: "Tajawal",
                               ),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         myTextField(
-                          hint: "Price in (LS) *",
+                          hint: "Price in (LS) *".tr(context),
                           controller: _priceLsText,
                           keyBoardType: TextInputType.number,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter Price in (LS)";
+                              return "Please Enter Price in (LS)".tr(context);
                             }
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 6,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "(Set price in Sudanese dinar)",
-                              style: TextStyle(
+                              "(Set price in Sudanese pound)".tr(context),
+                              style: const TextStyle(
                                   color: Color.fromARGB(118, 12, 13, 77)),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
 
                         myTextField(
-                          hint: "Price in (\$) *",
+                          hint: "Price in (\$) *".tr(context),
                           controller: _priceDollarText,
                           keyBoardType: TextInputType.number,
                           validator: (value) {
@@ -178,15 +173,15 @@ class _FormPage5State extends State<FormPage5> {
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 6,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "(Set price in Dollar)",
-                              style: TextStyle(
+                              "(Set price in Dollar)".tr(context),
+                              style: const TextStyle(
                                   color: Color.fromARGB(118, 12, 13, 77)),
                             )
                           ],
@@ -194,13 +189,13 @@ class _FormPage5State extends State<FormPage5> {
                         ////////////////////////////////////////////////////////////////////////////////
 
                         Text(
-                          "Price details",
-                          style: TextStyle(
+                          "Price details".tr(context),
+                          style: const TextStyle(
                             fontSize: 16,
                             // fontFamily: "Tajawal",
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
 
@@ -213,7 +208,8 @@ class _FormPage5State extends State<FormPage5> {
                           //     .toList(),
                           children: paymentOptions
                               .map((e) => Container(
-                                  margin: EdgeInsets.all(12), child: Text(e)))
+                                  margin: const EdgeInsets.all(12),
+                                  child: Text(e)))
                               .toList() as List<Widget>,
                           onPressed: (newIndex) {
                             setState(() {
@@ -233,18 +229,20 @@ class _FormPage5State extends State<FormPage5> {
                         ),
 
                         /////////////////////////////////////////////////////////////////////////////////////
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         myTextField(
-                          hint: "Down payment percentage *",
+                          hint: "Down payment percentage *".tr(context),
                           controller: _dPPText,
                           keyBoardType: TextInputType.number,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please Enter Down payment percentage";
+                              return "Please Enter Down payment percentage"
+                                  .tr(context);
                             } else if (value.length > 2) {
-                              return "Invalide percentage, it must be a percentage between 0-100";
+                              return "Invalide percentage, it must be a percentage between 0-100"
+                                  .tr(context);
                             }
                             return null;
                           },
@@ -256,7 +254,7 @@ class _FormPage5State extends State<FormPage5> {
                           ),
                         ),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
 
@@ -276,13 +274,13 @@ class _FormPage5State extends State<FormPage5> {
                                 },
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
-                            Text("Receive offers only in Dollar")
+                            Text("Receive offers only in Dollar".tr(context))
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Row(
@@ -301,14 +299,14 @@ class _FormPage5State extends State<FormPage5> {
                                 },
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 8,
                             ),
-                            Text("Negotiable")
+                            Text("Negotiable".tr(context))
                           ],
                         ),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 190,
                         ),
 
@@ -317,7 +315,7 @@ class _FormPage5State extends State<FormPage5> {
                         BlocBuilder<AddPriceCubit, AddPriceState>(
                           builder: (context, state) {
                             return state is AddPriceLoading
-                                ? Center(
+                                ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
                                 : myButton(() {
@@ -337,7 +335,7 @@ class _FormPage5State extends State<FormPage5> {
                                           category: widget.category,
                                           context: context);
                                     }
-                                  }, "continue  ➔");
+                                  }, "continue  ➔".tr(context));
                           },
                         ),
                       ],
