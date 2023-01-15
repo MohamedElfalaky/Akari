@@ -44,32 +44,39 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
             builder: (context, state) {
               return state is SearchFromHomeSuccess
                   ? ListView.builder(
-                      itemCount: state.mySearchFromHomeModel.data.length,
+                      itemCount: state.mySearchFromHomeModel.data.isEmpty
+                          ? 1
+                          : state.mySearchFromHomeModel.data.length,
                       itemBuilder: (context, index) {
-                        return BestAdsItem(
-                          img: state.mySearchFromHomeModel.data[index].images
-                                  .isEmpty
-                              ? defaultHouse
-                              : state.mySearchFromHomeModel.data[index].images
-                                  .first.normal,
-                          title: state.mySearchFromHomeModel.data[index].title,
-                          area: state
-                              .mySearchFromHomeModel.data[index].details.area
-                              .toString(),
-                          floors: state
-                              .mySearchFromHomeModel.data[index].details.floors
-                              .toString(),
-                          statee: state
-                              .mySearchFromHomeModel.data[index].address.state,
-                          createdAt: DateTime.now(),
-                          price: state
-                              .mySearchFromHomeModel.data[index].price.inSP
-                              .toString(),
-                          priceDollar: state
-                              .mySearchFromHomeModel.data[index].price.inUSD
-                              .toString(),
-                          isFavorite: null,
-                        );
+                        return state.mySearchFromHomeModel.data.isEmpty
+                            ? Center(
+                                child: Text("No Data"),
+                              )
+                            : BestAdsItem(
+                                img: state.mySearchFromHomeModel.data[index]
+                                        .images.isEmpty
+                                    ? defaultHouse
+                                    : state.mySearchFromHomeModel.data[index]
+                                        .images.first.normal,
+                                title: state
+                                    .mySearchFromHomeModel.data[index].title,
+                                area: state.mySearchFromHomeModel.data[index]
+                                    .details.area
+                                    .toString(),
+                                floors: state.mySearchFromHomeModel.data[index]
+                                    .details.floors
+                                    .toString(),
+                                statee: state.mySearchFromHomeModel.data[index]
+                                    .address.state,
+                                createdAt: DateTime.now(),
+                                price: state.mySearchFromHomeModel.data[index]
+                                    .price.inSP
+                                    .toString(),
+                                priceDollar: state.mySearchFromHomeModel
+                                    .data[index].price.inUSD
+                                    .toString(),
+                                isFavorite: null,
+                              );
                       },
                     )
                   : const Center(

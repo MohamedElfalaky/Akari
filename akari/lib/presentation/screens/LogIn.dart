@@ -147,8 +147,8 @@ class LogIn extends StatelessWidget {
                                     if (value!.isEmpty) {
                                       return "please enter your Password"
                                           .tr(context);
-                                    } else if (value.length <= 5) {
-                                      return "Password must be more than 5 fileds"
+                                    } else if (value.length <= 7) {
+                                      return "Password must be more than 7 fileds"
                                           .tr(context);
                                     }
                                     return null;

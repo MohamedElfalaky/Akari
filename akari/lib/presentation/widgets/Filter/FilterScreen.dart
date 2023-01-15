@@ -1,5 +1,6 @@
 import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/widgets/Shared/myOutLinedButton.dart';
 import '../../../helpers/AppLocalizations.dart';
 import 'package:akari/presentation/widgets/Filter/FilterTab.dart';
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
@@ -15,12 +16,12 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
-  final List<String> contractTapsList = [];
-  final List<String> filterTapsList = [];
+  List<String> contractTapsList = [];
+  List<String> filterTapsList = [];
   // final List<String> unitLawsTapsList = [];
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController myController1 = TextEditingController();
-  final TextEditingController myController2 = TextEditingController();
+  TextEditingController myController1 = TextEditingController();
+  TextEditingController myController2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -320,7 +321,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                       .userConfirmFilter(
                                           myState:
                                               stateSearchInFilter.text.isEmpty
-                                                  ? "Khartoum"
+                                                  ? ""
                                                   : stateSearchInFilter.text,
                                           contractType: contractTapsList,
                                           buildingType: filterTapsList,
@@ -345,6 +346,48 @@ class _FilterScreenState extends State<FilterScreen> {
                 SizedBox(
                   height: myApplication.hightClc(context, 8),
                 ),
+                Container(
+                    height: myApplication.hightClc(context, 45),
+                    width: double.infinity,
+                    margin: EdgeInsets.symmetric(
+                        horizontal: myApplication.widthClc(context, 32)),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(23))),
+                        // textStyle: TextStyle(fontWeight: FontWeight.normal),
+                        elevation: 0,
+                        backgroundColor: Color.fromARGB(255, 196, 3, 3),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          contractTapsList = [];
+                          filterTapsList = [];
+                          contractTaps.forEach((element) {
+                            element["bool"] = false;
+                          });
+                          myTaps.forEach((element) {
+                            element["bool"] = false;
+                          });
+                          myController1.clear();
+                          myController2.clear();
+                        });
+                      },
+                      child: Center(
+                          child: Text(
+                        "Reset".tr(context),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontFamily: "Tajawal",
+                            fontSize: 16,
+                            color: Colors.white),
+                      )),
+                    )),
+                SizedBox(
+                  height: myApplication.hightClc(context, 8),
+                ),
+
                 // Container(
                 //   margin: EdgeInsets.symmetric(
                 //       horizontal: myApplication.widthClc(context, 32)),

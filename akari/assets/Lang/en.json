@@ -264,7 +264,7 @@
     "Central Darfur":"Central Darfur",
     "East Darfur":"East Darfur",
     "West Kordofan":"West Kordofan",
-
+    
 
     
 
@@ -301,10 +301,41 @@
     "Cash or Installment":"Cash or Installment",
 
 
+    "submit":"Submit",
 
     "Search cities here !":"Search cities here !",
     "OTP sent successflly":"OTP sent successflly",
-    "OTP has been successfully sent to your email:":"OTP has been successfully sent to your email:"
+    "OTP has been successfully sent to your email:":"OTP has been successfully sent to your email:",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "View on Map":"View on Map",
+    "Reset":"Reset",
+    "Password is not matched":"Password is not matched",
+    "please enter your current password":"please enter your current password",
+    "please enter your new password":"please enter your new password",
+    "please confirm your new password":"please confirm your new password",
+    "Passwords are not matched":"Passwords are not matched",
+    "Send your request":"Send your request",
+    "please enter your mail":"please enter your mail",
+    "please enter massage subject":"please enter massage subject",
+    "please enter massage":"please enter massage",
+    "please enter your name":"please enter your name",
+
+    "Read less": "Read less..",
+    "Read more":"Read more.."
+
 
 
 

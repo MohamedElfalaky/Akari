@@ -55,94 +55,99 @@ class _AppMainScreenState extends State<AppMainScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ////////// adds bar
-                CacheHelper.getFromShared("isAdvertiser") == "yes"
-                    ? Column(
-                        children: [
-                          Row(
+                CacheHelper.getFromShared("token") != null
+                    ? CacheHelper.getFromShared("isAdvertiser") == "yes"
+                        ? Column(
                             children: [
-                              Text(
-                                "My Ads.".tr(context),
-                                style: const TextStyle(
-                                    fontSize: 20, fontFamily: "Tajawal"),
-                              ),
-                              const Spacer(),
-                              InkWell(
-                                // onTap: () => Navigator.pushNamed(context, "/allcategory"),
-                                child: Text(
-                                  "View All".tr(context),
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "Tajawal,Regular",
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary),
-                                ),
-                              )
-                            ],
-                          ),
-                          Container(
-                              width: double.infinity,
-                              margin: const EdgeInsets.only(top: 8),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                    // scrollDirection: Axis.horizontal,
-                                    children: adsTaps.map((e) {
-                                  return Container(
-                                    height: 80,
-                                    width: 140,
-                                    margin: const EdgeInsets.only(right: 16),
-                                    child: Card(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8.0, horizontal: 12),
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            SvgPicture.asset(
-                                              e["img"],
-                                              height: 50,
-                                            ),
-                                            const SizedBox(
-                                              width: 8,
-                                            ),
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  "123",
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Theme.of(context)
-                                                          .colorScheme
-                                                          .secondary,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Text(
-                                                    e["name"]
-                                                        .toString()
-                                                        .tr(context),
-                                                    style: const TextStyle(
-                                                      fontSize: 14,
-                                                    ))
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "My Ads.".tr(context),
+                                    style: const TextStyle(
+                                        fontSize: 20, fontFamily: "Tajawal"),
+                                  ),
+                                  const Spacer(),
+                                  InkWell(
+                                    // onTap: () => Navigator.pushNamed(context, "/allcategory"),
+                                    child: Text(
+                                      "View All".tr(context),
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Tajawal,Regular",
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary),
                                     ),
-                                  );
-                                }).toList()),
-                              )),
-                          const SizedBox(
-                            height: 25,
-                          ),
-                        ],
-                      )
-                    : const SizedBox(),
+                                  )
+                                ],
+                              ),
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 8),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                        // scrollDirection: Axis.horizontal,
+                                        children: adsTaps.map((e) {
+                                      return Container(
+                                        height: 80,
+                                        width: 140,
+                                        margin:
+                                            const EdgeInsets.only(right: 16),
+                                        child: Card(
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 8.0, horizontal: 12),
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                  e["img"],
+                                                  height: 50,
+                                                ),
+                                                const SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      e["no"],
+                                                      style: TextStyle(
+                                                          fontSize: 20,
+                                                          color:
+                                                              Theme.of(context)
+                                                                  .colorScheme
+                                                                  .secondary,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                        e["name"]
+                                                            .toString()
+                                                            .tr(context),
+                                                        style: const TextStyle(
+                                                          fontSize: 14,
+                                                        ))
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList()),
+                                  )),
+                              const SizedBox(
+                                height: 25,
+                              ),
+                            ],
+                          )
+                        : const SizedBox()
+                    : SizedBox(),
                 /////////// catigory bar
                 Row(
                   children: [

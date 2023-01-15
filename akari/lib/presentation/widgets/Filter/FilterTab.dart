@@ -18,7 +18,7 @@ class FilterTab extends StatelessWidget {
             horizontal: myApplication.widthClc(context, 2)),
         decoration: BoxDecoration(
             color: booll
-                ? Color.fromARGB(255, 24, 18, 141)
+                ? Theme.of(context).colorScheme.primary
                 : const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.circular(3)),
         child: Row(

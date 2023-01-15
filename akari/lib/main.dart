@@ -3,10 +3,13 @@ import 'package:akari/data/cubits/AddPrice/AddPriceCubit.dart';
 import 'package:akari/data/cubits/AddToFavorite/AddToFavoriteCubit.dart';
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
 import 'package:akari/data/cubits/ConfirmAdd/ConfirmAddCubit.dart';
+import 'package:akari/data/cubits/ContactUs/ContactUsCubit.dart';
 import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
+import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/OTPMailUpdate/UpdateMailOTPCubit.dart';
 import 'package:akari/data/cubits/Page1/Page1Cubit.dart';
 import 'package:akari/data/cubits/Page2Appartment/Page2AppartmentCubit.dart';
 import 'package:akari/data/cubits/Page2Villa/Page2VillaCubit.dart';
@@ -15,6 +18,9 @@ import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dar
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
 import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
+import 'package:akari/data/cubits/UpdateUserMail/UpdateUserMailCubit.dart';
+import 'package:akari/data/cubits/UpdateUserPass%20copy/UpdateAllCubit.dart';
+import 'package:akari/data/cubits/UpdateUserPass/UpdateUserCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
 import 'package:akari/helpers/AppLocalizations.dart';
@@ -42,6 +48,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   // CacheHelper.removeFromShared("token");
+  CacheHelper.saveToShared("LOCALE", "ar");
   // CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
   // print(
   //     DateFormat().formatDuration(DateTime.now().subtract(Duration(hours: 5)))); // المفروض فرق الزمن
@@ -89,6 +96,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<ConfirmAddCubit>(create: (context) => ConfirmAddCubit()),
         BlocProvider<SearchFromHomeCubit>(
             create: (context) => SearchFromHomeCubit()),
+        BlocProvider<GetUserDataCubit>(create: (context) => GetUserDataCubit()),
+        BlocProvider<UpdateUserCubit>(create: (context) => UpdateUserCubit()),
+        BlocProvider<ContactUsCubit>(create: (context) => ContactUsCubit()),
+        BlocProvider<UpdateUserMailCubit>(
+            create: (context) => UpdateUserMailCubit()),
+        BlocProvider<UpdateMailOTPCubit>(
+            create: (context) => UpdateMailOTPCubit()),
+        BlocProvider<updateAllCubit>(create: (context) => updateAllCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -108,10 +123,10 @@ class MyApp extends StatelessWidget {
                     ],
                     background: Container(color: const Color(0xFFF5F5F5))),
                 debugShowCheckedModeBanner: false,
-                // locale: state is ChangeLocaleState
-                //     ? state.local
-                //     : const Locale('en'),
-                locale: const Locale('en'),
+                locale: state is ChangeLocaleState
+                    ? state.local
+                    : const Locale('en'),
+                // locale: const Locale('en'),
                 // const Locale('ar'),
                 supportedLocales: const [
                   Locale('en'),

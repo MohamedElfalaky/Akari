@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'package:akari/helpers/CacheHelper.dart';
+import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AppMain/AppMain.dart';
 import 'package:akari/style/Icons.dart';
 
 import 'package:akari/presentation/screens/OnBoarding.dart';
@@ -16,10 +19,11 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Timer(
-        const Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => const OnBoarding())));
+    Timer(const Duration(seconds: 3), () {
+      myApplication.navigateToReplace(
+          CacheHelper.getFromShared("token") == null ? OnBoarding() : AppMain(),
+          context);
+    });
   }
 
   @override

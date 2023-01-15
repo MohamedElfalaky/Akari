@@ -22,6 +22,7 @@ class MoreScreen extends StatefulWidget {
 class _MoreScreenState extends State<MoreScreen> {
   // MoreController _MoreController = MoreController();
   String selectedLang = 'non';
+  String _selectedCurrncy = 'USD';
 
   @override
   void initState() {
@@ -100,7 +101,6 @@ class _MoreScreenState extends State<MoreScreen> {
                               SvgPicture.asset(
                                 adsTap,
                                 height: 30,
-                                color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(
                                 width: 8,
@@ -116,7 +116,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                     width: 5,
                                   ),
                                   Text(
-                                    "(123)",
+                                    "(6)",
                                     style: TextStyle(
                                         fontFamily: "Tajawal",
                                         fontSize: 16,
@@ -177,20 +177,28 @@ class _MoreScreenState extends State<MoreScreen> {
                               height: 15,
                             ),
                             RadioListTile(
-                              title: const Text("Sudanese pound (SD)"),
-                              value: "value",
-                              groupValue: "valuse",
-                              onChanged: (value) {},
+                              title: Text("Sudanese pound (SD)".tr(context)),
+                              value: "SD",
+                              groupValue: _selectedCurrncy,
+                              onChanged: (value) {
+                                setState(() {
+                                  _selectedCurrncy = value!;
+                                });
+                              },
                               activeColor:
                                   Theme.of(context).colorScheme.primary,
                               selectedTileColor:
                                   Theme.of(context).colorScheme.primary,
                             ),
                             RadioListTile(
-                              title: const Text("Dollars (\$)"),
-                              value: "value",
-                              groupValue: "value",
-                              onChanged: (value) {},
+                              title: Text("Dollars (\$)".tr(context)),
+                              value: "USD",
+                              groupValue: _selectedCurrncy,
+                              onChanged: (value) {
+                                setState(() {
+                                  _selectedCurrncy = value!;
+                                });
+                              },
                               activeColor:
                                   Theme.of(context).colorScheme.primary,
                               selectedTileColor:

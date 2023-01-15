@@ -10,7 +10,7 @@ class Data {
   Data({this.id, this.email, this.name, this.phone, this.roles});
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        id: json['id'] as String?,
+        id: json['_id'] as String?,
         email: json['email'] as String?,
         name: json['name'] as String?,
         phone: json['phone'] as String?,
@@ -18,7 +18,7 @@ class Data {
       );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        '_id': id,
         'email': email,
         'name': name,
         'phone': phone,

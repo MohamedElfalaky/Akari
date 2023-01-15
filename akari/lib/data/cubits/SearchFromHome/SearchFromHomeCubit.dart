@@ -43,7 +43,14 @@ class SearchFromHomeCubit extends Cubit<SearchFromHomeState> {
       required BuildContext context}) {
     try {
       emit(SearchFromHomeLoading());
-      allAddsRepoRepo.adsByFilter(myState: myState).then((value) {
+      allAddsRepoRepo
+          .adsByFilter(
+              myState: myState,
+              contractType: contractType,
+              propertyType: buildingType,
+              initialPrice: priceFrom,
+              finalPrice: priceTo)
+          .then((value) {
         if (value != null) {
           emit(SearchFromHomeSuccess(value));
           myApplication.navigateTo(AfterFilterAndSearch("title"), context);

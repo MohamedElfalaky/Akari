@@ -143,17 +143,13 @@ class BestAdsItem extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(
-                                right: myApplication.widthClc(context, 6),
-                                bottom: myApplication.hightClc(context, 8)),
-                            height: myApplication.hightClc(context, 14),
-                            width: myApplication.widthClc(context, 14),
+                            margin: EdgeInsets.only(right: 6, bottom: 8),
+                            height: 14,
+                            width: 14,
                             child: SvgPicture.asset("assets/AdsPics/area.svg"),
                           ),
                           Container(
-                            margin: EdgeInsets.only(
-                                right: myApplication.widthClc(context, 125),
-                                bottom: myApplication.hightClc(context, 8)),
+                            margin: EdgeInsets.only(right: 8, bottom: 8),
                             child: Text(
                               "$area m",
                               style: const TextStyle(
