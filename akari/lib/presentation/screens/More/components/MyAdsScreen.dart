@@ -1,12 +1,17 @@
+import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/MyAds/MyAdsCubit.dart';
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/screens/AfterFilterAndSearch.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
+import 'package:akari/presentation/screens/More/controller/MoreController.dart';
 
 import 'package:akari/presentation/widgets/Shared/CategoryList.dart';
 import 'package:akari/presentation/widgets/Shared/SearchFilter.dart';
 
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../helpers/AppLocalizations.dart';
 
@@ -16,6 +21,15 @@ class MyAdsScreen extends StatefulWidget {
 }
 
 class _MyAdsScreenState extends State<MyAdsScreen> {
+  MoreController _moreController = MoreController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _moreController.MoreAPIs(myContext: context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -58,56 +72,158 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
               ),
               Container(
                   width: double.infinity,
-                  margin: const EdgeInsets.only(top: 4),
+                  margin: const EdgeInsets.only(top: 8),
                   child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                        // scrollDirection: Axis.horizontal,
-                        children: adsTaps.map((e) {
-                      return Container(
-                        height: 80,
-                        width: 140,
-                        margin: const EdgeInsets.only(right: 16),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 12),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  e["img"],
-                                  height: 50,
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 80,
+                            width: 150,
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 12),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "123",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .secondary,
-                                          fontWeight: FontWeight.bold),
+                                    SvgPicture.asset(
+                                      "assets/adsSoNew.svg",
+                                      height: 50,
                                     ),
-                                    Text(e["name"].toString().tr(context),
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                        ))
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          context
+                                              .watch<MyAdsCubit>()
+                                              .ads
+                                              .toString(), //from api
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text("Ads.".toString().tr(context),
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                            ))
+                                      ],
+                                    )
                                   ],
-                                )
-                              ],
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }).toList()),
-                  )),
+                          Container(
+                            height: 80,
+                            width: 150,
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 12),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/viewsSoNew.svg",
+                                      height: 50,
+                                    ),
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          context
+                                              .watch<MyAdsCubit>()
+                                              .views
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text("Views".toString().tr(context),
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                            ))
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          ///
+                          ///
+                          ///
+                          Container(
+                            height: 80,
+                            width: 150,
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 12),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/callsSoNew.svg",
+                                      height: 50,
+                                    ),
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          context
+                                                      .watch<GetUserDataCubit>()
+                                                      .calls
+                                                      .toString() ==
+                                                  "null"
+                                              ? ""
+                                              : context
+                                                  .watch<GetUserDataCubit>()
+                                                  .calls
+                                                  .toString(), //from api
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text("Calls".toString().tr(context),
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                            ))
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ))),
               const SizedBox(
                 height: 25,
               ),
@@ -117,51 +233,120 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
                 "Ads.".tr(context),
                 style: const TextStyle(fontSize: 14, fontFamily: "Tajawal"),
               ),
-              const SizedBox(
-                height: 4,
-              ),
-              SearchFilter(() => myApplication.navigateToRemove(
-                  context, const AfterFilterAndSearch("result"))),
+              // const SizedBox(
+              //   height: 4,
+              // ),
+              // SearchFilter(() => myApplication.navigateToRemove(
+              //     context, const AfterFilterAndSearch("result"))),
               const SizedBox(
                 height: 16,
               ),
               SizedBox(
-                height: 550,
-                child: ListView(
-                  // shrinkWrap: true,
-                  // physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    BestAdsItem(
-                      img: defaultHouse,
-                      title: "test",
-                      area: "test",
-                      floors: "test",
-                      statee: "test",
-                      createdAt: DateTime.now(),
-                      price: "test",
-                      // isFavorite: null,
-                    ),
-                    BestAdsItem(
-                      img: defaultHouse,
-                      title: "test",
-                      area: "test",
-                      floors: "test",
-                      statee: "test",
-                      createdAt: DateTime.now(),
-                      price: "test",
-                      isFavorite: null,
-                    ),
-                    BestAdsItem(
-                      img: defaultHouse,
-                      title: "test",
-                      area: "test",
-                      floors: "test",
-                      statee: "test",
-                      createdAt: DateTime.now(),
-                      price: "test",
-                      isFavorite: null,
-                    ),
-                  ],
+                height: 600,
+                child: BlocBuilder<MyAdsCubit, MyAdsState>(
+                  builder: (context, state) {
+                    return state is MyAdsSuccess
+                        ? ListView.builder(
+                            // shrinkWrap: true,
+                            // physics: NeverScrollableScrollPhysics(),
+                            itemCount: state.myMyAdsModel.data!.isEmpty
+                                ? 1
+                                : state.myMyAdsModel.data!.length,
+                            itemBuilder: (context, index) {
+                              return state.myMyAdsModel.data!.isEmpty
+                                  ? Center(
+                                      child: Text("No Data".tr(context)),
+                                    )
+                                  : InkWell(
+                                      onTap: () => myApplication.navigateTo(
+                                          AddDetails(
+                                            contractType: state.myMyAdsModel
+                                                .data![index].contractType,
+                                            buildingType: state.myMyAdsModel
+                                                .data![index].buildingType,
+                                            deliveryTerm: state
+                                                .myMyAdsModel
+                                                .data![index]
+                                                .details!
+                                                .deliveryTerm,
+                                            address: state.myMyAdsModel
+                                                .data![index].address?.state,
+                                            createdAt: state.myMyAdsModel
+                                                .data![index].createdAt
+                                                .toString(),
+                                            description: state.myMyAdsModel
+                                                .data![index].description,
+                                            area: state.myMyAdsModel
+                                                .data![index].details?.area
+                                                .toString(),
+                                            floor: state.myMyAdsModel
+                                                .data?[index].details?.floor
+                                                .toString(),
+                                            bedRooms: state
+                                                .myMyAdsModel
+                                                .data![index]
+                                                .details
+                                                ?.bedroomsCount
+                                                .toString(),
+                                            bathRooms: state
+                                                .myMyAdsModel
+                                                .data![index]
+                                                .details
+                                                ?.bathroomCount
+                                                .toString(),
+                                            amenities: state.myMyAdsModel
+                                                .data![index].amenities,
+                                            priceSd: state.myMyAdsModel
+                                                .data![index].price?.inSp
+                                                .toString(),
+                                            priceDollar: state.myMyAdsModel
+                                                .data![index].price?.inUsd
+                                                .toString(),
+                                            phone: state.myMyAdsModel
+                                                .data![index].mobileNumber
+                                                .toString(),
+                                            advertiserId: state.myMyAdsModel
+                                                .data![index].advertiser
+                                                .toString(),
+                                            adId: state
+                                                .myMyAdsModel.data![index].id,
+                                            isFavorite: false,
+                                          ),
+                                          context),
+                                      child: BestAdsItem(
+                                        img: state.myMyAdsModel.data![index]
+                                                .images!.isNotEmpty
+                                            ? state.myMyAdsModel.data![index]
+                                                .images!.first["normal"]
+                                            : defaultHouse,
+                                        title: state
+                                            .myMyAdsModel.data![index].title,
+                                        area: state.myMyAdsModel.data![index]
+                                            .details!.area
+                                            .toString(),
+                                        floors: state.myMyAdsModel.data![index]
+                                            .details!.floor
+                                            .toString(),
+                                        statee: state.myMyAdsModel.data![index]
+                                            .address?.state,
+                                        createdAt: state.myMyAdsModel
+                                            .data![index].createdAt,
+                                        price: state.myMyAdsModel.data![index]
+                                            .price?.inSp
+                                            .toString(),
+                                        priceDollar: state.myMyAdsModel
+                                            .data![index].price?.inUsd
+                                            .toString(),
+                                        adId:
+                                            state.myMyAdsModel.data?[index].id,
+                                      ),
+                                    );
+                            },
+                          )
+                        : Center(
+                            child: CircularProgressIndicator(),
+                          );
+                  },
                 ),
               ),
             ],

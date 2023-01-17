@@ -1,4 +1,7 @@
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
+import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/MyAds/MyAdsCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -33,6 +36,14 @@ class AppMainController {
           location: location,
           maxDistance: maxDistance,
           currency: currency);
+      if (CacheHelper.getFromShared("token") != null &&
+          CacheHelper.getFromShared("isAdvertiser") == "yes") {
+        MyAdsCubit.get(myContext).userMyAds(
+            token: CacheHelper.getFromShared("token"), context: myContext);
+        GetUserDataCubit.get(myContext).userGetUserData(
+            userId: CacheHelper.getFromShared("id"),
+            token: CacheHelper.getFromShared("token"));
+      }
     }
   }
 

@@ -1,4 +1,6 @@
 import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
+import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/MyAds/MyAdsCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
@@ -55,99 +57,254 @@ class _AppMainScreenState extends State<AppMainScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ////////// adds bar
-                CacheHelper.getFromShared("token") != null
-                    ? CacheHelper.getFromShared("isAdvertiser") == "yes"
-                        ? Column(
+                CacheHelper.getFromShared("token") != null &&
+                        CacheHelper.getFromShared("isAdvertiser") == "yes"
+                    ? Column(
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "My Ads.".tr(context),
-                                    style: const TextStyle(
-                                        fontSize: 20, fontFamily: "Tajawal"),
-                                  ),
-                                  const Spacer(),
-                                  InkWell(
-                                    // onTap: () => Navigator.pushNamed(context, "/allcategory"),
-                                    child: Text(
-                                      "View All".tr(context),
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: "Tajawal,Regular",
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .secondary),
-                                    ),
-                                  )
-                                ],
+                              Text(
+                                "My Ads.".tr(context),
+                                style: const TextStyle(
+                                    fontSize: 20, fontFamily: "Tajawal"),
                               ),
-                              Container(
-                                  width: double.infinity,
-                                  margin: const EdgeInsets.only(top: 8),
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                        // scrollDirection: Axis.horizontal,
-                                        children: adsTaps.map((e) {
-                                      return Container(
-                                        height: 80,
-                                        width: 140,
-                                        margin:
-                                            const EdgeInsets.only(right: 16),
-                                        child: Card(
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 8.0, horizontal: 12),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  e["img"],
-                                                  height: 50,
-                                                ),
-                                                const SizedBox(
-                                                  width: 8,
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text(
-                                                      e["no"],
-                                                      style: TextStyle(
-                                                          fontSize: 20,
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .colorScheme
-                                                                  .secondary,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    Text(
-                                                        e["name"]
-                                                            .toString()
-                                                            .tr(context),
-                                                        style: const TextStyle(
-                                                          fontSize: 14,
-                                                        ))
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }).toList()),
-                                  )),
-                              const SizedBox(
-                                height: 25,
-                              ),
+                              const Spacer(),
+                              InkWell(
+                                // onTap: () => Navigator.pushNamed(context, "/allcategory"),
+                                child: Text(
+                                  "View All".tr(context),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: "Tajawal,Regular",
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
+                                ),
+                              )
                             ],
-                          )
-                        : const SizedBox()
-                    : SizedBox(),
+                          ),
+                          Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(top: 8),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: BlocBuilder<MyAdsCubit, MyAdsState>(
+                                  builder: (context, state) {
+                                    return state is MyAdsSuccess
+                                        ? Row(
+                                            children: [
+                                              Container(
+                                                height: 80,
+                                                width: 150,
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8),
+                                                child: Card(
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        vertical: 8.0,
+                                                        horizontal: 12),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          "assets/adsSoNew.svg",
+                                                          height: 50,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 8,
+                                                        ),
+                                                        Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            Text(
+                                                              state.myMyAdsModel
+                                                                  .data!.length
+                                                                  .toString(), //from api
+                                                              style: TextStyle(
+                                                                  fontSize: 20,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .colorScheme
+                                                                      .secondary,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            ),
+                                                            Text(
+                                                                "Ads."
+                                                                    .toString()
+                                                                    .tr(
+                                                                        context),
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 14,
+                                                                ))
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                height: 80,
+                                                width: 150,
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8),
+                                                child: Card(
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        vertical: 8.0,
+                                                        horizontal: 12),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          "assets/viewsSoNew.svg",
+                                                          height: 50,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 8,
+                                                        ),
+                                                        Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            Text(
+                                                              context
+                                                                  .watch<
+                                                                      MyAdsCubit>()
+                                                                  .views
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 20,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .colorScheme
+                                                                      .secondary,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            ),
+                                                            Text(
+                                                                "Views"
+                                                                    .toString()
+                                                                    .tr(
+                                                                        context),
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 14,
+                                                                ))
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                              ///
+                                              ///
+                                              ///
+                                              Container(
+                                                height: 80,
+                                                width: 150,
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8),
+                                                child: Card(
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        vertical: 8.0,
+                                                        horizontal: 12),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          "assets/callsSoNew.svg",
+                                                          height: 50,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 8,
+                                                        ),
+                                                        Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            Text(
+                                                              context
+                                                                          .watch<
+                                                                              GetUserDataCubit>()
+                                                                          .calls
+                                                                          .toString() ==
+                                                                      "null"
+                                                                  ? ""
+                                                                  : context
+                                                                      .watch<
+                                                                          GetUserDataCubit>()
+                                                                      .calls
+                                                                      .toString(), //from api
+                                                              style: TextStyle(
+                                                                  fontSize: 20,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .colorScheme
+                                                                      .secondary,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            ),
+                                                            Text(
+                                                                "Calls"
+                                                                    .toString()
+                                                                    .tr(
+                                                                        context),
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 14,
+                                                                ))
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        : SizedBox(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            child: Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            ),
+                                          );
+                                  },
+                                ),
+                              )),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                        ],
+                      )
+                    : const SizedBox(),
                 /////////// catigory bar
                 Row(
                   children: [

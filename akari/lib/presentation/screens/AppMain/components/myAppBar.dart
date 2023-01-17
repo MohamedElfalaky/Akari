@@ -13,8 +13,7 @@ class myAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:
-          EdgeInsets.symmetric(horizontal: myApplication.widthClc(context, 12)),
+      margin: EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,14 +35,14 @@ class myAppBar extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: myApplication.hightClc(context, 8),
+            height: 8,
           ),
           Text(
             "Here you can find what you need!".tr(context),
             style: const TextStyle(fontSize: 20, fontFamily: "Tajawal"),
           ),
           SizedBox(
-            height: myApplication.hightClc(context, 16),
+            height: 16,
           ),
           SearchFilter(() => Navigator.push(
               //

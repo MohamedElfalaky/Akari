@@ -1,5 +1,7 @@
 // import 'dart:html' hide Platform;
 
+import 'package:akari/data/cubits/IncreaseCall/IncreaseCallCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/OneChat/components/OneChatScreen.dart';
 import 'dart:io' show Platform;
@@ -92,6 +94,11 @@ class _OneChatPageState extends State<OneChatPage> {
             actions: [
               InkWell(
                 onTap: () {
+                  IncreaseCallCubit.get(context).userIncreaseCall(
+                      context: context,
+                      advertiserId: widget.receiverId!,
+                      token: CacheHelper.getFromShared("token"),
+                      userId: CacheHelper.getFromShared("id"));
                   launchUrl(Uri.parse("tel://+2${widget.phoneNumber}"));
                 },
                 child: Icon(
@@ -127,7 +134,7 @@ class _OneChatPageState extends State<OneChatPage> {
               child: OneChatScreen(
                   roomId: widget.roomId,
                   receiver: widget.receiverId,
-                  sender: widget.senderId))),
+                  senderr: widget.senderId))),
     );
   }
 

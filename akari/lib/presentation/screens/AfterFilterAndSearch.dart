@@ -1,5 +1,7 @@
 import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
+import 'package:akari/helpers/AppLocalizations.dart';
 import 'package:akari/helpers/myApplication.dart';
+import 'package:akari/presentation/screens/AddDetails/AddDetails.dart';
 import 'package:akari/presentation/screens/AppMain/components/BestAdsItem.dart';
 import 'package:akari/presentation/widgets/Filter/AfterFilterAppBar.dart';
 import 'package:akari/presentation/widgets/Shared/ViewOnMap.dart';
@@ -50,32 +52,90 @@ class _AfterFilterAndSearchState extends State<AfterFilterAndSearch> {
                       itemBuilder: (context, index) {
                         return state.mySearchFromHomeModel.data.isEmpty
                             ? Center(
-                                child: Text("No Data"),
+                                child: Text("No Data".tr(context)),
                               )
-                            : BestAdsItem(
-                                img: state.mySearchFromHomeModel.data[index]
-                                        .images.isEmpty
-                                    ? defaultHouse
-                                    : state.mySearchFromHomeModel.data[index]
-                                        .images.first.normal,
-                                title: state
-                                    .mySearchFromHomeModel.data[index].title,
-                                area: state.mySearchFromHomeModel.data[index]
-                                    .details.area
-                                    .toString(),
-                                floors: state.mySearchFromHomeModel.data[index]
-                                    .details.floors
-                                    .toString(),
-                                statee: state.mySearchFromHomeModel.data[index]
-                                    .address.state,
-                                createdAt: DateTime.now(),
-                                price: state.mySearchFromHomeModel.data[index]
-                                    .price.inSP
-                                    .toString(),
-                                priceDollar: state.mySearchFromHomeModel
-                                    .data[index].price.inUSD
-                                    .toString(),
-                                isFavorite: null,
+                            : InkWell(
+                                onTap: () {
+                                  myApplication.navigateTo(
+                                      AddDetails(
+                                        contractType: state
+                                            .mySearchFromHomeModel
+                                            .data[index]
+                                            .contractType,
+                                        buildingType: state
+                                            .mySearchFromHomeModel
+                                            .data[index]
+                                            .buildingType,
+                                        deliveryTerm: state
+                                            .mySearchFromHomeModel
+                                            .data[index]
+                                            .details
+                                            .deliveryTerm,
+                                        address: state.mySearchFromHomeModel
+                                            .data[index].address.state,
+                                        createdAt: state.mySearchFromHomeModel
+                                            .data[index].createdAt
+                                            .toString(),
+                                        description: state.mySearchFromHomeModel
+                                            .data[index].description,
+                                        area: state.mySearchFromHomeModel
+                                            .data[index].details.area
+                                            .toString(),
+                                        floor: state.mySearchFromHomeModel
+                                            .data[index].details.floors
+                                            .toString(),
+                                        bedRooms: state.mySearchFromHomeModel
+                                            .data[index].details.bedroomsCount
+                                            .toString(),
+                                        bathRooms: state.mySearchFromHomeModel
+                                            .data[index].details.bathroomCount
+                                            .toString(),
+                                        amenities: state.mySearchFromHomeModel
+                                            .data[index].amenities,
+                                        priceSd: state.mySearchFromHomeModel
+                                            .data[index].price.inSP
+                                            .toString(),
+                                        priceDollar: state.mySearchFromHomeModel
+                                            .data[index].price.inUSD
+                                            .toString(),
+                                        phone: state.mySearchFromHomeModel
+                                            .data[index].mobileNumber
+                                            .toString(),
+                                        advertiserId: state
+                                            .mySearchFromHomeModel
+                                            .data[index]
+                                            .advertiser
+                                            .toString(),
+                                        adId: state.mySearchFromHomeModel
+                                            .data[index].id,
+                                      ),
+                                      context);
+                                },
+                                child: BestAdsItem(
+                                  img: state.mySearchFromHomeModel.data[index]
+                                          .images.isEmpty
+                                      ? defaultHouse
+                                      : state.mySearchFromHomeModel.data[index]
+                                          .images.first.normal,
+                                  title: state
+                                      .mySearchFromHomeModel.data[index].title,
+                                  area: state.mySearchFromHomeModel.data[index]
+                                      .details.area
+                                      .toString(),
+                                  floors: state.mySearchFromHomeModel
+                                      .data[index].details.floors
+                                      .toString(),
+                                  statee: state.mySearchFromHomeModel
+                                      .data[index].address.state,
+                                  createdAt: DateTime.now(),
+                                  price: state.mySearchFromHomeModel.data[index]
+                                      .price.inSP
+                                      .toString(),
+                                  priceDollar: state.mySearchFromHomeModel
+                                      .data[index].price.inUSD
+                                      .toString(),
+                                  isFavorite: false,
+                                ),
                               );
                       },
                     )

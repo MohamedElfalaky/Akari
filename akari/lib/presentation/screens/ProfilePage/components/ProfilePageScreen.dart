@@ -1,6 +1,6 @@
 import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/UpdateAll/UpdateAllCubit.dart';
 import 'package:akari/data/cubits/UpdateUserMail/UpdateUserMailCubit.dart';
-import 'package:akari/data/cubits/UpdateUserPass%20copy/UpdateAllCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 
 import 'package:akari/presentation/widgets/Shared/Button.dart';

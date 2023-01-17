@@ -77,7 +77,7 @@ class _SorryPopUpState extends State<SorryPopUp> {
                       Navigator.pop(context);
                       myApplication.navigateTo(LogIn(), context);
                     },
-                    "Log in".tr(context),
+                    "Login".tr(context),
                     txtClr: Theme.of(context).colorScheme.primary,
                   ),
                 ]),

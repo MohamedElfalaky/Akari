@@ -81,10 +81,10 @@ class myTextField extends StatelessWidget {
             borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.secondary, width: 2)),
 
-        contentPadding: EdgeInsets.only(
-            left: myApplication.widthClc(context, 16),
-            bottom: myApplication.hightClc(context, 12),
-            top: myApplication.hightClc(context, 12)),
+        // contentPadding: EdgeInsets.only(
+        //     left: myApplication.widthClc(context, 16),
+        //     bottom: myApplication.hightClc(context, 12),
+        //     top: myApplication.hightClc(context, 12)),
         prefixIcon: prefix != null
             ? Container(
                 margin: const EdgeInsets.only(

@@ -2,30 +2,33 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:akari/data/Models/get_rooms_model/get_rooms_model.dart';
-
+import 'package:akari/data/Models/tac_model/tac_model.dart';
+import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../App/constants.dart';
 
-class GetRoomsRepo {
-  Future<GetRoomsModel?> getRooms(String token) async {
+class TACRepo {
+  Future<TacModel?> TAC(dynamic token) async {
     try {
-      var response =
-          await http.post(Uri.parse('$baseURL/chat/rooms'), headers: {
+      var response = await http
+          .get(Uri.parse('$baseURL/admin/get-terms-and-conditions'), headers: {
         "Authorization": "bearer $token",
-      }, body: {});
+      });
 
       Map<String, dynamic> responsemap = json.decode(response.body);
-      if (response.statusCode == 200 && responsemap["result"] == true) {
-        final data = GetRoomsModel.fromJson(responsemap);
-        myApplication.showToast(text: data.message!, color: Colors.green);
+      if (response.statusCode == 200) {
+        final data = TacModel.fromJson(responsemap);
+
         return data;
       } else if (response.statusCode == 401) {
-        final data = GetRoomsModel.fromJson(responsemap);
-        return data;
+        myApplication.showToast(
+            text: responsemap["message"], color: Colors.red);
+
+        return null;
       } else {
         myApplication.showToast(
             text: responsemap["message"], color: Colors.red);

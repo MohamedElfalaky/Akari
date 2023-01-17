@@ -8,7 +8,10 @@ import 'package:akari/data/cubits/ForgetPass/ForgetPassCubit.dart';
 import 'package:akari/data/cubits/GetFavorites/GetFavoritesCubit.dart';
 import 'package:akari/data/cubits/GetMassages/GetMassagesCubit.dart';
 import 'package:akari/data/cubits/GetRooms/GetRoomsCubit.dart';
+import 'package:akari/data/cubits/GetUserData%20copy/GetUser2Cubit.dart';
 import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/IncreaseCall/IncreaseCallCubit.dart';
+import 'package:akari/data/cubits/MyAds/MyAdsCubit.dart';
 import 'package:akari/data/cubits/OTPMailUpdate/UpdateMailOTPCubit.dart';
 import 'package:akari/data/cubits/Page1/Page1Cubit.dart';
 import 'package:akari/data/cubits/Page2Appartment/Page2AppartmentCubit.dart';
@@ -18,8 +21,9 @@ import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dar
 import 'package:akari/data/cubits/ResendOtp/ResendOtpCubit.dart';
 import 'package:akari/data/cubits/ResetPass/ResetPassCubit.dart';
 import 'package:akari/data/cubits/SearchFromHome/SearchFromHomeCubit.dart';
+import 'package:akari/data/cubits/TAC/TACCubit.dart';
+import 'package:akari/data/cubits/UpdateAll/UpdateAllCubit.dart';
 import 'package:akari/data/cubits/UpdateUserMail/UpdateUserMailCubit.dart';
-import 'package:akari/data/cubits/UpdateUserPass%20copy/UpdateAllCubit.dart';
 import 'package:akari/data/cubits/UpdateUserPass/UpdateUserCubit.dart';
 import 'package:akari/data/cubits/VarifyOtp/VarifyOtpCubit.dart';
 import 'package:akari/data/cubits/addAddress/AddAmintiesCubit.dart';
@@ -47,7 +51,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
-  // CacheHelper.removeFromShared("token");
+  CacheHelper.removeFromShared("token");
   CacheHelper.saveToShared("LOCALE", "ar");
   // CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
   // print(
@@ -104,6 +108,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<UpdateMailOTPCubit>(
             create: (context) => UpdateMailOTPCubit()),
         BlocProvider<updateAllCubit>(create: (context) => updateAllCubit()),
+        BlocProvider<MyAdsCubit>(create: (context) => MyAdsCubit()),
+        BlocProvider<TACCubit>(create: (context) => TACCubit()),
+        BlocProvider<IncreaseCallCubit>(
+            create: (context) => IncreaseCallCubit()),
+        BlocProvider<GetUser2Cubit>(create: (context) => GetUser2Cubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

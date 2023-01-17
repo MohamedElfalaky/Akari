@@ -59,13 +59,13 @@ class _SearchFilterState extends State<SearchFilter> {
                           color: Color(0xff363a3d1a), width: 1.5),
                     ),
                     contentPadding: EdgeInsets.only(
-                        left: myApplication.widthClc(context, 10),
-                        bottom: myApplication.hightClc(context, 10)),
+                        // left: myApplication.widthClc(context, 10),
+                        bottom: 10),
                     prefixIcon: InkWell(
                       onTap: () {
                         SearchFromHomeCubit.get(context).userSearchFromHome(
                             myState: _searchText.text.isEmpty
-                                ? "Khartoum"
+                                ? ""
                                 : _searchText.text,
                             context: context);
                         print(_searchText.text);
@@ -87,8 +87,8 @@ class _SearchFilterState extends State<SearchFilter> {
           InkWell(
             onTap: (() => Navigator.pushNamed(context, "/filter")),
             child: SizedBox(
-              width: myApplication.widthClc(context, 40),
-              height: myApplication.hightClc(context, 40),
+              width: 46,
+              height: 46,
               child: SvgPicture.asset("assets/filter.svg"),
             ),
           ),

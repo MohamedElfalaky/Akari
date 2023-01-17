@@ -134,7 +134,7 @@
     "New password":"كلمة المرور جديدة",
     "Confirm":"تأكيد",
     "Confirm password":"تأكيد كلمة المرور",
-    "Log in to reach your chat rooms":"؟؟؟؟؟؟",
+    "Log in to reach your chat rooms":"قم بتسجيل الدخول للوصول لغرف المحادثة",
     "UnAuthrized, please log in":" الرجاء تسجيل الدخول",
     "Contact Us":"اتصل بنا",
     "Email":"بريد إلكتروني",
@@ -329,8 +329,8 @@
 
 
     "Read less": "أقل..",
-    "Read more":"المزيد.."
-
+    "Read more":"المزيد..",
+    "No Data":"لا يوجد عناصر"
 
 
 

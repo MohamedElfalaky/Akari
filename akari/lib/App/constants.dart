@@ -11,11 +11,7 @@ const Map<String, String> headers = {
   'lang': 'en'
 };
 
-const baseURL = "https://77e4-156-206-138-118.eu.ngrok.io";
-// const baseURL = "http://194.242.56.57:3050";
-// const baseURL = "http://3.70.249.119";
-//  "http://3.70.249.119";
-//  "http://localhost:3052";
+const baseURL = "http://3.70.249.119";
 
 const List<String> sudanCities = [
   "Khartoum",

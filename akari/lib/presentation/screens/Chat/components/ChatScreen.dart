@@ -79,16 +79,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: CircularProgressIndicator(),
                   );
   }
-  // else if (state is GetRoomsError) {
-  //   return Center(
-  //     child: Text(
-  //         "Ops!, ${state.error}, please Log in to reach your chat rooms"),
-  //   );
-  // } else {
-  //   return Center(
-  //     child: CircularProgressIndicator(),
-  //   );
-  // }
 
   initTheSocket() {
     mySocket = io(baseURL,
@@ -100,19 +90,6 @@ class _ChatScreenState extends State<ChatScreen> {
           "query": {"token": "${CacheHelper.getFromShared("token")}"}
         });
     mySocket!.connect();
-    // mySocket!.onConnectError((data) {
-    //   print("error almost for auth");
-    //   setState(() {
-    //     roomsModel = "unAuth";
-    //   });
-    // });
-    // Timer(Duration(seconds: 5), () {
-    //   if (!mySocket!.connected) {
-    //     setState(() {
-    //       roomsModel = "unAuth";
-    //     });
-    //   }
-    // });
     mySocket!.on("error", (data) {
       setState(() {
         roomsModel = "unAuth";
@@ -132,15 +109,4 @@ class _ChatScreenState extends State<ChatScreen> {
       });
     });
   }
-
-  // setRooms(rooms) {
-  //   return rooms;
-  //   // if (mounted) {
-  //   //   setState(() {
-  //   //     myRooms.add({"massage": theMsg, "type": type});
-  //   //   });
-  //   // }
-  // }
-
-  // socketIO = SocketIOManager().createSocketIO('someUrl', '/', query: 'token=$tok?userType=1', socketStatusCallback: _socketStatus);
 }

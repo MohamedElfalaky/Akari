@@ -1,45 +1,31 @@
-// import 'package:client_app/data/cubits/CartItemsCubit/CartItemsCubit.dart';
-// import 'package:client_app/data/cubits/TotalFeeCubit/TotalFeeCubit.dart';
-// import 'package:client_app/helpers/myApplication.dart';
-// import 'package:flutter/material.dart';
-// import 'package:path/path.dart';
+import 'package:akari/data/cubits/AllAdds/AllAddsCubit.dart';
+import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/MyAds/MyAdsCubit.dart';
+import 'package:akari/helpers/CacheHelper.dart';
+import 'package:akari/helpers/myApplication.dart';
+import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
-// class CartController {
-//   ///vars
+class MoreController {
+  ///vars
 
-//   ///methods
-//   void cartAPIs(BuildContext context, String token) async {
-//     final bool result = await MyApplication.checkInternet();
-//     if (!result) {
-//       MyApplication.showToast(
-//           text: "No Internet connection | لا يوجد اتصال",
-//           color: ToastColors.error);
-//     } else {
-//       CartItemsCubit.get(context).getCartItems(token);
-//       TotalFeeCubit.get(context).getTotalFee(token);
-//     }
-//   }
+  ///methods
+  void MoreAPIs({
+    required BuildContext myContext,
+  }) async {
+    final bool result = await myApplication.checkInternet();
+    if (!result) {
+      myApplication.showToast(
+          text: "No Internet connection | لا يوجد اتصال", color: Colors.red);
+    } else {
+      if (CacheHelper.getFromShared("token") != null &&
+          CacheHelper.getFromShared("isAdvertiser") == "yes") {
+        MyAdsCubit.get(myContext).userMyAds(
+            token: CacheHelper.getFromShared("token"), context: myContext);
+      }
+    }
+  }
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//   Widget notRendertPlusMinus(BuildContext context, IconData icons) {
-//     return Container(
-//       decoration: BoxDecoration(
-//           color: Theme.of(context).colorScheme.primary,
-//           borderRadius: BorderRadius.circular(10)),
-//       height: 30,
-//       width: 30,
-//       child: Center(
-//         child: ElevatedButton(
-//           style:
-//               ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
-//           onPressed: () {},
-//           child: Icon(
-//             icons,
-//             color: Colors.white,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+}

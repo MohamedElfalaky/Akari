@@ -1,3 +1,4 @@
+import 'package:akari/helpers/AppLocalizations.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/TAC/components/TACScreen.dart';
@@ -9,21 +10,17 @@ import 'package:flutter/material.dart';
 import '../../../app/global.dart';
 
 class TAC extends StatefulWidget {
-  const TAC();
+  final String titlee;
+  const TAC(this.titlee);
 
   @override
   State<TAC> createState() => _TACState();
 }
 
 class _TACState extends State<TAC> {
-  // final TACController _TACControllerController = TACController();
-
   @override
   void initState() {
     super.initState();
-
-    // _TACControllerController.TACAPIs(
-    //     context, CacheHelper.getFromShared("token"));
   }
 
   @override
@@ -54,8 +51,8 @@ class _TACState extends State<TAC> {
             shape: const RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(16))),
-            title: const Text(
-              "Terms and conditions",
+            title: Text(
+              widget.titlee.tr(context),
               style: TextStyle(fontSize: 24, fontFamily: "Tajawal"),
             ),
           ),

@@ -132,7 +132,7 @@ class AddAdvertiseRepo {
         "area": area.toString(),
         "bedroomsCount": bedroomsCount.toString(),
         "bathroomCount": bathroomCount.toString(),
-        // "floor": 2,
+        "floor": floor,
         "deliveryTerm": deliveryTerm,
         "renterType": renterType,
         "rentFrequency": jsonEncode(rentFrequency),

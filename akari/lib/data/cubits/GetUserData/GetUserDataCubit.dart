@@ -12,6 +12,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
 
   static GetUserDataCubit get(context) => BlocProvider.of(context);
   GetUserDataRepo getUserDataRepo = GetUserDataRepo();
+  var calls;
 
   void userGetUserData({
     required String userId,
@@ -21,6 +22,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
       emit(GetUserDataLoading());
       getUserDataRepo.getUserData(userID: userId, token: token).then((value) {
         if (value != null) {
+          calls = value.data!.numberOfCalls;
           emit(GetUserDataSuccess(value));
         } else {
           print(value);

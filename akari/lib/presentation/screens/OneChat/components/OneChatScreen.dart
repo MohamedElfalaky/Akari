@@ -13,9 +13,9 @@ import '../../../../helpers/AppLocalizations.dart';
 class OneChatScreen extends StatefulWidget {
   final String? roomId;
   final String? receiver;
-  final String? sender;
+  final String? senderr;
   const OneChatScreen(
-      {required this.roomId, required this.receiver, required this.sender});
+      {required this.roomId, required this.receiver, required this.senderr});
 
   @override
   State<OneChatScreen> createState() => _OneChatScreenState();
@@ -55,7 +55,7 @@ class _OneChatScreenState extends State<OneChatScreen> {
 
   setMessage(String theMsg, String id) {
     String type;
-    if (id == widget.sender) {
+    if (id == widget.senderr) {
       type = "sent";
     } else if (id == widget.receiver) {
       type = "received";
@@ -174,7 +174,7 @@ class _OneChatScreenState extends State<OneChatScreen> {
               suffix: InkWell(
                 onTap: () {
                   sendMassage(
-                      _chatController.text, widget.receiver!, widget.sender!);
+                      _chatController.text, widget.receiver!, widget.senderr!);
                   _chatController.clear();
                 },
                 child: Icon(

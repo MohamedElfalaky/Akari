@@ -1,4 +1,5 @@
 import 'package:akari/data/cubits/Local/local_cubit.dart';
+import 'package:akari/data/cubits/MyAds/MyAdsCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/ChangePassWord/ChangePassWord.dart';
@@ -29,7 +30,7 @@ class _MoreScreenState extends State<MoreScreen> {
     // TODO: implement initState
     super.initState();
     // _MoreController.MoreAPIs(context, CacheHelper.getFromShared("token"));
-    LocalCubit.get(context).getSavedLanguage();
+    // LocalCubit.get(context).getSavedLanguage();
   }
 
   @override
@@ -107,8 +108,8 @@ class _MoreScreenState extends State<MoreScreen> {
                               ),
                               Row(
                                 children: [
-                                  const Text(
-                                    "My Ads.",
+                                  Text(
+                                    "My Ads.".tr(context),
                                     style: TextStyle(
                                         fontFamily: "Tajawal", fontSize: 16),
                                   ),
@@ -116,7 +117,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                     width: 5,
                                   ),
                                   Text(
-                                    "(6)",
+                                    "(${context.watch<MyAdsCubit>().ads.toString()})",
                                     style: TextStyle(
                                         fontFamily: "Tajawal",
                                         fontSize: 16,
@@ -428,7 +429,8 @@ class _MoreScreenState extends State<MoreScreen> {
               height: 16,
             ),
             InkWell(
-              onTap: () => myApplication.navigateTo(const TAC(), context),
+              onTap: () => myApplication.navigateTo(
+                  const TAC("Terms and conditions"), context),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -457,7 +459,8 @@ class _MoreScreenState extends State<MoreScreen> {
               height: 16,
             ),
             InkWell(
-              onTap: () => myApplication.navigateTo(const TAC(), context),
+              onTap: () => myApplication.navigateTo(
+                  const TAC("Privacy policy"), context),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 5),

@@ -128,7 +128,7 @@ class BestAdsItem extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(bottom: 8, top: 8),
                   child: Text(
-                    title!,
+                    title ?? "",
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
@@ -151,7 +151,7 @@ class BestAdsItem extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(right: 8, bottom: 8),
                             child: Text(
-                              "$area m",
+                              "${area ?? ""} m",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -177,7 +177,7 @@ class BestAdsItem extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 8)),
                             child: Text(
-                              "$floors ${'floors'.tr(context)}",
+                              "${floors ?? ""} ${'floors'.tr(context)}",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -206,7 +206,7 @@ class BestAdsItem extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
                             child: Text(
-                              statee!,
+                              statee ?? "",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -232,7 +232,11 @@ class BestAdsItem extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
                             child: Text(
-                              DateFormat.yMMMd().format(createdAt!).toString(),
+                              createdAt != null
+                                  ? DateFormat.yMMMd()
+                                      .format(createdAt!)
+                                      .toString()
+                                  : "",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -248,7 +252,7 @@ class BestAdsItem extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        "$price SD",
+                        "${price ?? ""} SD",
                         style: TextStyle(
                             fontSize: 22,
                             fontFamily: "Tajawal",
@@ -259,7 +263,7 @@ class BestAdsItem extends StatelessWidget {
                       width: 8,
                     ),
                     Text(
-                      "($priceDollar \$)",
+                      "(${priceDollar ?? ""} \$)",
                       style: const TextStyle(
                           fontSize: 18,
                           fontFamily: "Tajawal",

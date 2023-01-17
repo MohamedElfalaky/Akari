@@ -307,9 +307,10 @@ class _FormPage6State extends State<FormPage6> {
                                     ),
                                     InkWell(
                                       onTap: () => myApplication.navigateTo(
-                                          const TAC(), context),
+                                          const TAC("Terms and Conditions"),
+                                          context),
                                       child: Text(
-                                        "Terms and Conditions ".tr(context),
+                                        "Terms and Conditions".tr(context),
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: "Tajawal",

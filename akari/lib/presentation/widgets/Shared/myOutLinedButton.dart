@@ -37,7 +37,7 @@ class myOutLinedButton extends StatelessWidget {
             children: [
               btnIcon ?? Container(),
               Text(
-                buttonName.tr(context),
+                buttonName,
                 style: TextStyle(
                     fontFamily: "Tajawal",
                     fontSize: 16,

@@ -1,10 +1,14 @@
 import 'dart:io';
 
 import 'package:akari/data/cubits/AddToFavorite/AddToFavoriteCubit.dart';
+import 'package:akari/data/cubits/GetUserData%20copy/GetUser2Cubit.dart';
+import 'package:akari/data/cubits/GetUserData/GetUserDataCubit.dart';
+import 'package:akari/data/cubits/IncreaseCall/IncreaseCallCubit.dart';
 import 'package:akari/data/cubits/RemoveFromFavorite/RemoveFromFavoriteCubit.dart';
 import 'package:akari/helpers/CacheHelper.dart';
 import 'package:akari/helpers/myApplication.dart';
 import 'package:akari/presentation/screens/AddDetails/components/SorryPopUp.dart';
+import 'package:akari/presentation/screens/OneChat/OneChatPage.dart';
 import 'package:akari/presentation/widgets/Shared/Button.dart';
 import 'package:akari/style/Icons.dart';
 import 'package:flutter/material.dart';
@@ -180,7 +184,7 @@ class AddDetailsScreen extends StatelessWidget {
                       margin: EdgeInsets.only(
                           bottom: myApplication.hightClc(context, 12)),
                       child: Text(
-                        "$buildingType",
+                        "${buildingType ?? ""}",
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -214,7 +218,7 @@ class AddDetailsScreen extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
                             child: Text(
-                              "${'Sudan'.tr(context)}, $address ",
+                              "${'Sudan'.tr(context)}, ${address ?? ""} ",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -237,14 +241,16 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(
                                 bottom: myApplication.hightClc(context, 12)),
-                            child: Text(
-                              DateFormat.yMMMd()
-                                  .format(DateTime.parse(createdAt!))
-                                  .toString(),
-                              style: const TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
+                            child: createdAt != null
+                                ? Text(
+                                    DateFormat.yMMMd()
+                                        .format(DateTime.parse(createdAt!))
+                                        .toString(),
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  )
+                                : Text(""),
                           ),
                         ],
                       ),
@@ -271,7 +277,7 @@ class AddDetailsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Text(description!)
+                Text(description ?? "")
               ],
             ),
           ),
@@ -310,7 +316,7 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
                             child: Text(
-                              "$area",
+                              "${area ?? ""}",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -333,7 +339,7 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
                             child: Text(
-                              "$floor ${'floors'.tr(context)}",
+                              "${floor ?? ""} ${'floors'.tr(context)}",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -358,7 +364,7 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
                             child: Text(
-                              "$bathRooms ${'bathRooms'.tr(context)}",
+                              "${bathRooms ?? ""} ${'bathRooms'.tr(context)}",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -385,7 +391,7 @@ class AddDetailsScreen extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(bottom: 8),
                             child: Text(
-                              "$bedRooms ${'bedrooms'.tr(context).tr(context)}",
+                              "${bedRooms ?? ""} ${'bedrooms'.tr(context).tr(context)}",
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -459,7 +465,7 @@ class AddDetailsScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "$priceSd ${'SD'.tr(context)}",
+                      "${priceSd ?? ""} ${'SD'.tr(context)}",
                       style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.primary),
@@ -468,7 +474,7 @@ class AddDetailsScreen extends StatelessWidget {
                       width: 8,
                     ),
                     Text(
-                      "($priceDollar \$)",
+                      "(${{priceDollar ?? ""}} \$)",
                       style: const TextStyle(fontSize: 14, color: Colors.black),
                     )
                   ],
@@ -477,125 +483,149 @@ class AddDetailsScreen extends StatelessWidget {
                   height: 16,
                 ),
                 myButton(() {
-                  showModalBottomSheet(
-                      barrierColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0),
-                      backgroundColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0),
+                  if (CacheHelper.getFromShared("token") == null) {
+                    showDialog(
                       context: context,
-                      builder: (BuildContext context) {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          padding: const EdgeInsets.all(20),
-                          height: 330,
-                          decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
-                              color: Colors.white,
-                              border: Border.all(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Price".tr(context),
-                                style: const TextStyle(
-                                  fontSize: 16,
+                      builder: (BuildContext myContext) {
+                        return SorryPopUp();
+                      },
+                    );
+                  } else {
+                    showModalBottomSheet(
+                        barrierColor: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(0),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(0),
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.all(20),
+                            height: 330,
+                            decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(25),
+                                    topRight: Radius.circular(25)),
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondary)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Price".tr(context),
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "$priceSd ${'SD'.tr(context)}",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text(
-                                    "($priceDollar \$)",
-                                    style: const TextStyle(
-                                        fontSize: 14, color: Colors.black),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              myButton(
-                                () {
-                                  launchUrl(Uri.parse("tel://+2${phone}"));
-                                },
-                                "Call".tr(context),
-                                btnClr: Theme.of(context).colorScheme.secondary,
-                                txtClr: Colors.white,
-                                btnIcon: const Icon(Icons.phone),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              myButton(
-                                () {
-                                  // myApplication.navigateTo(
-                                  //     OneChatPage(), context);
-                                },
-                                "Chat".tr(context),
-                                btnClr: Colors.white,
-                                txtClr: Theme.of(context).colorScheme.secondary,
-                                btnIcon: Icon(
-                                  Icons.chat,
-                                  color:
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${priceSd ?? ""} ${'SD'.tr(context)}",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
+                                    ),
+                                    const SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      "(${priceDollar ?? ""} \$)",
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.black),
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                myButton(
+                                  () {
+                                    IncreaseCallCubit.get(context)
+                                        .userIncreaseCall(
+                                            context: context,
+                                            advertiserId: advertiserId!,
+                                            token: CacheHelper.getFromShared(
+                                                "token"),
+                                            userId: CacheHelper.getFromShared(
+                                                "id"));
+                                    launchUrl(Uri.parse("tel://+2${phone}"));
+                                  },
+                                  "Call".tr(context),
+                                  btnClr:
                                       Theme.of(context).colorScheme.secondary,
+                                  txtClr: Colors.white,
+                                  btnIcon: const Icon(Icons.phone),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              myButton(
-                                () {
-                                  launchWhatsapp(phone!, "hello");
-                                },
-                                "Whats App".tr(context),
-                                btnClr: Colors.white,
-                                txtClr: Theme.of(context).colorScheme.secondary,
-                                btnIcon: Icon(
-                                  Icons.whatsapp,
-                                  color:
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                myButton(
+                                  () {
+                                    // myApplication.navigateTo(
+                                    //     OneChatPage(
+                                    //       image: ,
+
+                                    //     ), context);
+                                  },
+                                  "Chat".tr(context),
+                                  btnClr: Colors.white,
+                                  txtClr:
                                       Theme.of(context).colorScheme.secondary,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Center(
-                                child: SizedBox(
-                                  width: 130,
-                                  child: myButton(
-                                    () {
-                                      Navigator.pop(context);
-                                    },
-                                    "Cancel".tr(context),
-                                    btnIcon: const Icon(Icons.close),
+                                  btnIcon: Icon(
+                                    Icons.chat,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                myButton(
+                                  () {
+                                    launchWhatsapp(phone!, "hello");
+                                  },
+                                  "Whats App".tr(context),
+                                  btnClr: Colors.white,
+                                  txtClr:
+                                      Theme.of(context).colorScheme.secondary,
+                                  btnIcon: Icon(
+                                    Icons.whatsapp,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 130,
+                                    child: myButton(
+                                      () {
+                                        Navigator.pop(context);
+                                      },
+                                      "Cancel".tr(context),
+                                      btnIcon: const Icon(Icons.close),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        });
+                  }
                 }, "Contact Advertiser".tr(context)),
                 const SizedBox(
                   height: 16,
@@ -607,4 +637,9 @@ class AddDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
+  // void goToChatRoom(context) {
+  //   GetUser2Cubit.get(context).userGetUser2(
+  //       userId: advertiserId!, token: CacheHelper.getFromShared("token"));
+  // }
 }

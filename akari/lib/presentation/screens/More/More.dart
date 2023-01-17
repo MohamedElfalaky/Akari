@@ -67,7 +67,7 @@ class _MoreState extends State<More> {
                   ? AppBar(
                       automaticallyImplyLeading: false,
                       // centerTitle: true,
-                      toolbarHeight: 80,
+                      toolbarHeight: 90,
                       elevation: 0,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
@@ -194,15 +194,15 @@ class _MoreState extends State<More> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 78,
-                                      // width: 200,
+                                      height: 90,
+                                      width: 350,
                                       child: ListView(
                                         shrinkWrap: true,
                                         children: [
                                           Text(
                                             state.myGetUserDataModel.data!
                                                 .about!,
-                                            maxLines: isReadMore ? 20 : null,
+                                            maxLines: isReadMore ? 5 : 2,
                                             style: TextStyle(
                                                 fontFamily: "Tajawal",
                                                 fontSize: 16),
