@@ -22,22 +22,31 @@ import 'package:flutter_svg/svg.dart';
 //   TabBarItem("furnished apartments", "assets/furnished apartments.svg"),
 // ];
 
-const List<Map> categoryDropDown = [
-  {"name": "Apartment, Duplex", "img": "assets/Appartment.svg"},
-  {"name": "Villa", "img": "assets/Villa.svg"},
-  {"name": "Flat", "img": "assets/flat.svg"},
-  {"name": "Building", "img": "assets/building.svg"},
-  {"name": "Land", "img": "assets/land.svg"},
-  {"name": "Office", "img": "assets/Office.svg"},
-  {"name": "Wedding halls", "img": "assets/Tent.svg"},
-  {"name": "Farm", "img": "assets/Farm.svg"},
-  {"name": "Room", "img": "assets/Room.svg"},
-  {"name": "Store", "img": "assets/Store.svg"},
-  {"name": "Chalet", "img": "assets/Chalet.svg"},
-  {"name": "Hut", "img": "assets/Hut.svg"},
-  {"name": "Lounge", "img": "assets/Lounge.svg"},
-  {"name": "Ware house", "img": "assets/Ware house.svg"},
-  {"name": "furnished apartments", "img": "assets/furnished apartments.svg"},
+List<Map> categoryDropDown = [
+  {"name": "All", "isSelected": true, "img": ""},
+  {
+    "name": "Apartment, Duplex",
+    "isSelected": false,
+    "img": "assets/Appartment.svg"
+  },
+  {"name": "Villa", "isSelected": false, "img": "assets/Villa.svg"},
+  {"name": "Flat", "isSelected": false, "img": "assets/flat.svg"},
+  {"name": "Building", "isSelected": false, "img": "assets/building.svg"},
+  {"name": "Land", "isSelected": false, "img": "assets/land.svg"},
+  {"name": "Office", "isSelected": false, "img": "assets/Office.svg"},
+  {"name": "Wedding halls", "isSelected": false, "img": "assets/Tent.svg"},
+  {"name": "Farm", "isSelected": false, "img": "assets/Farm.svg"},
+  {"name": "Room", "isSelected": false, "img": "assets/Room.svg"},
+  {"name": "Store", "isSelected": false, "img": "assets/Store.svg"},
+  {"name": "Chalet", "isSelected": false, "img": "assets/Chalet.svg"},
+  // {"name": "Hut", "isSelected":false,"img": "assets/Hut.svg"},
+  // {"name": "Lounge", "isSelected":false,"img": "assets/Lounge.svg"},
+  {"name": "Ware house", "isSelected": false, "img": "assets/Ware house.svg"},
+  {
+    "name": "furnished apartments",
+    "isSelected": false,
+    "img": "assets/furnished apartments.svg"
+  },
 ];
 
 List<String> appStates = [

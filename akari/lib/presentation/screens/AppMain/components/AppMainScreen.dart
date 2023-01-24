@@ -34,6 +34,14 @@ class _AppMainScreenState extends State<AppMainScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    categoryDropDown.forEach((element) {
+      element["isSelected"] = false;
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -333,15 +341,25 @@ class _AppMainScreenState extends State<AppMainScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                           // scrollDirection: Axis.horizontal,
-                          children: categoryDropDown
-                              .map((e) => TabBarItem(
-                                      e["name"].toString().tr(context),
-                                      e["img"], () {
-                                    appMainController.AppMainAPIs(
-                                        myContext: context,
-                                        buildingType: [e["name"]]);
-                                  }))
-                              .toList()),
+                          children: categoryDropDown.map((e) {
+                        return TabBarItem(
+                          name: e["name"].toString().tr(context),
+                          svg: e["img"],
+                          onpressHandler: () {
+                            setState(() {
+                              categoryDropDown.forEach((element) {
+                                element["isSelected"] = false;
+                              });
+                              e["isSelected"] = true;
+                            });
+                            appMainController.AppMainAPIs(
+                                myContext: context,
+                                buildingType:
+                                    e["name"] == "All" ? [] : [e["name"]]);
+                          },
+                          isSelected: e["isSelected"],
+                        );
+                      }).toList()),
                     )),
 
                 Container(

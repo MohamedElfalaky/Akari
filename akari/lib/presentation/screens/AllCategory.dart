@@ -46,7 +46,9 @@ class _AllCategoryState extends State<AllCategory> {
               alignment: WrapAlignment.spaceBetween,
               children: categoryDropDown
                   .map((e) => TabBarItem(
-                          e["name"].toString().tr(context), e["img"], () {
+                      name: e["name"].toString().tr(context),
+                      svg: e["img"],
+                      onpressHandler: () {
                         appMainController.AppMainAPIs(
                             myContext: context, limit: 4);
                       }))

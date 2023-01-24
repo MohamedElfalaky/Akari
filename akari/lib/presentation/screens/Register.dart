@@ -38,7 +38,7 @@ class Register extends StatelessWidget {
               myApplication.navigateTo(
                   OTP(
                     userMail: state.myRegistrationModel.data!.email!,
-                    fromWhere: "register".tr(context),
+                    fromWhere: "register",
                   ),
                   context);
             }
@@ -132,7 +132,7 @@ class Register extends StatelessWidget {
                             height: myApplication.hightClc(context, 16),
                           ),
                           myTextField(
-                            hint: "Name",
+                            hint: "Name".tr(context),
                             prefix: "assets/registerPics/user-bulk.svg",
                             validator: (value) {
                               if (value!.isEmpty) {

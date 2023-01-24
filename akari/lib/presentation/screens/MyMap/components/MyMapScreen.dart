@@ -85,7 +85,10 @@ class _MyMapScreenState extends State<MyMapScreen> {
                         child: Row(
                             // scrollDirection: Axis.horizontal,
                             children: categoryDropDown
-                                .map((e) => TabBarItem(e["name"], e["img"], () {
+                                .map((e) => TabBarItem(
+                                    name: e["name"],
+                                    svg: e["img"],
+                                    onpressHandler: () {
                                       appMainController.AppMainAPIs(
                                           myContext: context, limit: 4);
                                     }))

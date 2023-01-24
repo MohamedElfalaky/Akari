@@ -113,7 +113,7 @@ class _ProfilePageScreenState extends State<ProfilePageScreen> {
                         height: 16,
                       ),
                       SizedBox(
-                        width: 138,
+                        // width: 138,
                         height: 36,
                         child: myButton(
                           btnClr: Theme.of(context).colorScheme.secondary,

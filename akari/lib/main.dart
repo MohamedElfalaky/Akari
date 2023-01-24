@@ -51,7 +51,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
-  CacheHelper.removeFromShared("token");
+  // CacheHelper.removeFromShared("token");
   CacheHelper.saveToShared("LOCALE", "ar");
   // CacheHelper.saveToShared("token", "ddd"); // بخليه غير مسموح له بالدخول
   // print(

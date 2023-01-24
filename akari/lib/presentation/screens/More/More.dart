@@ -42,15 +42,16 @@ class _MoreState extends State<More> {
     return BlocListener<GetUserDataCubit, GetUserDataState>(
       listener: (context, state) {
         if (state is GetUserDataSuccess) {
-          CacheHelper.saveToShared("id", state.myGetUserDataModel.data!.id!);
           CacheHelper.saveToShared(
-              "email", state.myGetUserDataModel.data!.email!);
+              "id", state.myGetUserDataModel.data!.id ?? "");
           CacheHelper.saveToShared(
-              "name", state.myGetUserDataModel.data!.name!);
+              "email", state.myGetUserDataModel.data!.email ?? "");
           CacheHelper.saveToShared(
-              "phone", state.myGetUserDataModel.data!.phone!);
+              "name", state.myGetUserDataModel.data!.name ?? "");
           CacheHelper.saveToShared(
-              "about", state.myGetUserDataModel.data!.about!);
+              "phone", state.myGetUserDataModel.data!.phone ?? "");
+          CacheHelper.saveToShared(
+              "about", state.myGetUserDataModel.data!.about ?? "");
         }
       },
       child: GestureDetector(
@@ -163,7 +164,8 @@ class _MoreState extends State<More> {
                                                   ),
                                                   Text(
                                                     state.myGetUserDataModel
-                                                        .data!.phone!,
+                                                            .data!.phone ??
+                                                        "",
                                                     style: TextStyle(
                                                         fontFamily: "Tajawal",
                                                         fontSize: 16),
@@ -181,7 +183,8 @@ class _MoreState extends State<More> {
                                                   ),
                                                   Text(
                                                     state.myGetUserDataModel
-                                                        .data!.email!,
+                                                            .data!.email ??
+                                                        "",
                                                     style: TextStyle(
                                                         fontFamily: "Tajawal",
                                                         fontSize: 16),
@@ -201,7 +204,8 @@ class _MoreState extends State<More> {
                                         children: [
                                           Text(
                                             state.myGetUserDataModel.data!
-                                                .about!,
+                                                    .about ??
+                                                "",
                                             maxLines: isReadMore ? 5 : 2,
                                             style: TextStyle(
                                                 fontFamily: "Tajawal",
